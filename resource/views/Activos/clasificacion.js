@@ -7,7 +7,6 @@ $(function () {
 
 });
 
-
 function edit(datos) {
     $("form").data("id", datos.ID);
     $("input[name='descripcion']").val(datos.descripcion);

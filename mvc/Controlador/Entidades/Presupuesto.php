@@ -9,6 +9,7 @@ class Presupuesto extends ModelSQL {
     public $Compras;
     public $OrdenPedido;
     public $OrdenCompra;
+    public $Año;
 
     function __construct() {
         $this->ID = 0;

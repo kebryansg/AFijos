@@ -240,9 +240,9 @@ function loadCbo(data, select) {
 }
 
 $(function () {
-    
-    
-    
+
+
+
 
 //$("#modal-adminTipo").modal();
     $(document).on("click", "div[tipo] button[refresh]", function (e) {
@@ -410,11 +410,11 @@ $(function () {
             dropdownMenu = null;
         }
     });
-    
+
     $(".sidebar a").click(function (e) {
         e.preventDefault();
         url = $(this).attr("href");
-        
+
         if (url !== "#") {
             $("h1[title-contenido]").html($(this).html());
             $("#containPages").load(url);
@@ -423,12 +423,12 @@ $(function () {
             $(this).closest("li").addClass("active");
         }
     });
-    
+
     /*$(document).on("keyup", "input[decimal]", function (e) {
-        
-        this.value = (this.value + '').replace(/^[0-9]+([,][0-9]+)/g, '');
-        
-    });*/
+     
+     this.value = (this.value + '').replace(/^[0-9]+([,][0-9]+)/g, '');
+     
+     });*/
 });
 function responseHandler(res) {
     $.each(res.rows, function (i, row) {
@@ -457,11 +457,11 @@ function showRegistro() {
     $("#Listado").addClass("hidden");
     $("#div-registro").fadeIn("slow");
     $("#div-registro").removeClass("hidden");
-    
-    
+
+
     $("input[fecha]").val(formatView(moment()));
     $("input[myDecimal]").inputmask("myDecimal");
-    
+
 }
 
 function hideRegistro() {
@@ -469,16 +469,16 @@ function hideRegistro() {
     $("#div-registro").addClass("hidden");
     /*
      if ($("#div-registro table").length > 0) {
-        $("#div-registro table").bootstrapTable("removeAll");
-    }
+     $("#div-registro table").bootstrapTable("removeAll");
+     }
      */
     $("#Listado").fadeIn("slow");
     $("#Listado").removeClass("hidden");
     $("#div-registro form").removeData("id");
     $("#div-registro select.selectpicker").selectpicker("val", -1);
     $('#div-registro select.selectpicker').selectpicker('refresh');
-    
-    
+
+
 }
 
 function deleteIndividual(tableSelect) {
@@ -494,6 +494,33 @@ function formatSave(data) {
     fecha = moment(data, 'MMMM D, YYYY');
     return fecha.format("YYYY-MM-DD HH:mm:ss");
 }
+
 function defaultFecha(value, rowData, index) {
     return formatView(value);
+}
+
+function getParamsFecha(dt) {
+    init_fecha = {
+        autoclose: true,
+        language: "es",
+        format: 'MM dd, yyyy'
+    };
+    switch (dt) {
+        case "year":
+            return $.extend({}, init_fecha, {
+                minViewMode: 2
+            });
+            break;
+        case "month":
+            return $.extend({}, init_fecha, {
+                minViewMode: 1
+            });
+            break;
+        case "day":
+            return $.extend({}, init_fecha, {
+                todayBtn: true,
+                todayHighlight: true
+            });
+            break;
+    }
 }

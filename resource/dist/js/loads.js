@@ -21,6 +21,17 @@ function getURL(url) {
     }
 }
 
+function loadPresupuesto(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "presupuesto",
+            accion: "list"
+        }, params.data),
+        url: getURL("_compras")
+    };
+    params.success(getJson(json_data));
+}
+
 function loadArea(params = null) {
     data = {
         op: "area",
@@ -130,15 +141,23 @@ function loadPais(params) {
 
 
 
-function loadDepartamento(params) {
-    json_data = {
-        data: $.extend({}, {
-            op: "departamento",
-            accion: "list"
-        }, params.data),
-        url: url
+function loadDepartamento(params = null) {
+    data = {
+        op: "departamento",
+        accion: "list"
     };
-    params.success(getJson(json_data));
+    if (params !== null) {
+        json_data = {
+            data: $.extend({}, data, params.data),
+            url: "servidor/sCatalogo.php"
+        };
+        params.success(getJson(json_data));
+    } else {
+        return getJson({
+            data: data,
+            url: "servidor/sCatalogo.php"
+        });
+    }
 }
 function loadCentroCosto(params) {
     json_data = {

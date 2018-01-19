@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header"><i class="fa fa-user fa-group"></i> Centro de Costo </h1>
-    </div>
-</div>
-
 <div class="row" id="Listado">
     <div class="col-md-12">
         <div id="toolbar" class="btn-group">
-            <button type="button" name="btn_add" class="btn btn-default btn-success btn-outline">
+            <button type="button" name="btn_add" class="btn  btn-success ">
                 <i class="glyphicon glyphicon-plus"></i> Agregar
             </button>
-            <button type="button" name="btn_del" class="btn btn-default btn-danger btn-outline">
+            <button type="button" name="btn_del" class="btn  btn-danger ">
                 <i class="glyphicon glyphicon-trash"></i> Eliminar
             </button>
         </div>
@@ -34,7 +28,7 @@
 </div>
 
 <div id="div-registro" class="row hidden" >
-    <form save role="centrocosto" action="servidor/sCatalogo.php">
+    <form save role="centrocosto" action="_catalogo">
         <div class="col-md-6">
             <div class="form-group">
                 <label for="" class="control-label">Descripción</label>
@@ -71,7 +65,7 @@
         <div class="clearfix"></div>
         <div class="col-md-12">
             <div class="pull-right">
-                <button class="btn btn-default" type="reset"  title="Haga clic aquí para cancelar el registro actual">
+                <button class="btn btn-danger" type="reset"  title="Haga clic aquí para cancelar el registro actual">
                     <i class="fa fa-reply" aria-hidden="true"></i> Cancelar
                 </button>
                 &nbsp;
@@ -85,5 +79,5 @@
 </div>
 
 
-<script type="text/javascript" src="recursos/views/Activos/centrocosto.js"></script>
+<script type="text/javascript" src="resource/views/Activos/centrocosto.js"></script>
 

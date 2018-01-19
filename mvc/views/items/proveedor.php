@@ -28,7 +28,7 @@
 </div>
 
 <div id="div-registro" class="row hidden" >
-    <form save role="proveedor" action="servidor/sCompras.php">
+    <form save role="proveedor" action="_compras">
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Tipo Identificación</label>

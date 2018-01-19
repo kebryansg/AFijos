@@ -84,37 +84,37 @@ $RolNombre = "Administrador";
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">Navegación Principal</li>
 
-<!--            <li >
-                <a href="MVC/View/Configure/configure.php">
-                    <i class="fa fa-gears"></i> <span>Configuración</span>
-                </a>
-            </li>
-            <li >
-                <a href="MVC/View/Client/cliente.php">
-                    <i class="fa fa-users"></i> <span>Clientes</span>
-                </a>
-            </li>
-            <li >
-                <a href="MVC/View/Product/producto.php">
-                    <i class="fa fa-product-hunt"></i> <span>Productos</span>
-                </a>
-            </li>
-            <li >
-                <a href="MVC/View/Proform/proforma.php">
-                    <i class="fa fa-file-archive-o"></i> <span>Proformas</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-folder-open"></i> <span>Reportes</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
-                </ul>
-            </li>-->
+            <!--            <li >
+                            <a href="MVC/View/Configure/configure.php">
+                                <i class="fa fa-gears"></i> <span>Configuración</span>
+                            </a>
+                        </li>
+                        <li >
+                            <a href="MVC/View/Client/cliente.php">
+                                <i class="fa fa-users"></i> <span>Clientes</span>
+                            </a>
+                        </li>
+                        <li >
+                            <a href="MVC/View/Product/producto.php">
+                                <i class="fa fa-product-hunt"></i> <span>Productos</span>
+                            </a>
+                        </li>
+                        <li >
+                            <a href="MVC/View/Proform/proforma.php">
+                                <i class="fa fa-file-archive-o"></i> <span>Proformas</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-folder-open"></i> <span>Reportes</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#">Link in level 2</a></li>
+                                <li><a href="#">Link in level 2</a></li>
+                            </ul>
+                        </li>-->
             <li class="treeview">
                 <a href="#"><i class="fa fa-folder-open"></i> <span>Pedidos</span>
                     <span class="pull-right-container">
@@ -133,7 +133,20 @@ $RolNombre = "Administrador";
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="mvc/views/items/proveedor.php">Proveedor</a></li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-folder-open"></i> <span>Catálogo</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="mvc/views/items/proveedor.php"><i class="fa fa-group fa-fw"></i> Proveedor</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--<li><a href="mvc/views/items/proveedor.php"></a></li>-->
+                    <li><a href="mvc/views/items/presupuesto.php">Presupuesto</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -143,6 +156,19 @@ $RolNombre = "Administrador";
                     </span>
                 </a>
                 <ul class="treeview-menu">
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-folder-open"></i> <span>Catálogo</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="mvc/views/activos/departamento.php"><i class="fa fa-lock fa-fw"></i> Departamento</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li>
                         <a href="mvc/views/Administracion/rol.php"><i class="fa fa-lock fa-fw"></i> Roles / Permisos</a>
                     </li>
@@ -155,11 +181,65 @@ $RolNombre = "Administrador";
                     <li>
                         <a href="mvc/views/Administracion/usuarios.php"><i class="fa fa-group fa-fw"></i> Usuarios</a>
                     </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-folder-open"></i> <span>Items</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-folder-open"></i> <span>Catálogo</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="mvc/views/activos/pais.php"><i class="fa fa-lock fa-fw"></i> País</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/activos/categoria.php"><i class="fa fa-group fa-fw"></i> Categoría</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/activos/tipoidentificacion.php"><i class="fa fa-group fa-fw"></i> Tipo Identificación</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/activos/tipoemisor.php"><i class="fa fa-group fa-fw"></i> Tipo Emisor</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/activos/contribuyente.php"><i class="fa fa-group fa-fw"></i> Contribuyente</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/activos/grupos.php"><i class="fa fa-group fa-fw"></i> Grupo</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/activos/clases.php"><i class="fa fa-group fa-fw"></i> Clase</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/activos/clasificacion.php"><i class="fa fa-group fa-fw"></i> Clasificación</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/activos/unidad.php"><i class="fa fa-group fa-fw"></i> Unidad</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/activos/centrocosto.php"><i class="fa fa-group fa-fw"></i> Centro de Costo</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/activos/tipo.php"><i class="fa fa-group fa-fw"></i> Tipo</a>
+                            </li>
+                        </ul>
+                    </li>
                     <!--<li>
-                        <a href="/app/modules/dispositivos.php"><i class="fa fa-tablet fa-fw"></i> Dispositivos</a>
+                        <a href="mvc/views/Administracion/modulo.php"><i class="fa fa-group fa-fw"></i> Módulos</a>
                     </li>
                     <li>
-                        <a href="/app/modules/opciones-generales.php"><i class="fa fa-cog fa-fw"></i> Opciones Generales</a>
+                        <a href="mvc/views/Administracion/submodulo.php"><i class="fa fa-group fa-fw"></i> SubMódulos</a>
+                    </li>
+                    <li>
+                        <a href="mvc/views/Administracion/usuarios.php"><i class="fa fa-group fa-fw"></i> Usuarios</a>
                     </li>-->
                 </ul>
             </li>

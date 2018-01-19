@@ -8,10 +8,12 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <link rel="stylesheet" href="resource/Plantilla/bootstrap/dist/css/bootstrap.min.css">
 
+<!-- BootStrap Table -->
 <link rel="stylesheet" href="resource/table/bootstrap-table.min.css">
-
+<!-- BootStrap Select -->
 <link rel="stylesheet" href="resource/bootstrap/bootstrap-select/bootstrap-select.min.css">
-
+<!-- BootStrap Datepicker -->
+<link rel="stylesheet" href="resource/Plantilla/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="resource/Plantilla/font-awesome/css/font-awesome.min.css">
 <!-- Ionicons -->
