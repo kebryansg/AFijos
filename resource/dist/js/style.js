@@ -163,9 +163,7 @@ $.fn.serializeObject = function () {
     });
     return JSON.stringify(o);
 };
-function btnSeleccion(value) {
-    return '<button name="seleccion" class="btn btn-success btn-sm"><i class="fa fa-check-square-o" aria-hidden="true"></i> Seleccionar</button>';
-}
+
 
 
 
@@ -184,9 +182,9 @@ function limpiarContenedor(contenedor) {
 
 $(function () {
 
-    $(document).on("click", "input[myDecimal]", function () {
+    /*$(document).on("click", "input[myDecimal]", function () {
         $(this).focus();
-    });
+    });*/
 
     $(document).on("focus", "input[myDecimal]", function () {
         $(this).inputmask("myDecimal");

@@ -68,7 +68,7 @@
                         <button add type="button" class="btn btn-success">
                             <i class="glyphicon glyphicon-plus"></i> Agregar
                         </button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#items-registro">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-find-items" >
                             <i class="glyphicon glyphicon-search"></i> Buscar
                         </button>
                         <button type="button" DeleteIndividual class="btn btn-danger ">
@@ -79,14 +79,14 @@
                 <table
                     id="tbOrdenPedido"
                     data-toolbar="#toolbar2"
-                    full>
+                    >
                     <thead>
                         <tr>
                             <th data-field="state" data-checkbox="true"></th>
                             <th data-field="cantidad" class="col-md-1" data-formatter="imask" >Cant.</th>
-                            <th data-field="descripcion" data-formatter="defaultDescripcion">Descripción</th>
+                            <th data-field="descripcion" data-formatter="inputProducto" data-events="event_input_default" >Descripción</th>
                             <th data-field="precioref" class="col-md-1" data-formatter="imask" >Precio Unit.</th>
-                            <th data-field="observacion" class="col-md-4" data-formatter="obs" >Observación</th> <!-- data-formatter -->
+                            <th data-field="observacion" class="col-md-4" data-formatter="defaultInput" data-events="event_input_default" >Observación</th> <!-- data-formatter -->
                         </tr>
                     </thead>
                 </table>
@@ -112,54 +112,30 @@
     <!--<div class="clearfix"></div>-->
 </div>
 
-<div id="items-registro" class="modal fade"   >
+<div id="modal-find-items" class="modal fade" >
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">
                     <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    Nuevo Registro
+                    Buscar Registro
                 </h4>
             </div>
             <div class="modal-body">
-                <form addLocal >
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Descripción</label>
-                            <input name="descripcion" type="text" class="form-control" required>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">Cantidad</label>
-                                    <!--<input name="cantidad" type="text" class="form-control" required>-->
-                                    <input required name="cantidad" decimal class="form-control" required myDecimal style="text-align: right;">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">Precio Unit.</label>
-                                    <input name="precioref" decimal class="form-control" required myDecimal style="text-align: right;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Observación</label>
-                            <textarea name="observacion" rows="4" class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="pull-right">
-                            <button type="reset" class="btn btn-danger "> <i class="fa fa-reply"></i> Cancelar</button>
-                            <button type="submit" class="btn btn-success "> <i class="fa fa-plus"></i> Agregar</button>
-
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </form>
+                <table 
+                    id="tbFind"
+                    data-ajax="loadItems"
+                    search
+                    >
+                    <thead>
+                        <tr>
+                            <th data-field="descripcion">Descripción</th>
+                            <th data-field="accion" data-formatter="btnSeleccion" data-events="event_OPedido" class="col-md-1" data-align="center">Acción</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>

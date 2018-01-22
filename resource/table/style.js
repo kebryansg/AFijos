@@ -25,6 +25,22 @@ window.event_accion_default = {
     }
 };
 
+window.event_input_default = {
+    "change input[text]": function (e, value, row, index) {
+        
+        field = $(this).attr("data-field");
+        row[field] = $(e.target).val();
+        table = $(this).closest("table");
+        $(table).bootstrapTable('updateRow', {
+            index: index,
+            row: row
+        });
+    },
+    "click input[text]": function (e, value, row, index) {
+        $(this).focus();
+    }
+};
+
 
 /* Lista por defecto boton Accion */
 function defaultBtnAccion(value, rowData, index) {
@@ -38,11 +54,17 @@ function defaultBtnAccion(value, rowData, index) {
             '</ul>' +
             '</div>';
 }
-
-function defaultDescripcion(value, rowData, index) {
-    if (rowData.id === 0) {
-        return '<input descripcion class="form-control input-sm" type="text" value="' + value + '">';
-    } else {
-        return value;
-    }
+function btnSeleccion(value) {
+    return '<button name="seleccion" class="btn btn-success btn-sm"><i class="fa fa-check-square-o" aria-hidden="true"></i> Seleccionar</button>';
 }
+
+function defaultInput(value, rowData, index) {
+    return '<input text data-field="' + this.field + '" class="form-control input-sm" type="text" value="' + value + '">';
+}
+/*function defaultInput(value, rowData, index) {
+ if (rowData.id === 0) {
+ return '<input text data-field="'+ this.field +'" class="form-control input-sm" type="text" value="' + value + '">';
+ } else {
+ return value;
+ }
+ }*/

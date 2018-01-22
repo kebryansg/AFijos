@@ -2,6 +2,7 @@
 
 include_once '../mvc/modelo/ProveedorDaoImp.php';
 include_once '../mvc/modelo/PresupuestoDaoImp.php';
+include_once '../mvc/modelo/ItemDaoImp.php';
 
 include_once '../mvc/Controlador/JsonMapper.php';
 $accion = $_POST["accion"];
@@ -24,6 +25,12 @@ switch ($accion) {
             case "presupuesto":
                 $resultado = json_encode(array(
                     "rows" => PresupuestoDaoImp::listPresupuesto($top, $pag, $count),
+                    "total" => $count
+                ));
+                break;
+            case "items":
+                $resultado = json_encode(array(
+                    "rows" => ItemDaoImp::listItem($top, $pag, $count),
                     "total" => $count
                 ));
                 break;

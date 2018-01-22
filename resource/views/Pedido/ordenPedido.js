@@ -10,11 +10,16 @@ function imask(value, rowData, index) {
 }
 $(function () {
     initialComponents();
+
+    $("#tbOrdenPedido").bootstrapTable();
+    $("#modal-find-items table").bootstrapTable(TablePaginationDefault);
+
+
     $("button[name=btn_add]").click();
-    
-    $("button[add]").click(function(e){
-        $("#tbOrdenPedido").bootstrapTable("append",{
-            id:0,
+
+    $("button[add]").click(function (e) {
+        $("#tbOrdenPedido").bootstrapTable("append", {
+            ID: 0,
             cantidad: 1,
             descripcion: "",
             precioref: 0,
@@ -22,12 +27,18 @@ $(function () {
         });
     });
 
-
-    $("#items-registro").on({
-        'hidden.bs.modal': function (e) {
-            $("table[full]").bootstrapTable("resetView");
+    $("#modal-find-items").on({
+        'show.bs.modal': function (e) {
+            $(this).find("table").bootstrapTable("refresh");
         }
     });
+
+
+    /*$("#items-registro").on({
+     'hidden.bs.modal': function (e) {
+     $("table[full]").bootstrapTable("resetView");
+     }
+     });*/
 
     $("button[DeleteIndividual]").click(function (e) {
         div_id = $(this).closest("div[toolbar]").attr("id");
@@ -35,24 +46,6 @@ $(function () {
         ids = $(tableSelect).bootstrapTable("getSelections").map(row => row.id);
         $(tableSelect).bootstrapTable("remove", {field: 'id', values: ids});
     });
-
-
-    /*$("form[addLocal]").submit(function (e) {
-        e.preventDefault();
-        datos = JSON.parse($(this).serializeObject());
-
-        $("#tbOrdenPedido").bootstrapTable("append", datos);
-        $(this).trigger("reset");
-    });*/
-
-//    $("#test").click(function (e) {
-//        fun = "getDatos";
-//        if (typeof document.getDatos === 'function') {
-//            console.log("Si");
-//        } else {
-//            console.log("No");
-//        }
-//    });
 
 });
 
@@ -119,15 +112,35 @@ function BtnAccion(value, rowData, index) {
     if (rowData.estado === "PEN" || rowData.estado === "DEV") {
         //edit = '<li name="edit"><a href="#"> <i class="fa fa-edit"></i> Editar</a></li>';
         return '<div class="btn-group" name="shows">' +
-            '<button type="button" class="btn btn-default dropdown-toggle btn-sm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-            ' <i class="fa fa-fw fa-align-justify"></i>' +
-            '</button>' +
-            '<ul class="dropdown-menu dropdown-menu-left" >' +
-            '<li name="edit"><a href="#"> <i class="fa fa-edit"></i> Editar</a></li>' +
-            ' <li name="delete" ><a href="#"> <i class="fa fa-trash"></i> Eliminar</a></li>' +
-            '</ul>' +
-            '</div>';
+                '<button type="button" class="btn btn-default dropdown-toggle btn-sm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+                ' <i class="fa fa-fw fa-align-justify"></i>' +
+                '</button>' +
+                '<ul class="dropdown-menu dropdown-menu-left" >' +
+                '<li name="edit"><a href="#"> <i class="fa fa-edit"></i> Editar</a></li>' +
+                ' <li name="delete" ><a href="#"> <i class="fa fa-trash"></i> Eliminar</a></li>' +
+                '</ul>' +
+                '</div>';
     }
-
-    
 }
+
+function inputProducto(value, row, index) {
+    if (row.ID === 0) {
+        return "<input data-field='" + this.field + "' value='" + value + "' class='form-control input-sm' type='text' text >";
+    } else {
+        return row.descripcion;
+    }
+}
+
+
+window.event_OPedido = {
+    "click button[name='seleccion']": function (e, value, row, index) {
+        $("#modal-find-items").modal("hide");
+        $("#tbOrdenPedido").bootstrapTable("append", {
+            ID: row.id,
+            cantidad: 1,
+            descripcion: row.descripcion,
+            precioref: 0,
+            observacion: ""
+        });
+    }
+};

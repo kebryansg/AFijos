@@ -21,6 +21,17 @@ function getURL(url) {
     }
 }
 
+function loadItems(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "items",
+            accion: "list"
+        }, params.data),
+        url: getURL("_compras")
+    };
+    params.success(getJson(json_data));
+}
+
 function loadPresupuesto(params) {
     json_data = {
         data: $.extend({}, {
