@@ -64,21 +64,16 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="btn-toolbar" role="toolbar" aria-label="...">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="btn-group" role="group" aria-label="...">
-                                <button type="button" class="btn btn-success " data-toggle="modal" data-target="#items-registro">
-                                    <i class="glyphicon glyphicon-plus"></i> Agregar
-                                </button>
-                                <button type="button" DeleteIndividual class="btn btn-danger ">
-                                    <i class="glyphicon glyphicon-trash"></i> Eliminar
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-
-
-                        </div>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button add type="button" class="btn btn-success">
+                            <i class="glyphicon glyphicon-plus"></i> Agregar
+                        </button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#items-registro">
+                            <i class="glyphicon glyphicon-search"></i> Buscar
+                        </button>
+                        <button type="button" DeleteIndividual class="btn btn-danger ">
+                            <i class="glyphicon glyphicon-trash"></i> Eliminar
+                        </button>
                     </div>
                 </div>
                 <table
@@ -88,10 +83,10 @@
                     <thead>
                         <tr>
                             <th data-field="state" data-checkbox="true"></th>
-                            <th data-field="cantidad" class="col-md-1" data-align="center">Cant.</th>
-                            <th data-field="descripcion">Descripción</th>
-                            <th data-field="precioref" class="col-md-1">Precio Unit.</th>
-                            <th data-field="observacion" class="col-md-2" data-formatter="obs" >Observación</th> <!-- data-formatter -->
+                            <th data-field="cantidad" class="col-md-1" data-formatter="imask" >Cant.</th>
+                            <th data-field="descripcion" data-formatter="defaultDescripcion">Descripción</th>
+                            <th data-field="precioref" class="col-md-1" data-formatter="imask" >Precio Unit.</th>
+                            <th data-field="observacion" class="col-md-4" data-formatter="obs" >Observación</th> <!-- data-formatter -->
                         </tr>
                     </thead>
                 </table>

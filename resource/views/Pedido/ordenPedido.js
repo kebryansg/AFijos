@@ -2,13 +2,26 @@ op = "ordenPedido";
 //url = "servidor/sPedido.php";
 table = $("#Listado table");
 selections = [];
+
+
+
+function imask(value, rowData, index) {
+    return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + parseFloat(value).toFixed(2) + '">';
+}
 $(function () {
     initialComponents();
-//    $("#items-registro").modal();
     $("button[name=btn_add]").click();
+    
+    $("button[add]").click(function(e){
+        $("#tbOrdenPedido").bootstrapTable("append",{
+            id:0,
+            cantidad: 1,
+            descripcion: "",
+            precioref: 0,
+            observacion: ""
+        });
+    });
 
-
-    //$("#fecha").val(formatView(moment()));
 
     $("#items-registro").on({
         'hidden.bs.modal': function (e) {
@@ -24,13 +37,13 @@ $(function () {
     });
 
 
-    $("form[addLocal]").submit(function (e) {
+    /*$("form[addLocal]").submit(function (e) {
         e.preventDefault();
         datos = JSON.parse($(this).serializeObject());
 
         $("#tbOrdenPedido").bootstrapTable("append", datos);
         $(this).trigger("reset");
-    });
+    });*/
 
 //    $("#test").click(function (e) {
 //        fun = "getDatos";

@@ -1,3 +1,18 @@
+/* Estilos General */
+.bold{
+    font-weight: bold;
+}
+
+/* InpustMask */
+input[myDecimal]{
+    text-align: right;
+}
+
+
+
+
+
+/* Estilos hr */
 hr.style1{
 	border-top: 1px solid #8c8b8b;
 }

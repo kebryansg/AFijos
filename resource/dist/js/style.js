@@ -93,36 +93,9 @@ function initModalNew(modal, dataUrl) {
     $(modal + ' .selectpicker').selectpicker();
 }
 
-function getJson(params) {
-    result = {};
-    $.ajax({
-        url: params.url,
-        async: false,
-        type: 'POST',
-        dataType: 'json',
-        data: params.data,
-        success: function (response) {
-            result = response;
-        }
-    });
-    return result;
-}
 
-function save_global(datos) {
-    $.ajax({
-        url: datos.url,
-        cache: false,
-        type: 'POST',
-        async: false,
-        dataType: 'json',
-        data: datos.dt,
-        success: function (response) {
-            //loadTable();
-            //$(table).bootstrapTable("refresh");
-            //hideRegistro();
-        }
-    });
-}
+
+
 
 function alertEliminarRegistro(row) {
     $.confirm({
@@ -194,17 +167,7 @@ function btnSeleccion(value) {
     return '<button name="seleccion" class="btn btn-success btn-sm"><i class="fa fa-check-square-o" aria-hidden="true"></i> Seleccionar</button>';
 }
 
-function defaultBtnAccion(value, rowData, index) {
-    return '<div class="btn-group" name="shows">' +
-            '<button type="button" class="btn btn-default dropdown-toggle btn-sm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-            ' <i class="fa fa-fw fa-align-justify"></i>' +
-            '</button>' +
-            '<ul class="dropdown-menu dropdown-menu-left" >' +
-            '<li name="edit"><a href="#"> <i class="fa fa-edit"></i> Editar</a></li>' +
-            ' <li name="delete" ><a href="#"> <i class="fa fa-trash"></i> Eliminar</a></li>' +
-            '</ul>' +
-            '</div>';
-}
+
 
 function formatterDepreciable(value) {
     return (parseInt(value)) ? "Si" : "No";
@@ -216,32 +179,18 @@ function limpiarContenedor(contenedor) {
     $(contenedor + " .selectpicker").selectpicker("refresh");
 }
 
-window.event_accion_default = {
-    "click li[name='edit']": function (e, value, row, index) {
-        showRegistro();
-        edit(row);
-    },
-    "click li[name='delete']": function (e, value, row, index) {
-        alertEliminarRegistro(row);
-    },
-    "click button[name='seleccion']": function (e, value, row, index) {
-        action_seleccion_v2(row);
-    }
-};
-function loadCbo(data, select) {
-    $(select).html("");
-    $.each(data.rows, function (i, row) {
-        option = document.createElement("option");
-        $(option).attr("value", row.ID);
-        $(option).html(row.descripcion);
-        $(select).append(option);
-    });
-    $(select).selectpicker("refresh");
-}
+
+
 
 $(function () {
 
+    $(document).on("click", "input[myDecimal]", function () {
+        $(this).focus();
+    });
 
+    $(document).on("focus", "input[myDecimal]", function () {
+        $(this).inputmask("myDecimal");
+    });
 
 
 //$("#modal-adminTipo").modal();
@@ -430,12 +379,9 @@ $(function () {
      
      });*/
 });
-function responseHandler(res) {
-    $.each(res.rows, function (i, row) {
-        row.state = $.inArray(row.ID, selections) !== -1;
-    });
-    return res;
-}
+
+
+
 
 function deletes() {
     $.ajax({
@@ -452,75 +398,13 @@ function deletes() {
     $(table).bootstrapTable("refresh");
 }
 
-function showRegistro() {
-    $("#Listado").fadeOut();
-    $("#Listado").addClass("hidden");
-    $("#div-registro").fadeIn("slow");
-    $("#div-registro").removeClass("hidden");
 
-
-    $("input[fecha]").val(formatView(moment()));
-    $("input[myDecimal]").inputmask("myDecimal");
-
-}
-
-function hideRegistro() {
-    $("#div-registro").fadeOut();
-    $("#div-registro").addClass("hidden");
-    /*
-     if ($("#div-registro table").length > 0) {
-     $("#div-registro table").bootstrapTable("removeAll");
-     }
-     */
-    $("#Listado").fadeIn("slow");
-    $("#Listado").removeClass("hidden");
-    $("#div-registro form").removeData("id");
-    $("#div-registro select.selectpicker").selectpicker("val", -1);
-    $('#div-registro select.selectpicker').selectpicker('refresh');
-
-
-}
 
 function deleteIndividual(tableSelect) {
     ids = $(tableSelect).bootstrapTable("getSelections").map(row => row.ID);
     $(tableSelect).bootstrapTable("remove", {field: 'ID', values: ids});
 }
 
-function formatView(data) {
-    fecha = moment(data, "YYYY-MM-DD HH:mm:ss");
-    return fecha.format('MMMM D, YYYY');
-}
-function formatSave(data) {
-    fecha = moment(data, 'MMMM D, YYYY');
-    return fecha.format("YYYY-MM-DD HH:mm:ss");
-}
 
-function defaultFecha(value, rowData, index) {
-    return formatView(value);
-}
 
-function getParamsFecha(dt) {
-    init_fecha = {
-        autoclose: true,
-        language: "es",
-        format: 'MM dd, yyyy'
-    };
-    switch (dt) {
-        case "year":
-            return $.extend({}, init_fecha, {
-                minViewMode: 2
-            });
-            break;
-        case "month":
-            return $.extend({}, init_fecha, {
-                minViewMode: 1
-            });
-            break;
-        case "day":
-            return $.extend({}, init_fecha, {
-                todayBtn: true,
-                todayHighlight: true
-            });
-            break;
-    }
-}
+
