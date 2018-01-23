@@ -2,7 +2,7 @@ var nav4 = window.Event ? true : false;
 var selections = [];
 moment.locale("es");
 var TablePaginationDefault = {
-    height: 400,
+    //height: 400,
     pageSize: 5,
     search: true,
     pageList: [5, 10, 15, 20],
@@ -186,9 +186,10 @@ $(function () {
         $(this).focus();
     });*/
 
-    $(document).on("focus", "input[myDecimal]", function () {
+    /*$(document).on("focus", "input[myDecimal]", function () {
         $(this).inputmask("myDecimal");
-    });
+        $(this).select();
+    });*/
 
 
 //$("#modal-adminTipo").modal();

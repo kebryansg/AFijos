@@ -84,6 +84,7 @@ function formatSave(data) {
 function getParamsFecha(dt) {
     init_fecha = {
         autoclose: true,
+        orientation: "bottom auto",
         language: "es",
         format: 'MM dd, yyyy'
     };

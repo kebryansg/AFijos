@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="btn-toolbar" role="toolbar" aria-label="...">
                     <div class="btn-group" role="group" aria-label="...">
                         <button add type="button" class="btn btn-success">
@@ -83,13 +83,19 @@
                     <thead>
                         <tr>
                             <th data-field="state" data-checkbox="true"></th>
-                            <th data-field="cantidad" class="col-md-1" data-formatter="imask" >Cant.</th>
+                            <th data-field="cantidad" class="col-md-1" data-formatter="imask" data-events="event_input_default" >Cant.</th>
                             <th data-field="descripcion" data-formatter="inputProducto" data-events="event_input_default" >Descripción</th>
-                            <th data-field="precioref" class="col-md-1" data-formatter="imask" >Precio Unit.</th>
-                            <th data-field="observacion" class="col-md-4" data-formatter="defaultInput" data-events="event_input_default" >Observación</th> <!-- data-formatter -->
+                            <th data-field="precioref" class="col-md-1" data-formatter="imask" data-events="event_input_default" >Precio Unit.</th>
                         </tr>
                     </thead>
                 </table>
+            </div>
+            <div class="col-md-4">
+                <br><br>
+                <div class="form-group">
+                    <label for="" class="control-label">Observación</label>
+                    <textarea class="form-control" name="observacion" cols="30" rows="5"  ></textarea>
+                </div>
             </div>
 
         </div>
@@ -131,6 +137,7 @@
                     <thead>
                         <tr>
                             <th data-field="descripcion">Descripción</th>
+                            <th data-field="stock" class="col-md-1" data-align="center">Stock</th>
                             <th data-field="accion" data-formatter="btnSeleccion" data-events="event_OPedido" class="col-md-1" data-align="center">Acción</th>
                         </tr>
                     </thead>

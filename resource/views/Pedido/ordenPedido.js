@@ -5,9 +5,7 @@ selections = [];
 
 
 
-function imask(value, rowData, index) {
-    return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + parseFloat(value).toFixed(2) + '">';
-}
+
 $(function () {
     initialComponents();
 
@@ -15,14 +13,14 @@ $(function () {
     $("#modal-find-items table").bootstrapTable(TablePaginationDefault);
 
 
-    $("button[name=btn_add]").click();
+//    $("button[name=btn_add]").click();
 
     $("button[add]").click(function (e) {
         $("#tbOrdenPedido").bootstrapTable("append", {
             ID: 0,
-            cantidad: 1,
+            cantidad: parseFloat(1).toFixed(2),
             descripcion: "",
-            precioref: 0,
+            precioref: parseFloat(0).toFixed(2),
             observacion: ""
         });
     });
@@ -70,8 +68,6 @@ function getDatos() {
 
 function edit(datos) {
     $("#div-registro form[save]").data("id", datos.ID);
-    console.log(datos);
-    console.log(formatView(datos.fecha));
     $("#div-registro input[name='fecha']").val(formatView(datos.fecha));
     $("#div-registro input[area]").val(datos.area);
     $("#div-registro input[usuario]").val(datos.usuario);
@@ -110,7 +106,6 @@ function estadoOrdenPedido(value) {
 }
 function BtnAccion(value, rowData, index) {
     if (rowData.estado === "PEN" || rowData.estado === "DEV") {
-        //edit = '<li name="edit"><a href="#"> <i class="fa fa-edit"></i> Editar</a></li>';
         return '<div class="btn-group" name="shows">' +
                 '<button type="button" class="btn btn-default dropdown-toggle btn-sm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
                 ' <i class="fa fa-fw fa-align-justify"></i>' +
@@ -125,21 +120,24 @@ function BtnAccion(value, rowData, index) {
 
 function inputProducto(value, row, index) {
     if (row.ID === 0) {
-        return "<input data-field='" + this.field + "' value='" + value + "' class='form-control input-sm' type='text' text >";
+        return "<input field='" + this.field + "' value='" + value + "' class='form-control input-sm' type='text' text >";
     } else {
         return row.descripcion;
     }
 }
 
+function imask(value, rowData, index) {
+    return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + value + '">';
+}
 
 window.event_OPedido = {
     "click button[name='seleccion']": function (e, value, row, index) {
         $("#modal-find-items").modal("hide");
         $("#tbOrdenPedido").bootstrapTable("append", {
             ID: row.id,
-            cantidad: 1,
+            cantidad: parseFloat(1).toFixed(2),
             descripcion: row.descripcion,
-            precioref: 0,
+            precioref: parseFloat(0).toFixed(2),
             observacion: ""
         });
     }

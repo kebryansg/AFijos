@@ -27,8 +27,7 @@ window.event_accion_default = {
 
 window.event_input_default = {
     "change input[text]": function (e, value, row, index) {
-        
-        field = $(this).attr("data-field");
+        field = $(this).attr("field");
         row[field] = $(e.target).val();
         table = $(this).closest("table");
         $(table).bootstrapTable('updateRow', {
@@ -36,8 +35,23 @@ window.event_input_default = {
             row: row
         });
     },
+    "change input[myDecimal]": function (e, value, row, index) {
+        //alert();
+        input = $(e.target);
+        field = $(input).attr("field");
+        row[field] = $(input).val();
+        table = $(input).closest("table");
+        $(table).bootstrapTable('updateRow', {
+            index: index,
+            row: row
+        });
+    },
     "click input[text]": function (e, value, row, index) {
         $(this).focus();
+    },
+    'focus input[myDecimal]': function (e, value, row, index) {
+        $(this).inputmask("myDecimal");
+        $(this).select();
     }
 };
 
