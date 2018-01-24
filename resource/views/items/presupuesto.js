@@ -1,17 +1,55 @@
 table = $("#Listado table");
 
-function rowCount(valu, row, index){
+function rowCount(valu, row, index) {
     return index + 1;
 }
 function imask(value, rowData, index) {
-    return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + value + '">';
+    return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + value.toFixed(2) + '">';
 }
+window.event_input = {
+    "change input[myDecimal]": function (e, value, row, index) {
+        valor_update = convertFloat($(e.target).val());
+
+        acumulador = valor_update;
+        $.each($("#tbDetallePresupuesto").bootstrapTable("getData"), function (i, rw) {
+            if (index !== i)
+                acumulador += convertFloat(rw.precio);
+        });
+        presupuestoInicial = convertFloat($("input[name='presupuestoInicial']").val());
+
+        bandera = !(presupuestoInicial - acumulador < 0);
+        if (bandera) {
+            row.precio = valor_update;
+            $("#tbDetallePresupuesto").bootstrapTable('updateRow', {
+                index: index,
+                row: row
+            });
+        } else {
+            //Mensaje
+            
+            row.precio = 0;
+            $("#tbDetallePresupuesto").bootstrapTable('updateRow', {
+                index: index,
+                row: row
+            });
+
+        }
+
+
+
+
+    },
+    'focus input[myDecimal]': function (e, value, row, index) {
+        $(this).inputmask("myDecimal");
+        $(this).select();
+    }
+};
 
 $(function () {
 
 
     rows = [
-        {mes: "ENERO", precio: 0.00},
+        {mes: "ENERO", precio: 0},
         {mes: "FEBRERO", precio: 0.00},
         {mes: "MARZO", precio: 0.00},
         {mes: "ABRIL", precio: 0.00},
@@ -20,6 +58,7 @@ $(function () {
         {mes: "JULIO", precio: 0.00},
         {mes: "AGOSTO", precio: 0.00},
         {mes: "SEPTIEMBRE", precio: 0.00},
+        {mes: "OCTUBRE", precio: 0.00},
         {mes: "NOVIEMBRE", precio: 0.00},
         {mes: "DICIEMBRE", precio: 0.00}
     ];
@@ -27,6 +66,24 @@ $(function () {
     initialComponents();
     $("#tbDetallePresupuesto").bootstrapTable();
     $("#tbDetallePresupuesto").bootstrapTable("load", rows);
+
+
+
+    $('input[name="presupuestoInicial"]').change(function (e) {
+        acumulador = 0;
+        $.each($("#tbDetallePresupuesto").bootstrapTable("getData"), function (i, rw) {
+                acumulador += convertFloat(rw.precio);
+        });
+        
+        presupuestoInicial = convertFloat($("input[name='presupuestoInicial']").val());
+        bandera = (presupuestoInicial - acumulador < 0);
+        if(bandera){
+            //$(this).inputmask('setvalue', 0);
+            setearMyDecimal(this);
+        }
+        
+    });
+    
 
 
     $("#btnGet").click(function (e) {
@@ -38,8 +95,8 @@ $(function () {
         config = getParamsFecha($(input).attr("dt-tipo"));
         $(input).datepicker(config);
     });
-    
-    
+
+
     $('input[myDecimal]').inputmask("myDecimal");
 
 

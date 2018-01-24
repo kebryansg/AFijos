@@ -23,17 +23,17 @@
                 <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                 </div>
-                <input type="text" class="form-control pull-right" name="año" fecha dt-tipo="year"readonly>
+                <input type="text" class="form-control pull-right" name="año" fecha dt-tipo="year" readonly>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-6 col-xs-6">
                 <label class="control-label">Presupuesto Inicial</label>
-                <input type="text" name="prestamoInicial" class="form-control" value="0.00" required myDecimal>
+                <input type="text" name="presupuestoInicial" class="form-control" value="0.00" required myDecimal>
             </div>
             <div class="form-group col-md-6 col-xs-6">
                 <label class="control-label">Compras</label>
-                <input name="compras" class="form-control" value="0.00" required myDecimal>
+                <input name="compras" class="form-control" value="0.00" required myDecimal readonly>
             </div>
             <div class="form-group col-md-6 col-xs-6">
                 <label class="control-label">Orden Pedido</label>
@@ -44,6 +44,12 @@
                 <input name="ordenCompra" class="form-control" myDecimal value="0.00"  readonly>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12 bx">
+                <h4>Excedio el PRESUPUESTO INICIAL</h4>
+            </div>
+
+        </div>
     </div>
     <div class="col-md-7 col-md-offset-1">
         <table id="tbDetallePresupuesto">
@@ -52,7 +58,7 @@
                     <!--<th data-field="state" data-checkbox="true"></th>-->
                     <th data-formatter="rowCount" data-align="center" class="col-md-1">N°</th>
                     <th data-field="mes">Meses</th>
-                    <th data-field="precio" class="col-md-3 col-xs-3" data-formatter="imask" data-events="event_input_default">Precio</th>
+                    <th data-field="precio" class="col-md-3 col-xs-3" data-formatter="imask" data-events="event_input">Precio</th>
                 </tr>
             </thead>
         </table>
@@ -68,7 +74,7 @@
                 <i class="fa fa-save"></i> Guardar
             </button>
         </div>
-        
+
     </div>
 </div>
 <script type="text/javascript" src="resource/views/items/presupuesto.js"></script>

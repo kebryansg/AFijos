@@ -1,3 +1,18 @@
+/* Parse Float */
+function convertFloat(valor) {
+    value = parseFloat(valor.toString().replace(/[^\d\.\-]/g, ""));
+    return value;
+}
+
+/* Setear INPUT[myDecimal] */
+function setearMyDecimal(input) {
+    $(input).inputmask('remove');
+    $(input).val("0.00");
+    $(input).inputmask("myDecimal");
+}
+
+
+
 /* Cargar Datos a un select */
 function loadCbo(data, select) {
     $(select).html("");
