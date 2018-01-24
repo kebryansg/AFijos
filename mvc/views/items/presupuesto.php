@@ -28,7 +28,7 @@
         </div>
         <div class="row">
             <div class="form-group col-md-6 col-xs-6">
-                <label class="control-label">Prestamo Inicial</label>
+                <label class="control-label">Presupuesto Inicial</label>
                 <input type="text" name="prestamoInicial" class="form-control" value="0.00" required myDecimal>
             </div>
             <div class="form-group col-md-6 col-xs-6">
@@ -45,11 +45,11 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-md-offset-1">
+    <div class="col-md-7 col-md-offset-1">
         <table id="tbDetallePresupuesto">
             <thead>
                 <tr>
-                    <th data-field="state" data-checkbox="true"></th>
+                    <!--<th data-field="state" data-checkbox="true"></th>-->
                     <th data-formatter="rowCount" data-align="center" class="col-md-1">N°</th>
                     <th data-field="mes">Meses</th>
                     <th data-field="precio" class="col-md-3 col-xs-3" data-formatter="imask" data-events="event_input_default">Precio</th>
@@ -59,7 +59,7 @@
     </div>
     <div class="clearfix"></div>
     <br>
-    <div class="col-md-9">
+    <div class="col-md-12">
         <div class="pull-right">
             <button type="reset" class="btn btn-danger">
                 <i class="fa fa-reply"></i> Cancelar
