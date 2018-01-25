@@ -22,17 +22,17 @@ switch ($accion) {
                     "total" => $count
                 ));
                 break;
-            case "presupuesto":
-                $resultado = json_encode(array(
-                    "rows" => PresupuestoDaoImp::listPresupuesto($top, $pag, $count),
-                    "total" => $count
-                ));
-                break;
             case "items":
                 $resultado = json_encode(array(
                     "rows" => ItemDaoImp::listItem($top, $pag, $count),
                     "total" => $count
                 ));
+                break;
+        }
+        break;
+    case "get":
+        switch ($op) {
+            case "presupuesto":
                 break;
         }
         break;

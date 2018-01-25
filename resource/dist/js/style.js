@@ -183,13 +183,13 @@ function limpiarContenedor(contenedor) {
 $(function () {
 
     /*$(document).on("click", "input[myDecimal]", function () {
-        $(this).focus();
-    });*/
+     $(this).focus();
+     });*/
 
     /*$(document).on("focus", "input[myDecimal]", function () {
-        $(this).inputmask("myDecimal");
-        $(this).select();
-    });*/
+     $(this).inputmask("myDecimal");
+     $(this).select();
+     });*/
 
 
 //$("#modal-adminTipo").modal();
@@ -237,6 +237,13 @@ $(function () {
     });
     $(document).on("submit", "form[save]", function (e) {
         e.preventDefault();
+
+
+        if (!validateForm(this)){
+            return;
+        }
+            
+
         datos = {};
         //if (typeof "getDatos" !== 'undefined' && jQuery.isFunction("getDatos")) {
         if (typeof window.getDatos === 'function') {

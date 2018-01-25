@@ -1,3 +1,30 @@
+/* Validacion de Form */
+
+function validateForm(form) {
+    bandera = true;
+    $.each($(form).find("[required]"), function (i, input) {
+        if (bandera) {
+            switch ($(input).prop("tagName")) {
+                case "INPUT":
+//                    bandera = $(input).val() === "";
+                    if ($(input).attr("myDecimal") === "") {
+                        value = (convertFloat($(input).val()));
+                        bandera = value > 0;
+                    } else if ($(input).attr("fecha") === "") {
+                        bandera = $(input).val() !== "";
+                    }
+                    break;
+            }
+        }
+
+
+    });
+    console.log(bandera);
+    return bandera;
+}
+
+
+
 /* Parse Float */
 function convertFloat(valor) {
     value = parseFloat(valor.toString().replace(/[^\d\.\-]/g, ""));

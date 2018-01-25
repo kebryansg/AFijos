@@ -32,12 +32,7 @@ window.event_input = {
                 index: index,
                 row: row
             });
-
         }
-
-
-
-
     },
     'focus input[myDecimal]': function (e, value, row, index) {
         $(this).inputmask("myDecimal");
@@ -78,7 +73,7 @@ $(function () {
         presupuestoInicial = convertFloat($("input[name='presupuestoInicial']").val());
         bandera = (presupuestoInicial - acumulador < 0);
         if(bandera){
-            //$(this).inputmask('setvalue', 0);
+            //Mensaje
             setearMyDecimal(this);
         }
         
@@ -107,6 +102,7 @@ function getDatos() {
     form = "form[save]";
     dt = JSON.parse($(form).serializeObject());
     dt.año = formatSave(dt.año);
+    dt["meses"] = JSON.stringify($("#tbDetallePresupuesto").bootstrapTable("getData"));
     datos = {
         url: getURL($(form).attr("action")),
         dt: {
