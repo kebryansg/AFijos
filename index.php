@@ -25,7 +25,7 @@
                 </section>
                 <section class="content container-fluid" id="containPages">
                     <?php
-                    include_once './mvc/views/items/presupuesto.php';
+                    //include_once './mvc/views/items/presupuesto.php';
                     ?>
                 </section>
             </div>

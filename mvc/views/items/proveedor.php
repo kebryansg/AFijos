@@ -34,10 +34,10 @@
                 <label class="control-label">Tipo Identificación</label>
                 <div tipo  data-fn="loadTipoIdentificacion"  >
                     <div class="pull-right">
-                        <!--<button type="button" class="btn btn-info btn-sm " data-toggle='modal' 
+                        <button type="button" class="btn btn-info btn-sm " data-toggle='modal' 
                                 data-target="#modal-new" data-url="mvc/views/activos/tipoidentificacion.php">
                             <i class="fa fa-plus"></i>
-                        </button>-->
+                        </button>
                         <button refresh type="button" class="btn btn-success btn-sm ">
                             <i class="fa fa-refresh"></i>
                         </button>

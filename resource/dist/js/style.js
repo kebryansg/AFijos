@@ -225,7 +225,7 @@ $(function () {
     $(document).on("submit", "form[modal-save]", function (e) {
         e.preventDefault();
         datos = {
-            url: $(this).attr("action"),
+            url: getURL($(this).attr("action")),
             dt: {
                 accion: "save",
                 op: $(this).attr("role"),
@@ -239,9 +239,9 @@ $(function () {
         e.preventDefault();
 
 
-        if (!validateForm(this)){
+        /*if (!validateForm(this)){
             return;
-        }
+        }*/
             
 
         datos = {};
@@ -257,6 +257,7 @@ $(function () {
                     datos: $(this).serializeObject()
                 }
             };
+            console.log(datos);
         }
         console.log(datos);
         save_global(datos);

@@ -6,7 +6,6 @@ function validateForm(form) {
         if (bandera) {
             switch ($(input).prop("tagName")) {
                 case "INPUT":
-//                    bandera = $(input).val() === "";
                     if ($(input).attr("myDecimal") === "") {
                         value = (convertFloat($(input).val()));
                         bandera = value > 0;
@@ -16,10 +15,7 @@ function validateForm(form) {
                     break;
             }
         }
-
-
     });
-    console.log(bandera);
     return bandera;
 }
 
