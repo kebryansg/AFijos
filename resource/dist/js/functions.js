@@ -27,6 +27,12 @@ function convertFloat(valor) {
     return value;
 }
 
+/* Inputmask format*/
+function formatInputMask(value){
+    return Inputmask.format(value, "myDecimal");
+}
+
+
 /* Setear INPUT[myDecimal] */
 function setearMyDecimal(input) {
     $(input).inputmask('remove');

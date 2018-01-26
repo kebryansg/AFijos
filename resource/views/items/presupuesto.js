@@ -4,7 +4,7 @@ function rowCount(valu, row, index) {
     return index + 1;
 }
 function imask(value, rowData, index) {
-    return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + value.toFixed(2) + '">';
+    return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
 }
 window.event_input = {
     "change input[myDecimal]": function (e, value, row, index) {
@@ -42,20 +42,19 @@ window.event_input = {
 
 $(function () {
 
-
     rows = [
         {mes: "ENERO", precio: 0},
-        {mes: "FEBRERO", precio: 0.00},
-        {mes: "MARZO", precio: 0.00},
-        {mes: "ABRIL", precio: 0.00},
-        {mes: "MAYO", precio: 0.00},
-        {mes: "JUNIO", precio: 0.00},
-        {mes: "JULIO", precio: 0.00},
-        {mes: "AGOSTO", precio: 0.00},
-        {mes: "SEPTIEMBRE", precio: 0.00},
-        {mes: "OCTUBRE", precio: 0.00},
-        {mes: "NOVIEMBRE", precio: 0.00},
-        {mes: "DICIEMBRE", precio: 0.00}
+        {mes: "FEBRERO", precio: 0},
+        {mes: "MARZO", precio: 0},
+        {mes: "ABRIL", precio: 0},
+        {mes: "MAYO", precio: 0},
+        {mes: "JUNIO", precio: 0},
+        {mes: "JULIO", precio: 0},
+        {mes: "AGOSTO", precio: 0},
+        {mes: "SEPTIEMBRE", precio: 0},
+        {mes: "OCTUBRE", precio: 0},
+        {mes: "NOVIEMBRE", precio: 0},
+        {mes: "DICIEMBRE", precio: 0}
     ];
 
     initialComponents();

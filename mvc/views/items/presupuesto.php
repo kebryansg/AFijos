@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <form save role="presupuesto" action="_compras" >
     <div class="row">
         <div class="col-md-4">
@@ -69,9 +68,9 @@
         <br>
         <div class="col-md-12">
             <div class="pull-right">
-                <button type="reset" class="btn btn-danger">
+<!--                <button type="reset" class="btn btn-danger">
                     <i class="fa fa-reply"></i> Cancelar
-                </button>
+                </button>-->
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-save"></i> Guardar
                 </button>
