@@ -20,6 +20,9 @@
 <script src="resource/Moment/moment.js"></script>
 <script src="resource/Moment/moment-with-locales.js"></script>
 
+<!-- Message -->
+<script src="resource/bootstrap/message/jquery-confirm.min.js"></script>
+
 <!-- InputMask -->
 <script src="resource/dist/js/jquery.inputmask.bundle.min.js"></script>
 

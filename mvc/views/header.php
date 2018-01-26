@@ -8,6 +8,9 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <link rel="stylesheet" href="resource/Plantilla/bootstrap/dist/css/bootstrap.min.css">
 
+<!-- Message -->
+<link rel="stylesheet" href="resource/bootstrap/message/jquery-confirm.min.css">
+
 <!-- BootStrap Table -->
 <link rel="stylesheet" href="resource/table/bootstrap-table.min.css">
 <!-- BootStrap Select -->

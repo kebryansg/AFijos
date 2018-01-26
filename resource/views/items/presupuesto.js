@@ -26,7 +26,7 @@ window.event_input = {
             });
         } else {
             //Mensaje
-            
+
             row.precio = 0;
             $("#tbDetallePresupuesto").bootstrapTable('updateRow', {
                 index: index,
@@ -41,6 +41,21 @@ window.event_input = {
 };
 
 $(function () {
+
+    msg({
+        title: "Error - Valores insuficientes",
+        content: ["Cierto", "es"] //"Cierto es..."
+    });
+
+
+//    $.alert({
+//        title: 'Error',
+//        icon: 'fa fa-warning',
+//        type: 'orange',
+//        content: 'Something went wrong, please retry again after sometime.' +
+//                '<br>' +
+//                'More types: red, green, orange, blue, purple, dark'
+//    });
 
     rows = [
         {mes: "ENERO", precio: 0},
@@ -58,43 +73,40 @@ $(function () {
     ];
 
     initialComponents();
+
+
     $("#tbDetallePresupuesto").bootstrapTable();
     $("#tbDetallePresupuesto").bootstrapTable("load", rows);
-
-
 
     $('input[name="presupuestoInicial"]').change(function (e) {
         acumulador = 0;
         $.each($("#tbDetallePresupuesto").bootstrapTable("getData"), function (i, rw) {
-                acumulador += convertFloat(rw.precio);
+            acumulador += convertFloat(rw.precio);
         });
-        
+
         presupuestoInicial = convertFloat($("input[name='presupuestoInicial']").val());
         bandera = (presupuestoInicial - acumulador < 0);
-        if(bandera){
+        if (bandera) {
             //Mensaje
             setearMyDecimal(this);
         }
-        
+
     });
-    
 
 
-    $("#btnGet").click(function (e) {
-        fecha = $('input[name="año"]').datepicker("getDate");
-        console.log(formatSave(fecha));
-    });
+    /*$("#btnGet").click(function (e) {
+     fecha = $('input[name="año"]').datepicker("getDate");
+     console.log(formatSave(fecha));
+     });*/
 
     $.each($('input[fecha]'), function (i, input) {
         config = getParamsFecha($(input).attr("dt-tipo"));
         $(input).datepicker(config);
+        $(input).datepicker('update', formatView(moment()));
     });
 
 
     $('input[myDecimal]').inputmask("myDecimal");
-
-
-
 });
 
 function getDatos() {

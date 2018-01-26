@@ -235,14 +235,19 @@ $(function () {
         save_global(datos);
         $(this).closest(".modal").modal("hide");
     });
+
+    $(document).on("keypress", "form[save]", function (e) {
+        return e.which !== 13;
+    });
+
     $(document).on("submit", "form[save]", function (e) {
         e.preventDefault();
 
 
         /*if (!validateForm(this)){
-            return;
-        }*/
-            
+         return;
+         }*/
+
 
         datos = {};
         //if (typeof "getDatos" !== 'undefined' && jQuery.isFunction("getDatos")) {

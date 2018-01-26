@@ -28,7 +28,7 @@ function convertFloat(valor) {
 }
 
 /* Inputmask format*/
-function formatInputMask(value){
+function formatInputMask(value) {
     return Inputmask.format(value, "myDecimal");
 }
 
@@ -129,25 +129,36 @@ function getParamsFecha(dt) {
     init_fecha = {
         autoclose: true,
         orientation: "bottom auto",
-        language: "es",
-        format: 'MM dd, yyyy'
+        language: "es"
     };
     switch (dt) {
         case "year":
             return $.extend({}, init_fecha, {
-                minViewMode: 2
+                minViewMode: 2,
+                format: 'yyyy'
             });
             break;
         case "month":
             return $.extend({}, init_fecha, {
-                minViewMode: 1
+                minViewMode: 1,
+                format: 'MM, yyyy'
             });
             break;
         case "day":
             return $.extend({}, init_fecha, {
                 todayBtn: true,
-                todayHighlight: true
+                todayHighlight: true,
+                format: 'MM dd, yyyy'
             });
             break;
     }
+}
+
+function msg(data) {
+    $.alert({
+        title: data.title,
+        icon: 'fa fa-warning',
+        type: 'orange',
+        content: $.isArray(data.content) ? data.content.join("<br>") : data.content
+    });
 }

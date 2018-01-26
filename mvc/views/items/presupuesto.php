@@ -7,7 +7,7 @@
                 <div tipo  data-fn="loadDepartamento"  >
                     <div class="pull-right">
                         <button type="button" class="btn btn-info btn-sm " data-toggle='modal' 
-                                data-target="#modal-new" data-url="mvc/views/activos/tipoidentificacion.php">
+                                data-target="#modal-new" data-url="mvc/views/activos/departamento.php">
                             <i class="fa fa-plus"></i>
                         </button>
                         <button refresh type="button" class="btn btn-success btn-sm ">
