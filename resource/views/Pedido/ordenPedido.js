@@ -126,9 +126,9 @@ function inputProducto(value, row, index) {
     }
 }
 
-function imask(value, rowData, index) {
+/*function imask(value, rowData, index) {
     return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + value + '">';
-}
+}*/
 
 window.event_OPedido = {
     "click button[name='seleccion']": function (e, value, row, index) {

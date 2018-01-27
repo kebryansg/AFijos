@@ -1,3 +1,33 @@
+function getForm(form) {
+    value = {};
+    components = $(form).find("[name]");
+    $.each(components, function (i, component) {
+        tagName = $(component).prop("tagName");
+        name = $(component).attr("name");
+        val = "";
+        switch (tagName) {
+            case "SELECT":
+                val = $(component).selectpicker("val");
+                break;
+            case "INPUT":
+                if ($(component).attr("myDecimal") === "") {
+                    val = $(component).getFloat();
+                } else if ($(component).attr("fecha") === "") {
+                    val = $(component).val();
+                }
+
+                break;
+        }
+        value[name] = val;
+    });
+    console.log(value);
+    return value;
+}
+
+$.fn.getFloat = function () {
+    return parseFloat($(this).val().toString().replace(/[^\d\.\-]/g, ""));// $(component).val();
+};
+
 /* Validacion de Form */
 
 function validateForm(form) {
@@ -154,7 +184,7 @@ function getParamsFecha(dt) {
     }
 }
 
-function msg(data) {
+function MsgError(data) {
     $.alert({
         title: data.title,
         icon: 'fa fa-warning',

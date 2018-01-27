@@ -45,12 +45,6 @@
                     <input name="ordenCompra" class="form-control" myDecimal value="0.00"  readonly>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12 bx">
-                    <h4>Excedio el PRESUPUESTO INICIAL</h4>
-                </div>
-
-            </div>
         </div>
         <div class="col-md-7 col-md-offset-1">
             <table id="tbDetallePresupuesto">
@@ -68,9 +62,12 @@
         <br>
         <div class="col-md-12">
             <div class="pull-right">
-<!--                <button type="reset" class="btn btn-danger">
+                <!--                <button type="reset" class="btn btn-danger">
+                                    <i class="fa fa-reply"></i> Cancelar
+                                </button>-->
+                <button type="button" cancelar class="btn btn-danger">
                     <i class="fa fa-reply"></i> Cancelar
-                </button>-->
+                </button>
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-save"></i> Guardar
                 </button>

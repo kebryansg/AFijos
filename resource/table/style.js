@@ -75,6 +75,16 @@ function btnSeleccion(value) {
 function defaultInput(value, rowData, index) {
     return '<input text data-field="' + this.field + '" class="form-control input-sm" type="text" value="' + value + '">';
 }
+
+function rowCount(value, row, index) {
+    return index + 1;
+}
+
+function imask(value, rowData, index) {
+    return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
+}
+
+
 /*function defaultInput(value, rowData, index) {
  if (rowData.id === 0) {
  return '<input text data-field="'+ this.field +'" class="form-control input-sm" type="text" value="' + value + '">';

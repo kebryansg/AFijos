@@ -1,11 +1,20 @@
 table = $("#Listado table");
+rows = [
+    {mes: "ENERO", precio: 0},
+    {mes: "FEBRERO", precio: 0},
+    {mes: "MARZO", precio: 0},
+    {mes: "ABRIL", precio: 0},
+    {mes: "MAYO", precio: 0},
+    {mes: "JUNIO", precio: 0},
+    {mes: "JULIO", precio: 0},
+    {mes: "AGOSTO", precio: 0},
+    {mes: "SEPTIEMBRE", precio: 0},
+    {mes: "OCTUBRE", precio: 0},
+    {mes: "NOVIEMBRE", precio: 0},
+    {mes: "DICIEMBRE", precio: 0}
+];
 
-function rowCount(valu, row, index) {
-    return index + 1;
-}
-function imask(value, rowData, index) {
-    return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
-}
+
 window.event_input = {
     "change input[myDecimal]": function (e, value, row, index) {
         valor_update = convertFloat($(e.target).val());
@@ -42,35 +51,12 @@ window.event_input = {
 
 $(function () {
 
-    msg({
-        title: "Error - Valores insuficientes",
-        content: ["Cierto", "es"] //"Cierto es..."
-    });
+    /*MsgError({
+     title: "Error - Valores insuficientes",
+     content: ["Cierto", "es"] //"Cierto es..."
+     });*/
 
 
-//    $.alert({
-//        title: 'Error',
-//        icon: 'fa fa-warning',
-//        type: 'orange',
-//        content: 'Something went wrong, please retry again after sometime.' +
-//                '<br>' +
-//                'More types: red, green, orange, blue, purple, dark'
-//    });
-
-    rows = [
-        {mes: "ENERO", precio: 0},
-        {mes: "FEBRERO", precio: 0},
-        {mes: "MARZO", precio: 0},
-        {mes: "ABRIL", precio: 0},
-        {mes: "MAYO", precio: 0},
-        {mes: "JUNIO", precio: 0},
-        {mes: "JULIO", precio: 0},
-        {mes: "AGOSTO", precio: 0},
-        {mes: "SEPTIEMBRE", precio: 0},
-        {mes: "OCTUBRE", precio: 0},
-        {mes: "NOVIEMBRE", precio: 0},
-        {mes: "DICIEMBRE", precio: 0}
-    ];
 
     initialComponents();
 
@@ -92,7 +78,11 @@ $(function () {
         }
 
     });
-
+    $("button[cancelar]").click(function (e) {
+        //console.log(getDatos());
+        $("form[save]").serializeObject_KBSG();
+        //getForm("form[save]");
+    });
 
     /*$("#btnGet").click(function (e) {
      fecha = $('input[name="año"]').datepicker("getDate");
@@ -112,6 +102,7 @@ $(function () {
 function getDatos() {
     form = "form[save]";
     dt = JSON.parse($(form).serializeObject());
+    //console.log(dt);
     dt.año = formatSave(dt.año);
     dt["meses"] = JSON.stringify($("#tbDetallePresupuesto").bootstrapTable("getData"));
     datos = {

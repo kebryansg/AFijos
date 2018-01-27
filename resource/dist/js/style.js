@@ -155,6 +155,7 @@ $.fn.serializeObject = function () {
     /* Agregar identificador  "id" */
     o["id"] = ($.isEmptyObject($(this).data("id"))) ? 0 : $(this).data("id");
     $.each(a, function (index, row) {
+        console.log(a);
         o[row.name] = row.value;
     });
     /* Agregar input de type(checkbox) */
@@ -162,6 +163,32 @@ $.fn.serializeObject = function () {
         o[row.name] = $(row).is(":checked");
     });
     return JSON.stringify(o);
+};
+
+$.fn.serializeObject_KBSG = function () {
+    value = {};
+    components = $(this).find("[name]");
+    $.each(components, function (i, component) {
+        tagName = $(component).prop("tagName");
+        name = $(component).attr("name");
+        val = "";
+        switch (tagName) {
+            case "SELECT":
+                val = $(component).selectpicker("val");
+                break;
+            case "INPUT":
+                if ($(component).attr("myDecimal") === "") {
+                    val = $(component).getFloat();
+                } else if ($(component).attr("fecha") === "") {
+                    val = $(component).val();
+                }
+
+                break;
+        }
+        value[name] = val;
+    });
+    console.log(value);
+    return value;
 };
 
 

@@ -162,9 +162,11 @@ function alertEliminarRegistros() {
 $.fn.serializeObject = function () {
     var o = {};
     var a = this.serializeArray();
+    alert();
     /* Agregar identificador  "id" */
     o["id"] = ($.isEmptyObject($(this).data("id"))) ? 0 : $(this).data("id");
     $.each(a, function (index, row) {
+        
         o[row.name] = row.value;
     });
     /* Agregar input de type(checkbox) */
