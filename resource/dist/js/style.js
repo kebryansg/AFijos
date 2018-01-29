@@ -188,7 +188,8 @@ $.fn.serializeObject_KBSG = function () {
         value[name] = val;
     });
     console.log(value);
-    return value;
+    //return value;
+    return JSON.stringify(value);
 };
 
 
