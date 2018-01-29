@@ -14,7 +14,6 @@ rows = [
     {mes: "DICIEMBRE", precio: 0}
 ];
 
-
 window.event_input = {
     "change input[myDecimal]": function (e, value, row, index) {
         valor_update = convertFloat($(e.target).val());
@@ -35,6 +34,10 @@ window.event_input = {
             });
         } else {
             //Mensaje
+            MsgError({
+                title: "Error <small>Presupuesto insuficiente</small>",
+                content: ["Presupuesto Inicial: <strong>" + presupuestoInicial + "</strong>", "Valor Insertado: <strong>" + formatInputMask(valor_update) + "</strong>"]
+            });
 
             row.precio = 0;
             $("#tbDetallePresupuesto").bootstrapTable('updateRow', {
@@ -51,20 +54,15 @@ window.event_input = {
 
 $(function () {
 
-    /*MsgError({
-     title: "Error - Valores insuficientes",
-     content: ["Cierto", "es"] //"Cierto es..."
-     });*/
-
-
-
     initialComponents();
 
-
     $("#tbDetallePresupuesto").bootstrapTable();
-    $("#tbDetallePresupuesto").bootstrapTable("load", rows);
+    
+    datos = JSON.parse(JSON.stringify(rows));
 
-    $('input[name="presupuestoInicial"]').change(function (e) {
+    $("#tbDetallePresupuesto").bootstrapTable("load", datos);
+
+    $('input[name="presupuestoInicial"]').focusout(function (e) {
         acumulador = 0;
         $.each($("#tbDetallePresupuesto").bootstrapTable("getData"), function (i, rw) {
             acumulador += convertFloat(rw.precio);
@@ -73,8 +71,20 @@ $(function () {
         presupuestoInicial = convertFloat($("input[name='presupuestoInicial']").val());
         bandera = (presupuestoInicial - acumulador < 0);
         if (bandera) {
+            input = $(this);
+            MsgConfirmation({
+                title: "PRESUPUESTO INICIAL INSUFICIENTE",
+                content: ["Continuar el proceso implica el reseteo de los valores en los meses ", "Estás seguro de continuar?"],
+                continuar: function () {
+                    $("#tbDetallePresupuesto").bootstrapTable("load", rows);
+                },
+                cancel: function () {
+                    setearMyDecimal(input);
+                    $(input).focus();
+                }
+            });
             //Mensaje
-            setearMyDecimal(this);
+            //setearMyDecimal(this);
         }
 
     });
@@ -89,20 +99,20 @@ $(function () {
      console.log(formatSave(fecha));
      });*/
 
-    $.each($('input[fecha]'), function (i, input) {
+    $.each($('input[data-tipo="fecha"]'), function (i, input) {
         config = getParamsFecha($(input).attr("dt-tipo"));
         $(input).datepicker(config);
-        $(input).datepicker('update', formatView(moment()));
+        //$(input).datepicker('update', formatView(moment()));
+        $(input).datepicker('update', $(input).getFecha());
     });
 
 
-    $('input[myDecimal]').inputmask("myDecimal");
+    $('input[data-tipo="myDecimal"]').inputmask("myDecimal");
 });
 
 function getDatos() {
     form = "form[save]";
     dt = JSON.parse($(form).serializeObject());
-    //console.log(dt);
     dt.año = formatSave(dt.año);
     dt["meses"] = JSON.stringify($("#tbDetallePresupuesto").bootstrapTable("getData"));
     datos = {

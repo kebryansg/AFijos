@@ -165,9 +165,24 @@ $.fn.serializeObject = function () {
     return JSON.stringify(o);
 };
 
+$.fn.getFecha = function () {
+    tipo = $(this).attr("dt-tipo");
+    fecha = fechaMoment($(this).datepicker("getDate"));
+    switch (tipo) {
+        case "year":
+            fecha = moment({year: fecha.year(), month: 0, day: 0});
+            break;
+        case "month":
+            fecha = moment({year: fecha.year(), month: fecha.month(), day: 0});
+            break;
+    }
+    return formatSave(fecha);
+};
+
 $.fn.serializeObject_KBSG = function () {
     value = {};
     components = $(this).find("[name]");
+    value["id"] = ($.isEmptyObject($(this).data("id"))) ? 0 : $(this).data("id");
     $.each(components, function (i, component) {
         tagName = $(component).prop("tagName");
         name = $(component).attr("name");
@@ -177,12 +192,18 @@ $.fn.serializeObject_KBSG = function () {
                 val = $(component).selectpicker("val");
                 break;
             case "INPUT":
-                if ($(component).attr("myDecimal") === "") {
-                    val = $(component).getFloat();
-                } else if ($(component).attr("fecha") === "") {
-                    val = $(component).val();
+                tipo = $(component).attr("data-tipo");
+                switch (tipo) {
+                    case "myDecimal":
+                        val = $(component).getFloat();
+                        break;
+                    case "fecha":
+                        val = $(component).getFecha();
+                        break;
+                    default:
+                        val = $(component).val();
+                        break;
                 }
-
                 break;
         }
         value[name] = val;
@@ -210,14 +231,17 @@ function limpiarContenedor(contenedor) {
 
 $(function () {
 
+
+
+
     /*$(document).on("click", "input[myDecimal]", function () {
      $(this).focus();
      });*/
 
-    /*$(document).on("focus", "input[myDecimal]", function () {
-     $(this).inputmask("myDecimal");
-     $(this).select();
-     });*/
+    $(document).on("focus", "input[data-tipo='myDecimal']", function () {
+        //$(this).inputmask("myDecimal");
+        $(this).select();
+    });
 
 
 //$("#modal-adminTipo").modal();

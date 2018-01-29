@@ -153,6 +153,9 @@ function formatSave(data) {
     fecha = moment(data, 'MMMM D, YYYY');
     return fecha.format("YYYY-MM-DD HH:mm:ss");
 }
+function fechaMoment(data) {
+    return moment(data, 'MMMM D, YYYY');
+}
 
 /* Formatos fechas para inicializar DATEPICKER */
 function getParamsFecha(dt) {
@@ -183,12 +186,36 @@ function getParamsFecha(dt) {
             break;
     }
 }
-
+// Array, Text
 function MsgError(data) {
     $.alert({
         title: data.title,
+        backgroundDismiss: true,
         icon: 'fa fa-warning',
         type: 'orange',
         content: $.isArray(data.content) ? data.content.join("<br>") : data.content
+    });
+}
+
+function MsgConfirmation(data){
+    $.confirm({
+        theme: "modern",
+        escapeKey: "cancelAction",
+        icon: 'fa fa-warning',
+        type: 'orange',
+        title: data.title,
+        content: $.isArray(data.content) ? data.content.join("<br>") : data.content,
+        autoClose: 'cancelAction|8000',
+        buttons: {
+            deleteUser: {
+                text: 'Continuar',
+                keys: ['enter'],
+                action: data.continuar
+            },
+            cancelAction: {
+                text: "Cancelar",
+                action: data.cancel
+            }
+        }
     });
 }

@@ -24,25 +24,25 @@
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" class="form-control " name="año" fecha dt-tipo="year" readonly required>
+                    <input type="text" class="form-control " name="año" data-tipo="fecha" dt-tipo="year" readonly required>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6 col-xs-6">
                     <label class="control-label">Presupuesto Inicial</label>
-                    <input type="text" name="presupuestoInicial" class="form-control" value="0.00" required myDecimal>
+                    <input type="text" name="presupuestoInicial" class="form-control" value="0.00" required data-tipo="myDecimal" >
                 </div>
                 <div class="form-group col-md-6 col-xs-6">
                     <label class="control-label">Compras</label>
-                    <input name="compras" class="form-control" value="0.00" myDecimal readonly>
+                    <input name="compras" class="form-control" value="0.00" data-tipo="myDecimal" readonly>
                 </div>
                 <div class="form-group col-md-6 col-xs-6">
                     <label class="control-label">Orden Pedido</label>
-                    <input name="ordenPedido" class="form-control" myDecimal value="0.00" readonly >
+                    <input name="ordenPedido" class="form-control" data-tipo="myDecimal" value="0.00" readonly >
                 </div>
                 <div class="form-group col-md-6 col-xs-6">
                     <label class="control-label">Orden Compra</label>
-                    <input name="ordenCompra" class="form-control" myDecimal value="0.00"  readonly>
+                    <input name="ordenCompra" class="form-control" data-tipo="myDecimal" value="0.00"  readonly>
                 </div>
             </div>
         </div>
