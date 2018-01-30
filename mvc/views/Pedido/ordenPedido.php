@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="btn-toolbar" role="toolbar" aria-label="...">
                     <div class="btn-group" role="group" aria-label="...">
                         <button add type="button" class="btn btn-success">
@@ -90,13 +90,13 @@
                     </thead>
                 </table>
             </div>
-            <div class="col-md-4">
+            <!--<div class="col-md-4">
                 <br><br>
                 <div class="form-group">
                     <label for="" class="control-label">Observación</label>
                     <textarea class="form-control" name="observacion" cols="30" rows="5"  ></textarea>
                 </div>
-            </div>
+            </div>-->
 
         </div>
         <br>

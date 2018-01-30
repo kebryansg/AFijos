@@ -3,9 +3,6 @@ op = "ordenPedido";
 table = $("#Listado table");
 selections = [];
 
-
-
-
 $(function () {
     initialComponents();
 
@@ -18,9 +15,9 @@ $(function () {
     $("button[add]").click(function (e) {
         $("#tbOrdenPedido").bootstrapTable("append", {
             ID: 0,
-            cantidad: parseFloat(1).toFixed(2),
+            cantidad: 1,
             descripcion: "",
-            precioref: parseFloat(0).toFixed(2),
+            precioref: 0,
             observacion: ""
         });
     });
@@ -41,8 +38,10 @@ $(function () {
     $("button[DeleteIndividual]").click(function (e) {
         div_id = $(this).closest("div[toolbar]").attr("id");
         tableSelect = $("table[data-toolbar='#" + div_id + "']");
-        ids = $(tableSelect).bootstrapTable("getSelections").map(row => row.id);
-        $(tableSelect).bootstrapTable("remove", {field: 'id', values: ids});
+        /*ids = $(tableSelect).bootstrapTable("getSelections").map(row => row.id);
+        $(tableSelect).bootstrapTable("remove", {field: 'id', values: ids});*/
+        states = $(tableSelect).bootstrapTable("getSelections").map(row => row.state);
+        $(tableSelect).bootstrapTable("remove", {field: 'state', values: states});
     });
 
 });
@@ -135,9 +134,9 @@ window.event_OPedido = {
         $("#modal-find-items").modal("hide");
         $("#tbOrdenPedido").bootstrapTable("append", {
             ID: row.id,
-            cantidad: parseFloat(1).toFixed(2),
+            cantidad: 1,
             descripcion: row.descripcion,
-            precioref: parseFloat(0).toFixed(2),
+            precioref: 0,
             observacion: ""
         });
     }
