@@ -28,6 +28,15 @@ $.fn.getFloat = function () {
     return parseFloat($(this).val().toString().replace(/[^\d\.\-]/g, ""));// $(component).val();
 };
 
+/* Array Claves JSON */
+function JSON_Clave(obj){
+    claves = [];
+    for (var clave in obj) {
+        claves.push(clave);
+    }
+    return claves;
+};
+
 /* Validacion de Form */
 
 function validateForm(form) {
@@ -155,6 +164,9 @@ function formatSave(data) {
 }
 function fechaMoment(data) {
     return moment(data, 'MMMM D, YYYY');
+}
+function fechaMoment(data, format) {
+    return moment(data, format);
 }
 
 /* Formatos fechas para inicializar DATEPICKER */

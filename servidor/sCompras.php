@@ -33,6 +33,22 @@ switch ($accion) {
     case "get":
         switch ($op) {
             case "presupuesto":
+                $params = array(
+                    "fecha" => $_POST["fecha"],
+                    "departamento" => $_POST["departamento"]
+                );
+                $list = PresupuestoDaoImp::get($params);
+                if (count($list) > 0) {
+                    $resultado = json_encode(array(
+                        "status" => TRUE,
+                        "get" => PresupuestoDaoImp::get($params)[0]
+                    ));
+                }else{
+                    $resultado = json_encode(array(
+                        "status" => FALSE
+                    ));
+                }
+                //$resultado = json_encode([0]);
                 break;
         }
         break;

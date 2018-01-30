@@ -4,6 +4,7 @@ include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Presupuesto.php';
 
 class PresupuestoDaoImp {
+
     public static function save($presupuesto) {
         $conn = (new C_MySQL())->open();
         $sql = "";
@@ -32,10 +33,19 @@ class PresupuestoDaoImp {
         return $list;
     }
 
-    public function delete($presupuesto) {
+    public static function get($params) {
+        $conn = (new C_MySQL())->open();
+        $sql = "SELECT * from presupuesto where año = '" . $params["fecha"] . "' and iddepartamento = '" . $params["departamento"] . "'";
+        $list = C_MySQL::returnListAsoc($conn, $sql);
+        $conn->close();
+        return $list;
+    }
+
+    public static function delete($presupuesto) {
         $conn = (new C_MySQL())->open();
         $sql = $presupuesto->Update_Delete();
         $conn->query($sql);
         $conn->close();
     }
+
 }

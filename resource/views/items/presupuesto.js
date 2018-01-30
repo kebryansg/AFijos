@@ -51,16 +51,64 @@ window.event_input = {
         $(this).select();
     }
 };
+function get() {
+
+    $.ajax({
+        url: "servidor/sCompras.php",
+        cache: false,
+        type: 'POST',
+        async: false,
+        dataType: 'json',
+        data: {
+            accion: "get",
+            op: "presupuesto",
+            fecha: "2017-12-01",
+            departamento: "1"
+        },
+        success: function (response) {
+            if (response.status) {
+                $("form[save]").edit(response.get);
+                $("#tbDetallePresupuesto").bootstrapTable("load", JSON.parse(response.get.meses));
+
+            }
+        }
+    });
+}
 
 $(function () {
 
     initialComponents();
 
+    $("select[name='idDepartamento']").selectpicker("val", -1);
     $("#tbDetallePresupuesto").bootstrapTable();
-    
     datos = JSON.parse(JSON.stringify(rows));
-
     $("#tbDetallePresupuesto").bootstrapTable("load", datos);
+
+
+//    tipoFecha = "month";
+//    fecha = fechaMoment("2017-12-01",fecha_format.save);
+//    value= "";
+//    console.log(fecha);
+//    switch (tipoFecha) {
+//        case "year":
+//            //fecha = moment({year: fecha.year(), month: 0, day: 0});
+//            alert(fecha_format.year);
+//            value = fecha.format(fecha_format.year);
+//            break;
+//        case "month":
+//            value = fecha.format(fecha_format.month);
+//            break;
+//    }
+//    console.log(value);
+
+
+
+    //get();
+
+
+
+
+
 
     $('input[name="presupuestoInicial"]').focusout(function (e) {
         acumulador = 0;
@@ -88,10 +136,10 @@ $(function () {
         }
 
     });
-    $("button[cancelar]").click(function (e) {
-        //console.log(getDatos());
-        $("form[save]").serializeObject_KBSG();
-        //getForm("form[save]");
+
+    $("button[cancelar]").click(function () {
+        $("input[name='año']").datepicker("update", new Date(2010, 2, 5));
+        //$("input[name='año']").datepicker("update", '2016-03-05');
     });
 
     /*$("#btnGet").click(function (e) {
@@ -112,8 +160,7 @@ $(function () {
 
 function getDatos() {
     form = "form[save]";
-    dt = JSON.parse($(form).serializeObject());
-    dt.año = formatSave(dt.año);
+    dt = JSON.parse($(form).serializeObject_KBSG());
     dt["meses"] = JSON.stringify($("#tbDetallePresupuesto").bootstrapTable("getData"));
     datos = {
         url: getURL($(form).attr("action")),

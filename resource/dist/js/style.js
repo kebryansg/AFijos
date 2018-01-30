@@ -1,5 +1,15 @@
 var nav4 = window.Event ? true : false;
 var selections = [];
+var fecha_format = {
+    year: "YYYY",
+    month: "MM, YYYY",
+    day: "MM dd, yyyy",
+    view: "MMMM D, YYYY",
+    save: "YYYY-MM-DD HH:mm:ss"
+};
+
+
+
 moment.locale("es");
 var TablePaginationDefault = {
     //height: 400,
@@ -213,8 +223,93 @@ $.fn.serializeObject_KBSG = function () {
     return JSON.stringify(value);
 };
 
+$.fn.validate = function () {
+    bandera = true;
+    $.each($(this).find("[required]"), function (i, input) {
+        if (bandera) {
+            switch ($(input).prop("tagName")) {
+                case "INPUT":
+                    tipo = $(input).attr("data-tipo");
+                    switch (tipo) {
+                        case "myDecimal":
+                            val = $(input).getFloat();
+                            bandera = val > 0;
+                            break;
+                        case "fecha":
+                            bandera = $(input).val() !== "";
+                            break;
+                        default:
+                            bandera = $(input).val() !== "";
+                            break;
+                    }
+                    break;
+            }
+        }
+    });
+    console.log(bandera);
+    return bandera;
+};
+
+$.fn.edit = function (datos) {
+    console.log(datos);
+    claves = JSON_Clave(datos);
+
+    $(this).data("id", datos.id);
+    $.each($(this).find("[name]"), function (i, component) {
+        name = $(component).attr("name");
+        if ($.inArray(name, claves)) {
+            tagName = $(component).prop("tagName");
+            switch (tagName) {
+                case "SELECT":
+                    $(component).selectpicker("val", datos[name]);
+                    break;
+                case "INPUT":
+                    tipo = $(component).attr("data-tipo");
+                    switch (tipo) {
+                        case "myDecimal":
+                            $(component).val(datos[name]);
+                            break;
+                        case "fecha":
+                            $(component).datepicker("update", "2015-01-01");
+                            console.log(component);
+//                            tipoFecha = $(this).attr("dt-tipo");
+//                            fecha = fechaMoment($(this).datepicker("getDate"));
+//                            
+//                            
+//                            switch (tipoFecha) {
+//                                case "year":
+//                                    fecha = moment({year: fecha.year(), month: 0, day: 0});
+//                                    break;
+//                                case "month":
+//                                    fecha = moment({year: fecha.year(), month: fecha.month(), day: 0});
+//                                    break;
+//                            }
+                            //bandera = $(input).val() !== "";
+                            break;
+                        default:
+                            bandera = $(input).val() !== "";
+                            break;
+                    }
+
+//                    $(component).val(datos[name]);
+                    break;
+            }
+
+        }
+    });
 
 
+    /*for (var clave in datos) {
+     switch ($("#div-registro form [name='" + clave + "']").prop("tagName")) {
+     case "SELECT":
+     $("#div-registro form [name='" + clave + "']").selectpicker("val", datos[clave]);
+     break;
+     default:
+     $("#div-registro form [name='" + clave + "']").val(datos[clave]);
+     break;
+     }
+     }*/
+};
 
 function formatterDepreciable(value) {
     return (parseInt(value)) ? "Si" : "No";
@@ -296,9 +391,13 @@ $(function () {
         e.preventDefault();
 
 
-        /*if (!validateForm(this)){
-         return;
-         }*/
+//        if (!validateForm(this)) {
+//            return;
+//        }
+
+        if (!$(this).validate()) {
+            return;
+        }
 
 
         datos = {};
@@ -311,7 +410,8 @@ $(function () {
                 dt: {
                     accion: "save",
                     op: $(this).attr("role"),
-                    datos: $(this).serializeObject()
+                    //datos: $(this).serializeObject()
+                    datos: $(this).serializeObject_KBSG()
                 }
             };
             console.log(datos);

@@ -14,7 +14,7 @@
                             <i class="fa fa-refresh"></i>
                         </button>
                     </div>
-                    <select name="IDDepartamento" class="selectpicker form-control" data-width='80%' required>
+                    <select name="idDepartamento" class="selectpicker form-control" data-width='80%' required>
                     </select>
                 </div>
             </div>
@@ -62,11 +62,11 @@
         <br>
         <div class="col-md-12">
             <div class="pull-right">
-                <!--                <button type="reset" class="btn btn-danger">
-                                    <i class="fa fa-reply"></i> Cancelar
-                                </button>-->
-                <button type="button" cancelar class="btn btn-danger">
+                <button type="reset" class="btn btn-danger">
                     <i class="fa fa-reply"></i> Cancelar
+                </button>
+                <button type="button" cancelar class="btn btn-danger">
+                    <i class="fa fa-reply"></i> Fecha
                 </button>
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-save"></i> Guardar
