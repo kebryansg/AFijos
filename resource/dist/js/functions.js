@@ -78,6 +78,11 @@ function setearMyDecimal(input) {
     $(input).val("0.00");
     $(input).inputmask("myDecimal");
 }
+$.fn.setFloat = function(value){
+    $(this).inputmask('remove');
+    $(this).val(value);
+    $(this).inputmask("myDecimal");
+};
 
 
 

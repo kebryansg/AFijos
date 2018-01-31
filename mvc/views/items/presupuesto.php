@@ -62,11 +62,8 @@
         <br>
         <div class="col-md-12">
             <div class="pull-right">
-                <button type="reset" class="btn btn-danger">
-                    <i class="fa fa-reply"></i> Cancelar
-                </button>
                 <button type="button" cancelar class="btn btn-danger">
-                    <i class="fa fa-reply"></i> Fecha
+                    <i class="fa fa-reply"></i> Cancelar
                 </button>
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-save"></i> Guardar

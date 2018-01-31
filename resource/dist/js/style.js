@@ -8,8 +8,6 @@ var fecha_format = {
     save: "YYYY-MM-DD HH:mm:ss"
 };
 
-
-
 moment.locale("es");
 var TablePaginationDefault = {
     //height: 400,
@@ -251,9 +249,7 @@ $.fn.validate = function () {
 };
 
 $.fn.edit = function (datos) {
-    console.log(datos);
     claves = JSON_Clave(datos);
-
     $(this).data("id", datos.id);
     $.each($(this).find("[name]"), function (i, component) {
         name = $(component).attr("name");
@@ -267,48 +263,27 @@ $.fn.edit = function (datos) {
                     tipo = $(component).attr("data-tipo");
                     switch (tipo) {
                         case "myDecimal":
-                            $(component).val(datos[name]);
+                            $(component).setFloat(datos[name]);
                             break;
                         case "fecha":
-                            $(component).datepicker("update", "2015-01-01");
-                            console.log(component);
-//                            tipoFecha = $(this).attr("dt-tipo");
-//                            fecha = fechaMoment($(this).datepicker("getDate"));
-//                            
-//                            
-//                            switch (tipoFecha) {
-//                                case "year":
-//                                    fecha = moment({year: fecha.year(), month: 0, day: 0});
-//                                    break;
-//                                case "month":
-//                                    fecha = moment({year: fecha.year(), month: fecha.month(), day: 0});
-//                                    break;
-//                            }
-                            //bandera = $(input).val() !== "";
+                            $(component).datepicker("update", fechaMoment(datos[name]).toDate());
                             break;
                         default:
-                            bandera = $(input).val() !== "";
+                            $(component).val(datos[name]);
                             break;
                     }
-
-//                    $(component).val(datos[name]);
                     break;
             }
 
         }
     });
+};
 
-
-    /*for (var clave in datos) {
-     switch ($("#div-registro form [name='" + clave + "']").prop("tagName")) {
-     case "SELECT":
-     $("#div-registro form [name='" + clave + "']").selectpicker("val", datos[clave]);
-     break;
-     default:
-     $("#div-registro form [name='" + clave + "']").val(datos[clave]);
-     break;
-     }
-     }*/
+$.fn.clear = function () {
+    $(this).removeData("id");
+    $(this).find("select").selectpicker("val", -1);
+    $(this).find("input[data-tipo='myDecimal']").setFloat(0);
+    $(this).find("input:not([data-tipo='myDecimal'])").val("");
 };
 
 function formatterDepreciable(value) {
@@ -321,25 +296,12 @@ function limpiarContenedor(contenedor) {
     $(contenedor + " .selectpicker").selectpicker("refresh");
 }
 
-
-
-
 $(function () {
 
-
-
-
-    /*$(document).on("click", "input[myDecimal]", function () {
-     $(this).focus();
-     });*/
-
     $(document).on("focus", "input[data-tipo='myDecimal']", function () {
-        //$(this).inputmask("myDecimal");
         $(this).select();
     });
 
-
-//$("#modal-adminTipo").modal();
     $(document).on("click", "div[tipo] button[refresh]", function (e) {
         div = $(this).closest("div[tipo]");
         fnc = $(div).attr("data-fn");
@@ -390,17 +352,12 @@ $(function () {
     $(document).on("submit", "form[save]", function (e) {
         e.preventDefault();
 
-
-//        if (!validateForm(this)) {
-//            return;
-//        }
-
         if (!$(this).validate()) {
             return;
         }
 
-
         datos = {};
+
         //if (typeof "getDatos" !== 'undefined' && jQuery.isFunction("getDatos")) {
         if (typeof window.getDatos === 'function') {
             datos = getDatos();
@@ -414,9 +371,7 @@ $(function () {
                     datos: $(this).serializeObject_KBSG()
                 }
             };
-            console.log(datos);
         }
-        console.log(datos);
         save_global(datos);
         $(table).bootstrapTable("refresh");
         $(this).trigger("reset");
@@ -459,7 +414,6 @@ $(function () {
     });
     $('#modal-new').on({
         'show.bs.modal': function (e) {
-//console.log($(e.relatedTarget).closest(".input-group"));
             dataUrl = $(e.relatedTarget).attr("data-url");
             initModalNew('#modal-new', dataUrl);
         }
@@ -537,15 +491,7 @@ $(function () {
         }
     });
 
-    /*$(document).on("keyup", "input[decimal]", function (e) {
-     
-     this.value = (this.value + '').replace(/^[0-9]+([,][0-9]+)/g, '');
-     
-     });*/
 });
-
-
-
 
 function deletes() {
     $.ajax({
@@ -561,7 +507,6 @@ function deletes() {
     selections = [];
     $(table).bootstrapTable("refresh");
 }
-
 
 
 function deleteIndividual(tableSelect) {

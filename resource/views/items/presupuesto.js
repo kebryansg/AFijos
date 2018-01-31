@@ -52,62 +52,55 @@ window.event_input = {
     }
 };
 function get() {
+    if ($('input[name="año"]').val() !== "" &&  !$.isEmptyObject($("select[name='idDepartamento']").selectpicker("val"))) {
+        $.ajax({
+            url: "servidor/sCompras.php",
+            cache: false,
+            type: 'POST',
+            async: false,
+            dataType: 'json',
+            data: {
+                accion: "get",
+                op: "presupuesto",
+                fecha: $('input[name="año"]').getFecha(),
+                departamento: $("select[name='idDepartamento']").selectpicker("val")// "1"
+            },
+            success: function (response) {
+                if (response.status) {
+                    $("form[save]").edit(response.get);
+                    $("#tbDetallePresupuesto").bootstrapTable("load", JSON.parse(response.get.meses));
 
-    $.ajax({
-        url: "servidor/sCompras.php",
-        cache: false,
-        type: 'POST',
-        async: false,
-        dataType: 'json',
-        data: {
-            accion: "get",
-            op: "presupuesto",
-            fecha: "2017-12-01",
-            departamento: "1"
-        },
-        success: function (response) {
-            if (response.status) {
-                $("form[save]").edit(response.get);
-                $("#tbDetallePresupuesto").bootstrapTable("load", JSON.parse(response.get.meses));
-
+                } else {
+                    MsgError({
+                        title: "No se encontro datos",
+                        content: ""
+                    });
+                    clear();
+                }
             }
-        }
-    });
+        });
+    }
 }
 
 $(function () {
 
     initialComponents();
 
-    $("select[name='idDepartamento']").selectpicker("val", -1);
     $("#tbDetallePresupuesto").bootstrapTable();
-    datos = JSON.parse(JSON.stringify(rows));
-    $("#tbDetallePresupuesto").bootstrapTable("load", datos);
 
+    //$("select[name='idDepartamento']").selectpicker("val", -1);
 
-//    tipoFecha = "month";
-//    fecha = fechaMoment("2017-12-01",fecha_format.save);
-//    value= "";
-//    console.log(fecha);
-//    switch (tipoFecha) {
-//        case "year":
-//            //fecha = moment({year: fecha.year(), month: 0, day: 0});
-//            alert(fecha_format.year);
-//            value = fecha.format(fecha_format.year);
-//            break;
-//        case "month":
-//            value = fecha.format(fecha_format.month);
-//            break;
-//    }
-//    console.log(value);
+//    datos = JSON.parse(JSON.stringify(rows));
+//    $("#tbDetallePresupuesto").bootstrapTable("load", datos);
 
 
 
-    //get();
-
-
-
-
+    $('input[data-tipo="fecha"]').on("changeDate", function (e) {
+        get();
+    });
+    $('select[name="idDepartamento"]').on("changed.bs.select", function (e) {
+        get();
+    });
 
 
     $('input[name="presupuestoInicial"]').focusout(function (e) {
@@ -138,25 +131,29 @@ $(function () {
     });
 
     $("button[cancelar]").click(function () {
-        $("input[name='año']").datepicker("update", new Date(2010, 2, 5));
-        //$("input[name='año']").datepicker("update", '2016-03-05');
+        clear();
     });
 
-    /*$("#btnGet").click(function (e) {
-     fecha = $('input[name="año"]').datepicker("getDate");
-     console.log(formatSave(fecha));
-     });*/
+    $("#btnGet").click(function (e) {
+        fecha = $('input[name="año"]').datepicker("getDate");
+        console.log(formatSave(fecha));
+    });
 
     $.each($('input[data-tipo="fecha"]'), function (i, input) {
         config = getParamsFecha($(input).attr("dt-tipo"));
         $(input).datepicker(config);
-        //$(input).datepicker('update', formatView(moment()));
-        $(input).datepicker('update', $(input).getFecha());
+        //$(input).datepicker('update', $(input).getFecha());
     });
-
+    clear();
 
     $('input[data-tipo="myDecimal"]').inputmask("myDecimal");
 });
+
+function clear() {
+    $("form[save]").clear();
+    datos = JSON.parse(JSON.stringify(rows));
+    $("#tbDetallePresupuesto").bootstrapTable("load", datos);
+}
 
 function getDatos() {
     form = "form[save]";
