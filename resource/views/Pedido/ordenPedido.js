@@ -66,8 +66,7 @@ function getDatos() {
 
 
 function edit(datos) {
-    $("#div-registro form[save]").data("id", datos.ID);
-    $("#div-registro input[name='fecha']").val(formatView(datos.fecha));
+    $("form[save]").edit(datos);
     $("#div-registro input[area]").val(datos.area);
     $("#div-registro input[usuario]").val(datos.usuario);
 
@@ -77,7 +76,7 @@ function edit(datos) {
         data: {
             accion: "list",
             op: "DetalleordenPedido",
-            OrdenPedido: datos.ID
+            OrdenPedido: datos.id
         }
     };
     $("#tbOrdenPedido").bootstrapTable("load", getJson(dt));
@@ -118,7 +117,7 @@ function BtnAccion(value, rowData, index) {
 }
 
 function inputProducto(value, row, index) {
-    if (row.ID === 0) {
+    if (row.id === 0) {
         return "<input field='" + this.field + "' value='" + value + "' class='form-control input-sm' type='text' text >";
     } else {
         return row.descripcion;

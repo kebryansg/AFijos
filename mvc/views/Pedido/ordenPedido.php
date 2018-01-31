@@ -26,7 +26,7 @@
             <thead>
                 <tr>
                     <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="ID" class="col-md-1" data-align="center">Cód.</th>
+                    <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
                     <th data-field="fecha" data-formatter="defaultFecha">Fecha</th>
                     <th data-field="area">Área</th>
                     <th data-field="usuario">Usuario</th>
@@ -45,7 +45,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="" class="control-label">Fecha</label>
-                    <input fecha name="fecha" type="text" class="form-control" readonly>
+                    <input data-tipo="fechaView" fecha name="fecha" type="text" class="form-control" readonly>
                 </div>
             </div>
             <div class="col-md-3">

@@ -250,6 +250,7 @@ $.fn.validate = function () {
 
 $.fn.edit = function (datos) {
     claves = JSON_Clave(datos);
+    console.log(claves);
     $(this).data("id", datos.id);
     $.each($(this).find("[name]"), function (i, component) {
         name = $(component).attr("name");
@@ -264,6 +265,9 @@ $.fn.edit = function (datos) {
                     switch (tipo) {
                         case "myDecimal":
                             $(component).setFloat(datos[name]);
+                            break;
+                        case "fechaView":
+                            $(component).val(formatView(datos[name]));
                             break;
                         case "fecha":
                             $(component).datepicker("update", fechaMoment(datos[name]).toDate());
