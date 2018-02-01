@@ -36,10 +36,9 @@ window.event_input_default = {
         });
     },
     "change input[myDecimal]": function (e, value, row, index) {
-        //alert();
         input = $(e.target);
         field = $(input).attr("field");
-        row[field] = $(input).val();
+        row[field] = $(input).getFloat();//.val();
         table = $(input).closest("table");
         $(table).bootstrapTable('updateRow', {
             index: index,
@@ -72,14 +71,16 @@ function btnSeleccion(value) {
     return '<button name="seleccion" class="btn btn-success btn-sm"><i class="fa fa-check-square-o" aria-hidden="true"></i> Seleccionar</button>';
 }
 
+/* Formato para Cajas de Numeros Decimales */
 function defaultInput(value, rowData, index) {
     return '<input text data-field="' + this.field + '" class="form-control input-sm" type="text" value="' + value + '">';
 }
 
+/* Formato Generar N° Filas */
 function rowCount(value, row, index) {
     return index + 1;
 }
-
+/* Formato para Cajas de Numeros Decimales */
 function imask(value, rowData, index) {
     return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
 }

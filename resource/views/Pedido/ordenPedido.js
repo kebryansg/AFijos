@@ -5,6 +5,30 @@ selections = [];
 
 $(function () {
     initialComponents();
+    
+    
+    
+    $("button[delete_local]").click(function (e) {
+        div_id = $(this).closest("div[toolbar]").attr("id");
+        tableSelect = $("table[data-toolbar='#" + div_id + "']");
+        
+        // Retornar Ids diferentes a 0
+        ids = $(tableSelect).bootstrapTable("getSelections").filter(row => parseInt(row.id) !== 0);
+        id_delete = $.map($(ids), function (row) {
+            return row.id;
+        });
+
+        if ($.isEmptyObject($(this).data("ids"))) {
+            $(this).data("ids", id_delete);
+        } else {
+            _new = $.merge($(this).data("ids"), id_delete);
+            console.log(_new);
+        }
+
+        state = $(tableSelect).bootstrapTable("getSelections").map(row => row.state);
+        $(tableSelect).bootstrapTable("remove", {field: 'state', values: state});
+
+    });
 
     $("#tbOrdenPedido").bootstrapTable();
     $("#modal-find-items table").bootstrapTable(TablePaginationDefault);
@@ -14,7 +38,7 @@ $(function () {
 
     $("button[add]").click(function (e) {
         $("#tbOrdenPedido").bootstrapTable("append", {
-            ID: 0,
+            id: 0,
             cantidad: 1,
             descripcion: "",
             precioref: 0,
@@ -49,7 +73,8 @@ $(function () {
 
 function getDatos() {
     form = "form[save]";
-    dt = JSON.parse($(form).serializeObject());
+    //dt = JSON.parse($(form).serializeObject());
+    dt = JSON.parse($(form).serializeObject_KBSG());
     dt.fecha = formatSave(dt.fecha);
     datos = {
         url: getURL($(form).attr("action")),
@@ -57,7 +82,8 @@ function getDatos() {
             accion: "save",
             op: $(form).attr("role"),
             datos: JSON.stringify(dt), //$(form).serializeObject(),
-            items: JSON.stringify($("#tbOrdenPedido").bootstrapTable("getData"))
+            items: JSON.stringify($("#tbOrdenPedido").bootstrapTable("getData")),
+            items_delete: JSON.stringify($("button[delete_local]").data("ids"))
         }
     };
 
@@ -124,15 +150,13 @@ function inputProducto(value, row, index) {
     }
 }
 
-/*function imask(value, rowData, index) {
-    return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + value + '">';
-}*/
+
 
 window.event_OPedido = {
     "click button[name='seleccion']": function (e, value, row, index) {
         $("#modal-find-items").modal("hide");
         $("#tbOrdenPedido").bootstrapTable("append", {
-            ID: row.id,
+            id: row.id,
             cantidad: 1,
             descripcion: row.descripcion,
             precioref: 0,

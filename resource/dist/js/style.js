@@ -359,7 +359,6 @@ $(function () {
         if (!$(this).validate()) {
             return;
         }
-
         datos = {};
 
         //if (typeof "getDatos" !== 'undefined' && jQuery.isFunction("getDatos")) {

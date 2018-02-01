@@ -40,11 +40,12 @@ class DetalleOrdenPedidoDaoImp {
         $conn->query($sql);
         $conn->close();
     }
-    
+
     public function deleteOrdenPedido($DetalleOrdenPedido, $IdDetalleOrdenPedido) {
         $conn = (new C_MySQL())->open();
         $sql = "Delete from " . $DetalleOrdenPedido->tabla . " where id in (" . join(',', $IdDetalleOrdenPedido) . ")";
         $conn->query($sql);
         $conn->close();
     }
+
 }

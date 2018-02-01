@@ -63,18 +63,27 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="btn-toolbar" role="toolbar" aria-label="...">
-                    <div class="btn-group" role="group" aria-label="...">
-                        <button add type="button" class="btn btn-success">
-                            <i class="glyphicon glyphicon-plus"></i> Agregar
-                        </button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-find-items" >
-                            <i class="glyphicon glyphicon-search"></i> Buscar
-                        </button>
-                        <button type="button" DeleteIndividual class="btn btn-danger ">
-                            <i class="glyphicon glyphicon-trash"></i> Eliminar
-                        </button>
-                    </div>
+                <div id="toolbar2" class="btn-group" toolbar role="group" aria-label="...">
+                    <button add type="button" class="btn btn-success">
+                        <i class="glyphicon glyphicon-plus"></i> Agregar
+                    </button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-find-items" >
+                        <i class="glyphicon glyphicon-search"></i> Buscar
+                    </button>
+                    <button type="button" delete_local class="btn btn-danger ">
+                        <i class="glyphicon glyphicon-trash"></i> Eliminar
+                    </button>
+                    <!--                    <div class="btn-group" role="group" aria-label="...">
+                                            <button add type="button" class="btn btn-success">
+                                                <i class="glyphicon glyphicon-plus"></i> Agregar
+                                            </button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-find-items" >
+                                                <i class="glyphicon glyphicon-search"></i> Buscar
+                                            </button>
+                                            <button type="button" delete_local class="btn btn-danger ">
+                                                <i class="glyphicon glyphicon-trash"></i> Eliminar
+                                            </button>
+                                        </div>-->
                 </div>
                 <table
                     id="tbOrdenPedido"
