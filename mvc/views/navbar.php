@@ -232,6 +232,9 @@ $RolNombre = "Administrador";
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="mvc/views/items/items.php"><i class="fa fa-group fa-fw"></i> Items</a>
+                    </li>
                     <!--<li>
                         <a href="mvc/views/Administracion/modulo.php"><i class="fa fa-group fa-fw"></i> Módulos</a>
                     </li>

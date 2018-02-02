@@ -1,38 +1,26 @@
 <!DOCTYPE html>
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header"><i class="fa fa-user fa-group"></i> Items </h1>
-    </div>
-</div>
 <div class="row" id="Listado">
     <div class="col-md-12">
         <div id="toolbar" class="btn-group">
-            <button type="button" name="btn_add" class="btn btn-default btn-success btn-outline">
+            <button type="button" name="btn_add" class="btn btn-success ">
                 <i class="glyphicon glyphicon-plus"></i> Agregar
             </button>
-            <button type="button" name="btn_del" class="btn btn-default btn-danger btn-outline">
+            <button type="button" name="btn_del" class="btn btn-danger ">
                 <i class="glyphicon glyphicon-trash"></i> Eliminar
             </button>
         </div>
         <table 
-            data-toggle="table"
-            data-cache="false"
-            data-page-size="5"
-            data-height="400"
+            init
             data-toolbar="#toolbar"
-
-            data-ajax="ajx"
-            data-search="true"
-            data-pagination="true" 
-            data-side-pagination="server"
-            data-response-handler="responseHandler"
-            data-page-list="[5,10,15,20]">
+            data-ajax="loadItems"
+            data-response-handler="responseHandler">
             <thead>
                 <tr>
                     <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="ID" class="col-md-1" data-align="center">Cód.</th>
-                    <th data-field="descripcion">Descripción</th>
-                    <th data-field="observacion">Observación</th>
+                    <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
+                    <th data-field="descripcion">Descripcion</th>
+                    <th data-field="unidad">Unidad Medida</th>
+                    <th data-field="stock">Stock</th>
                     <th data-field="accion" class="col-md-1" data-align="center" data-formatter="defaultBtnAccion" data-events="event_accion_default">Acciones</th>
                 </tr>
             </thead>
@@ -41,33 +29,25 @@
 </div>
 
 <div id="div-registro" class="row hidden" >
-    <form id="frmGrupo" role="form">
+    <form save role="items" action="_compras">
         <div class="col-md-6">
+            
             <div class="form-group">
-                <label for="" class="control-label">Descripción</label>
+                <label class="control-label">Descripción</label>
                 <input type="text" name="descripcion" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="" class="control-label">Estado</label>
-                <select name="estado" class="form-control selectpicker" required>
-                    <option value="ACT">Activo</option>
-                    <option value="INA">Inactivo</option>
-                    <option value="BLO">Bloqueado</option>
-                    <option value="ELI">Eliminado</option>
-                </select>
+                <label class="control-label">Stock</label>
+                <input name="stock" class="form-control" required>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="form-group">
-                <label for="" class="control-label">Observación</label>
-                <textarea rows="4" name="observacion" class="form-control"></textarea>
-            </div>
         </div>
 
         <div class="clearfix"></div>
         <div class="col-md-12">
             <div class="pull-right">
-                <button class="btn btn-default" type="reset"  title="Haga clic aquí para cancelar el registro actual">
+                <button class="btn btn-danger" type="reset"  title="Haga clic aquí para cancelar el registro actual">
                     <i class="fa fa-reply" aria-hidden="true"></i> Cancelar
                 </button>
                 &nbsp;
@@ -80,10 +60,4 @@
     </form>
 </div>
 
-
-
-
-
-
-
-<script type="text/javascript" src="recursos/views/items/items.js"></script>
+<script type="text/javascript" src="resource/views/items/items.js"></script>
