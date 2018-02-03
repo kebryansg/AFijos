@@ -5,6 +5,9 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="resource/Plantilla/bootstrap/dist/js/bootstrap.min.js"></script>
 
+
+
+
 <!-- BootStrap Datepicker -->
 <script src="resource/Plantilla/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script src="resource/Plantilla/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js"></script>
@@ -19,6 +22,10 @@
 <script src="resource/Plantilla/dist/js/adminlte.js"></script>
 <script src="resource/Moment/moment.js"></script>
 <script src="resource/Moment/moment-with-locales.js"></script>
+<!-- Fontawesome -->
+<script defer src="resource/bootstrap/fontawesome/js/fontawesome-all.js"></script>
+<!--<script defer src="/static/fontawesome/fa-v4-shim.js"></script>-->
+
 
 <!-- Message -->
 <script src="resource/bootstrap/message/jquery-confirm.min.js"></script>

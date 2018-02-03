@@ -13,7 +13,12 @@ input[myDecimal]{
     text-align: right;
 }
 
-
+/* Select component */
+.selectpickerComponent{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
 
 
 

@@ -141,7 +141,7 @@
                 </button>
                 &nbsp;
                 <button type="submit" class="btn btn-primary" title="Haga clic aquí para guardar la información">
-                    <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar										
+                    <i class="fa fa-save" aria-hidden="true"></i> Guardar										
                 </button>
             </div>
         </div>

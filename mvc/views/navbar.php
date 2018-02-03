@@ -21,6 +21,7 @@ $RolNombre = "Administrador";
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <i class="fa fa-align-justify"></i>
             <span class="sr-only">Toggle navigation</span>
         </a>
         <!-- Navbar Right Menu -->
@@ -118,7 +119,7 @@ $RolNombre = "Administrador";
             <li class="treeview">
                 <a href="#"><i class="fa fa-folder-open"></i> <span>Pedidos</span>
                     <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
+                        <i class="fa fa-angle-left pull-right loco"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">

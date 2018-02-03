@@ -18,7 +18,8 @@ abstract class ModelSQL {
                 }
             }
         }
-        $sql = "INSERT INTO " . $this->tabla . "(" . join(",", $attr) . ") VALUES(" . join(",", $values) . ")";
+        //$sql = "INSERT INTO " . $this->tabla . "(" . join(",", $attr) . ") VALUES(" . join(",", $values) . ")";
+        $sql = "INSERT INTO " . $getter_names_attr["tabla"] . "(" . join(",", $attr) . ") VALUES(" . join(",", $values) . ")";
         return $sql;
     }
 
@@ -37,15 +38,15 @@ abstract class ModelSQL {
                 
             }
         }
-        $sql = "UPDATE " . $this->tabla . " SET " . join(",", $values) . " WHERE ID = " . $this->ID;
+        $sql = "UPDATE " . $getter_names_attr["tabla"] . " SET " . join(",", $values) . " WHERE ID = " . $getter_names_attr["ID"];
         return $sql;
     }
 
     public function Update_Delete() {
-        if (is_array($this->ID)) {
-            $sql = "UPDATE " . $this->tabla . " SET estado = 'INA' WHERE ID IN (" . join(',', $this->ID) . ")";
+        if (is_array($getter_names_attr["ID"])) {
+            $sql = "UPDATE " . $getter_names_attr["tabla"] . " SET estado = 'INA' WHERE ID IN (" . join(',', $getter_names_attr["ID"]) . ")";
         } else {
-            $sql = "UPDATE " . $this->tabla . " SET estado = 'INA' WHERE ID = " . $this->ID;
+            $sql = "UPDATE " . $getter_names_attr["tabla"] . " SET estado = 'INA' WHERE ID = " . $getter_names_attr["ID"];
         }
 
         return $sql;

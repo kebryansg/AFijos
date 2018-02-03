@@ -18,7 +18,7 @@
 <!-- BootStrap Datepicker -->
 <link rel="stylesheet" href="resource/Plantilla/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 <!-- Font Awesome -->
-<link rel="stylesheet" href="resource/Plantilla/font-awesome/css/font-awesome.min.css">
+<!--<link rel="stylesheet" href="resource/Plantilla/font-awesome/css/font-awesome.min.css">-->
 <!-- Ionicons -->
 <link rel="stylesheet" href="resource/Plantilla/Ionicons/css/ionicons.min.css">
 <!-- Theme style -->
