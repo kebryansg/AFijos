@@ -144,17 +144,12 @@ function showRegistro() {
 function hideRegistro() {
     $("#div-registro").fadeOut();
     $("#div-registro").addClass("hidden");
-    /*
-     if ($("#div-registro table").length > 0) {
-     $("#div-registro table").bootstrapTable("removeAll");
-     }
-     */
+    
     $("#Listado").fadeIn("slow");
     $("#Listado").removeClass("hidden");
     $("#div-registro form").removeData("id");
-    $("#div-registro select.selectpicker").selectpicker("val", -1);
-    $('#div-registro select.selectpicker').selectpicker('refresh');
-
+    /*$("#div-registro select.selectpicker").selectpicker("val", -1);
+    $('#div-registro select.selectpicker').selectpicker('refresh');*/
 
 }
 

@@ -11,6 +11,24 @@ function responseHandler(res) {
     return res;
 }
 
+/* Aplicar formato de estado */
+function estadoOrdenPedido(value) {
+    switch (value) {
+        case "PEN":
+            return "Pendiente";
+            break;
+        case "APR":
+            return "Aprobado";
+            break;
+        case "DEV":
+            return "Devuelto";
+            break;
+        case "REC":
+            return "<span style='color:red;'>Rechazado</span>";
+            break;
+    }
+}
+
 /* Asignacion de eventos a boton accion default */
 window.event_accion_default = {
     "click li[name='edit']": function (e, value, row, index) {

@@ -28,6 +28,7 @@
                     <th data-field="state" data-checkbox="true"></th>
                     <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
                     <th data-field="fecha" data-formatter="defaultFecha">Fecha</th>
+                    <th data-field="departamento">Departamento</th>
                     <th data-field="area">Área</th>
                     <th data-field="usuario">Usuario</th>
                     <th data-field="estado" class="col-md-1" data-formatter="estadoOrdenPedido">Estado</th>
@@ -45,6 +46,12 @@
                 <div class="form-group">
                     <label for="" class="control-label">Fecha</label>
                     <input data-tipo="fechaView" fecha name="fecha" type="text" class="form-control" readonly>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="" class="control-label">Departamento</label>
+                    <input type="text" departamento class="form-control" readonly>
                 </div>
             </div>
             <div class="col-md-3">

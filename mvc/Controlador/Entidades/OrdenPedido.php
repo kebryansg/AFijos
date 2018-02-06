@@ -9,12 +9,14 @@ class OrdenPedido extends ModelSQL {
     public $IDArea;
     public $IDUsuario;
     public $Estado;
+    public $Observacion;
 
     function __construct() {
         $this->ID = 0;
         $this->Estado = "PEN";
-        $this->Fecha = date("Y-m-d H:i:s");
+        //$this->Fecha = date("Y-m-d H:i:s");
         //$this->IDUsuario = "1";
+        $this->Observacion = "";
         $this->tabla = "OrdenPedido";
     }
 }

@@ -199,6 +199,9 @@ $.fn.serializeObject_KBSG = function () {
             case "SELECT":
                 val = $(component).selectpicker("val");
                 break;
+            case "TEXTAREA":
+                val = $(component).val();
+                break;
             case "INPUT":
                 tipo = $(component).attr("data-tipo");
                 switch (tipo) {
@@ -217,7 +220,6 @@ $.fn.serializeObject_KBSG = function () {
         value[name] = val;
     });
     console.log(value);
-    //return value;
     return JSON.stringify(value);
 };
 
@@ -259,6 +261,9 @@ $.fn.edit = function (datos) {
             switch (tagName) {
                 case "SELECT":
                     $(component).selectpicker("val", datos[name]);
+                    break;
+                case "TEXTAREA":
+                    val = $(component).val(datos[name]);
                     break;
                 case "INPUT":
                     tipo = $(component).attr("data-tipo");
@@ -313,33 +318,36 @@ $(function () {
         datos = self[fnc]();
         loadCbo(datos, select);
     });
+
     $(document).on("click", "button[name='btn_add']", function (e) {
         showRegistro();
     });
+
     $(document).on("click", "button[name='btn_del']", function (e) {
         console.log(selections);
         if (selections.length > 0) {
             alertEliminarRegistros();
         }
     });
+
     $(document).on("click", "button[name='btn_del_individual']", function (e) {
         div_id = $(this).closest("div[toolbar]").attr("id");
         alert(div_id);
         tableSelect = $("table[data-toolbar='#" + div_id + "']");
         deleteIndividual(tableSelect);
     });
+
     $(document).on("click", "form[modal-save] button[type='reset']", function (e) {
         $(this).closest(".modal").modal("hide");
     });
+
     $(document).on("click", "form[save] button[type='reset']", function (e) {
         if (typeof window.clear === 'function') {
             clear();
         }
-        
-        
         hideRegistro();
-        
     });
+
     $(document).on("submit", "form[modal-save]", function (e) {
         e.preventDefault();
         datos = {
@@ -369,6 +377,7 @@ $(function () {
         //if (typeof "getDatos" !== 'undefined' && jQuery.isFunction("getDatos")) {
         if (typeof window.getDatos === 'function') {
             datos = getDatos();
+//            return;
         } else {
             datos = {
                 url: getURL($(this).attr("action")),

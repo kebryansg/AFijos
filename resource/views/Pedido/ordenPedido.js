@@ -91,17 +91,19 @@ function getDatos() {
 }
 function clear(){
     $("#tbOrdenPedido").bootstrapTable("removeAll");
+    $("button[delete_local]").removeData("ids");
 }
 
 
 function edit(datos) {
     $("form[save]").edit(datos);
     $("#div-registro input[area]").val(datos.area);
+    $("#div-registro input[departamento]").val(datos.departamento);
     $("#div-registro input[usuario]").val(datos.usuario);
 
     //DetalleOrdenPedido
     dt = {
-        url: "servidor/sPedido.php",
+        url: getURL("_pedido"),
         data: {
             accion: "list",
             op: "DetalleordenPedido",
@@ -111,26 +113,26 @@ function edit(datos) {
     $("#tbOrdenPedido").bootstrapTable("load", getJson(dt));
 }
 
-function obs(value) {
+/*function obs(value) {
     return value.substr(0, 5) + "...";
-}
+}*/
 
-function estadoOrdenPedido(value) {
-    switch (value) {
-        case "PEN":
-            return "Pendiente";
-            break;
-        case "APR":
-            return "Aprobado";
-            break;
-        case "DEV":
-            return "Devuelto";
-            break;
-        case "REC":
-            return "<span style='color:red;'>Rechazado</span>";
-            break;
-    }
-}
+//function estadoOrdenPedido(value) {
+//    switch (value) {
+//        case "PEN":
+//            return "Pendiente";
+//            break;
+//        case "APR":
+//            return "Aprobado";
+//            break;
+//        case "DEV":
+//            return "Devuelto";
+//            break;
+//        case "REC":
+//            return "<span style='color:red;'>Rechazado</span>";
+//            break;
+//    }
+//}
 function BtnAccion(value, rowData, index) {
     if (rowData.estado === "PEN" || rowData.estado === "DEV") {
         return '<div class="btn-group" name="shows">' +

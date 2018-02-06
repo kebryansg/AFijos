@@ -30,6 +30,12 @@ switch ($accion) {
     case "save":
         $json = json_decode($_POST["datos"]);
         switch ($op) {
+            case "aprobacionOrdenPedido":
+                $ordenPedido = $mapper->map($json, new OrdenPedido());
+                OrdenPedidoDaoImp::aprobacionPedido($ordenPedido);
+                $resultado = "";
+
+                break;
             case "ordenPedido":
                 $ordenPedido = $mapper->map($json, new OrdenPedido());
                 $ordenPedido->IDArea = 1;
@@ -40,7 +46,7 @@ switch ($accion) {
 
 
                 $itemsNoEstan = json_decode($_POST["items_delete"]);
-                
+
                 if (sizeof($itemsNoEstan) > 0) {
                     DetalleOrdenPedidoDaoImp::deleteOrdenPedido(new DetalleOrdenPedido(), $itemsNoEstan);
                 }

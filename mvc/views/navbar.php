@@ -124,7 +124,7 @@ $RolNombre = "Administrador";
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="mvc/views/Pedido/ordenPedido.php">Orden de Pedidos</a></li>
-                    <li><a href="#">Aprobación de Pedidos</a></li>
+                    <li><a href="mvc/views/Pedido/aprobacionPedido.php">Aprobación de Pedidos</a></li>
                 </ul>
             </li>
             <li class="treeview">
