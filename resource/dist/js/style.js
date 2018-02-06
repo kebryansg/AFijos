@@ -328,12 +328,17 @@ $(function () {
         tableSelect = $("table[data-toolbar='#" + div_id + "']");
         deleteIndividual(tableSelect);
     });
-    $(document).on("click", "button[type='reset']", function (e) {
-        if ($(this).closest(".modal-body").length > 0) {
-            $(this).closest(".modal").modal("hide");
-        } else {
-            hideRegistro();
+    $(document).on("click", "form[modal-save] button[type='reset']", function (e) {
+        $(this).closest(".modal").modal("hide");
+    });
+    $(document).on("click", "form[save] button[type='reset']", function (e) {
+        if (typeof window.clear === 'function') {
+            clear();
         }
+        
+        
+        hideRegistro();
+        
     });
     $(document).on("submit", "form[modal-save]", function (e) {
         e.preventDefault();

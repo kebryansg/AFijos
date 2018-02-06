@@ -35,45 +35,28 @@ switch ($accion) {
                 $ordenPedido->IDArea = 1;
                 $ordenPedido->IDUsuario = 2;
 
-                // $_SESSION["user"]= 
-
                 OrdenPedidoDaoImp::save($ordenPedido);
                 $resultado = $ordenPedido->ID;
 
 
-                /*
-                  $DetalleOrdenActual = array_map(function($value) {
-                  return $value["id"];
-                  }, DetalleOrdenPedidoDaoImp::listDetalleOrdenPedido($ordenPedido->ID));
-
-
-                  $items = array_map(function($value) {
-                  return $value["id"];
-                  }, json_decode($_POST["items"], true));
-
-                  $itemsNoEstan = array_diff($DetalleOrdenActual, $items);
-                  $itemsNuevos = array_diff($items, $DetalleOrdenActual);
-
-                 */
+                $itemsNoEstan = json_decode($_POST["items_delete"]);
                 
-                $itemsNoEstan= $_POST["items_delete"];
-
-                if (count($itemsNoEstan) > 0){
+                if (sizeof($itemsNoEstan) > 0) {
                     DetalleOrdenPedidoDaoImp::deleteOrdenPedido(new DetalleOrdenPedido(), $itemsNoEstan);
                 }
-                    
+
 
 
                 foreach (json_decode($_POST["items"]) as $item) {
                     $detalleOrdenPedido = $mapper->map($item, new DetalleOrdenPedido());
                     $detalleOrdenPedido->IDOrdenPedido = $ordenPedido->ID;
-                    
-                    DetalleOrdenPedidoDaoImp::save($detalleOrdenPedido);
-                    
 
-                    /*if (in_array($detalleOrdenPedido->ID, $itemsNuevos)) {
-                        DetalleOrdenPedidoDaoImp::save($detalleOrdenPedido);
-                    }*/
+                    DetalleOrdenPedidoDaoImp::save($detalleOrdenPedido);
+
+
+                    /* if (in_array($detalleOrdenPedido->ID, $itemsNuevos)) {
+                      DetalleOrdenPedidoDaoImp::save($detalleOrdenPedido);
+                      } */
 
                     /* else if (in_array($detalleOrdenPedido->ID, $itemsNoEstan)) {
                       DetalleOrdenPedidoDaoImp::delete($detalleOrdenPedido);

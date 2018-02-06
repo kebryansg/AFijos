@@ -6,7 +6,7 @@ selections = [];
 $(function () {
     initialComponents();
     
-    
+    $("button[name=btn_add]").click();
     
     $("button[delete_local]").click(function (e) {
         div_id = $(this).closest("div[toolbar]").attr("id");
@@ -34,7 +34,7 @@ $(function () {
     $("#modal-find-items table").bootstrapTable(TablePaginationDefault);
 
 
-//    $("button[name=btn_add]").click();
+
 
     $("button[add]").click(function (e) {
         $("#tbOrdenPedido").bootstrapTable("append", {
@@ -76,6 +76,7 @@ function getDatos() {
     //dt = JSON.parse($(form).serializeObject());
     dt = JSON.parse($(form).serializeObject_KBSG());
     dt.fecha = formatSave(dt.fecha);
+    items_delete = $.isEmptyObject($("button[delete_local]").data("ids"))? []: $("button[delete_local]").data("ids");
     datos = {
         url: getURL($(form).attr("action")),
         dt: {
@@ -83,11 +84,13 @@ function getDatos() {
             op: $(form).attr("role"),
             datos: JSON.stringify(dt), //$(form).serializeObject(),
             items: JSON.stringify($("#tbOrdenPedido").bootstrapTable("getData")),
-            items_delete: JSON.stringify($("button[delete_local]").data("ids"))
+            items_delete: JSON.stringify(items_delete)
         }
     };
-
     return datos;
+}
+function clear(){
+    $("#tbOrdenPedido").bootstrapTable("removeAll");
 }
 
 

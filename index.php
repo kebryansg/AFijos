@@ -25,10 +25,10 @@
                 </section>
                 <section class="content container-fluid" id="containPages">
                     <?php
-                    //include_once './mvc/views/Pedido/ordenPedido.php';
+                    include_once './mvc/views/Pedido/ordenPedido.php';
                     //include_once './mvc/views/items/items.php';
                     //include_once './components.php';
-                    include_once './mvc/views/Administracion/faIcons.php';
+                    //include_once './mvc/views/Administracion/faIcons.php';
                     ?>
                 </section>
             </div>

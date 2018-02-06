@@ -39,7 +39,6 @@
 </div>
 
 <div id="div-registro" class="hidden" >
-
     <form action="_pedido" role="ordenPedido" save>
         <div class="row">
             <div class="col-md-2">
@@ -113,7 +112,7 @@
             <div class="col-md-12">
                 <div class="pull-right">
                     <div class="form-inline">
-                        <button class="btn btn-sm btn-danger " type='reset'>
+                        <button class="btn btn-sm btn-danger" type='reset'>
                             <i class="fa fa-reply"></i> Cancelar
                         </button>
                         <button class="btn btn-sm btn-primary " type='submit'>
