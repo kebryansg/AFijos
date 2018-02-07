@@ -19,7 +19,11 @@ input[myDecimal]{
     justify-content: space-between;
     align-items: center;
 }
-
+.inputComponent{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+};
 
 
 /* Estilos hr */

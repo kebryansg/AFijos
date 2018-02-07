@@ -13,20 +13,22 @@ function responseHandler(res) {
 
 /* Aplicar formato de estado */
 function estadoOrdenPedido(value) {
+    result = "";
     switch (value) {
         case "PEN":
-            return "Pendiente";
+            result =  "Pendiente";
             break;
         case "APR":
-            return "Aprobado";
+            result =  "Aprobado";
             break;
         case "DEV":
-            return "Devuelto";
+            result =  "Devuelto";
             break;
         case "REC":
-            return "<span style='color:red;'>Rechazado</span>";
+            result =  "Rechazado";
             break;
     }
+    return result.toUpperCase();
 }
 
 /* Asignacion de eventos a boton accion default */

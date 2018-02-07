@@ -148,6 +148,7 @@ $RolNombre = "Administrador";
                     </li>
                     <!--<li><a href="mvc/views/items/proveedor.php"></a></li>-->
                     <li><a href="mvc/views/items/presupuesto.php">Presupuesto</a></li>
+                    <li><a href="mvc/views/Compras/GenerarOrdenCompra.php">Generar Orden Compra</a></li>
                 </ul>
             </li>
             <li class="treeview">

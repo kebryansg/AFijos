@@ -231,3 +231,21 @@ function MsgConfirmation(data){
         }
     });
 }
+
+
+function getEstado_OrdenPedido(value){
+    switch (value) {
+        case "PEN":
+            return "Pendiente";
+            break;
+        case "APR":
+            return "Aprobado";
+            break;
+        case "DEV":
+            return "Devuelto";
+            break;
+        case "REC":
+            return "Rechazado";
+            break;
+    }
+}

@@ -3,15 +3,65 @@ op = "ordenPedido";
 table = $("#Listado table");
 selections = [];
 
+columns_edit = [
+    {
+        field: 'state',
+        checkbox: true,
+        sortable: false
+    },
+    {
+        field: "cantidad",
+        class: "col-md-1",
+        title: "Cant.",
+        sortable: false,
+        formatter: "imask",
+        events: "event_input_default"
+    },
+    {
+        field: "descripcion",
+        title: "Descripción",
+        sortable: false
+    },
+    {
+        field: "precioref",
+        class: "col-md-1",
+        title: "Precio Unit.",
+        sortable: false,
+        formatter: "imask",
+        events: "event_input_default"
+    }
+];
+columns = [
+    {
+        field: "cantidad",
+        title: "Cant.",
+        align: "center",
+        class: "col-md-1",
+        sortable: false
+    },
+    {
+        field: "descripcion",
+        title: "Descripción",
+        sortable: false
+    },
+    {
+        field: "precioref",
+        title: "Precio Unit.",
+        align: "center",
+        class: "col-md-1",
+        sortable: false
+    }
+];
+
 $(function () {
     initialComponents();
-    
-    $("button[name=btn_add]").click();
-    
+
+    //$("button[name=btn_add]").click();
+
     $("button[delete_local]").click(function (e) {
         div_id = $(this).closest("div[toolbar]").attr("id");
         tableSelect = $("table[data-toolbar='#" + div_id + "']");
-        
+
         // Retornar Ids diferentes a 0
         ids = $(tableSelect).bootstrapTable("getSelections").filter(row => parseInt(row.id) !== 0);
         id_delete = $.map($(ids), function (row) {
@@ -34,8 +84,6 @@ $(function () {
     $("#modal-find-items table").bootstrapTable(TablePaginationDefault);
 
 
-
-
     $("button[add]").click(function (e) {
         $("#tbOrdenPedido").bootstrapTable("append", {
             id: 0,
@@ -52,18 +100,9 @@ $(function () {
         }
     });
 
-
-    /*$("#items-registro").on({
-     'hidden.bs.modal': function (e) {
-     $("table[full]").bootstrapTable("resetView");
-     }
-     });*/
-
     $("button[DeleteIndividual]").click(function (e) {
         div_id = $(this).closest("div[toolbar]").attr("id");
         tableSelect = $("table[data-toolbar='#" + div_id + "']");
-        /*ids = $(tableSelect).bootstrapTable("getSelections").map(row => row.id);
-        $(tableSelect).bootstrapTable("remove", {field: 'id', values: ids});*/
         states = $(tableSelect).bootstrapTable("getSelections").map(row => row.state);
         $(tableSelect).bootstrapTable("remove", {field: 'state', values: states});
     });
@@ -76,7 +115,7 @@ function getDatos() {
     //dt = JSON.parse($(form).serializeObject());
     dt = JSON.parse($(form).serializeObject_KBSG());
     dt.fecha = formatSave(dt.fecha);
-    items_delete = $.isEmptyObject($("button[delete_local]").data("ids"))? []: $("button[delete_local]").data("ids");
+    items_delete = $.isEmptyObject($("button[delete_local]").data("ids")) ? [] : $("button[delete_local]").data("ids");
     datos = {
         url: getURL($(form).attr("action")),
         dt: {
@@ -89,7 +128,7 @@ function getDatos() {
     };
     return datos;
 }
-function clear(){
+function clear() {
     $("#tbOrdenPedido").bootstrapTable("removeAll");
     $("button[delete_local]").removeData("ids");
 }
@@ -100,6 +139,21 @@ function edit(datos) {
     $("#div-registro input[area]").val(datos.area);
     $("#div-registro input[departamento]").val(datos.departamento);
     $("#div-registro input[usuario]").val(datos.usuario);
+    $("#div-registro input[estado]").val(getEstado_OrdenPedido(datos.estado));
+
+
+    /* Verificar el estado 
+     * Lectura o Editar
+     * */
+    if (datos.estado === "PEN" || datos.estado === "DEV") {
+        $("#tbOrdenPedido").bootstrapTable('refreshOptions', {
+            columns: columns_edit
+        });
+    } else {
+        $("#tbOrdenPedido").bootstrapTable('refreshOptions', {
+            columns: columns
+        });
+    }
 
     //DetalleOrdenPedido
     dt = {
@@ -110,41 +164,23 @@ function edit(datos) {
             OrdenPedido: datos.id
         }
     };
+
+
+
+
     $("#tbOrdenPedido").bootstrapTable("load", getJson(dt));
 }
 
-/*function obs(value) {
-    return value.substr(0, 5) + "...";
-}*/
-
-//function estadoOrdenPedido(value) {
-//    switch (value) {
-//        case "PEN":
-//            return "Pendiente";
-//            break;
-//        case "APR":
-//            return "Aprobado";
-//            break;
-//        case "DEV":
-//            return "Devuelto";
-//            break;
-//        case "REC":
-//            return "<span style='color:red;'>Rechazado</span>";
-//            break;
-//    }
-//}
 function BtnAccion(value, rowData, index) {
-    if (rowData.estado === "PEN" || rowData.estado === "DEV") {
-        return '<div class="btn-group" name="shows">' +
-                '<button type="button" class="btn btn-default dropdown-toggle btn-sm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-                ' <i class="fa fa-fw fa-align-justify"></i>' +
-                '</button>' +
-                '<ul class="dropdown-menu dropdown-menu-left" >' +
-                '<li name="edit"><a href="#"> <i class="fa fa-edit"></i> Editar</a></li>' +
-                ' <li name="delete" ><a href="#"> <i class="fa fa-trash"></i> Eliminar</a></li>' +
-                '</ul>' +
-                '</div>';
-    }
+    return '<div class="btn-group" name="shows">' +
+            '<button type="button" class="btn btn-default dropdown-toggle btn-sm"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+            ' <i class="fa fa-fw fa-align-justify"></i>' +
+            '</button>' +
+            '<ul class="dropdown-menu dropdown-menu-left" >' +
+            '<li name="edit"><a href="#"> <i class="fa fa-edit"></i> Editar</a></li>' +
+            ' <li name="delete" ><a href="#"> <i class="fa fa-trash"></i> Eliminar</a></li>' +
+            '</ul>' +
+            '</div>';
 }
 
 function inputProducto(value, row, index) {
