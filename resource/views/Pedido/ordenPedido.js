@@ -31,6 +31,36 @@ columns_edit = [
         events: "event_input_default"
     }
 ];
+columns_edit_v2 = [
+    {
+        field: 'state',
+        checkbox: true,
+        sortable: false
+    },
+    {
+        field: "cantidad",
+        class: "col-md-1",
+        title: "Cant.",
+        sortable: false,
+        formatter: "imask",
+        events: "event_input_default"
+    },
+    {
+        field: "descripcion",
+        title: "Descripción",
+        sortable: false,
+        formatter: "inputProducto",
+        events: "event_input_default"
+    },
+    {
+        field: "precioref",
+        class: "col-md-1",
+        title: "Precio Unit.",
+        sortable: false,
+        formatter: "imask",
+        events: "event_input_default"
+    }
+];
 columns = [
     {
         field: "cantidad",
@@ -52,6 +82,14 @@ columns = [
         sortable: false
     }
 ];
+
+function initRegistro() {
+    $('input[name="fecha"]').datepicker('update', new Date());
+
+    $("#tbOrdenPedido").bootstrapTable('refreshOptions', {
+        columns: columns_edit_v2
+    });
+}
 
 $(function () {
     initialComponents();
@@ -126,6 +164,7 @@ function getDatos() {
             items_delete: JSON.stringify(items_delete)
         }
     };
+    //console.log(datos);
     return datos;
 }
 function clear() {

@@ -41,82 +41,75 @@
 
 <div id="div-registro" class="hidden" >
     <form action="_pedido" role="ordenPedido" save>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="" class="control-label">Fecha</label>
-                            <input data-tipo="fechaView" fecha type="text" class="form-control" readonly>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="" class="control-label">Usuario</label>
-                            <input type="text" usuario class="form-control" readonly>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="" class="control-label">Departamento</label>
-                            <input type="text" departamento class="form-control" readonly>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="" class="control-label">Área</label>
-                            <input type="text" area class="form-control" readonly>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="" class="control-label">Estado</label>
-                            <input type="text" class="form-control" estado readonly>
-                        </div>
-                    </div>
-                </div>
-
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"> <i class="fa fa-pencil-alt"></i> Datos Generales</h3>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="" class="control-label">Observación:</label>
-                    <textarea name="observacion" cols="30" rows="5" class="form-control" readonly></textarea>
+            <div class="box-body">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <!--data-tipo="fechaView"-->
+                                <!--<div class="form-group">
+                                    <label for="" class="control-label">Fecha</label>
+                                    
+                                    <input data-tipo="fecha" fecha type="text" class="form-control" readonly>
+                                </div>-->
+                                <div class="form-group ">
+                                    <label class="control-label">Fecha:</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control " name="fecha" data-tipo="fecha" dt-tipo="day" readonly required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="" class="control-label">Usuario</label>
+                                    <input type="text" usuario class="form-control" readonly>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="" class="control-label">Departamento</label>
+                                    <input type="text" departamento class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="" class="control-label">Área</label>
+                                    <input type="text" area class="form-control" readonly>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="" class="control-label">Estado</label>
+                                    <input type="text" class="form-control" estado readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="" class="control-label">Observación:</label>
+                            <textarea name="observacion" cols="30" rows="5" class="form-control" readonly></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <!--<div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label for="" class="control-label">Fecha</label>
-                    <input data-tipo="fechaView" fecha name="fecha" type="text" class="form-control" readonly>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="" class="control-label">Departamento</label>
-                    <input type="text" departamento class="form-control" readonly>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="" class="control-label">Área</label>
-                    <input type="text" area class="form-control" readonly>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="" class="control-label">Usuario</label>
-                    <input type="text" usuario class="form-control" readonly>
-                </div>
-            </div>
-        </div>-->
+
         <div class="row">
             <div class="col-md-12">
                 <div id="toolbar2" class="btn-group" toolbar role="group" aria-label="...">
@@ -144,14 +137,6 @@
                     </thead>-->
                 </table>
             </div>
-            <!--<div class="col-md-4">
-                <br><br>
-                <div class="form-group">
-                    <label for="" class="control-label">Observación</label>
-                    <textarea class="form-control" name="observacion" cols="30" rows="5"  ></textarea>
-                </div>
-            </div>-->
-
         </div>
         <br>
         <div class="row">

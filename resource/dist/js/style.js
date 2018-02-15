@@ -320,7 +320,11 @@ $(function () {
     });
 
     $(document).on("click", "button[name='btn_add']", function (e) {
+        //showRegistro();
         showRegistro();
+        if (typeof window.initRegistro === 'function') {
+            initRegistro();
+        }
     });
 
     $(document).on("click", "button[name='btn_del']", function (e) {
@@ -377,7 +381,7 @@ $(function () {
         //if (typeof "getDatos" !== 'undefined' && jQuery.isFunction("getDatos")) {
         if (typeof window.getDatos === 'function') {
             datos = getDatos();
-//            return;
+            return;
         } else {
             datos = {
                 url: getURL($(this).attr("action")),
