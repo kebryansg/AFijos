@@ -5,13 +5,13 @@
         <?php require_once('mvc/views/header.php'); ?>
         <!-- Google Font -->
         <link rel="stylesheet"
-              href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+              <!--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
 
         <?php require_once('mvc/views/scripts.php'); ?>
 
     </head>
-    <!--<body class="hold-transition fixed skin-blue sidebar-mini">-->
-    <body class="hold-transition fixed skin-blue sidebar-mini sidebar-collapse">
+    <body class="hold-transition fixed skin-blue sidebar-mini">
+    <!--<body class="hold-transition fixed skin-blue sidebar-mini sidebar-collapse">-->
         <div class="wrapper">
 
             <?php require_once('mvc/views/navbar.php'); ?>
