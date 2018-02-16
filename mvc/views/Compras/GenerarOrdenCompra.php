@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<div class="row">
-    <div class="col-md-3">
-
-
-    </div>
-</div>
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title"> <i class="fa fa-pencil-alt"></i> Datos Generales</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+        </div>
     </div>
     <div class="box-body">
         <div class="row">
@@ -73,10 +71,10 @@
 <div class="row">
     <div class="col-md-6">
         <div id="toolbar" class="inputComponent">
-            <input type="text" class="form-control input-sm" style="width: 300px; margin-right: 5px;" placeholder="Proovedor">
+            <input type="text" class="form-control input-sm" style="width: 300px; margin-right: 5px;" placeholder="Proveedor" readonly>
             <button class="btn btn-primary btn-sm"> <i class="fa fa-search"></i> </button>
         </div>
-        
+
         <table id="tbDetalleOrden"
                data-toolbar="#toolbar">
             <thead>
@@ -84,7 +82,7 @@
                     <th data-field="state" data-checkbox="true"></th>
                     <th data-formatter="rowCount" class="col-md-1" data-align="center">N°</th>
                     <th data-field="descripcion">Descripción</th>
-                    
+
                     <th data-field="cantidad" class="col-md-2" data-align="center">Cant.</th>
                     <th data-field="precio" class="col-md-2" data-align="center">Precio</th>
                 </tr>
