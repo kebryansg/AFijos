@@ -1,10 +1,26 @@
 /* Estilos General */
+.bx{
+    outline: 2px red solid;
+}
+
+.pull-right-bottom{
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    margin: 15px;
+}
+
 .bold{
     font-weight: bold;
 }
 
 textarea{
     resize:none;
+}
+
+.center-content{
+    display: flex;
+    justify-content: center;
 }
 
 

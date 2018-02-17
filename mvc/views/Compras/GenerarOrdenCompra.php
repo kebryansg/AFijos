@@ -16,7 +16,7 @@
                     <label for="" class="control-label">Cod. Orden Pedido</label>
                     <div class="inputComponent" >
                         <input type="text" class="form-control input-sm" style="width: 80%;">
-                        <button class="btn btn-primary btn-sm"><i class="fa fa-search"></i> </button>
+                        <button type="button" data-columns="OrdenPedido" data-ajax="loadOrdenPedido" data-toggle="modal" data-target="#findOrdenCompra" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> </button>
                     </div>
                 </div>
                 <div class="form-group">
@@ -77,110 +77,106 @@
                 <ul class="nav nav-tabs" id="myTab" style="margin: 0 auto;width: 50%;display: flex;flex-flow: row;justify-content: space-between;">
                     <!--<div class="liner"></div>-->
                     <li class="active">
-                        <a href="#home" data-toggle="tab" title="welcome">
+                        <a href="#home" data-toggle="tab" title="Elegir">
                             <span class="round-tabs one">
-                                <i class="fa fa-book"></i>
+                                <i class="fa fa-file-alt"></i>
                             </span> 
                         </a>
                     </li>
 
-                    <li><a href="#profile" data-toggle="tab" title="profile">
+                    <li><a href="#profile" data-toggle="tab" title="Asignar Cantidad">
                             <span class="round-tabs two">
                                 <i class="fa fa-pencil-alt"></i>
                             </span> 
                         </a>
                     </li>
-                    <li><a href="#messages" data-toggle="tab" title="bootsnipp goodies">
+                    <li><a href="#messages" data-toggle="tab" title="Confirmación">
                             <span class="round-tabs three">
                                 <i class="fa fa-check"></i>
                             </span> </a>
                     </li>
-
-
-                </ul></div>
+                </ul>
+            </div>
 
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="home">
+                    <div class="center-content">
+                        <div class="col-md-10">
+                            <div id="toolbar" class="inputComponent">
+                                <input type="text" class="form-control input-sm" style="width: 300px; margin-right: 5px;" placeholder="Proveedor" readonly>
+                                <button type="button" data-columns="Proveedor" data-ajax="loadProveedor" data-toggle="modal" data-target="#findOrdenCompra" class="btn btn-primary btn-sm"> <i class="fa fa-search"></i> </button>
+                            </div>
 
-                    <h3 class="head text-center">Welcome to Bootsnipp<sup>™</sup> <span style="color:#f48260;">♥</span></h3>
-                    <p class="narrow text-center">
-                        Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
-                    </p>
+                            <table id="tbDetalleOrden"
+                                   data-toolbar="#toolbar">
+                                <thead>
+                                    <tr>
+                                        <th data-field="state" data-checkbox="true"></th>
+                                        <th data-formatter="rowCount" class="col-md-1" data-align="center">N°</th>
+                                        <th data-field="descripcion">Descripción</th>
 
-                    <p class="text-center">
-                        <a href="" class="btn btn-success btn-outline-rounded green"> start using bootsnipp <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
-                    </p>
+                                        <th data-field="cantidad" class="col-md-2" data-align="center">Cant.</th>
+                                        <th data-field="precio" class="col-md-2" data-align="center">Precio</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <!--<div class="clearfix"></div>-->
+                    <div class="pull-right-bottom ">
+                        <button type="button" class="btn btn-danger">
+                            <i class="fa fa-arrow-circle-left"></i>
+                            Regresar
+                        </button>
+                        <button type="button" class="btn btn-info">
+                            Siguiente
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </button>
+                    </div>
+
                 </div>
                 <div class="tab-pane fade" id="profile">
-                    <h3 class="head text-center">Create a Bootsnipp<sup>™</sup> Profile</h3>
-                    <p class="narrow text-center">
-                        Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
-                    </p>
 
-                    <p class="text-center">
-                        <a href="" class="btn btn-success btn-outline-rounded green"> create your profile <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
-                    </p>
 
                 </div>
                 <div class="tab-pane fade" id="messages">
-                    <h3 class="head text-center">Bootsnipp goodies</h3>
-                    <p class="narrow text-center">
-                        Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
-                    </p>
 
-                    <p class="text-center">
-                        <a href="" class="btn btn-success btn-outline-rounded green"> start using bootsnipp <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
-                    </p>
-                </div>
-                <div class="tab-pane fade" id="settings">
-                    <h3 class="head text-center">Drop comments!</h3>
-                    <p class="narrow text-center">
-                        Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
-                    </p>
-
-                    <p class="text-center">
-                        <a href="" class="btn btn-success btn-outline-rounded green"> start using bootsnipp <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
-                    </p>
-                </div>
-                <div class="tab-pane fade" id="doner">
-                    <div class="text-center">
-                        <i class="img-intro icon-checkmark-circle"></i>
-                    </div>
-                    <h3 class="head text-center">thanks for staying tuned! <span style="color:#f48260;">♥</span> Bootstrap</h3>
-                    <p class="narrow text-center">
-                        Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
-                    </p>
                 </div>
                 <div class="clearfix"></div>
             </div>
 
         </div>
-        
+
     </div>
 
 </div>
 
-<div class="row">
-    <div class="col-md-6">
-        <div id="toolbar" class="inputComponent">
-            <input type="text" class="form-control input-sm" style="width: 300px; margin-right: 5px;" placeholder="Proveedor" readonly>
-            <button class="btn btn-primary btn-sm"> <i class="fa fa-search"></i> </button>
+<div id="findOrdenCompra" class="modal fade" >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    Buscar Registro
+                </h4>
+            </div>
+            <div class="modal-body">
+                <table 
+                    id="tbFind_Pag"
+                    search>
+<!--                    <thead>
+                        <tr>
+                            <th data-field="descripcion">Descripción</th>
+                            <th data-field="accion" data-formatter="btnSeleccion" data-events="event_accion_default" class="col-md-1" data-align="center">Acción</th>
+                        </tr>
+                    </thead>-->
+                </table>
+                <div class="clearfix"></div>
+            </div>
         </div>
-
-        <table id="tbDetalleOrden"
-               data-toolbar="#toolbar">
-            <thead>
-                <tr>
-                    <th data-field="state" data-checkbox="true"></th>
-                    <th data-formatter="rowCount" class="col-md-1" data-align="center">N°</th>
-                    <th data-field="descripcion">Descripción</th>
-
-                    <th data-field="cantidad" class="col-md-2" data-align="center">Cant.</th>
-                    <th data-field="precio" class="col-md-2" data-align="center">Precio</th>
-                </tr>
-            </thead>
-        </table>
     </div>
 </div>
+
 <script type="text/javascript" src="resource/views/Compras/GenerarOrdenPedido.js"></script>
-<script type="text/javascript" src="resource/views/Compras/circularTabs.js"></script>
+<!--<script type="text/javascript" src="resource/views/Compras/circularTabs.js"></script>-->

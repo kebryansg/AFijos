@@ -157,21 +157,21 @@ function alertEliminarRegistros() {
     });
 }
 
-$.fn.serializeObject = function () {
-    var o = {};
-    var a = this.serializeArray();
-    /* Agregar identificador  "id" */
-    o["id"] = ($.isEmptyObject($(this).data("id"))) ? 0 : $(this).data("id");
-    $.each(a, function (index, row) {
-        console.log(a);
-        o[row.name] = row.value;
-    });
-    /* Agregar input de type(checkbox) */
-    $.each($(this).find("input[type='checkbox']"), function (index, row) {
-        o[row.name] = $(row).is(":checked");
-    });
-    return JSON.stringify(o);
-};
+//$.fn.serializeObject = function () {
+//    var o = {};
+//    var a = this.serializeArray();
+//    /* Agregar identificador  "id" */
+//    o["id"] = ($.isEmptyObject($(this).data("id"))) ? 0 : $(this).data("id");
+//    $.each(a, function (index, row) {
+//        console.log(a);
+//        o[row.name] = row.value;
+//    });
+//    /* Agregar input de type(checkbox) */
+//    $.each($(this).find("input[type='checkbox']"), function (index, row) {
+//        o[row.name] = $(row).is(":checked");
+//    });
+//    return JSON.stringify(o);
+//};
 
 $.fn.getFecha = function () {
     tipo = $(this).attr("dt-tipo");
@@ -381,7 +381,7 @@ $(function () {
         //if (typeof "getDatos" !== 'undefined' && jQuery.isFunction("getDatos")) {
         if (typeof window.getDatos === 'function') {
             datos = getDatos();
-            return;
+//            return;
         } else {
             datos = {
                 url: getURL($(this).attr("action")),
@@ -402,13 +402,14 @@ $(function () {
         'show.bs.modal': function (e) {
             dataAjax = $(e.relatedTarget).attr("data-ajax");
             $(this).data("ref", $(e.relatedTarget));
-            $("table[search]").bootstrapTable($.extend({}, TablePaginationDefault,
+            //$("table[search]").bootstrapTable($.extend({}, TablePaginationDefault,
+            $(this).find("table[search]").bootstrapTable($.extend({}, TablePaginationDefault,
                     {
                         ajax: dataAjax
                     }));
         }
         , 'hidden.bs.modal': function (e) {
-            $("table[search]").bootstrapTable("destroy");
+            $(this).find("table[search]").bootstrapTable("destroy");
         }
         , 'dbl-click-row.bs.table': function (e, row, $element) {
             action_seleccion_v2(row);

@@ -1,9 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
 /* written by riliwan balogun http://www.facebook.com/riliwan.rabo*/
 .board{
-    width: 75%;
-    margin: 60px auto;
-    height: 500px;
+    /*width: 75%;*/
+    /*margin: 60px auto;*/
+    /*height: 500px;*/
+/*    min-height: 500px;*/
     background: #fff;
     /*box-shadow: 10px 10px #ccc,-10px 20px #ddd;*/
 }
@@ -48,9 +49,9 @@ p.narrow{
 }
 
 span.round-tabs{
-    width: 70px;
-    height: 70px;
-    line-height: 70px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
     display: inline-block;
     border-radius: 100px;
     background: white;
@@ -62,7 +63,8 @@ span.round-tabs{
 }
 
 span.round-tabs.one{
-    color: rgb(34, 194, 34);border: 2px solid rgb(34, 194, 34);
+    color: rgb(34, 194, 34);
+    border: 2px solid rgb(34, 194, 34);
 }
 
 li.active span.round-tabs.one{
@@ -153,9 +155,9 @@ li.active span.round-tabs.five{
 
 }
 .nav-tabs > li a{
-    width: 70px;
-    height: 70px;
-    margin: 20px auto;
+    width: 50px;
+    height: 50px;
+    margin: 11px auto;
     border-radius: 100%;
     padding: 0;
 }
@@ -169,6 +171,7 @@ li.active span.round-tabs.five{
 .tab-pane{
     position: relative;
     padding-top: 50px;
+    height: 400px;
 }
 .tab-content .head{
     font-family: 'Roboto Condensed', sans-serif;
