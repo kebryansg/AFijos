@@ -11,6 +11,17 @@ $mapper = new JsonMapper();
 $resultado = "";
 
 switch ($accion) {
+    case "get": 
+        $id = $_POST["id"];
+        
+        switch ($op) {
+            case "OrdenPedido": 
+                //OrdenPedidoDaoImp::
+                break;
+        }
+        
+        
+        break;
     case "list":
         $top = (isset($_POST["limit"])) ? $_POST["limit"] : 0;
         $pag = (isset($_POST["offset"])) ? $_POST["offset"] : 0;

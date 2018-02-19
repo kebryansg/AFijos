@@ -27,8 +27,13 @@
     </div>
 </div>
 
-<div id="div-registro" class="row hidden" >
-    <form save role="proveedor" action="_compras">
+<div id="div-registro" class="hidden" >
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title"> <i class="fa fa-pencil-alt"></i> Datos Generales</h3>
+        </div>
+        <div class="box-body">
+            <form save role="proveedor" action="_compras">
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Tipo Identificación</label>
@@ -46,23 +51,6 @@
                     </select>
                 </div>
             </div>
-            
-            <!--
-            <div class="form-group">
-                    <label for="" class="control-label">Área</label>
-                    <div tipo data-fn="loadArea" >
-
-                        <div class="pull-right">
-                            <button refresh type="button" class="btn btn-success ">
-                                <i class="fa fa-refresh"></i>
-                            </button>    
-                        </div>
-
-                        <select name="IDTipoIdentificacion" class="selectpicker form-control" data-width="80%" required></select>
-                    </div>
-                </div>
-            
-            -->
             <div class="form-group">
                 <label class="control-label">Identificación</label>
                 <input type="text" name="Identificacion" class="form-control" value="" maxlength="10" required>
@@ -147,6 +135,11 @@
         </div>
 
     </form>
+        </div>
+    </div>
+
+
+    
 </div>
 
 <script type="text/javascript" src="resource/views/items/proveedor.js"></script>

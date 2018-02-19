@@ -88,10 +88,10 @@ function defaultBtnAccion(value, rowData, index) {
             '</div>';
 }
 function btnSeleccion(value) {
-    return '<button name="seleccion" class="btn btn-success btn-sm"><i class="fa fa-check-square-o" aria-hidden="true"></i> Seleccionar</button>';
+    return '<button name="seleccion" class="btn btn-success btn-sm"><i class="fa fa-check-circle" aria-hidden="true"></i> Seleccionar</button>';
 }
 
-/* Formato para Cajas de Numeros Decimales */
+/* Formato para Texto */
 function defaultInput(value, rowData, index) {
     return '<input text data-field="' + this.field + '" class="form-control input-sm" type="text" value="' + value + '">';
 }

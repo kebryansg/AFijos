@@ -20,6 +20,14 @@ class OrdenPedidoDaoImp {
         }
         $conn->close();
     }
+    public static function get($id, $OrdenPedido) {
+        $conn = (new C_MySQL())->open();
+        $sql = "select * from ". $OrdenPedido->tabla ." where id = $id ;";
+
+        $categoria = C_MySQL::returnListAsoc($conn, $sql)[0];
+        $conn->close();
+        return $categoria;
+    }
 
     public static function listOrdenPedido($top, $pag, &$count) {
         $conn = (new C_MySQL())->open();

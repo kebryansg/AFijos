@@ -168,7 +168,7 @@ function loadDepartamento(params = null) {
             data: data,
             url: "servidor/sCatalogo.php"
         });
-    }
+}
 }
 function loadCentroCosto(params) {
     json_data = {
@@ -419,13 +419,13 @@ function loadSubTipoGeneral(params) {
     params.success(getJson(json_data));
 }
 
-/*function loadProveedor(params) {
- json_data = {
- data: $.extend({}, {
- op: "proveedor",
- accion: "list"
- }, params.data),
- url: "servidor/sPedido.php"
- };
- params.success(getJson(json_data));
- }*/
+function loadProveedor(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "proveedor",
+            accion: "list"
+        }, params.data),
+        url: "servidor/sCompras.php"
+    };
+    params.success(getJson(json_data));
+}
