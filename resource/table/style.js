@@ -16,16 +16,16 @@ function estadoOrdenPedido(value) {
     result = "";
     switch (value) {
         case "PEN":
-            result =  "Pendiente";
+            result = "Pendiente";
             break;
         case "APR":
-            result =  "Aprobado";
+            result = "Aprobado";
             break;
         case "DEV":
-            result =  "Devuelto";
+            result = "Devuelto";
             break;
         case "REC":
-            result =  "Rechazado";
+            result = "Rechazado";
             break;
     }
     return result.toUpperCase();
@@ -102,7 +102,12 @@ function rowCount(value, row, index) {
 }
 /* Formato para Cajas de Numeros Decimales */
 function imask(value, rowData, index) {
+    value = $.isEmptyObject(value) ? 0 : value;
     return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
+}
+function mask(value, rowData, index) {
+    value = $.isEmptyObject(value) ? 0 : value;
+    return formatInputMask(value);
 }
 
 

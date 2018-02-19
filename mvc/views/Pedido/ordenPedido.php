@@ -84,21 +84,13 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label for="" class="control-label">Área</label>
-                                    <input type="text" area class="form-control" readonly>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="form-group">
                                     <label for="" class="control-label">Estado</label>
                                     <input type="text" class="form-control" estado readonly>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
+                        
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">

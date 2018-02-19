@@ -9,7 +9,7 @@
             </button>
         </div>
     </div>
-    <div class="box-body">
+    <div class="box-body" OrdenPedido>
         <div class="row">
             <div class="col-md-7">
                 <div class="row">
@@ -17,8 +17,8 @@
                         <div class="form-group">
                             <label for="" class="control-label">Cod. Orden Pedido</label>
                             <div class="inputComponent" >
-                                <input type="text" class="form-control input-sm" style="width: 80%;" required>
-                                <input type="hidden" name="id">
+                                <input type="text" name="id" class="form-control input-sm" style="width: 80%;" required>
+                                <!--<input type="hidden" name="id">-->
                                 <button type="button" data-columns="OrdenPedido" data-ajax="loadOrdenPedido" data-toggle="modal" data-target="#findOrdenCompra" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> </button>
                             </div>
                         </div>
@@ -30,14 +30,14 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control " name="fecha" data-tipo="fecha" dt-tipo="day" readonly required>
+                                <input type="text" class="form-control " name="fecha" data-tipo="fechaView"  readonly required>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="" class="control-label">Estado</label>
-                            <input type="text" class="form-control" estado readonly>
+                            <input type="text"  class="form-control" name="estado" readonly>
                         </div>
                     </div>
                 </div>
@@ -45,13 +45,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Departamento</label>
-                            <input type="text" departamento class="form-control" readonly>
+                            <input type="text" name="departamento" class="form-control" readonly>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Usuario</label>
-                            <input type="text" usuario class="form-control" readonly>
+                            <input type="text" name="usuario" class="form-control" readonly>
                         </div>
                     </div>
                 </div>
@@ -59,59 +59,10 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="" class="control-label">Observación</label>
-                    <textarea class="form-control" name="descripcion" cols="30" rows="4" readonly></textarea>
+                    <textarea class="form-control" name="observacion" cols="30" rows="4" readonly></textarea>
                 </div>
             </div>
         </div>
-        <!--        <div class="row">
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <label for="" class="control-label">Cod. Orden Pedido</label>
-                            <div class="inputComponent" >
-                                <input type="text" class="form-control input-sm" style="width: 80%;" required>
-                                <input type="hidden" name="id">
-                                <button type="button" data-columns="OrdenPedido" data-ajax="loadOrdenPedido" data-toggle="modal" data-target="#findOrdenCompra" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> </button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="control-label">Departamento</label>
-                            <input type="text" departamento class="form-control" readonly>
-                        </div>
-                        
-        
-                    </div>
-                    <div class="col-lg-3">
-        
-                        <div class="form-group ">
-                            <label class="control-label">Fecha:</label>
-                            <div class="input-group date">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" class="form-control " name="fecha" data-tipo="fecha" dt-tipo="day" readonly required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="control-label">Usuario</label>
-                            <input type="text" usuario class="form-control" readonly>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        
-                        <div class="form-group">
-                            <label for="" class="control-label">Estado</label>
-                            <input type="text" class="form-control" estado readonly>
-                        </div>
-                        
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <label for="" class="control-label">Observación</label>
-                            <textarea class="form-control" name="descripcion" cols="30" rows="4" readonly></textarea>
-                        </div>
-                    </div>
-        
-                </div>-->
     </div>
 </div>
 
@@ -129,26 +80,29 @@
                         </a>
                     </li>
 
-                    <li><a href="#profile" data-toggle="tab" title="Asignar Cantidad">
+                    <li>
+                        <a href="#profile" data-toggle="tab" title="Asignar Cantidad">
                             <span class="round-tabs two">
                                 <i class="fa fa-pencil-alt"></i>
                             </span> 
                         </a>
                     </li>
-                    <li><a href="#messages" data-toggle="tab" title="Confirmación">
+                    <li>
+                        <a href="#messages" data-toggle="tab" title="Confirmación">
                             <span class="round-tabs three">
                                 <i class="fa fa-check"></i>
-                            </span> </a>
+                            </span> 
+                        </a>
                     </li>
                 </ul>
             </div>
 
             <div class="tab-content">
-                <div class="tab-pane fade in active" id="home">
+                <div class="tab-pane fade in active" id="home" >
                     <div class="center-content">
                         <div class="col-md-10">
                             <div id="toolbar" class="inputComponent">
-                                <input type="text" class="form-control input-sm" style="width: 300px; margin-right: 5px;" placeholder="Proveedor" readonly>
+                                <input type="text" id="txtProveedor" class="form-control input-sm" style="width: 300px; margin-right: 5px;" placeholder="Proveedor" readonly>
                                 <button type="button" data-columns="Proveedor" data-ajax="loadProveedor" data-toggle="modal" data-target="#findOrdenCompra" class="btn btn-primary btn-sm"> <i class="fa fa-search"></i> </button>
                             </div>
 
@@ -161,7 +115,8 @@
                                         <th data-field="descripcion">Descripción</th>
 
                                         <th data-field="cantidad" class="col-md-2" data-align="center">Cant.</th>
-                                        <th data-field="precio" class="col-md-2" data-align="center">Precio</th>
+                                        <th data-field="saldo" class="col-md-2" data-align="center" data-formatter="mask">Saldo</th>
+                                        <th data-field="precioref" class="col-md-2" data-align="center">Precio</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -169,23 +124,63 @@
                     </div>
                     <!--<div class="clearfix"></div>-->
                     <div class="pull-right-bottom ">
-                        <button type="button" class="btn btn-danger">
+                        <!--<button last type="button" class="btn btn-danger">
                             <i class="fa fa-arrow-circle-left"></i>
                             Regresar
-                        </button>
-                        <button type="button" class="btn btn-info">
+                        </button>-->
+                        <button next type="button" class="btn btn-info" dt-validate="validarProveedor_CantItems">
                             Siguiente
                             <i class="fa fa-arrow-circle-right"></i>
                         </button>
                     </div>
 
                 </div>
-                <div class="tab-pane fade" id="profile">
+                <div class="tab-pane fade" id="profile" dt-validate="">
+                    <div class="center-content">
+                        <div class="col-md-10">
+                            <table id="tbDetalleOrdenSelect">
+                                <thead>
+                                    <tr>
+                                        <th data-field="state" data-checkbox="true"></th>
+                                        <th data-formatter="rowCount" class="col-md-1" data-align="center">N°</th>
+                                        <th data-field="descripcion">Descripción</th>
+                                        <th data-field="cantidad" class="col-md-2" data-align="center">Cant.</th>
+                                        <th data-field="saldo" class="col-md-2" data-align="center" data-formatter="mask">Saldo</th>
+                                        <th data-field="precioref" class="col-md-2" data-align="center">Precio</th>
+                                        <th data-field="solicitar" class="col-md-2" data-formatter="imask">Solicitar</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="pull-right-bottom ">
+                        <button last type="button" class="btn btn-danger">
+                            <i class="fa fa-arrow-circle-left"></i>
+                            Regresar
+                        </button>
+                        <button next type="button" class="btn btn-info">
+                            Siguiente
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </button>
+                    </div>
 
 
                 </div>
-                <div class="tab-pane fade" id="messages">
-
+                <div class="tab-pane fade" id="messages" dt-validate="">
+                    <div class="center-content">
+                        
+                    </div>
+                    <div class="pull-right-bottom ">
+                        <button last type="button" class="btn btn-danger">
+                            <i class="fa fa-arrow-circle-left"></i>
+                            Regresar
+                        </button>
+                        <button next type="button" class="btn btn-info">
+                            Finalizar
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </button>
+                    </div>
+                    
                 </div>
                 <div class="clearfix"></div>
             </div>

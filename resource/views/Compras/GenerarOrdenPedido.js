@@ -1,5 +1,48 @@
+function validarProveedor_CantItems() {
+    return $("#txtProveedor").val() !== "" && $("#tbDetalleOrden").bootstrapTable("getSelections").length > 0;
+}
+
 $(function () {
-    $("#tbDetalleOrden").bootstrapTable();
+
+    $(".tab-pane button[next]").click(function (e) {
+        func = $(this).attr("dt-validate");
+
+        bandera = self[func]();
+        if (bandera) {
+            id = $(this).closest(".tab-pane").attr("id");
+            li = $('a[href="#' + id + '"]').closest("li");
+            li_next = $(li).next();
+            $(li_next).find("a").click();
+        }
+
+
+    });
+
+    $(".tab-pane button[last]").click(function (e) {
+        id = $(this).closest(".tab-pane").attr("id");
+        li = $('a[href="#' + id + '"]').closest("li");
+        li_next = $(li).prev();
+        $(li_next).find("a").click();
+    });
+
+    $("#tbDetalleOrden,#tbDetalleOrdenSelect").bootstrapTable();
+
+    $("div[OrdenPedido]").clear();
+
+    $("input[name='id']").keypress(function (e) {
+        if (e.which === 13) {
+            getOrdenPedido($(this).val());
+        }
+    });
+
+    $("button[select_1]").click(function (e) {
+        datos = $("#tbDetalleOrden").bootstrapTable("getSelections").map(function (row) {
+            row.state = false;
+            return row;
+        });
+        $("#tbDetalleOrdenSelect").bootstrapTable("load", datos);
+    });
+
 
     //$("#tbFind_Pag").bootstrapTable();
 
@@ -41,8 +84,8 @@ function tableColumns(op) {
                     formatter: "defaultFecha"
                 },
                 {
-                    title: "Área",
-                    field: "area"
+                    title: "Departamento",
+                    field: "departamento"
                 },
                 {
                     title: "Acción",
@@ -92,9 +135,12 @@ window.evtInputComponent = {
         btnRef = $(modal).data("ref");
         $(modal).modal("hide");
 
-        div = $(btnRef).closest(".inputComponent");
-        /*$(div).find("input[type='hidden']").val(row.id);
-        $(div).find("input[type='text']").val(row.area);*/
+//        div = $(btnRef).closest(".inputComponent");
+//        $(div).find("input[type='hidden']").val(row.id);
+//        $(div).find("input[type='text']").val(row.id);
+
+        getOrdenPedido(row.id);
+
 
     },
     "click button[Proveedor]": function (e, value, row, index) {
@@ -110,6 +156,35 @@ window.evtInputComponent = {
 
 };
 
-function getOrdenPedido(id){
-    getJson(id);
+function getOrdenPedido(id) {
+    datos = getJson({
+        url: getURL("_pedido"),
+        data: {
+            accion: "get",
+            op: "OrdenPedido",
+            id: id
+        }
+    });
+
+
+    $("div[OrdenPedido]").clear();
+    $("#tbDetalleOrden").bootstrapTable("removeAll");
+
+    $("div[OrdenPedido]").edit(datos);
+    $("div[OrdenPedido] input[name='estado']").val(estadoOrdenPedido(datos.estado));
+
+
+    //DetalleOrdenPedido
+    dt = {
+        url: getURL("_pedido"),
+        data: {
+            accion: "list",
+            op: "DetalleordenPedido",
+            OrdenPedido: datos.id
+        }
+    };
+
+    $("#tbDetalleOrden").bootstrapTable("load", getJson(dt));
+
+    console.log(datos);
 }

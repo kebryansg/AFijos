@@ -11,16 +11,14 @@ $mapper = new JsonMapper();
 $resultado = "";
 
 switch ($accion) {
-    case "get": 
+    case "get":
         $id = $_POST["id"];
-        
+
         switch ($op) {
-            case "OrdenPedido": 
-                //OrdenPedidoDaoImp::
+            case "OrdenPedido":
+                $resultado = json_encode(OrdenPedidoDaoImp::get($id));
                 break;
         }
-        
-        
         break;
     case "list":
         $top = (isset($_POST["limit"])) ? $_POST["limit"] : 0;
@@ -49,7 +47,7 @@ switch ($accion) {
                 break;
             case "ordenPedido":
                 $ordenPedido = $mapper->map($json, new OrdenPedido());
-                $ordenPedido->IDArea = 1;
+                $ordenPedido->IDDepartamento = 1;
                 $ordenPedido->IDUsuario = 2;
 
                 OrdenPedidoDaoImp::save($ordenPedido);
@@ -67,6 +65,8 @@ switch ($accion) {
                 foreach (json_decode($_POST["items"]) as $item) {
                     $detalleOrdenPedido = $mapper->map($item, new DetalleOrdenPedido());
                     $detalleOrdenPedido->IDOrdenPedido = $ordenPedido->ID;
+                    
+                    $detalleOrdenPedido->Saldo = $detalleOrdenPedido->Cantidad;
 
                     DetalleOrdenPedidoDaoImp::save($detalleOrdenPedido);
 

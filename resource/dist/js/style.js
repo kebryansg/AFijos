@@ -252,11 +252,10 @@ $.fn.validate = function () {
 
 $.fn.edit = function (datos) {
     claves = JSON_Clave(datos);
-    console.log(claves);
     $(this).data("id", datos.id);
     $.each($(this).find("[name]"), function (i, component) {
         name = $(component).attr("name");
-        if ($.inArray(name, claves)) {
+        if ($.inArray(name, claves) !== -1) {
             tagName = $(component).prop("tagName");
             switch (tagName) {
                 case "SELECT":
@@ -272,7 +271,7 @@ $.fn.edit = function (datos) {
                             $(component).setFloat(datos[name]);
                             break;
                         case "fechaView":
-                            $(component).val(formatView(datos[name]));
+                            $(component).val(formatView(datos[name]).toUpperCase());
                             break;
                         case "fecha":
                             $(component).datepicker("update", fechaMoment(datos[name]).toDate());

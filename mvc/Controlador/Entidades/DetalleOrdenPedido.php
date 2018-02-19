@@ -6,6 +6,7 @@ class DetalleOrdenPedido extends ModelSQL {
     public $tabla;
     public $ID;
     public $Cantidad;
+    public $Saldo;
     public $Descripcion;
     public $Observacion;
     public $IDOrdenPedido;
