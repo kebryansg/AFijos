@@ -3,7 +3,7 @@
 <!--<link rel="stylesheet" href="resource/dist/css/circularTabsK.css">-->
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"> <i class="fa fa-pencil-alt"></i> Datos Generales</h3>
+        <h3 class="box-title"> <i class="fa fa-pencil-alt"></i> Datos - Orden Pedido</h3>
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
@@ -17,9 +17,12 @@
                         <div class="form-group">
                             <label for="" class="control-label">Cod. Orden Pedido</label>
                             <div class="inputComponent" >
-                                <input type="text" name="id" class="form-control input-sm" style="width: 80%;" required>
+                                <input type="text" name="id" class="form-control input-sm" style="width: 70%;" required>
                                 <!--<input type="hidden" name="id">-->
-                                <button type="button" data-columns="OrdenPedido" data-ajax="loadOrdenPedido" data-toggle="modal" data-target="#findOrdenCompra" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> </button>
+                                <div>
+                                    <button type="button" data-columns="OrdenPedido" data-ajax="loadOrdenPedido" data-toggle="modal" data-target="#findOrdenCompra" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> </button>
+                                    <button type="button" id="clearPag" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -30,14 +33,14 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control " name="fecha" data-tipo="fechaView"  readonly required>
+                                <input type="text" class="form-control input-sm " name="fecha" data-tipo="fechaView"  readonly required>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="" class="control-label">Estado</label>
-                            <input type="text"  class="form-control" name="estado" readonly>
+                            <input type="text"  class="form-control input-sm" name="estado" readonly>
                         </div>
                     </div>
                 </div>
@@ -45,13 +48,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Departamento</label>
-                            <input type="text" name="departamento" class="form-control" readonly>
+                            <input type="text" name="departamento" class="form-control input-sm" readonly>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Usuario</label>
-                            <input type="text" name="usuario" class="form-control" readonly>
+                            <input type="text" name="usuario" class="form-control input-sm" readonly>
                         </div>
                     </div>
                 </div>
@@ -59,7 +62,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="" class="control-label">Observación</label>
-                    <textarea class="form-control" name="observacion" cols="30" rows="4" readonly></textarea>
+                    <textarea class="form-control input-sm" name="observacion" cols="30" rows="4" readonly></textarea>
                 </div>
             </div>
         </div>
@@ -72,21 +75,21 @@
             <div class="board-inner" style="border-bottom: 1px solid #ddd;">
                 <ul class="nav nav-tabs" id="myTab" style="margin: 0 auto;width: 50%;display: flex;flex-flow: row;justify-content: space-between;">
                     <li class="active">
-                        <a href="#home" data-toggle="tab" title="Elegir">
+                        <a href="#home" data-toggle="tab" title="Elegir" class="not-active">
                             <span class="round-tabs one">
                                 <i class="fa fa-file-alt"></i>
                             </span> 
                         </a>
                     </li>
                     <li>
-                        <a href="#profile" data-toggle="tab" title="Asignar Cantidad">
+                        <a href="#profile" data-toggle="tab" title="Asignar Cantidad" class="not-active">
                             <span class="round-tabs two">
                                 <i class="fa fa-pencil-alt"></i>
                             </span> 
                         </a>
                     </li>
                     <li>
-                        <a href="#messages" data-toggle="tab" title="Confirmación">
+                        <a href="#messages" data-toggle="tab" title="Confirmación" class="not-active">
                             <span class="round-tabs three">
                                 <i class="fa fa-check"></i>
                             </span> 
@@ -144,7 +147,7 @@
                                         <th data-field="cantidad" class="col-md-2" data-align="center">Cant.</th>
                                         <th data-field="saldo" class="col-md-2" data-align="center" data-formatter="mask">Saldo</th>
                                         <th data-field="precioref" class="col-md-2" data-align="center">Precio</th>
-                                        <th data-field="solicitar" class="col-md-2" data-formatter="imask" data-events="event_input_default">Solicitar</th>
+                                        <th data-field="solicitar" class="col-md-2" data-formatter="imaskMinMax" data-events="event_input_default">Solicitar</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -155,7 +158,7 @@
                             <i class="fa fa-arrow-circle-left"></i>
                             Regresar
                         </button>
-                        <button next type="button" class="btn btn-info">
+                        <button next type="button" class="btn btn-info" dt-validate="validarCantidadSolicitada">
                             Siguiente
                             <i class="fa fa-arrow-circle-right"></i>
                         </button>
@@ -165,7 +168,7 @@
                 </div>
                 <div class="tab-pane fade" id="messages" dt-validate="">
                     <div class="center-content">
-                        
+
                     </div>
                     <div class="pull-right-bottom ">
                         <button last type="button" class="btn btn-danger">
@@ -177,7 +180,7 @@
                             <i class="fa fa-arrow-circle-right"></i>
                         </button>
                     </div>
-                    
+
                 </div>
                 <div class="clearfix"></div>
             </div>

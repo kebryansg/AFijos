@@ -37,6 +37,19 @@ Inputmask.extendAliases({
         placeholder: '0'
     }
 });
+
+myDecimalMinMax = {
+    alias: "numeric",
+    groupSeparator: ',',
+    autoGroup: true,
+    digits: 2,
+    min: 1,
+    digitsOptional: false,
+    placeholder: '0'
+};
+
+
+
 function action_seleccion_v2(datos) {
     $("#modal-find").modal("hide");
     div = $("#modal-find").data("ref");

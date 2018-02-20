@@ -71,6 +71,12 @@ window.event_input_default = {
     'focus input[myDecimal]': function (e, value, row, index) {
         $(this).inputmask("myDecimal");
         $(this).select();
+    },
+    'focus input[myDecimalMinMax]': function (e, value, row, index) {
+        max = $(this).attr("d-max");
+        console.log($.extend({}, myDecimalMinMax, {max: max}));
+        $(this).inputmask($.extend({}, myDecimalMinMax, {max: max}));
+        $(this).select();
     }
 };
 

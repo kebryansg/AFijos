@@ -1,5 +1,21 @@
 function validarProveedor_CantItems() {
-    return $("#txtProveedor").val() !== "" && $("#tbDetalleOrden").bootstrapTable("getSelections").length > 0;
+    return $("#tbDetalleOrdenSelect").bootstrapTable("getData").length > 0 || ($("#txtProveedor").val() !== "" && $("#tbDetalleOrden").bootstrapTable("getSelections").length > 0);
+}
+
+function validarCantidadSolicitada() {
+    bandera = false;
+    data = $("#tbDetalleOrdenSelect").bootstrapTable("getData");
+    if (data.length > 0) {
+        bandera = true;
+        $.each(data, function (i, row) {
+            console.log(row);
+            if (row.solicitar <= 0) {
+                bandera = false;
+                return;
+            }
+        });
+    }
+    return bandera;
 }
 
 $(function () {
@@ -16,20 +32,23 @@ $(function () {
         }
     });
 
-    $('.nav-tabs li:eq(1) a').on('hide.bs.tab', function (event) {
-        $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
-    });
+    /*$('.nav-tabs li:eq(1) a').on('hide.bs.tab', function (event) {
+     $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
+     });*/
 
     $('.nav-tabs li:eq(1) a').on('shown.bs.tab', function (event) {
         ids = [];
-        datos = $("#tbDetalleOrden").bootstrapTable("getSelections").map(function (row) {
+        ids_detalle = $("#tbDetalleOrdenSelect").bootstrapTable("getData").map(row => row.id);
+        $.each($("#tbDetalleOrden").bootstrapTable("getSelections"), function (i, row) {
             ids.push(row.id);
-            row.state = false;
-            return row;
+            if ($.inArray(row.id, ids_detalle) === -1 && row.saldo > 0) {
+                //row.solicitar = 1;
+                row.solicitar = row.saldo;
+                row.state = false;
+                $("#tbDetalleOrdenSelect").bootstrapTable("append", row);
+            }
         });
         $("#tbDetalleOrden").bootstrapTable('uncheckBy', {field: 'id', values: ids});
-
-        $("#tbDetalleOrdenSelect").bootstrapTable("load", datos);
     });
 
     $(".tab-pane button[last]").click(function (e) {
@@ -48,6 +67,13 @@ $(function () {
             getOrdenPedido($(this).val());
         }
     });
+
+    $("#clearPag").click(function (e) {
+        $("div[OrdenPedido]").clear();
+        $("#tbDetalleOrden").bootstrapTable("removeAll");
+        $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
+    });
+
 
     //$("#tbFind_Pag").bootstrapTable();
 
@@ -133,6 +159,9 @@ function btnSelecionOrdenPedido() {
 function btnSelecionProveedor() {
     return '<button Proveedor class="btn btn-success btn-sm"><i class="fa fa-check-circle" aria-hidden="true"></i> Seleccionar</button>';
 }
+function imaskMinMax(value, rowData, index) {
+    return '<input myDecimalMinMax d-max="' + rowData.saldo + '" field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
+}
 
 window.evtInputComponent = {
     "click button[OrdenPedido]": function (e, value, row, index) {
@@ -167,6 +196,7 @@ function getOrdenPedido(id) {
 
     $("div[OrdenPedido]").clear();
     $("#tbDetalleOrden").bootstrapTable("removeAll");
+    $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
 
     $("div[OrdenPedido]").edit(datos);
     $("div[OrdenPedido] input[name='estado']").val(estadoOrdenPedido(datos.estado));

@@ -2,7 +2,7 @@
 .bx{
     outline: 2px red solid;
 }
-
+/* Ubicar en Esquina Derecha-Abajo */
 .pull-right-bottom{
     bottom: 0;
     position: absolute;
@@ -17,15 +17,20 @@
 textarea{
     resize:none;
 }
-
+/* Centar Contenido */
 .center-content{
     display: flex;
     justify-content: center;
 }
+/* Deshabilitar etiqueta */
+.not-active {
+  pointer-events: none;
+  cursor: default;
+}
 
 
 /* InpustMask */
-input[myDecimal]{
+input[myDecimal],input[myDecimalMinMax]{
     text-align: right;
 }
 
