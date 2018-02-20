@@ -252,10 +252,11 @@ $.fn.validate = function () {
 
 $.fn.edit = function (datos) {
     claves = JSON_Clave(datos);
+    console.log(claves);
     $(this).data("id", datos.id);
     $.each($(this).find("[name]"), function (i, component) {
         name = $(component).attr("name");
-        if ($.inArray(name, claves) !== -1) {
+        if ($.inArray(name.toUpperCase(), claves) !== -1) {
             tagName = $(component).prop("tagName");
             switch (tagName) {
                 case "SELECT":

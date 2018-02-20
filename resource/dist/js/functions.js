@@ -32,7 +32,7 @@ $.fn.getFloat = function () {
 function JSON_Clave(obj){
     claves = [];
     for (var clave in obj) {
-        claves.push(clave);
+        claves.push(clave.toUpperCase());
     }
     return claves;
 };

@@ -6,7 +6,9 @@ $(function () {
 });
 
 function edit(datos) {
-    $("#div-registro form").data("id", datos.ID);
+    
+    $("#div-registro form").edit(datos);
+    /*$("#div-registro form").data("id", datos.ID);
     for (var clave in datos) {
         switch ($("#div-registro form [name='" + clave + "']").prop("tagName")) {
             case "SELECT":
@@ -16,7 +18,7 @@ function edit(datos) {
                 $("#div-registro form [name='" + clave + "']").val(datos[clave]);
                 break;
         }
-    }
+    }*/
 }
 
 function delet(datos) {

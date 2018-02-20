@@ -6,16 +6,30 @@ $(function () {
 
     $(".tab-pane button[next]").click(function (e) {
         func = $(this).attr("dt-validate");
-
         bandera = self[func]();
+
         if (bandera) {
             id = $(this).closest(".tab-pane").attr("id");
             li = $('a[href="#' + id + '"]').closest("li");
             li_next = $(li).next();
             $(li_next).find("a").click();
         }
+    });
 
+    $('.nav-tabs li:eq(1) a').on('hide.bs.tab', function (event) {
+        $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
+    });
 
+    $('.nav-tabs li:eq(1) a').on('shown.bs.tab', function (event) {
+        ids = [];
+        datos = $("#tbDetalleOrden").bootstrapTable("getSelections").map(function (row) {
+            ids.push(row.id);
+            row.state = false;
+            return row;
+        });
+        $("#tbDetalleOrden").bootstrapTable('uncheckBy', {field: 'id', values: ids});
+
+        $("#tbDetalleOrdenSelect").bootstrapTable("load", datos);
     });
 
     $(".tab-pane button[last]").click(function (e) {
@@ -34,15 +48,6 @@ $(function () {
             getOrdenPedido($(this).val());
         }
     });
-
-    $("button[select_1]").click(function (e) {
-        datos = $("#tbDetalleOrden").bootstrapTable("getSelections").map(function (row) {
-            row.state = false;
-            return row;
-        });
-        $("#tbDetalleOrdenSelect").bootstrapTable("load", datos);
-    });
-
 
     //$("#tbFind_Pag").bootstrapTable();
 
@@ -135,13 +140,7 @@ window.evtInputComponent = {
         btnRef = $(modal).data("ref");
         $(modal).modal("hide");
 
-//        div = $(btnRef).closest(".inputComponent");
-//        $(div).find("input[type='hidden']").val(row.id);
-//        $(div).find("input[type='text']").val(row.id);
-
         getOrdenPedido(row.id);
-
-
     },
     "click button[Proveedor]": function (e, value, row, index) {
         modal = $(this).closest(".modal");
@@ -166,13 +165,11 @@ function getOrdenPedido(id) {
         }
     });
 
-
     $("div[OrdenPedido]").clear();
     $("#tbDetalleOrden").bootstrapTable("removeAll");
 
     $("div[OrdenPedido]").edit(datos);
     $("div[OrdenPedido] input[name='estado']").val(estadoOrdenPedido(datos.estado));
-
 
     //DetalleOrdenPedido
     dt = {
@@ -185,6 +182,4 @@ function getOrdenPedido(id) {
     };
 
     $("#tbDetalleOrden").bootstrapTable("load", getJson(dt));
-
-    console.log(datos);
 }

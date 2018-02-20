@@ -102,7 +102,8 @@ function rowCount(value, row, index) {
 }
 /* Formato para Cajas de Numeros Decimales */
 function imask(value, rowData, index) {
-    value = $.isEmptyObject(value) ? 0 : value;
+    //value = $.isEmptyObject(value) ? 0 : value;
+    value = value !== undefined ? value : 0;
     return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
 }
 function mask(value, rowData, index) {

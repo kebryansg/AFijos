@@ -17,9 +17,9 @@
             <thead>
                 <tr>
                     <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="ID" class="col-md-1" data-align="center">Cód.</th>
-                    <th data-field="Nombre">Nombres</th>
-                    <th data-field="Email">Email</th>
+                    <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
+                    <th data-field="nombre">Nombres</th>
+                    <th data-field="email">Email</th>
                     <th data-field="accion" class="col-md-1" data-align="center" data-formatter="defaultBtnAccion" data-events="event_accion_default">Acciones</th>
                 </tr>
             </thead>
@@ -38,39 +38,39 @@
             <div class="form-group">
                 <label class="control-label">Tipo Identificación</label>
                 <div tipo  data-fn="loadTipoIdentificacion"  >
+                    <select name="IDTipoIdentificacion" class="selectpicker form-control" data-width='80%' required></select>
                     <div class="pull-right">
                         <button type="button" class="btn btn-info btn-sm " data-toggle='modal' 
                                 data-target="#modal-new" data-url="mvc/views/activos/tipoidentificacion.php">
                             <i class="fa fa-plus"></i>
                         </button>
                         <button refresh type="button" class="btn btn-success btn-sm ">
-                            <i class="fa fa-refresh"></i>
+                            <i class="fa fa-sync-alt"></i>
                         </button>
                     </div>
-                    <select name="IDTipoIdentificacion" class="selectpicker form-control" data-width='80%' required>
-                    </select>
+                    
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label">Identificación</label>
-                <input type="text" name="Identificacion" class="form-control" value="" maxlength="10" required>
+                <input type="text" name="identificacion" class="form-control" value="" maxlength="10" required>
             </div>
             <div class="form-group">
                 <label>Nombre</label>
-                <input name="Nombre" class="form-control"  maxlength="150" required>
+                <input name="nombre" class="form-control"  maxlength="150" required>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Teléfono</label>
-                        <input name="Telefono" class="form-control"  maxlength="10" >
+                        <input name="telefono" class="form-control"  maxlength="10" >
                     </div>
 
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Celular</label>
-                        <input name="Celular" class="form-control"  maxlength="10" >
+                        <input name="celular" class="form-control"  maxlength="10" >
                     </div>
 
                 </div>
@@ -79,11 +79,11 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>Autorización SRI</label>
-                <input name="AutorizacionSRI" class="form-control"  maxlength="150" required>
+                <input name="autorizacionSRI" class="form-control"  maxlength="150" required>
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input name="Email" class="form-control"  maxlength="150" required>
+                <input name="email" class="form-control"  maxlength="150" required>
             </div>
             <div class="form-group">
                 <label class="control-label">Contribuyente</label>
@@ -94,7 +94,7 @@
                             <i class="fa fa-plus"></i>
                         </button>
                         <button refresh type="button" class="btn btn-success btn-sm ">
-                            <i class="fa fa-refresh"></i>
+                            <i class="fa fa-sync-alt"></i>
                         </button>
                     </div>
                     <select name="IDContribuyente" class="selectpicker form-control" data-width='80%'>
@@ -111,7 +111,7 @@
                             <i class="fa fa-plus"></i>
                         </button>
                         <button refresh type="button" class="btn btn-success btn-sm ">
-                            <i class="fa fa-refresh"></i>
+                            <i class="fa fa-sync-alt"></i>
                         </button>
                     </div>
                     <select name="IDTipoEmisor" class="selectpicker form-control" data-width='80%'>

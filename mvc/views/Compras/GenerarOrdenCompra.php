@@ -71,7 +71,6 @@
         <div class="board">
             <div class="board-inner" style="border-bottom: 1px solid #ddd;">
                 <ul class="nav nav-tabs" id="myTab" style="margin: 0 auto;width: 50%;display: flex;flex-flow: row;justify-content: space-between;">
-                    <!--<div class="liner"></div>-->
                     <li class="active">
                         <a href="#home" data-toggle="tab" title="Elegir">
                             <span class="round-tabs one">
@@ -79,7 +78,6 @@
                             </span> 
                         </a>
                     </li>
-
                     <li>
                         <a href="#profile" data-toggle="tab" title="Asignar Cantidad">
                             <span class="round-tabs two">
@@ -122,7 +120,6 @@
                             </table>
                         </div>
                     </div>
-                    <!--<div class="clearfix"></div>-->
                     <div class="pull-right-bottom ">
                         <!--<button last type="button" class="btn btn-danger">
                             <i class="fa fa-arrow-circle-left"></i>
@@ -147,7 +144,7 @@
                                         <th data-field="cantidad" class="col-md-2" data-align="center">Cant.</th>
                                         <th data-field="saldo" class="col-md-2" data-align="center" data-formatter="mask">Saldo</th>
                                         <th data-field="precioref" class="col-md-2" data-align="center">Precio</th>
-                                        <th data-field="solicitar" class="col-md-2" data-formatter="imask">Solicitar</th>
+                                        <th data-field="solicitar" class="col-md-2" data-formatter="imask" data-events="event_input_default">Solicitar</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -186,9 +183,7 @@
             </div>
 
         </div>
-
     </div>
-
 </div>
 
 <div id="findOrdenCompra" class="modal fade" >
