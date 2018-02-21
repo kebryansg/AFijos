@@ -72,6 +72,7 @@ $(function () {
         $("div[OrdenPedido]").clear();
         $("#tbDetalleOrden").bootstrapTable("removeAll");
         $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
+        $('.nav-tabs li:eq(0) a').click();
     });
 
 

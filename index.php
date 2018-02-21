@@ -10,8 +10,8 @@
         <?php require_once('mvc/views/scripts.php'); ?>
 
     </head>
-    <body class="hold-transition fixed skin-blue sidebar-mini">
-    <!--<body class="hold-transition fixed skin-blue sidebar-mini sidebar-collapse">-->
+    <!--<body class="hold-transition fixed skin-blue sidebar-mini">-->
+    <body class="hold-transition fixed skin-blue sidebar-mini sidebar-collapse">
         <div class="wrapper">
 
             <?php require_once('mvc/views/navbar.php'); ?>
@@ -38,11 +38,9 @@
 
             <!-- Main Footer -->
             <footer class="main-footer">
-                 To the right 
                 <div class="pull-right hidden-xs">
                     <strong>BuhoCorp</strong>
                 </div>
-                 Default to the left 
                 <strong>Copyright &copy; 2018.</strong> All rights reserved.
             </footer>
         </div>

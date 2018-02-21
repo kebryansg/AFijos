@@ -3,6 +3,8 @@
 include_once '../mvc/modelo/ProveedorDaoImp.php';
 include_once '../mvc/modelo/PresupuestoDaoImp.php';
 include_once '../mvc/modelo/ItemDaoImp.php';
+include_once '../mvc/modelo/OrdenCompraDaoImp.php';
+include_once '../mvc/modelo/DetalleOrdenCompraDaoImp.php';
 
 include_once '../mvc/Controlador/JsonMapper.php';
 $accion = $_POST["accion"];
@@ -55,6 +57,12 @@ switch ($accion) {
     case "save":
         $json = json_decode($_POST["datos"]);
         switch ($op) {
+            case "OrdenCompra": 
+                $OrdenCompra = $mapper->map($json, new OrdenCompra());
+                OrdenCompraDaoImp::save($OrdenCompra);
+                $resultado = $OrdenCompra->ID;
+                
+                break;
             case "proveedor":
                 $proveedor = $mapper->map($json, new Proveedor());
                 ProveedorDaoImp::save($proveedor);

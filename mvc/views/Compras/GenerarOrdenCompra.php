@@ -11,7 +11,7 @@
     </div>
     <div class="box-body" OrdenPedido>
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
