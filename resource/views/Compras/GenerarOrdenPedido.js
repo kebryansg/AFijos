@@ -8,7 +8,7 @@ function validarCantidadSolicitada() {
     if (data.length > 0) {
         bandera = true;
         $.each(data, function (i, row) {
-            console.log(row);
+//            console.log(row);
             if (row.solicitar <= 0) {
                 bandera = false;
                 return;
@@ -38,11 +38,13 @@ $(function () {
 
     $('.nav-tabs li:eq(1) a').on('shown.bs.tab', function (event) {
         ids = [];
-        ids_detalle = $("#tbDetalleOrdenSelect").bootstrapTable("getData").map(row => row.id);
+        ids_detalle = $("#tbDetalleOrdenSelect").bootstrapTable("getData").map(row => row.idItem);
         $.each($("#tbDetalleOrden").bootstrapTable("getSelections"), function (i, row) {
             ids.push(row.id);
             if ($.inArray(row.id, ids_detalle) === -1 && row.saldo > 0) {
-                //row.solicitar = 1;
+                //row.solicitar v= 1;
+                row["idItem"] = row.id;
+                row.id = 0;
                 row.solicitar = row.saldo;
                 row.state = false;
                 $("#tbDetalleOrdenSelect").bootstrapTable("append", row);
@@ -151,6 +153,22 @@ function tableColumns(op) {
     }
 
     return columns;
+}
+
+function getDatos() {
+    form = "form[save]";
+    dt = JSON.parse($(form).serializeObject_KBSG());
+    dt["idordenpedido"] = $("div[OrdenPedido] input[name='id']").val();
+    datos = {
+        url: getURL($(form).attr("action")),
+        dt: {
+            accion: "save",
+            op: $(form).attr("role"),
+            datos: JSON.stringify(dt), //$(form).serializeObject(),
+            items: JSON.stringify($("#tbDetalleOrdenSelect").bootstrapTable("getData"))
+        }
+    };
+    return datos;
 }
 
 

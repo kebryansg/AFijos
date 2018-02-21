@@ -62,6 +62,19 @@ switch ($accion) {
                 OrdenCompraDaoImp::save($OrdenCompra);
                 $resultado = $OrdenCompra->ID;
                 
+                
+                foreach (json_decode($_POST["items"]) as $item) {
+                    $DetalleOrdenCompra = $mapper->map($item, new DetalleOrdenCompra());
+                    $DetalleOrdenCompra->IDOrdenCompra = $OrdenCompra->ID;
+                    $DetalleOrdenCompra->Cantidad = $item->solicitar;
+                    DetalleOrdenCompraDaoImp::save($DetalleOrdenCompra);
+                }
+                
+                
+                
+                
+                
+                
                 break;
             case "proveedor":
                 $proveedor = $mapper->map($json, new Proveedor());

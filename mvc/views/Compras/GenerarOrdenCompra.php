@@ -98,25 +98,27 @@
                 </ul>
             </div>
 
-            <div class="tab-content">
+            <form class="tab-content" save role="OrdenCompra" action="_compras">
                 <div class="tab-pane fade in active" id="home" >
                     <div class="center-content">
                         <div class="col-md-10">
                             <div id="toolbar" class="inputComponent">
                                 <input type="text" id="txtProveedor" class="form-control input-sm" style="width: 300px; margin-right: 5px;" placeholder="Proveedor" readonly>
+                                <input type="hidden" name="idproveedor" required>
                                 <button type="button" data-columns="Proveedor" data-ajax="loadProveedor" data-toggle="modal" data-target="#findOrdenCompra" class="btn btn-primary btn-sm"> <i class="fa fa-search"></i> </button>
                             </div>
 
                             <table id="tbDetalleOrden"
-                                   data-toolbar="#toolbar">
+                                   data-toolbar="#toolbar"
+                                   data-click-to-select="true">
                                 <thead>
                                     <tr>
                                         <th data-field="state" data-checkbox="true"></th>
                                         <th data-formatter="rowCount" class="col-md-1" data-align="center">N°</th>
                                         <th data-field="descripcion">Descripción</th>
 
-                                        <th data-field="cantidad" class="col-md-2" data-align="center">Cant.</th>
-                                        <th data-field="saldo" class="col-md-2" data-align="center" data-formatter="mask">Saldo</th>
+                                        <th data-field="cantidad" class="col-md-2" data-align="center">Cant. Pedido</th>
+                                        <th data-field="saldo" class="col-md-2" data-align="center" data-formatter="mask">Saldo Pendiente</th>
                                         <th data-field="precioref" class="col-md-2" data-align="center">Precio</th>
                                     </tr>
                                 </thead>
@@ -138,15 +140,17 @@
                 <div class="tab-pane fade" id="profile" dt-validate="">
                     <div class="center-content">
                         <div class="col-md-10">
-                            <table id="tbDetalleOrdenSelect">
+                            <table id="tbDetalleOrdenSelect"
+                                   >
                                 <thead>
                                     <tr>
                                         <th data-field="state" data-checkbox="true"></th>
                                         <th data-formatter="rowCount" class="col-md-1" data-align="center">N°</th>
                                         <th data-field="descripcion">Descripción</th>
-                                        <th data-field="cantidad" class="col-md-2" data-align="center">Cant.</th>
-                                        <th data-field="saldo" class="col-md-2" data-align="center" data-formatter="mask">Saldo</th>
-                                        <th data-field="precioref" class="col-md-2" data-align="center">Precio</th>
+                                        <!--<th data-field="cantidad" class="col-md-2" data-align="center">Cant.</th>-->
+                                        <th data-field="saldo" class="col-md-2" data-align="center" data-formatter="mask">Saldo Pendiente</th>
+                                        <th data-field="precioref" class="col-md-2" data-align="center">Precio Referencial</th>
+                                        <th data-field="precioCompra" class="col-md-1" data-formatter="imask" data-events="event_input_default" data-align="center">Precio Compra</th>
                                         <th data-field="solicitar" class="col-md-2" data-formatter="imaskMinMax" data-events="event_input_default">Solicitar</th>
                                     </tr>
                                 </thead>
@@ -175,15 +179,16 @@
                             <i class="fa fa-arrow-circle-left"></i>
                             Regresar
                         </button>
-                        <button next type="button" class="btn btn-info">
+                        <button type="submit" class="btn btn-info">
+                            
+                            <i class="fa fa-save"></i>
                             Finalizar
-                            <i class="fa fa-arrow-circle-right"></i>
                         </button>
                     </div>
 
                 </div>
                 <div class="clearfix"></div>
-            </div>
+            </form>
 
         </div>
     </div>

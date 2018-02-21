@@ -65,6 +65,16 @@ window.event_input_default = {
             row: row
         });
     },
+    "change input[myDecimalMinMax]": function (e, value, row, index) {
+        input = $(e.target);
+        field = $(input).attr("field");
+        row[field] = $(input).getFloat();//.val();
+        table = $(input).closest("table");
+        $(table).bootstrapTable('updateRow', {
+            index: index,
+            row: row
+        });
+    },
     "click input[text]": function (e, value, row, index) {
         $(this).focus();
     },

@@ -232,7 +232,7 @@ $.fn.serializeObject_KBSG = function () {
         }
         value[name] = val;
     });
-    console.log(value);
+//    console.log(value);
     return JSON.stringify(value);
 };
 

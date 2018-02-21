@@ -8,6 +8,7 @@ class DetalleOrdenCompra extends ModelSQL {
     public $Cantidad;
     public $PrecioCompra;
     public $IDOrdenCompra;
+    public $IDItem;
     
 
     function __construct() {
