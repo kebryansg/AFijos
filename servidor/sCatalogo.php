@@ -35,6 +35,13 @@ switch ($accion) {
     case "list":
         $top = (isset($_POST["limit"])) ? $_POST["limit"] : 0;
         $pag = (isset($_POST["offset"])) ? $_POST["offset"] : 0;
+        $params = array(
+            "top" => (isset($_POST["limit"])) ? $_POST["limit"] : 0,
+            "pag" => (isset($_POST["offset"])) ? $_POST["offset"] : 0,
+            "buscar" => (isset($_POST["search"])) ? $_POST["search"] : NULL
+        );
+        
+        
         $count = 0;
         switch ($op) {
             case "Contribuyente":
@@ -140,16 +147,14 @@ switch ($accion) {
                 ));
                 break;
             case "grupos":
-                $resultado = json_encode(array(
-                    "rows" => GrupoDaoImp::listGrupo($top, $pag, $count),
-                    "total" => $count
-                ));
+                $resultado = json_encode(GrupoDaoImp::listGrupo($params));
                 break;
             case "subgrupos":
-                $resultado = json_encode(array(
-                    "rows" => SubGrupoDaoImp::listSubGrupo($top, $pag, $count),
-                    "total" => $count
-                ));
+                $resultado = json_encode(SubGrupoDaoImp::listSubGrupo($params));
+                break;
+            case "subgruposXgrupo":
+                $idGrupo = $_POST["grupo"];
+                $resultado = json_encode(SubGrupoDaoImp::listSubGrupoxGrupo($idGrupo));
                 break;
             case "clases":
                 $resultado = json_encode(array(
@@ -262,9 +267,14 @@ switch ($accion) {
                 break;
             case "grupos":
                 $grupo = $mapper->map($json, new Grupo());
-
                 GrupoDaoImp::save($grupo);
                 $resultado = $grupo->ID;
+                $SubGrupos = json_decode($_POST["subGrupos"]);
+                foreach ($SubGrupos as $Sub) {
+                    $subGrupo = $mapper->map($Sub, new SubGrupo());
+                    $subGrupo->IDGrupo = $grupo->ID;
+                    SubGrupoDaoImp::save($subGrupo);
+                }
                 break;
             case "subgrupos":
                 $subgrupo = $mapper->map($json, new SubGrupo());

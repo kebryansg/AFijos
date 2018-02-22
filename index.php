@@ -10,8 +10,8 @@
         <?php require_once('mvc/views/scripts.php'); ?>
 
     </head>
-    <!--<body class="hold-transition fixed skin-blue sidebar-mini">-->
-    <body class="hold-transition fixed skin-blue sidebar-mini sidebar-collapse">
+    <body class="hold-transition fixed skin-blue sidebar-mini">
+    <!--<body class="hold-transition fixed skin-blue sidebar-mini sidebar-collapse">-->
         <div class="wrapper">
 
             <?php require_once('mvc/views/navbar.php'); ?>

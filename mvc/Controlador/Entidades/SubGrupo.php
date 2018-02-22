@@ -10,6 +10,7 @@ class SubGrupo  extends ModelSQL{
     public $IDGrupo;
     function __construct() {
         $this->ID = 0;
+        $this->Observacion= "";
         $this->tabla = "subgrupo";
     }
 

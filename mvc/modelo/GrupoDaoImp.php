@@ -19,15 +19,20 @@ class GrupoDaoImp {
         }
         $conn->close();
     }
-    public static function listGrupo($top, $pag, &$count){
+    public static function listGrupo($params){
         $conn = (new C_MySQL())->open();
-        $banderapag = ($top > 0 ) ? "limit $top offset $pag" : "";
-        $sql = "select SQL_CALC_FOUND_ROWS id as ID , descripcion,observacion,estado from grupo $banderapag ;";
+        $banderapag = ($params["top"] > 0 ) ? "limit " . $params['top'] . " offset " . $params['pag'] : "";
+        $where = ($params["buscar"] != NULL) ? " where descripcion like '%" . $params["buscar"] . "%' " : "";
         
-        $list = C_MySQL::returnListAsoc($conn, $sql);
-        $count = C_MySQL::row_count($conn);
+        $sql = "select SQL_CALC_FOUND_ROWS * from grupo $where $banderapag ;";
+        
+        $dts = array(
+            "rows" => C_MySQL::returnListAsoc($conn, $sql),
+            "total" => C_MySQL::row_count($conn)
+        );
+        
         $conn->close();
-        return $list;
+        return $dts;
     }
     
     public function delete($grupo) {

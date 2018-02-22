@@ -12,7 +12,7 @@
                         <div tipo  data-fn="loadDepartamento"  >
                             <div class="inputComponent">
                                 <select name="idDepartamento" class="selectpicker form-control" data-width='80%' required>
-                            </select>
+                                </select>
                                 <div>
                                     <button type="button" class="btn btn-info btn-sm " data-toggle='modal' 
                                             data-target="#modal-new" data-url="mvc/views/activos/departamento.php">

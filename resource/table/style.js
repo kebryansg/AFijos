@@ -11,6 +11,26 @@ function responseHandler(res) {
     return res;
 }
 
+/* Formato Estados Generales */
+function estadoFormat(value) {
+    result = "";
+    switch (value) {
+        case "PEN":
+            result = "Pendiente";
+            break;
+        case "ACT":
+            result = "Activo";
+            break;
+        case "INA":
+            result = "Inactivo";
+            break;
+        case "BLO":
+            result = "Bloqueado";
+            break;
+    }
+    return result.toUpperCase();
+}
+
 /* Aplicar formato de estado */
 function estadoOrdenPedido(value) {
     result = "";
@@ -47,7 +67,8 @@ window.event_accion_default = {
 
 window.event_input_default = {
     "change input[text]": function (e, value, row, index) {
-        field = $(this).attr("field");
+        //field = $(this).attr("field");
+        field = $(this).attr("data-field");
         row[field] = $(e.target).val();
         table = $(this).closest("table");
         $(table).bootstrapTable('updateRow', {

@@ -35,6 +35,7 @@
 
 
 <script src="resource/dist/js/functions.js"></script>
+<script src="resource/dist/js/loadsSelect.js"></script>
 <script src="resource/dist/js/loads.js"></script>
 <script src="resource/dist/js/style.js"></script>
 <script src="resource/table/style.js"></script>

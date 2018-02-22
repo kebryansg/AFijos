@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div class="row hidden" id="Listado">
+<div class="row " id="Listado">
     <div class="col-md-12">
         <div id="toolbar" class="btn-group">
             <button type="button" name="btn_add" class="btn btn-success ">
@@ -17,7 +17,7 @@
             <thead>
                 <tr>
                     <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="ID" class="col-md-1" data-align="center">Cód.</th>
+                    <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
                     <th data-field="descripcion">Descripción</th>
                     <th data-field="observacion">Observación</th>
                     <th data-field="accion" data-formatter="defaultBtnAccion" data-events="event_accion_default" class="col-md-1" data-align="center">Acciones</th>
@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<div id="div-registro" class="row" >
+<div id="div-registro" class="row hidden" >
 
     <form save action="_catalogo" role="grupos" >
         <div class="col-md-6">
@@ -58,21 +58,20 @@
         </div>
         <div class="col-md-6">
             <div id="toolbarDet" class="btn-group">
-            <button type="button" class="btn btn-success btn-sm">
-                <i class="glyphicon glyphicon-plus"></i> Agregar
-            </button>
-            <button type="button" class="btn btn-danger btn-sm ">
-                <i class="glyphicon glyphicon-trash"></i> Eliminar
-            </button>
-        </div>
+                <button add type="button" class="btn btn-success btn-sm">
+                    <i class="fa fa-plus"></i> Agregar
+                </button>
+                <button remove type="button" class="btn btn-danger btn-sm ">
+                    <i class="fa fa-trash"></i> Eliminar
+                </button>
+            </div>
             <table id="tbDetalle"
-                   data-toolbar="#toolbarDet"
-                   data-show-refresh="true">
+                   data-toolbar="#toolbarDet">
                 <thead>
                     <tr>
                         <th data-field="state" data-checkbox="true"></th>
-                        <th data-field="descripcion">SubGrupo</th>
-                        <th data-field="observacion">Observación</th>
+                        <th data-field="descripcion" data-formatter="defaultInput" data-events="event_input_default">SubGrupo</th>
+                        <th data-field="estado" class="col-md-2" data-align="center" data-formatter="estadoFormat">Estado</th>
                     </tr>
                 </thead>
             </table>
@@ -82,17 +81,17 @@
         <div class="clearfix"></div>
         <div class="col-md-12">
             <div class="pull-right">
-            <button class="btn btn-danger" type="reset"  title="Haga clic aquí para cancelar el registro actual">
-                <i class="fa fa-reply" aria-hidden="true"></i> Cancelar
-            </button>
-            &nbsp;
-            <button type="submit" class="btn btn-primary" title="Haga clic aquí para guardar la información">
-                <i class="fa fa-save" aria-hidden="true"></i> Guardar										
-            </button>
-        </div>
+                <button class="btn btn-danger" type="reset"  title="Haga clic aquí para cancelar el registro actual">
+                    <i class="fa fa-reply" aria-hidden="true"></i> Cancelar
+                </button>
+                &nbsp;
+                <button type="submit" class="btn btn-primary" title="Haga clic aquí para guardar la información">
+                    <i class="fa fa-save" aria-hidden="true"></i> Guardar										
+                </button>
+            </div>
         </div>
 
-        
+
 
     </form>
 </div>
