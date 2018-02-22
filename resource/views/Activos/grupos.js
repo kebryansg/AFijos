@@ -4,6 +4,7 @@ table = $("#Listado table");
 
 $(function () {
     initialComponents();
+    $("#tbDetalle").bootstrapTable();
 });
 
 function edit(datos){

@@ -101,7 +101,10 @@
             <form class="tab-content" save role="OrdenCompra" action="_compras">
                 <div class="tab-pane fade in active" id="home" >
                     <div class="center-content">
+
                         <div class="col-md-10">
+                            <h4 class="bold"><u>Seleccionar Items</u></h4>
+
                             <div id="toolbar" class="inputComponent">
                                 <input type="text" id="txtProveedor" class="form-control input-sm" style="width: 300px; margin-right: 5px;" placeholder="Proveedor" readonly>
                                 <input type="hidden" name="idproveedor" required>
@@ -137,9 +140,10 @@
                     </div>
 
                 </div>
-                <div class="tab-pane fade" id="profile" dt-validate="">
+                <div class="tab-pane fade " id="profile" dt-validate="">
                     <div class="center-content">
                         <div class="col-md-10">
+                            <h4 class="bold"><u>Establecer la cantidad a solicitar</u> </h4>
                             <table id="tbDetalleOrdenSelect"
                                    >
                                 <thead>
@@ -151,7 +155,7 @@
                                         <th data-field="saldo" class="col-md-2" data-align="center" data-formatter="mask">Saldo Pendiente</th>
                                         <th data-field="precioref" class="col-md-2" data-align="center">Precio Referencial</th>
                                         <th data-field="precioCompra" class="col-md-1" data-formatter="imask" data-events="event_input_default" data-align="center">Precio Compra</th>
-                                        <th data-field="solicitar" class="col-md-2" data-formatter="imaskMinMax" data-events="event_input_default">Solicitar</th>
+                                        <th data-field="solicitar" class="col-md-2" data-align="center" data-formatter="imaskMinMax" data-events="event_input_default">Solicitar</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -172,7 +176,21 @@
                 </div>
                 <div class="tab-pane fade" id="messages" dt-validate="">
                     <div class="center-content">
-
+                        <div class="col-md-10">
+                            <h4 class="bold"><u>Confirmación de la Orden Compra</u></h4>
+                            <h4 class="bold">Proveedor: <small>KEVIN SUAREZ </small> </h4>
+                            <table id="tbConfirmacion">
+                                <thead>
+                                    <tr>
+                                        <!--<th data-formatter="rowCount" class="col-md-1" data-align="center">N°</th>-->
+                                        <th data-field="solicitar" class="col-md-2" data-align="center">Cant.</th>
+                                        <th data-field="descripcion">Descripción</th>
+                                        <th data-field="precioCompra" class="col-md-2" data-align="center">Precio Compra</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        
                     </div>
                     <div class="pull-right-bottom ">
                         <button last type="button" class="btn btn-danger">
@@ -180,7 +198,7 @@
                             Regresar
                         </button>
                         <button type="submit" class="btn btn-info">
-                            
+
                             <i class="fa fa-save"></i>
                             Finalizar
                         </button>

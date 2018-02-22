@@ -28,8 +28,8 @@
                     <?php
                     //include_once './mvc/views/Pedido/aprobacionPedido.php';
                     //include_once './mvc/views/items/items.php';
-                    //include_once './components.php';
-                    include_once './mvc/views/Compras/GenerarOrdenCompra.php';
+                    include_once './mvc/views/activos/grupos.php';
+                    //include_once './mvc/views/Compras/GenerarOrdenCompra.php';
                     //include_once './mvc/views/Administracion/faIcons.php';
                     ?>
                 </section>

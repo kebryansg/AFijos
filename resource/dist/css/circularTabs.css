@@ -170,7 +170,7 @@ li.active span.round-tabs.five{
 }
 .tab-pane{
     position: relative;
-    padding-top: 50px;
+    padding-top: 20px;
     height: 400px;
 }
 .tab-content .head{

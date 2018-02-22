@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div class="row" id="Listado">
+<div class="row hidden" id="Listado">
     <div class="col-md-12">
         <div id="toolbar" class="btn-group">
             <button type="button" name="btn_add" class="btn btn-success ">
@@ -27,7 +27,76 @@
     </div>
 </div>
 
-<div id="div-registro" class="hidden" >
+<div id="div-registro" class="row" >
+
+    <form save action="_catalogo" role="grupos" >
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title"> <i class="fa fa-pencil-alt"></i> Datos Generales</h3>
+                </div>
+                <div class="box-body">
+                    <div class="form-group form-group-sm">
+                        <label for="" class="control-label">Descripción</label>
+                        <input type="text" name="descripcion" class="form-control">
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="" class="control-label">Estado</label>
+                        <select name="estado" class="form-control selectpicker">
+                            <option value="ACT">Activo</option>
+                            <option value="INA">Inactivo</option>
+                            <option value="BLO">Bloqueado</option>
+                            <option value="ELI">Eliminado</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="" class="control-label">Observación</label>
+                        <textarea rows="4" name="observacion" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="toolbarDet" class="btn-group">
+            <button type="button" class="btn btn-success btn-sm">
+                <i class="glyphicon glyphicon-plus"></i> Agregar
+            </button>
+            <button type="button" class="btn btn-danger btn-sm ">
+                <i class="glyphicon glyphicon-trash"></i> Eliminar
+            </button>
+        </div>
+            <table id="tbDetalle"
+                   data-toolbar="#toolbarDet"
+                   data-show-refresh="true">
+                <thead>
+                    <tr>
+                        <th data-field="state" data-checkbox="true"></th>
+                        <th data-field="descripcion">SubGrupo</th>
+                        <th data-field="observacion">Observación</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="pull-right">
+            <button class="btn btn-danger" type="reset"  title="Haga clic aquí para cancelar el registro actual">
+                <i class="fa fa-reply" aria-hidden="true"></i> Cancelar
+            </button>
+            &nbsp;
+            <button type="submit" class="btn btn-primary" title="Haga clic aquí para guardar la información">
+                <i class="fa fa-save" aria-hidden="true"></i> Guardar										
+            </button>
+        </div>
+        </div>
+
+        
+
+    </form>
+</div>
+<!--<div id="div-registro" class="hidden" >
     <form save action="_catalogo" role="grupos" >
 
         <div class="box box-info">
@@ -72,7 +141,7 @@
         </div>
 
     </form>
-</div>
+</div>-->
 
 
 <script type="text/javascript" src="resource/views/Activos/grupos.js"></script>

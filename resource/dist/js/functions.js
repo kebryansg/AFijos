@@ -29,13 +29,14 @@ $.fn.getFloat = function () {
 };
 
 /* Array Claves JSON */
-function JSON_Clave(obj){
+function JSON_Clave(obj) {
     claves = [];
     for (var clave in obj) {
         claves.push(clave.toUpperCase());
     }
     return claves;
-};
+}
+;
 
 /* Validacion de Form */
 
@@ -78,7 +79,7 @@ function setearMyDecimal(input) {
     $(input).val("0.00");
     $(input).inputmask("myDecimal");
 }
-$.fn.setFloat = function(value){
+$.fn.setFloat = function (value) {
     $(this).inputmask('remove');
     $(this).val(value);
     $(this).inputmask("myDecimal");
@@ -142,14 +143,19 @@ function showRegistro() {
 }
 /* Ocultar Div Registro */
 function hideRegistro() {
+
+    if (typeof window.finRegistro === 'function') {
+        finRegistro();
+    }
+
     $("#div-registro").fadeOut();
     $("#div-registro").addClass("hidden");
-    
+
     $("#Listado").fadeIn("slow");
     $("#Listado").removeClass("hidden");
     $("#div-registro form").removeData("id");
     /*$("#div-registro select.selectpicker").selectpicker("val", -1);
-    $('#div-registro select.selectpicker').selectpicker('refresh');*/
+     $('#div-registro select.selectpicker').selectpicker('refresh');*/
 
 }
 
@@ -209,7 +215,7 @@ function MsgError(data) {
     });
 }
 
-function MsgConfirmation(data){
+function MsgConfirmation(data) {
     $.confirm({
         theme: "modern",
         escapeKey: "cancelAction",
@@ -233,7 +239,7 @@ function MsgConfirmation(data){
 }
 
 
-function getEstado_OrdenPedido(value){
+function getEstado_OrdenPedido(value) {
     switch (value) {
         case "PEN":
             return "Pendiente";

@@ -52,6 +52,10 @@ $(function () {
         });
         $("#tbDetalleOrden").bootstrapTable('uncheckBy', {field: 'id', values: ids});
     });
+    $('.nav-tabs li:eq(2) a').on('shown.bs.tab', function (event) {
+        rows = $("#tbDetalleOrdenSelect").bootstrapTable("getData");
+        $("#tbConfirmacion").bootstrapTable('load', rows);
+    });
 
     $(".tab-pane button[last]").click(function (e) {
         id = $(this).closest(".tab-pane").attr("id");
@@ -60,7 +64,7 @@ $(function () {
         $(li_next).find("a").click();
     });
 
-    $("#tbDetalleOrden,#tbDetalleOrdenSelect").bootstrapTable();
+    $("#tbDetalleOrden,#tbDetalleOrdenSelect,#tbConfirmacion").bootstrapTable();
 
     $("div[OrdenPedido]").clear();
 
@@ -72,6 +76,7 @@ $(function () {
 
     $("#clearPag").click(function (e) {
         $("div[OrdenPedido]").clear();
+        $("form[save]").clear();
         $("#tbDetalleOrden").bootstrapTable("removeAll");
         $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
         $('.nav-tabs li:eq(0) a').click();
@@ -101,6 +106,10 @@ $(function () {
          }*/
     });
 });
+
+function finRegistro(){
+    $("#clearPag").click();
+}
 
 function tableColumns(op) {
     columns = [];
