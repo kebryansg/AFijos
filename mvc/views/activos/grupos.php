@@ -38,11 +38,11 @@
                 <div class="box-body">
                     <div class="form-group form-group-sm">
                         <label for="" class="control-label">Descripción</label>
-                        <input type="text" name="descripcion" class="form-control">
+                        <input type="text" name="descripcion" class="form-control" required>
                     </div>
                     <div class="form-group form-group-sm">
                         <label for="" class="control-label">Estado</label>
-                        <select name="estado" class="form-control selectpicker">
+                        <select name="estado" class="form-control selectpicker" required>
                             <option value="ACT">Activo</option>
                             <option value="INA">Inactivo</option>
                             <option value="BLO">Bloqueado</option>

@@ -259,7 +259,6 @@ $.fn.validate = function () {
             }
         }
     });
-    console.log(bandera);
     return bandera;
 };
 

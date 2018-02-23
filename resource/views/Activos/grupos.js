@@ -7,60 +7,8 @@ $(function () {
     $("#tbDetalle").bootstrapTable();
 
 
-    $.confirm({
-        title: '¿Qué acción desea tomar?',
-//        content: 'Its smooth to do multiple confirms at a time. <br> Click confirm or cancel for another modal',<option value=""></option>
-        content: '<select class="selectpicker form-control"><option value="ACT">Activo</option></select>',
-        icon: 'fa fa-question-circle',
-        animation: 'scale',
-        closeAnimation: 'scale',
-        opacity: 0.5,
-        buttons: {
-            'ACT': {
-                text: 'Activo',
-                btnClass: 'btn-blue',
-                action: function () {
-//                    $.confirm({
-//                        title: 'This maybe critical',
-//                        content: 'Critical actions can have multiple confirmations like this one.',
-//                        icon: 'fa fa-warning',
-//                        animation: 'scale',
-//                        closeAnimation: 'zoom',
-//                        buttons: {
-//                            confirm: {
-//                                text: 'Yes, sure!',
-//                                btnClass: 'btn-orange',
-//                                action: function () {
-//                                    $.alert('A very critical action <strong>triggered!</strong>');
-//                                }
-//                            },
-//                            cancel: function () {
-//                                $.alert('you clicked on <strong>cancel</strong>');
-//                            }
-//                        }
-//                    });
-                }
-            },
-            INA: {
-                text: 'Inactivo',
-                action: function () {
-//                    $.alert('you clicked on <strong>something else</strong>');
-                }
-            },
-            ELI: {
-                text: 'Eliminado',
-                action: function () {
-//                    $.alert('you clicked on <strong>something else</strong>');
-                }
-            },
-            BLO: {
-                text: 'Bloqueado',
-                action: function () {
-//                    $.alert('you clicked on <strong>something else</strong>');
-                }
-            },
-        }
-    });
+    //$('button[name="btn_add"]').click();
+
 
     $("button[add]").click(function () {
         btnGroup = $(this).closest(".btn-group").attr("id");
@@ -78,9 +26,52 @@ $(function () {
         btnGroup = $(this).closest(".btn-group").attr("id");
         table = $("table[data-toolbar='#" + btnGroup + "']");
         rows = $(table).bootstrapTable("getSelections");
+        if (rows.length > 0)
+            $.confirm({
+                title: '¿Qué acción desea tomar?',
+//        content: 'Its smooth to do multiple confirms at a time. <br> Click confirm or cancel for another modal',<option value=""></option>
+                icon: 'fa fa-question-circle',
+                animation: 'scale',
+                closeAnimation: 'scale',
+                opacity: 0.5,
+                buttons: {
+                    'ACT': {
+                        text: 'Activar',
+                        btnClass: 'btn-green',
+                        action: function () {
+                            changeEstadoSubGrupo(rows, "ACT");
+                        }
+                    },
+                    INA: {
+                        text: 'Inactivar',
+                        btnClass: 'btn-danger',
+                        action: function () {
+                            changeEstadoSubGrupo(rows, "INA");
 
+                        }
+                    },
+                    'Cancel': {
+                        text: 'Cancelar',
+                        action: function () {
+
+                        }
+                    }
+                }
+            });
     });
 });
+
+function changeEstadoSubGrupo(rows, estado) {
+    $.each(rows, function (i, row) {
+        row.estado = estado;
+        $("#tbDetalle").bootstrapTable("updateRow", {
+            index: row.index,
+            row: row
+        });
+    });
+    ids = rows.map(row => row.id);
+    $("#tbDetalle").bootstrapTable('uncheckBy', {field: 'id', values: ids});
+}
 
 function getDatos() {
     form = "form[save]";
