@@ -224,7 +224,7 @@ function BtnAccion(value, rowData, index) {
 
 function inputProducto(value, row, index) {
     if (row.id === 0) {
-        return "<input field='" + this.field + "' value='" + value + "' class='form-control input-sm' type='text' text >";
+        return "<input data-field='" + this.field + "' value='" + value + "' class='form-control input-sm' type='text' text >";
     } else {
         return row.descripcion;
     }
