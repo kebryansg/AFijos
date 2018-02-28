@@ -85,7 +85,7 @@ columns = [
 ];
 
 function initRegistro() {
-    $('input[name="fecha"]').datepicker(getParamsFecha());
+    $('input[name="fecha"]').initDate();
     $('input[name="fecha"]').datepicker('update', new Date());
 
     $("#tbOrdenPedido").bootstrapTable('refreshOptions', {

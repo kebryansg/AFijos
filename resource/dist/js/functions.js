@@ -24,6 +24,38 @@ function getForm(form) {
     return value;
 }
 
+$.fn.initDate = function () {
+    dt = $(this).attr("dt-tipo");
+    init_fecha = {
+        autoclose: true,
+        orientation: "bottom auto",
+        language: "es"
+    };
+    switch (dt) {
+        case "year":
+            $.extend(init_fecha, {
+                minViewMode: 2,
+                format: 'yyyy'
+            });
+            break;
+        case "month":
+            $.extend(init_fecha, {
+                minViewMode: 1,
+                format: 'MM, yyyy'
+            });
+            break;
+        case "day":
+            $.extend(init_fecha, {
+                todayBtn: true,
+                todayHighlight: true,
+                format: 'MM dd, yyyy'
+            });
+            break;
+    }
+
+    $(this).datepicker(init_fecha);
+};
+
 $.fn.getFloat = function () {
     return parseFloat($(this).val().toString().replace(/[^\d\.\-]/g, ""));// $(component).val();
 };
