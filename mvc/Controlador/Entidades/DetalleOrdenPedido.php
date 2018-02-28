@@ -5,6 +5,7 @@ include_once 'ModelSQL.php';
 class DetalleOrdenPedido extends ModelSQL {
     public $tabla;
     public $ID;
+    public $IdItem;
     public $Cantidad;
     public $Saldo;
     public $Descripcion;

@@ -5,18 +5,6 @@
             <button type="button" name="btn_add" class="btn btn-success ">
                 <i class="glyphicon glyphicon-plus"></i> Agregar
             </button>
-            <!--<button type="button" name="btn_del" class="btn btn-default btn-danger ">
-                <i class="glyphicon glyphicon-trash"></i> Eliminar
-            </button>-->
-            <!--<div class="input-group">
-                <input id_find name="IDModulo" type="text" class="hidden" required>
-                <input descripcion_find type="text" class="form-control" aria-describedby="basic-addon1" readonly>
-                <span class = "input-group-btn">
-                    <button class = "btn btn-default" type="button" data-toggle="modal" data-target="#modal-find" data-ajax="loadArea">
-                        <i class="fa fa-search"></i> 
-                    </button>
-                </span>
-            </div>-->
         </div>
         <table 
             init
@@ -29,7 +17,6 @@
                     <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
                     <th data-field="fecha" data-formatter="defaultFecha">Fecha</th>
                     <th data-field="departamento">Departamento</th>
-                    <th data-field="area">Área</th>
                     <th data-field="usuario">Usuario</th>
                     <th data-field="estado" class="col-md-1" data-formatter="estadoOrdenPedido">Estado</th>
                     <th data-field="accion" class="col-md-1" data-align="center" data-formatter="BtnAccion" data-events="event_accion_default">Acciones</th>

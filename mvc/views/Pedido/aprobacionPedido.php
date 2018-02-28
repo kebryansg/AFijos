@@ -16,7 +16,6 @@
                     <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
                     <th data-field="fecha" data-formatter="defaultFecha">Fecha</th>
                     <th data-field="departamento">Departamento</th>
-                    <th data-field="area">Área</th>
                     <th data-field="usuario">Usuario</th>
                     <th data-field="estado" class="col-md-1" data-formatter="estadoOrdenPedido">Estado</th>
                     <th data-field="accion" class="col-md-1" data-align="center" data-formatter="BtnAprobar" data-events="event_btnAprobar">Revisar</th>

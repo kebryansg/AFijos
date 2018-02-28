@@ -1,14 +1,13 @@
 op = "ordenPedido";
-//url = "servidor/sPedido.php";
 table = $("#Listado table");
 selections = [];
-
 columns_edit = [
     {
         field: 'state',
         checkbox: true,
         sortable: false
     },
+    
     {
         field: "cantidad",
         class: "col-md-1",
@@ -20,7 +19,9 @@ columns_edit = [
     {
         field: "descripcion",
         title: "Descripción",
-        sortable: false
+        sortable: false,
+        formatter: "inputProducto",
+        events: "event_input_default"
     },
     {
         field: "precioref",
@@ -84,6 +85,7 @@ columns = [
 ];
 
 function initRegistro() {
+    $('input[name="fecha"]').datepicker(getParamsFecha());
     $('input[name="fecha"]').datepicker('update', new Date());
 
     $("#tbOrdenPedido").bootstrapTable('refreshOptions', {
@@ -125,6 +127,7 @@ $(function () {
     $("button[add]").click(function (e) {
         $("#tbOrdenPedido").bootstrapTable("append", {
             id: 0,
+            idItem: 0,
             cantidad: 1,
             descripcion: "",
             precioref: 0,
@@ -147,10 +150,8 @@ $(function () {
 
 });
 
-
 function getDatos() {
     form = "form[save]";
-    //dt = JSON.parse($(form).serializeObject());
     dt = JSON.parse($(form).serializeObject_KBSG());
     dt.fecha = formatSave(dt.fecha);
     items_delete = $.isEmptyObject($("button[delete_local]").data("ids")) ? [] : $("button[delete_local]").data("ids");
@@ -164,14 +165,13 @@ function getDatos() {
             items_delete: JSON.stringify(items_delete)
         }
     };
-    //console.log(datos);
     return datos;
 }
+
 function clear() {
     $("#tbOrdenPedido").bootstrapTable("removeAll");
     $("button[delete_local]").removeData("ids");
 }
-
 
 function edit(datos) {
     $("form[save]").edit(datos);
@@ -203,10 +203,7 @@ function edit(datos) {
             OrdenPedido: datos.id
         }
     };
-
-
-
-
+    console.log(getJson(dt));
     $("#tbOrdenPedido").bootstrapTable("load", getJson(dt));
 }
 
@@ -223,20 +220,20 @@ function BtnAccion(value, rowData, index) {
 }
 
 function inputProducto(value, row, index) {
-    if (row.id === 0) {
+    if (parseInt(row.idItem) === 0) {
         return "<input data-field='" + this.field + "' value='" + value + "' class='form-control input-sm' type='text' text >";
     } else {
         return row.descripcion;
     }
 }
 
-
-
 window.event_OPedido = {
     "click button[name='seleccion']": function (e, value, row, index) {
         $("#modal-find-items").modal("hide");
         $("#tbOrdenPedido").bootstrapTable("append", {
-            id: row.id,
+            //id: row.id,
+            id: 0,
+            idItem: row.id,
             cantidad: 1,
             descripcion: row.descripcion,
             precioref: 0,
