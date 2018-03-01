@@ -195,16 +195,16 @@ function hideRegistro() {
 
 /* Formatos de Fechas */
 function formatView(data) {
-    fecha = moment(data, "YYYY-MM-DD HH:mm:ss");
-    return fecha.format('MMMM D, YYYY');
+    fecha = moment(data, fecha_format.save );//"YYYY-MM-DD HH:mm:ss"
+    return fecha.format(fecha_format.view);
 }
 function formatSave(data) {
-    fecha = moment(data, 'MMMM D, YYYY');
-    return fecha.format("YYYY-MM-DD HH:mm:ss");
+    fecha = moment(data,fecha_format.view); // 'MMMM D, YYYY'
+    return fecha.format(fecha_format.save);
 }
-function fechaMoment(data) {
+/*function fechaMoment(data) {
     return moment(data, 'MMMM D, YYYY');
-}
+}*/
 function fechaMoment(data, format) {
     return moment(data, format);
 }

@@ -91,7 +91,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div id="toolbar2" class="btn-group" toolbar role="group" aria-label="...">
+                <div id="toolbar2" class="btn-group btn-group-sm" toolbar role="group" aria-label="...">
                     <button add type="button" class="btn btn-success">
                         <i class="glyphicon glyphicon-plus"></i> Agregar
                     </button>

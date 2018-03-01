@@ -86,8 +86,12 @@ columns = [
 
 function initRegistro() {
     $('input[name="fecha"]').initDate();
+    //d = Date.now();
+    //d.setUTCDate(-5);
+    
     $('input[name="fecha"]').datepicker('update', new Date());
-
+    //console.log(moment().fromNow());
+    
     $("#tbOrdenPedido").bootstrapTable('refreshOptions', {
         columns: columns_edit_v2
     });
@@ -153,7 +157,7 @@ $(function () {
 function getDatos() {
     form = "form[save]";
     dt = JSON.parse($(form).serializeObject_KBSG());
-    dt.fecha = formatSave(dt.fecha);
+    //dt.fecha = formatSave(dt.fecha);
     items_delete = $.isEmptyObject($("button[delete_local]").data("ids")) ? [] : $("button[delete_local]").data("ids");
     datos = {
         url: getURL($(form).attr("action")),

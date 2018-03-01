@@ -188,7 +188,7 @@ function alertEliminarRegistros() {
 
 $.fn.getFecha = function () {
     tipo = $(this).attr("dt-tipo");
-    fecha = fechaMoment($(this).datepicker("getDate"));
+    fecha = fechaMoment($(this).val(), fecha_format.view);
     switch (tipo) {
         case "year":
             fecha = moment({year: fecha.year(), month: 0, day: 0});
