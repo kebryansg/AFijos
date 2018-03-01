@@ -144,7 +144,13 @@
                     <div class="center-content">
                         <div class="col-md-10">
                             <h4 class="bold"><u>Establecer la cantidad a solicitar</u> </h4>
+                            <div id="toolCantidad" class="btn-group btn-group-sm">
+                                <button deleteItems type="button" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i> Eliminar Item(s)
+                                </button>
+                            </div>
                             <table id="tbDetalleOrdenSelect"
+                                   data-toolbar="#toolCantidad"
                                    >
                                 <thead>
                                     <tr>
@@ -178,7 +184,7 @@
                     <div class="center-content">
                         <div class="col-md-10">
                             <h4 class="bold"><u>Confirmación de la Orden Compra</u></h4>
-                            <h4 class="bold">Proveedor: <small>KEVIN SUAREZ </small> </h4>
+                            <h4 class="bold">Proveedor: <small id="lblProveedor" ></small> </h4>
                             <table id="tbConfirmacion">
                                 <thead>
                                     <tr>
