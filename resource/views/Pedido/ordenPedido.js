@@ -153,7 +153,7 @@ $(function () {
 function getDatos() {
     form = "form[save]";
     dt = JSON.parse($(form).serializeObject_KBSG());
-    dt.fecha = formatSave(dt.fecha);
+    //dt.fecha = formatSave(dt.fecha);
     items_delete = $.isEmptyObject($("button[delete_local]").data("ids")) ? [] : $("button[delete_local]").data("ids");
     datos = {
         url: getURL($(form).attr("action")),

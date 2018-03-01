@@ -20,6 +20,17 @@ function validarCantidadSolicitada() {
 
 $(function () {
 
+    $("button[deleteItems]").click(function () {
+        btnGroup = $(this).closest(".btn-group").attr("id");
+        table = $("table[data-toolbar='#" + btnGroup + "']");
+        rows = $(table).bootstrapTable("getSelections").map(row => row.state);
+        console.log(rows);
+        $(table).bootstrapTable("remove", {
+            field: "state",
+            values: rows
+        });
+    });
+
     $(".tab-pane button[next]").click(function (e) {
         func = $(this).attr("dt-validate");
         bandera = self[func]();
@@ -55,6 +66,9 @@ $(function () {
     $('.nav-tabs li:eq(2) a').on('shown.bs.tab', function (event) {
         rows = $("#tbDetalleOrdenSelect").bootstrapTable("getData");
         $("#tbConfirmacion").bootstrapTable('load', rows);
+        $("#lblProveedor").html($("#txtProveedor").val());
+
+
     });
 
     $(".tab-pane button[last]").click(function (e) {
@@ -107,7 +121,7 @@ $(function () {
     });
 });
 
-function finRegistro(){
+function finRegistro() {
     $("#clearPag").click();
 }
 
