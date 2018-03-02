@@ -1,0 +1,1934 @@
+[
+    {
+        "title": "address-book",
+        "icon": "address-book"
+    },
+    {
+        "title": "address-card",
+        "icon": "address-card"
+    },
+    {
+        "title": "adjust",
+        "icon": "adjust"
+    },
+    {
+        "title": "align-center",
+        "icon": "align-center"
+    },
+    {
+        "title": "align-justify",
+        "icon": "align-justify"
+    },
+    {
+        "title": "align-left",
+        "icon": "align-left"
+    },
+    {
+        "title": "align-right",
+        "icon": "align-right"
+    },
+    {
+        "title": "ambulance",
+        "icon": "ambulance"
+    },
+    {
+        "title": "american-sign-language-interpreting",
+        "icon": "american-sign-language-interpreting"
+    },
+    {
+        "title": "anchor",
+        "icon": "anchor"
+    },
+    {
+        "title": "angle-double-down",
+        "icon": "angle-double-down"
+    },
+    {
+        "title": "angle-double-left",
+        "icon": "angle-double-left"
+    },
+    {
+        "title": "angle-double-right",
+        "icon": "angle-double-right"
+    },
+    {
+        "title": "angle-double-up",
+        "icon": "angle-double-up"
+    },
+    {
+        "title": "angle-down",
+        "icon": "angle-down"
+    },
+    {
+        "title": "angle-left",
+        "icon": "angle-left"
+    },
+    {
+        "title": "angle-right",
+        "icon": "angle-right"
+    },
+    {
+        "title": "angle-up",
+        "icon": "angle-up"
+    },
+    {
+        "title": "archive",
+        "icon": "archive"
+    },
+    {
+        "title": "arrow-alt-circle-down",
+        "icon": "arrow-alt-circle-down"
+    },
+    {
+        "title": "arrow-alt-circle-left",
+        "icon": "arrow-alt-circle-left"
+    },
+    {
+        "title": "arrow-alt-circle-right",
+        "icon": "arrow-alt-circle-right"
+    },
+    {
+        "title": "arrow-alt-circle-up",
+        "icon": "arrow-alt-circle-up"
+    },
+    {
+        "title": "arrow-circle-down",
+        "icon": "arrow-circle-down"
+    },
+    {
+        "title": "arrow-circle-left",
+        "icon": "arrow-circle-left"
+    },
+    {
+        "title": "arrow-circle-right",
+        "icon": "arrow-circle-right"
+    },
+    {
+        "title": "arrow-circle-up",
+        "icon": "arrow-circle-up"
+    },
+    {
+        "title": "arrow-down",
+        "icon": "arrow-down"
+    },
+    {
+        "title": "arrow-left",
+        "icon": "arrow-left"
+    },
+    {
+        "title": "arrow-right",
+        "icon": "arrow-right"
+    },
+    {
+        "title": "arrow-up",
+        "icon": "arrow-up"
+    },
+    {
+        "title": "arrows-alt",
+        "icon": "arrows-alt"
+    },
+    {
+        "title": "arrows-alt-h",
+        "icon": "arrows-alt-h"
+    },
+    {
+        "title": "arrows-alt-v",
+        "icon": "arrows-alt-v"
+    },
+    {
+        "title": "assistive-listening-systems",
+        "icon": "assistive-listening-systems"
+    },
+    {
+        "title": "asterisk",
+        "icon": "asterisk"
+    },
+    {
+        "title": "at",
+        "icon": "at"
+    },
+    {
+        "title": "audio-description",
+        "icon": "audio-description"
+    },
+    {
+        "title": "backward",
+        "icon": "backward"
+    },
+    {
+        "title": "balance-scale",
+        "icon": "balance-scale"
+    },
+    {
+        "title": "ban",
+        "icon": "ban"
+    },
+    {
+        "title": "barcode",
+        "icon": "barcode"
+    },
+    {
+        "title": "bars",
+        "icon": "bars"
+    },
+    {
+        "title": "baseball-ball",
+        "icon": "baseball-ball"
+    },
+    {
+        "title": "basketball-ball",
+        "icon": "basketball-ball"
+    },
+    {
+        "title": "bath",
+        "icon": "bath"
+    },
+    {
+        "title": "battery-empty",
+        "icon": "battery-empty"
+    },
+    {
+        "title": "battery-full",
+        "icon": "battery-full"
+    },
+    {
+        "title": "battery-half",
+        "icon": "battery-half"
+    },
+    {
+        "title": "battery-quarter",
+        "icon": "battery-quarter"
+    },
+    {
+        "title": "battery-three-quarters",
+        "icon": "battery-three-quarters"
+    },
+    {
+        "title": "bed",
+        "icon": "bed"
+    },
+    {
+        "title": "beer",
+        "icon": "beer"
+    },
+    {
+        "title": "bell",
+        "icon": "bell"
+    },
+    {
+        "title": "bell-slash",
+        "icon": "bell-slash"
+    },
+    {
+        "title": "bicycle",
+        "icon": "bicycle"
+    },
+    {
+        "title": "binoculars",
+        "icon": "binoculars"
+    },
+    {
+        "title": "birthday-cake",
+        "icon": "birthday-cake"
+    },
+    {
+        "title": "blind",
+        "icon": "blind"
+    },
+    {
+        "title": "bold",
+        "icon": "bold"
+    },
+    {
+        "title": "bolt",
+        "icon": "bolt"
+    },
+    {
+        "title": "bomb",
+        "icon": "bomb"
+    },
+    {
+        "title": "book",
+        "icon": "book"
+    },
+    {
+        "title": "bookmark",
+        "icon": "bookmark"
+    },
+    {
+        "title": "bowling-ball",
+        "icon": "bowling-ball"
+    },
+    {
+        "title": "braille",
+        "icon": "braille"
+    },
+    {
+        "title": "briefcase",
+        "icon": "briefcase"
+    },
+    {
+        "title": "bug",
+        "icon": "bug"
+    },
+    {
+        "title": "building",
+        "icon": "building"
+    },
+    {
+        "title": "bullhorn",
+        "icon": "bullhorn"
+    },
+    {
+        "title": "bullseye",
+        "icon": "bullseye"
+    },
+    {
+        "title": "bus",
+        "icon": "bus"
+    },
+    {
+        "title": "calculator",
+        "icon": "calculator"
+    },
+    {
+        "title": "calendar",
+        "icon": "calendar"
+    },
+    {
+        "title": "calendar-alt",
+        "icon": "calendar-alt"
+    },
+    {
+        "title": "calendar-check",
+        "icon": "calendar-check"
+    },
+    {
+        "title": "calendar-minus",
+        "icon": "calendar-minus"
+    },
+    {
+        "title": "calendar-plus",
+        "icon": "calendar-plus"
+    },
+    {
+        "title": "calendar-times",
+        "icon": "calendar-times"
+    },
+    {
+        "title": "camera",
+        "icon": "camera"
+    },
+    {
+        "title": "camera-retro",
+        "icon": "camera-retro"
+    },
+    {
+        "title": "car",
+        "icon": "car"
+    },
+    {
+        "title": "caret-down",
+        "icon": "caret-down"
+    },
+    {
+        "title": "caret-left",
+        "icon": "caret-left"
+    },
+    {
+        "title": "caret-right",
+        "icon": "caret-right"
+    },
+    {
+        "title": "caret-square-down",
+        "icon": "caret-square-down"
+    },
+    {
+        "title": "caret-square-left",
+        "icon": "caret-square-left"
+    },
+    {
+        "title": "caret-square-right",
+        "icon": "caret-square-right"
+    },
+    {
+        "title": "caret-square-up",
+        "icon": "caret-square-up"
+    },
+    {
+        "title": "caret-up",
+        "icon": "caret-up"
+    },
+    {
+        "title": "cart-arrow-down",
+        "icon": "cart-arrow-down"
+    },
+    {
+        "title": "cart-plus",
+        "icon": "cart-plus"
+    },
+    {
+        "title": "certificate",
+        "icon": "certificate"
+    },
+    {
+        "title": "chart-area",
+        "icon": "chart-area"
+    },
+    {
+        "title": "chart-bar",
+        "icon": "chart-bar"
+    },
+    {
+        "title": "chart-line",
+        "icon": "chart-line"
+    },
+    {
+        "title": "chart-pie",
+        "icon": "chart-pie"
+    },
+    {
+        "title": "check",
+        "icon": "check"
+    },
+    {
+        "title": "check-circle",
+        "icon": "check-circle"
+    },
+    {
+        "title": "check-square",
+        "icon": "check-square"
+    },
+    {
+        "title": "chess",
+        "icon": "chess"
+    },
+    {
+        "title": "chess-bishop",
+        "icon": "chess-bishop"
+    },
+    {
+        "title": "chess-board",
+        "icon": "chess-board"
+    },
+    {
+        "title": "chess-king",
+        "icon": "chess-king"
+    },
+    {
+        "title": "chess-knight",
+        "icon": "chess-knight"
+    },
+    {
+        "title": "chess-pawn",
+        "icon": "chess-pawn"
+    },
+    {
+        "title": "chess-queen",
+        "icon": "chess-queen"
+    },
+    {
+        "title": "chess-rook",
+        "icon": "chess-rook"
+    },
+    {
+        "title": "chevron-circle-down",
+        "icon": "chevron-circle-down"
+    },
+    {
+        "title": "chevron-circle-left",
+        "icon": "chevron-circle-left"
+    },
+    {
+        "title": "chevron-circle-right",
+        "icon": "chevron-circle-right"
+    },
+    {
+        "title": "chevron-circle-up",
+        "icon": "chevron-circle-up"
+    },
+    {
+        "title": "chevron-down",
+        "icon": "chevron-down"
+    },
+    {
+        "title": "chevron-left",
+        "icon": "chevron-left"
+    },
+    {
+        "title": "chevron-right",
+        "icon": "chevron-right"
+    },
+    {
+        "title": "chevron-up",
+        "icon": "chevron-up"
+    },
+    {
+        "title": "child",
+        "icon": "child"
+    },
+    {
+        "title": "circle",
+        "icon": "circle"
+    },
+    {
+        "title": "circle-notch",
+        "icon": "circle-notch"
+    },
+    {
+        "title": "clipboard",
+        "icon": "clipboard"
+    },
+    {
+        "title": "clock",
+        "icon": "clock"
+    },
+    {
+        "title": "clone",
+        "icon": "clone"
+    },
+    {
+        "title": "closed-captioning",
+        "icon": "closed-captioning"
+    },
+    {
+        "title": "cloud",
+        "icon": "cloud"
+    },
+    {
+        "title": "cloud-download-alt",
+        "icon": "cloud-download-alt"
+    },
+    {
+        "title": "cloud-upload-alt",
+        "icon": "cloud-upload-alt"
+    },
+    {
+        "title": "code",
+        "icon": "code"
+    },
+    {
+        "title": "code-branch",
+        "icon": "code-branch"
+    },
+    {
+        "title": "coffee",
+        "icon": "coffee"
+    },
+    {
+        "title": "cog",
+        "icon": "cog"
+    },
+    {
+        "title": "cogs",
+        "icon": "cogs"
+    },
+    {
+        "title": "columns",
+        "icon": "columns"
+    },
+    {
+        "title": "comment",
+        "icon": "comment"
+    },
+    {
+        "title": "comment-alt",
+        "icon": "comment-alt"
+    },
+    {
+        "title": "comments",
+        "icon": "comments"
+    },
+    {
+        "title": "compass",
+        "icon": "compass"
+    },
+    {
+        "title": "compress",
+        "icon": "compress"
+    },
+    {
+        "title": "copy",
+        "icon": "copy"
+    },
+    {
+        "title": "copyright",
+        "icon": "copyright"
+    },
+    {
+        "title": "credit-card",
+        "icon": "credit-card"
+    },
+    {
+        "title": "crop",
+        "icon": "crop"
+    },
+    {
+        "title": "crosshairs",
+        "icon": "crosshairs"
+    },
+    {
+        "title": "cube",
+        "icon": "cube"
+    },
+    {
+        "title": "cubes",
+        "icon": "cubes"
+    },
+    {
+        "title": "cut",
+        "icon": "cut"
+    },
+    {
+        "title": "database",
+        "icon": "database"
+    },
+    {
+        "title": "deaf",
+        "icon": "deaf"
+    },
+    {
+        "title": "desktop",
+        "icon": "desktop"
+    },
+    {
+        "title": "dollar-sign",
+        "icon": "dollar-sign"
+    },
+    {
+        "title": "dot-circle",
+        "icon": "dot-circle"
+    },
+    {
+        "title": "download",
+        "icon": "download"
+    },
+    {
+        "title": "edit",
+        "icon": "edit"
+    },
+    {
+        "title": "eject",
+        "icon": "eject"
+    },
+    {
+        "title": "ellipsis-h",
+        "icon": "ellipsis-h"
+    },
+    {
+        "title": "ellipsis-v",
+        "icon": "ellipsis-v"
+    },
+    {
+        "title": "envelope",
+        "icon": "envelope"
+    },
+    {
+        "title": "envelope-open",
+        "icon": "envelope-open"
+    },
+    {
+        "title": "envelope-square",
+        "icon": "envelope-square"
+    },
+    {
+        "title": "eraser",
+        "icon": "eraser"
+    },
+    {
+        "title": "euro-sign",
+        "icon": "euro-sign"
+    },
+    {
+        "title": "exchange-alt",
+        "icon": "exchange-alt"
+    },
+    {
+        "title": "exclamation",
+        "icon": "exclamation"
+    },
+    {
+        "title": "exclamation-circle",
+        "icon": "exclamation-circle"
+    },
+    {
+        "title": "exclamation-triangle",
+        "icon": "exclamation-triangle"
+    },
+    {
+        "title": "expand",
+        "icon": "expand"
+    },
+    {
+        "title": "expand-arrows-alt",
+        "icon": "expand-arrows-alt"
+    },
+    {
+        "title": "external-link-alt",
+        "icon": "external-link-alt"
+    },
+    {
+        "title": "external-link-square-alt",
+        "icon": "external-link-square-alt"
+    },
+    {
+        "title": "eye",
+        "icon": "eye"
+    },
+    {
+        "title": "eye-dropper",
+        "icon": "eye-dropper"
+    },
+    {
+        "title": "eye-slash",
+        "icon": "eye-slash"
+    },
+    {
+        "title": "fast-backward",
+        "icon": "fast-backward"
+    },
+    {
+        "title": "fast-forward",
+        "icon": "fast-forward"
+    },
+    {
+        "title": "fax",
+        "icon": "fax"
+    },
+    {
+        "title": "female",
+        "icon": "female"
+    },
+    {
+        "title": "fighter-jet",
+        "icon": "fighter-jet"
+    },
+    {
+        "title": "file",
+        "icon": "file"
+    },
+    {
+        "title": "file-alt",
+        "icon": "file-alt"
+    },
+    {
+        "title": "file-archive",
+        "icon": "file-archive"
+    },
+    {
+        "title": "file-audio",
+        "icon": "file-audio"
+    },
+    {
+        "title": "file-code",
+        "icon": "file-code"
+    },
+    {
+        "title": "file-excel",
+        "icon": "file-excel"
+    },
+    {
+        "title": "file-image",
+        "icon": "file-image"
+    },
+    {
+        "title": "file-pdf",
+        "icon": "file-pdf"
+    },
+    {
+        "title": "file-powerpoint",
+        "icon": "file-powerpoint"
+    },
+    {
+        "title": "file-video",
+        "icon": "file-video"
+    },
+    {
+        "title": "file-word",
+        "icon": "file-word"
+    },
+    {
+        "title": "film",
+        "icon": "film"
+    },
+    {
+        "title": "filter",
+        "icon": "filter"
+    },
+    {
+        "title": "fire",
+        "icon": "fire"
+    },
+    {
+        "title": "fire-extinguisher",
+        "icon": "fire-extinguisher"
+    },
+    {
+        "title": "flag",
+        "icon": "flag"
+    },
+    {
+        "title": "flag-checkered",
+        "icon": "flag-checkered"
+    },
+    {
+        "title": "flask",
+        "icon": "flask"
+    },
+    {
+        "title": "folder",
+        "icon": "folder"
+    },
+    {
+        "title": "folder-open",
+        "icon": "folder-open"
+    },
+    {
+        "title": "font",
+        "icon": "font"
+    },
+    {
+        "title": "football-ball",
+        "icon": "football-ball"
+    },
+    {
+        "title": "forward",
+        "icon": "forward"
+    },
+    {
+        "title": "frown",
+        "icon": "frown"
+    },
+    {
+        "title": "futbol",
+        "icon": "futbol"
+    },
+    {
+        "title": "gamepad",
+        "icon": "gamepad"
+    },
+    {
+        "title": "gavel",
+        "icon": "gavel"
+    },
+    {
+        "title": "gem",
+        "icon": "gem"
+    },
+    {
+        "title": "genderless",
+        "icon": "genderless"
+    },
+    {
+        "title": "gift",
+        "icon": "gift"
+    },
+    {
+        "title": "glass-martini",
+        "icon": "glass-martini"
+    },
+    {
+        "title": "globe",
+        "icon": "globe"
+    },
+    {
+        "title": "golf-ball",
+        "icon": "golf-ball"
+    },
+    {
+        "title": "graduation-cap",
+        "icon": "graduation-cap"
+    },
+    {
+        "title": "h-square",
+        "icon": "h-square"
+    },
+    {
+        "title": "hand-lizard",
+        "icon": "hand-lizard"
+    },
+    {
+        "title": "hand-paper",
+        "icon": "hand-paper"
+    },
+    {
+        "title": "hand-peace",
+        "icon": "hand-peace"
+    },
+    {
+        "title": "hand-point-down",
+        "icon": "hand-point-down"
+    },
+    {
+        "title": "hand-point-left",
+        "icon": "hand-point-left"
+    },
+    {
+        "title": "hand-point-right",
+        "icon": "hand-point-right"
+    },
+    {
+        "title": "hand-point-up",
+        "icon": "hand-point-up"
+    },
+    {
+        "title": "hand-pointer",
+        "icon": "hand-pointer"
+    },
+    {
+        "title": "hand-rock",
+        "icon": "hand-rock"
+    },
+    {
+        "title": "hand-scissors",
+        "icon": "hand-scissors"
+    },
+    {
+        "title": "hand-spock",
+        "icon": "hand-spock"
+    },
+    {
+        "title": "handshake",
+        "icon": "handshake"
+    },
+    {
+        "title": "hashtag",
+        "icon": "hashtag"
+    },
+    {
+        "title": "hdd",
+        "icon": "hdd"
+    },
+    {
+        "title": "heading",
+        "icon": "heading"
+    },
+    {
+        "title": "headphones",
+        "icon": "headphones"
+    },
+    {
+        "title": "heart",
+        "icon": "heart"
+    },
+    {
+        "title": "heartbeat",
+        "icon": "heartbeat"
+    },
+    {
+        "title": "history",
+        "icon": "history"
+    },
+    {
+        "title": "hockey-puck",
+        "icon": "hockey-puck"
+    },
+    {
+        "title": "home",
+        "icon": "home"
+    },
+    {
+        "title": "hospital",
+        "icon": "hospital"
+    },
+    {
+        "title": "hourglass",
+        "icon": "hourglass"
+    },
+    {
+        "title": "hourglass-end",
+        "icon": "hourglass-end"
+    },
+    {
+        "title": "hourglass-half",
+        "icon": "hourglass-half"
+    },
+    {
+        "title": "hourglass-start",
+        "icon": "hourglass-start"
+    },
+    {
+        "title": "i-cursor",
+        "icon": "i-cursor"
+    },
+    {
+        "title": "id-badge",
+        "icon": "id-badge"
+    },
+    {
+        "title": "id-card",
+        "icon": "id-card"
+    },
+    {
+        "title": "image",
+        "icon": "image"
+    },
+    {
+        "title": "images",
+        "icon": "images"
+    },
+    {
+        "title": "inbox",
+        "icon": "inbox"
+    },
+    {
+        "title": "indent",
+        "icon": "indent"
+    },
+    {
+        "title": "industry",
+        "icon": "industry"
+    },
+    {
+        "title": "info",
+        "icon": "info"
+    },
+    {
+        "title": "info-circle",
+        "icon": "info-circle"
+    },
+    {
+        "title": "italic",
+        "icon": "italic"
+    },
+    {
+        "title": "key",
+        "icon": "key"
+    },
+    {
+        "title": "keyboard",
+        "icon": "keyboard"
+    },
+    {
+        "title": "language",
+        "icon": "language"
+    },
+    {
+        "title": "laptop",
+        "icon": "laptop"
+    },
+    {
+        "title": "leaf",
+        "icon": "leaf"
+    },
+    {
+        "title": "lemon",
+        "icon": "lemon"
+    },
+    {
+        "title": "level-down-alt",
+        "icon": "level-down-alt"
+    },
+    {
+        "title": "level-up-alt",
+        "icon": "level-up-alt"
+    },
+    {
+        "title": "life-ring",
+        "icon": "life-ring"
+    },
+    {
+        "title": "lightbulb",
+        "icon": "lightbulb"
+    },
+    {
+        "title": "link",
+        "icon": "link"
+    },
+    {
+        "title": "lira-sign",
+        "icon": "lira-sign"
+    },
+    {
+        "title": "list",
+        "icon": "list"
+    },
+    {
+        "title": "list-alt",
+        "icon": "list-alt"
+    },
+    {
+        "title": "list-ol",
+        "icon": "list-ol"
+    },
+    {
+        "title": "list-ul",
+        "icon": "list-ul"
+    },
+    {
+        "title": "location-arrow",
+        "icon": "location-arrow"
+    },
+    {
+        "title": "lock",
+        "icon": "lock"
+    },
+    {
+        "title": "lock-open",
+        "icon": "lock-open"
+    },
+    {
+        "title": "long-arrow-alt-down",
+        "icon": "long-arrow-alt-down"
+    },
+    {
+        "title": "long-arrow-alt-left",
+        "icon": "long-arrow-alt-left"
+    },
+    {
+        "title": "long-arrow-alt-right",
+        "icon": "long-arrow-alt-right"
+    },
+    {
+        "title": "long-arrow-alt-up",
+        "icon": "long-arrow-alt-up"
+    },
+    {
+        "title": "low-vision",
+        "icon": "low-vision"
+    },
+    {
+        "title": "magic",
+        "icon": "magic"
+    },
+    {
+        "title": "magnet",
+        "icon": "magnet"
+    },
+    {
+        "title": "male",
+        "icon": "male"
+    },
+    {
+        "title": "map",
+        "icon": "map"
+    },
+    {
+        "title": "map-marker",
+        "icon": "map-marker"
+    },
+    {
+        "title": "map-marker-alt",
+        "icon": "map-marker-alt"
+    },
+    {
+        "title": "map-pin",
+        "icon": "map-pin"
+    },
+    {
+        "title": "map-signs",
+        "icon": "map-signs"
+    },
+    {
+        "title": "mars",
+        "icon": "mars"
+    },
+    {
+        "title": "mars-double",
+        "icon": "mars-double"
+    },
+    {
+        "title": "mars-stroke",
+        "icon": "mars-stroke"
+    },
+    {
+        "title": "mars-stroke-h",
+        "icon": "mars-stroke-h"
+    },
+    {
+        "title": "mars-stroke-v",
+        "icon": "mars-stroke-v"
+    },
+    {
+        "title": "medkit",
+        "icon": "medkit"
+    },
+    {
+        "title": "meh",
+        "icon": "meh"
+    },
+    {
+        "title": "mercury",
+        "icon": "mercury"
+    },
+    {
+        "title": "microchip",
+        "icon": "microchip"
+    },
+    {
+        "title": "microphone",
+        "icon": "microphone"
+    },
+    {
+        "title": "microphone-slash",
+        "icon": "microphone-slash"
+    },
+    {
+        "title": "minus",
+        "icon": "minus"
+    },
+    {
+        "title": "minus-circle",
+        "icon": "minus-circle"
+    },
+    {
+        "title": "minus-square",
+        "icon": "minus-square"
+    },
+    {
+        "title": "mobile",
+        "icon": "mobile"
+    },
+    {
+        "title": "mobile-alt",
+        "icon": "mobile-alt"
+    },
+    {
+        "title": "money-bill-alt",
+        "icon": "money-bill-alt"
+    },
+    {
+        "title": "moon",
+        "icon": "moon"
+    },
+    {
+        "title": "motorcycle",
+        "icon": "motorcycle"
+    },
+    {
+        "title": "mouse-pointer",
+        "icon": "mouse-pointer"
+    },
+    {
+        "title": "music",
+        "icon": "music"
+    },
+    {
+        "title": "neuter",
+        "icon": "neuter"
+    },
+    {
+        "title": "newspaper",
+        "icon": "newspaper"
+    },
+    {
+        "title": "object-group",
+        "icon": "object-group"
+    },
+    {
+        "title": "object-ungroup",
+        "icon": "object-ungroup"
+    },
+    {
+        "title": "outdent",
+        "icon": "outdent"
+    },
+    {
+        "title": "paint-brush",
+        "icon": "paint-brush"
+    },
+    {
+        "title": "paper-plane",
+        "icon": "paper-plane"
+    },
+    {
+        "title": "paperclip",
+        "icon": "paperclip"
+    },
+    {
+        "title": "paragraph",
+        "icon": "paragraph"
+    },
+    {
+        "title": "paste",
+        "icon": "paste"
+    },
+    {
+        "title": "pause",
+        "icon": "pause"
+    },
+    {
+        "title": "pause-circle",
+        "icon": "pause-circle"
+    },
+    {
+        "title": "paw",
+        "icon": "paw"
+    },
+    {
+        "title": "pen-square",
+        "icon": "pen-square"
+    },
+    {
+        "title": "pencil-alt",
+        "icon": "pencil-alt"
+    },
+    {
+        "title": "percent",
+        "icon": "percent"
+    },
+    {
+        "title": "phone",
+        "icon": "phone"
+    },
+    {
+        "title": "phone-square",
+        "icon": "phone-square"
+    },
+    {
+        "title": "phone-volume",
+        "icon": "phone-volume"
+    },
+    {
+        "title": "plane",
+        "icon": "plane"
+    },
+    {
+        "title": "play",
+        "icon": "play"
+    },
+    {
+        "title": "play-circle",
+        "icon": "play-circle"
+    },
+    {
+        "title": "plug",
+        "icon": "plug"
+    },
+    {
+        "title": "plus",
+        "icon": "plus"
+    },
+    {
+        "title": "plus-circle",
+        "icon": "plus-circle"
+    },
+    {
+        "title": "plus-square",
+        "icon": "plus-square"
+    },
+    {
+        "title": "podcast",
+        "icon": "podcast"
+    },
+    {
+        "title": "pound-sign",
+        "icon": "pound-sign"
+    },
+    {
+        "title": "power-off",
+        "icon": "power-off"
+    },
+    {
+        "title": "print",
+        "icon": "print"
+    },
+    {
+        "title": "puzzle-piece",
+        "icon": "puzzle-piece"
+    },
+    {
+        "title": "qrcode",
+        "icon": "qrcode"
+    },
+    {
+        "title": "question",
+        "icon": "question"
+    },
+    {
+        "title": "question-circle",
+        "icon": "question-circle"
+    },
+    {
+        "title": "quidditch",
+        "icon": "quidditch"
+    },
+    {
+        "title": "quote-left",
+        "icon": "quote-left"
+    },
+    {
+        "title": "quote-right",
+        "icon": "quote-right"
+    },
+    {
+        "title": "random",
+        "icon": "random"
+    },
+    {
+        "title": "recycle",
+        "icon": "recycle"
+    },
+    {
+        "title": "redo",
+        "icon": "redo"
+    },
+    {
+        "title": "redo-alt",
+        "icon": "redo-alt"
+    },
+    {
+        "title": "registered",
+        "icon": "registered"
+    },
+    {
+        "title": "reply",
+        "icon": "reply"
+    },
+    {
+        "title": "reply-all",
+        "icon": "reply-all"
+    },
+    {
+        "title": "retweet",
+        "icon": "retweet"
+    },
+    {
+        "title": "road",
+        "icon": "road"
+    },
+    {
+        "title": "rocket",
+        "icon": "rocket"
+    },
+    {
+        "title": "rss",
+        "icon": "rss"
+    },
+    {
+        "title": "rss-square",
+        "icon": "rss-square"
+    },
+    {
+        "title": "ruble-sign",
+        "icon": "ruble-sign"
+    },
+    {
+        "title": "rupee-sign",
+        "icon": "rupee-sign"
+    },
+    {
+        "title": "save",
+        "icon": "save"
+    },
+    {
+        "title": "search",
+        "icon": "search"
+    },
+    {
+        "title": "search-minus",
+        "icon": "search-minus"
+    },
+    {
+        "title": "search-plus",
+        "icon": "search-plus"
+    },
+    {
+        "title": "server",
+        "icon": "server"
+    },
+    {
+        "title": "share",
+        "icon": "share"
+    },
+    {
+        "title": "share-alt",
+        "icon": "share-alt"
+    },
+    {
+        "title": "share-alt-square",
+        "icon": "share-alt-square"
+    },
+    {
+        "title": "share-square",
+        "icon": "share-square"
+    },
+    {
+        "title": "shekel-sign",
+        "icon": "shekel-sign"
+    },
+    {
+        "title": "shield-alt",
+        "icon": "shield-alt"
+    },
+    {
+        "title": "ship",
+        "icon": "ship"
+    },
+    {
+        "title": "shopping-bag",
+        "icon": "shopping-bag"
+    },
+    {
+        "title": "shopping-basket",
+        "icon": "shopping-basket"
+    },
+    {
+        "title": "shopping-cart",
+        "icon": "shopping-cart"
+    },
+    {
+        "title": "shower",
+        "icon": "shower"
+    },
+    {
+        "title": "sign-in-alt",
+        "icon": "sign-in-alt"
+    },
+    {
+        "title": "sign-language",
+        "icon": "sign-language"
+    },
+    {
+        "title": "sign-out-alt",
+        "icon": "sign-out-alt"
+    },
+    {
+        "title": "signal",
+        "icon": "signal"
+    },
+    {
+        "title": "sitemap",
+        "icon": "sitemap"
+    },
+    {
+        "title": "sliders-h",
+        "icon": "sliders-h"
+    },
+    {
+        "title": "smile",
+        "icon": "smile"
+    },
+    {
+        "title": "snowflake",
+        "icon": "snowflake"
+    },
+    {
+        "title": "sort",
+        "icon": "sort"
+    },
+    {
+        "title": "sort-alpha-down",
+        "icon": "sort-alpha-down"
+    },
+    {
+        "title": "sort-alpha-up",
+        "icon": "sort-alpha-up"
+    },
+    {
+        "title": "sort-amount-down",
+        "icon": "sort-amount-down"
+    },
+    {
+        "title": "sort-amount-up",
+        "icon": "sort-amount-up"
+    },
+    {
+        "title": "sort-down",
+        "icon": "sort-down"
+    },
+    {
+        "title": "sort-numeric-down",
+        "icon": "sort-numeric-down"
+    },
+    {
+        "title": "sort-numeric-up",
+        "icon": "sort-numeric-up"
+    },
+    {
+        "title": "sort-up",
+        "icon": "sort-up"
+    },
+    {
+        "title": "space-shuttle",
+        "icon": "space-shuttle"
+    },
+    {
+        "title": "spinner",
+        "icon": "spinner"
+    },
+    {
+        "title": "square",
+        "icon": "square"
+    },
+    {
+        "title": "square-full",
+        "icon": "square-full"
+    },
+    {
+        "title": "star",
+        "icon": "star"
+    },
+    {
+        "title": "star-half",
+        "icon": "star-half"
+    },
+    {
+        "title": "step-backward",
+        "icon": "step-backward"
+    },
+    {
+        "title": "step-forward",
+        "icon": "step-forward"
+    },
+    {
+        "title": "stethoscope",
+        "icon": "stethoscope"
+    },
+    {
+        "title": "sticky-note",
+        "icon": "sticky-note"
+    },
+    {
+        "title": "stop",
+        "icon": "stop"
+    },
+    {
+        "title": "stop-circle",
+        "icon": "stop-circle"
+    },
+    {
+        "title": "stopwatch",
+        "icon": "stopwatch"
+    },
+    {
+        "title": "street-view",
+        "icon": "street-view"
+    },
+    {
+        "title": "strikethrough",
+        "icon": "strikethrough"
+    },
+    {
+        "title": "subscript",
+        "icon": "subscript"
+    },
+    {
+        "title": "subway",
+        "icon": "subway"
+    },
+    {
+        "title": "suitcase",
+        "icon": "suitcase"
+    },
+    {
+        "title": "sun",
+        "icon": "sun"
+    },
+    {
+        "title": "superscript",
+        "icon": "superscript"
+    },
+    {
+        "title": "sync",
+        "icon": "sync"
+    },
+    {
+        "title": "sync-alt",
+        "icon": "sync-alt"
+    },
+    {
+        "title": "table",
+        "icon": "table"
+    },
+    {
+        "title": "table-tennis",
+        "icon": "table-tennis"
+    },
+    {
+        "title": "tablet",
+        "icon": "tablet"
+    },
+    {
+        "title": "tablet-alt",
+        "icon": "tablet-alt"
+    },
+    {
+        "title": "tachometer-alt",
+        "icon": "tachometer-alt"
+    },
+    {
+        "title": "tag",
+        "icon": "tag"
+    },
+    {
+        "title": "tags",
+        "icon": "tags"
+    },
+    {
+        "title": "tasks",
+        "icon": "tasks"
+    },
+    {
+        "title": "taxi",
+        "icon": "taxi"
+    },
+    {
+        "title": "terminal",
+        "icon": "terminal"
+    },
+    {
+        "title": "text-height",
+        "icon": "text-height"
+    },
+    {
+        "title": "text-width",
+        "icon": "text-width"
+    },
+    {
+        "title": "th",
+        "icon": "th"
+    },
+    {
+        "title": "th-large",
+        "icon": "th-large"
+    },
+    {
+        "title": "th-list",
+        "icon": "th-list"
+    },
+    {
+        "title": "thermometer-empty",
+        "icon": "thermometer-empty"
+    },
+    {
+        "title": "thermometer-full",
+        "icon": "thermometer-full"
+    },
+    {
+        "title": "thermometer-half",
+        "icon": "thermometer-half"
+    },
+    {
+        "title": "thermometer-quarter",
+        "icon": "thermometer-quarter"
+    },
+    {
+        "title": "thermometer-three-quarters",
+        "icon": "thermometer-three-quarters"
+    },
+    {
+        "title": "thumbs-down",
+        "icon": "thumbs-down"
+    },
+    {
+        "title": "thumbs-up",
+        "icon": "thumbs-up"
+    },
+    {
+        "title": "thumbtack",
+        "icon": "thumbtack"
+    },
+    {
+        "title": "ticket-alt",
+        "icon": "ticket-alt"
+    },
+    {
+        "title": "times",
+        "icon": "times"
+    },
+    {
+        "title": "times-circle",
+        "icon": "times-circle"
+    },
+    {
+        "title": "tint",
+        "icon": "tint"
+    },
+    {
+        "title": "toggle-off",
+        "icon": "toggle-off"
+    },
+    {
+        "title": "toggle-on",
+        "icon": "toggle-on"
+    },
+    {
+        "title": "trademark",
+        "icon": "trademark"
+    },
+    {
+        "title": "train",
+        "icon": "train"
+    },
+    {
+        "title": "transgender",
+        "icon": "transgender"
+    },
+    {
+        "title": "transgender-alt",
+        "icon": "transgender-alt"
+    },
+    {
+        "title": "trash",
+        "icon": "trash"
+    },
+    {
+        "title": "trash-alt",
+        "icon": "trash-alt"
+    },
+    {
+        "title": "tree",
+        "icon": "tree"
+    },
+    {
+        "title": "trophy",
+        "icon": "trophy"
+    },
+    {
+        "title": "truck",
+        "icon": "truck"
+    },
+    {
+        "title": "tty",
+        "icon": "tty"
+    },
+    {
+        "title": "tv",
+        "icon": "tv"
+    },
+    {
+        "title": "umbrella",
+        "icon": "umbrella"
+    },
+    {
+        "title": "underline",
+        "icon": "underline"
+    },
+    {
+        "title": "undo",
+        "icon": "undo"
+    },
+    {
+        "title": "undo-alt",
+        "icon": "undo-alt"
+    },
+    {
+        "title": "universal-access",
+        "icon": "universal-access"
+    },
+    {
+        "title": "university",
+        "icon": "university"
+    },
+    {
+        "title": "unlink",
+        "icon": "unlink"
+    },
+    {
+        "title": "unlock",
+        "icon": "unlock"
+    },
+    {
+        "title": "unlock-alt",
+        "icon": "unlock-alt"
+    },
+    {
+        "title": "upload",
+        "icon": "upload"
+    },
+    {
+        "title": "user",
+        "icon": "user"
+    },
+    {
+        "title": "user-circle",
+        "icon": "user-circle"
+    },
+    {
+        "title": "user-md",
+        "icon": "user-md"
+    },
+    {
+        "title": "user-plus",
+        "icon": "user-plus"
+    },
+    {
+        "title": "user-secret",
+        "icon": "user-secret"
+    },
+    {
+        "title": "user-times",
+        "icon": "user-times"
+    },
+    {
+        "title": "users",
+        "icon": "users"
+    },
+    {
+        "title": "utensil-spoon",
+        "icon": "utensil-spoon"
+    },
+    {
+        "title": "utensils",
+        "icon": "utensils"
+    },
+    {
+        "title": "venus",
+        "icon": "venus"
+    },
+    {
+        "title": "venus-double",
+        "icon": "venus-double"
+    },
+    {
+        "title": "venus-mars",
+        "icon": "venus-mars"
+    },
+    {
+        "title": "video",
+        "icon": "video"
+    },
+    {
+        "title": "volleyball-ball",
+        "icon": "volleyball-ball"
+    },
+    {
+        "title": "volume-down",
+        "icon": "volume-down"
+    },
+    {
+        "title": "volume-off",
+        "icon": "volume-off"
+    },
+    {
+        "title": "volume-up",
+        "icon": "volume-up"
+    },
+    {
+        "title": "wheelchair",
+        "icon": "wheelchair"
+    },
+    {
+        "title": "wifi",
+        "icon": "wifi"
+    },
+    {
+        "title": "window-close",
+        "icon": "window-close"
+    },
+    {
+        "title": "window-maximize",
+        "icon": "window-maximize"
+    },
+    {
+        "title": "window-minimize",
+        "icon": "window-minimize"
+    },
+    {
+        "title": "window-restore",
+        "icon": "window-restore"
+    },
+    {
+        "title": "won-sign",
+        "icon": "won-sign"
+    },
+    {
+        "title": "wrench",
+        "icon": "wrench"
+    },
+    {
+        "title": "yen-sign",
+        "icon": "yen-sign"
+    }
+]

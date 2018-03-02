@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <ul id="listFa">
-    <li>
+<!--    <li>
         <i class="fa fa-arrow-alt-circle-down"></i>
-    </li>
+    </li>-->
+
+    <select id="icon">
+
+    </select>
 </ul>
 
 
@@ -501,9 +505,11 @@
      faName.push($(article).attr("id"));
      });*/
     $.each(faName, function (i, fa) {
-        $(listFa).append("<li> "+ i +" <i class='fa fa-"+ fa +"'></i> </li>");
+        //$(listFa).append("<li> "+ i +" <i class='fa fa-"+ fa +"'></i> </li>");
+        $("#icon").append("<option data-icon='fa fa-" + fa + "' value='" + fa + "'> " + fa + "</option>");
     });
-    //console.log(faName);
+
+    //console.log(json);
 //$(".icon-value").remove();
 </script>
 

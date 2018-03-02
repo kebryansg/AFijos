@@ -4,7 +4,10 @@
 <script src="resource/Plantilla/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="resource/Plantilla/bootstrap/dist/js/bootstrap.min.js"></script>
-
+<!-- SlimScroll -->
+<script src="resource/Plantilla/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="resource/Plantilla/fastclick/lib/fastclick.js"></script>
 
 
 
@@ -20,6 +23,8 @@
 <script src="resource/table/locale/bootstrap-table-es-ES.min.js"></script>
 <!-- AdminLTE App -->
 <script src="resource/Plantilla/dist/js/adminlte.js"></script>
+<!--<script src="resource/Plantilla/dist/js/demo.js"></script>-->
+
 <script src="resource/Moment/moment.js"></script>
 <script src="resource/Moment/moment-with-locales.js"></script>
 <!-- Fontawesome -->

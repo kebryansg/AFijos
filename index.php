@@ -4,7 +4,6 @@
         <!-- HEADER -->
         <?php require_once('mvc/views/header.php'); ?>
         <!-- Google Font -->
-        <link rel="stylesheet"
               <!--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
 
         <?php require_once('mvc/views/scripts.php'); ?>
@@ -27,8 +26,8 @@
                 <section class="content container-fluid" id="containPages">
                     <?php
                     //include_once './mvc/views/Pedido/ordenPedido.php';
-                    //include_once './mvc/views/items/items.php';
-                    include_once './mvc/views/activos/grupos.php';
+                    include_once './mvc/views/Administracion/modulo.php';
+                    //include_once './mvc/views/activos/grupos.php';
                     //include_once './mvc/views/Compras/GenerarOrdenCompra.php';
                     //include_once './mvc/views/Administracion/faIcons.php';
                     ?>

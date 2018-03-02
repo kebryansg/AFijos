@@ -7,6 +7,7 @@ class Modulo extends ModelSQL {
     public $tabla;
     public $ID;
     public $Descripcion;
+    public $Icon;
     public $Observacion;
     public $Estado;
 
@@ -15,5 +16,4 @@ class Modulo extends ModelSQL {
         $this->Estado = "ACT";
         $this->tabla = "modulo";
     }
-
 }
