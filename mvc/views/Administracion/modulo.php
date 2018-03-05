@@ -17,7 +17,7 @@
             <thead>
                 <tr>
                     <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="ID" class="col-md-1" data-align="center">Cód.</th>
+                    <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
                     <th data-field="descripcion">Descripción</th>
                     <th data-field="observacion">Observación</th>
                     <th data-field="accion" class="col-md-1" data-align="center" data-formatter="defaultBtnAccion" data-events="event_accion_default">Acciones</th>
@@ -53,7 +53,7 @@
                         <label for="" class="control-label">Icono</label>
                         <select id="cboIcon" class="form-control selectpicker" data-live-search="true" required>
                             <?php
-                            include 'mvc/views/Recurso/Icons.php';
+                            include '../Recurso/Icons.php';
                             ?>
 
                         </select>
@@ -100,11 +100,11 @@
         <div class="clearfix"></div>
         <div class="col-md-12">
             <div class="pull-right">
-                <button class="btn btn-danger " type="reset"  title="Haga clic aquí para cancelar el registro actual">
+                <button class="btn btn-danger btn-sm" type="reset"  title="Haga clic aquí para cancelar el registro actual">
                     <i class="fa fa-reply" aria-hidden="true"></i> Cancelar
                 </button>
                 &nbsp;
-                <button type="submit" class="btn btn-primary" title="Haga clic aquí para guardar la información">
+                <button type="submit" class="btn btn-primary btn-sm" title="Haga clic aquí para guardar la información">
                     <i class="fa fa-save" aria-hidden="true"></i> Guardar										
                 </button>
             </div>

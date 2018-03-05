@@ -6,24 +6,9 @@ table = $("#Listado table");
 $(function () {
     initialComponents();
 
-//    $("form").submit(function (e) {
-//        e.preventDefault();
-//        datos = {
-//            url: url,
-//            dt: {
-//                accion: "save",
-//                op: op,
-//                datos: $(this).serializeObject()
-//            }
-//        };
-//        save_global(datos);
-//        $(table).bootstrapTable("refresh");
-//        $(this).trigger("reset");
-//    });
-
 });
 
-function getDatos() {
+/*function getDatos() {
     form = "form[save]";
     datos = {
         url: $(form).attr("action"),
@@ -34,17 +19,20 @@ function getDatos() {
         }
     };
     return datos;
-}
+}*/
 
 
 
 function edit(datos) {
-    $("form").data("id", datos.ID);
+    $("form[save]").edit(datos);
+    
+    
+    /*$("form").data("id", datos.ID);
     $("input[name='IDModulo']").val(datos.idmodulo);
     $("input[descripcion_find]").val(datos.modulo);
     $("input[name='descripcion']").val(datos.descripcion);
     $("textarea[name='observacion']").val(datos.observacion);
-    $("select[name='estado']").selectpicker("val", datos.estado);
+    $("select[name='estado']").selectpicker("val", datos.estado);*/
 }
 
 function delet(datos){

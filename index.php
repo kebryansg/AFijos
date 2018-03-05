@@ -26,7 +26,8 @@
                 <section class="content container-fluid" id="containPages">
                     <?php
                     //include_once './mvc/views/Pedido/ordenPedido.php';
-                    include_once './mvc/views/Administracion/modulo.php';
+                    //include_once './mvc/views/Administracion/modulo.php';
+                    include_once './mvc/views/Administracion/Submodulo.php';
                     //include_once './mvc/views/activos/grupos.php';
                     //include_once './mvc/views/Compras/GenerarOrdenCompra.php';
                     //include_once './mvc/views/Administracion/faIcons.php';

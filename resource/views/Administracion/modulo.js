@@ -33,10 +33,13 @@ function getDatos() {
 
 
 function edit(datos) {
-    $("form").data("id", datos.ID);
+    /*$("form").data("id", datos.ID);
     $("input[name='descripcion']").val(datos.descripcion);
     $("textarea[name='observacion']").val(datos.observacion);
-    $("select[name='estado']").selectpicker("val", datos.estado);
+    $("select[name='estado']").selectpicker("val", datos.estado);*/
+    
+    $("form[save]").edit(datos);
+    
 }
 
 function delet(datos) {
