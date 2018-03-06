@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div class="row hidden" id="Listado">
+<div class="row" id="Listado">
     <div class="col-md-12">
         <div id="toolbar" class="btn-group btn-group-sm">
             <button type="button" name="btn_add" class="btn  btn-success ">
@@ -19,6 +19,7 @@
                     <th data-field="state" data-checkbox="true"></th>
                     <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
                     <th data-field="descripcion">Descripción</th>
+                    <th data-field="icon" data-formatter="formatIcon" data-align="center">Icono</th>
                     <th data-field="observacion">Observación</th>
                     <th data-field="modulo">Módulo</th>
                     <th data-field="accion" class="col-md-1" data-align="center" data-formatter="defaultBtnAccion" data-events="event_accion_default">Acciones</th>
@@ -28,7 +29,7 @@
     </div>
 </div>
 
-<div id="div-registro" class=" " >
+<div id="div-registro" class="hidden" >
     <form save action="_administracion" role="submodulo">
         <div class="box box-primary">
             <div class="box-header with-border">

@@ -51,7 +51,7 @@
         ?>
         
         <script type="text/javascript">
-            $("#containPages").load("mvc/views/Administracion/Submodulo.php");
+            $("#containPages").load("mvc/views/Administracion/modulo.php");
         </script>
 
         <!-- Optionally, you can add Slimscroll and FastClick plugins.

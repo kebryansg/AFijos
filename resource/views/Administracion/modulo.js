@@ -33,13 +33,8 @@ function getDatos() {
 
 
 function edit(datos) {
-    /*$("form").data("id", datos.ID);
-    $("input[name='descripcion']").val(datos.descripcion);
-    $("textarea[name='observacion']").val(datos.observacion);
-    $("select[name='estado']").selectpicker("val", datos.estado);*/
-    
     $("form[save]").edit(datos);
-    
+    $("#cboIcon").selectpicker("val", datos.icon).change();
 }
 
 function delet(datos) {
@@ -50,7 +45,7 @@ function delet(datos) {
         data: {
             accion: "delete",
             op: op,
-            id: datos.ID
+            id: datos.id
         }
     });
     $(table).bootstrapTable("refresh");

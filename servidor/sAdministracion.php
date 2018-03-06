@@ -74,6 +74,12 @@ switch ($accion) {
     case "list":
         $top = (isset($_POST["limit"])) ? $_POST["limit"] : 0;
         $pag = (isset($_POST["offset"])) ? $_POST["offset"] : 0;
+        $params = array(
+            "top" => (isset($_POST["limit"])) ? $_POST["limit"] : 0,
+            "pag" => (isset($_POST["offset"])) ? $_POST["offset"] : 0,
+            "buscar" => (isset($_POST["search"])) ? $_POST["search"] : NULL
+        );
+        
         $count = 0;
         switch ($op) {
             case "usuario": 
@@ -93,16 +99,10 @@ switch ($accion) {
                 $resultado = json_encode(RolDaoImp::ListPermisoRol());
                 break;
             case "submodulo":
-                $resultado = json_encode(array(
-                    "rows" => SubModuloDaoImp::listSubModulo($top, $pag, $count),
-                    "total" => $count
-                ));
+                $resultado = json_encode(SubModuloDaoImp::listSubModulo($params));
                 break;
             case "modulo":
-                $resultado = json_encode(array(
-                    "rows" => ModuloDaoImp::listModulo($top, $pag, $count),
-                    "total" => $count
-                ));
+                $resultado = json_encode(ModuloDaoImp::listModulo($params));
                 break;
             case "rol":
                 $resultado = json_encode(array(

@@ -265,7 +265,7 @@ function loadGrupo(params) {
             op: "grupos",
             accion: "list"
         }, params.data),
-        url: url
+        url: getURL("_catalogo")
     };
     params.success(getJson(json_data));
 }
@@ -275,7 +275,7 @@ function loadSubGrupo(params) {
             op: "subgrupos",
             accion: "list"
         }, params.data),
-        url: url
+        url: getURL("_catalogo")
     };
     params.success(getJson(json_data));
 }
@@ -332,27 +332,8 @@ function loadUbicacion(params) {
     };
     params.success(getJson(json_data));
 }
-function loadModulo(params) {
-    json_data = {
-        data: $.extend({}, {
-            op: "modulo",
-            accion: "list"
-        }, params.data),
-        url: url
-    };
-    params.success(getJson(json_data));
-}
 
-function loadSubModulo(params) {
-    json_data = {
-        data: $.extend({}, {
-            op: "submodulo",
-            accion: "list"
-        }, params.data),
-        url: url
-    };
-    params.success(getJson(json_data));
-}
+
 
 function loadPermisoRol(params) {
     json_data = {
@@ -426,6 +407,30 @@ function loadProveedor(params) {
             accion: "list"
         }, params.data),
         url: "servidor/sCompras.php"
+    };
+    params.success(getJson(json_data));
+}
+
+
+/* Administraciòn */
+function loadModulo(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "modulo",
+            accion: "list"
+        }, params.data),
+        url: getURL("_administracion")
+    };
+    params.success(getJson(json_data));
+}
+
+function loadSubModulo(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "submodulo",
+            accion: "list"
+        }, params.data),
+        url: getURL("_administracion")
     };
     params.success(getJson(json_data));
 }

@@ -3,39 +3,58 @@ url = "servidor/sAdministracion.php";
 table = $("#Listado table");
 //selections = [];
 
+
+
 $(function () {
     initialComponents();
 
+    $("#cboIcon").change(function () {
+        icon = $(this).selectpicker("val");
+        $("#icono").removeAttr("class");
+        $("input[name='icon']").val(icon);
+        $("#icono").attr("class", "fa fa-4x fa-" + icon);
+    });
+
 });
 
+
+function initRegistro() {
+    $("form[save]").clear();
+    /*$("#icono").attr("class", "fa fa-folder-open fa-4x");
+     $("input[name='icon']").val("folder-open");*/
+    $("#cboIcon").selectpicker("val", "folder-open").change();
+}
+
 /*function getDatos() {
-    form = "form[save]";
-    datos = {
-        url: $(form).attr("action"),
-        dt: {
-            accion: "save",
-            op: $(form).attr("role"),
-            datos: $(form).serializeObject()
-        }
-    };
-    return datos;
-}*/
+ form = "form[save]";
+ datos = {
+ url: $(form).attr("action"),
+ dt: {
+ accion: "save",
+ op: $(form).attr("role"),
+ datos: $(form).serializeObject()
+ }
+ };
+ return datos;
+ }*/
 
-
+function formatIcon(value) {
+    return '<i class="fa fa-' + value + '"></i>';
+}
 
 function edit(datos) {
     $("form[save]").edit(datos);
-    
-    
+    $("#cboIcon").selectpicker("val", datos.icon).change();
+
     /*$("form").data("id", datos.ID);
-    $("input[name='IDModulo']").val(datos.idmodulo);
-    $("input[descripcion_find]").val(datos.modulo);
-    $("input[name='descripcion']").val(datos.descripcion);
-    $("textarea[name='observacion']").val(datos.observacion);
-    $("select[name='estado']").selectpicker("val", datos.estado);*/
+     $("input[name='IDModulo']").val(datos.idmodulo);
+     $("input[descripcion_find]").val(datos.modulo);
+     $("input[name='descripcion']").val(datos.descripcion);
+     $("textarea[name='observacion']").val(datos.observacion);
+     $("select[name='estado']").selectpicker("val", datos.estado);*/
 }
 
-function delet(datos){
+function delet(datos) {
     $.ajax({
         url: url,
         type: "POST",

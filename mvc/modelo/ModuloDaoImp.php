@@ -20,17 +20,20 @@ class ModuloDaoImp {
         $conn->close();
     }
 
-    public static function listModulo($top, $pag, &$count) {
+    public static function listModulo($params) {
         $conn = (new C_MySQL())->open();
-        $banderapag = ($top > 0 ) ? "limit $top offset $pag" : "";
+        $banderapag = ($params["top"] > 0 ) ? "limit " . $params['top'] . " offset " . $params['pag'] : "";
+        $where = ($params["buscar"] != NULL) ? " where descripcion like '%" . $params["buscar"] . "%'" : "";
         //where estado = 'ACT'
         //$sql = "select SQL_CALC_FOUND_ROWS id as ID , descripcion, observacion, estado from modulo $banderapag ;";
-        $sql = "select SQL_CALC_FOUND_ROWS * from modulo $banderapag ;";
+        $sql = "select SQL_CALC_FOUND_ROWS * from modulo $where $banderapag ;";
 
-        $list = C_MySQL::returnListAsoc($conn, $sql);
-        $count = C_MySQL::row_count($conn);
+        $dts = array(
+            "rows" => C_MySQL::returnListAsoc($conn, $sql),
+            "total" => C_MySQL::row_count($conn)
+        );
         $conn->close();
-        return $list;
+        return $dts;
     }
 
     public function delete($modulo) {
