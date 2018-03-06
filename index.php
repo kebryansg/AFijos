@@ -27,7 +27,7 @@
                     <?php
                     //include_once './mvc/views/Pedido/ordenPedido.php';
                     //include_once './mvc/views/Administracion/modulo.php';
-                    include_once './mvc/views/Administracion/Submodulo.php';
+//                    include_once './mvc/views/Administracion/Submodulo.php';
                     //include_once './mvc/views/activos/grupos.php';
                     //include_once './mvc/views/Compras/GenerarOrdenCompra.php';
                     //include_once './mvc/views/Administracion/faIcons.php';
@@ -49,6 +49,10 @@
         <?php 
         require_once('mvc/views/modal.php'); 
         ?>
+        
+        <script type="text/javascript">
+            $("#containPages").load("mvc/views/Administracion/Submodulo.php");
+        </script>
 
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
              Both of these plugins are recommended to enhance the

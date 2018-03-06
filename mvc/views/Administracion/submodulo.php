@@ -43,6 +43,23 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group form-group-sm">
+                                <label for="" class="control-label">Icono</label>
+                                <select id="cboIcon" class="form-control selectpicker" data-live-search="true" required>
+                                    <?php
+                                    include '../Recurso/Icons.php';
+                                    ?>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <i  id="icono" class="fa fa-folder-open fa-4x" ></i>
+                            <input type="hidden" name="icon" value="folder-open" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm">
                                 <label for="" class="control-label">Módulo</label>
                                 <div tipo  data-fn="selectModulo"  >
                                     <div class="selectpickerComponent">
@@ -54,8 +71,8 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
+
                         </div>
                         <div class="col-md-6">
                             <div class="form-group form-group-sm">
@@ -67,7 +84,14 @@
                                     <option value="ELI">Eliminado</option>
                                 </select>
                             </div>
+
+
+
                         </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="" class="control-label">Ruta / Formulario</label>
+                        <input type="text" name="ruta" class="form-control" required>
                     </div>
 
                 </div>

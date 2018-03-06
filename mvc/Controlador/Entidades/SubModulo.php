@@ -7,6 +7,8 @@ class SubModulo extends ModelSQL {
     public $tabla;
     public $ID;
     public $Descripcion;
+    public $Ruta;
+    public $Icon;
     public $Observacion;
     public $Estado;
     public $IDModulo;
