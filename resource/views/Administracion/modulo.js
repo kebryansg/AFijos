@@ -16,6 +16,19 @@ $(function () {
         $("input[name='icon']").val(icon);
         $("#icono").attr("class", "fa fa-4x fa-" + icon);
     });
+    
+    $("button[add]").click(function(){
+        btnGroup = $(this).closest(".btn-group").attr("id");
+        row = {
+            id: 0,
+            descripcion: "",
+            observacion: "",
+            estado: "ACT"
+        };
+        table = $("table[data-toolbar='#" + btnGroup + "']");
+        $(table).bootstrapTable("append", row);
+    });
+    
 
 });
 function getDatos() {
