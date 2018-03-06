@@ -33,29 +33,6 @@ switch ($accion) {
             case "rol":
                 $rol = $mapper->map($json, new Rol());
                 RolDaoImp::save($rol);
-                
-                
-//                $permisoActuales = array_map(function($value){
-//                    return $value["id"];
-//                }, PermisoSubModuloDaoImp::listPermisoSubModulo($rol->ID));
-//                
-//                $itemsPOST = array_map(function($value) {
-//                    return $value["ID"];
-//                }, json_decode($_POST["permisos"], true));
-//                
-//                
-//                $itemsNoEstan = array_diff($permisoActuales, $itemsPOST);
-//                
-//                $itemsNuevos = array_diff($itemsPOST, $permisoActuales);
-                
-                
-                
-                
-//                $permisoRol = json_decode($_POST["permisos"]);
-//                RolDaoImp::asignarPermiso($rol, $permisoRol);
-                
-                
-                
                 $resultado = $rol->ID;
                 
                 break;
@@ -68,6 +45,10 @@ switch ($accion) {
                 $modulo = $mapper->map($json, new Modulo());
                 ModuloDaoImp::save($modulo);
                 $resultado = $modulo->ID;
+                
+                
+                
+                
                 break;
         }
         break;
@@ -100,6 +81,10 @@ switch ($accion) {
                 break;
             case "submodulo":
                 $resultado = json_encode(SubModuloDaoImp::listSubModulo($params));
+                break;
+            case "submoduloXmodulo":
+                $idModulo = $_POST["modulo"];
+                $resultado = json_encode(SubModuloDaoImp::listSubModuloxModulo($idModulo));
                 break;
             case "modulo":
                 $resultado = json_encode(ModuloDaoImp::listModulo($params));

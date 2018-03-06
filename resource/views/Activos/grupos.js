@@ -63,12 +63,21 @@ $(function () {
 
 function changeEstadoSubGrupo(rows, estado) {
     $.each(rows, function (i, row) {
-        row.estado = estado;
-        $("#tbDetalle").bootstrapTable("updateRow", {
-            index: row.index,
-            row: row
-        });
+        if (row.id === 0 && estado === "INA") {
+            row.id = -1;
+        } else {
+            row.estado = estado;
+            $("#tbDetalle").bootstrapTable("updateRow", {
+                index: row.index,
+                row: row
+            });
+        }
+
     });
+    ids_remove = rows.filter(row => row.id === -1);
+    ids = ids_remove.map(row => row.id);
+    $("#tbDetalle").bootstrapTable("remove", {field: 'id', values: ids});
+
     ids = rows.map(row => row.id);
     $("#tbDetalle").bootstrapTable('uncheckBy', {field: 'id', values: ids});
 }

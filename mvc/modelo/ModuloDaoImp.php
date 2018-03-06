@@ -4,15 +4,12 @@ include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Modulo.php';
 
 class ModuloDaoImp {
+
     public static function save($modulo) {
         $conn = (new C_MySQL())->open();
-        $sql = "";
-        if ($modulo->ID == 0) {
-            $sql = $modulo->Insert();
-        } else {
-            $sql = $modulo->Update();
-        }
-        if ($conn->query($sql)) {
+        $sql = ($modulo->ID == 0) ? $modulo->Insert() : $modulo->Update();
+        $bandera = $conn->query($sql);
+        if ($bandera) {
             if ($modulo->ID == 0) {
                 $modulo->ID = $conn->insert_id;
             }
@@ -42,4 +39,5 @@ class ModuloDaoImp {
         $conn->query($sql);
         $conn->close();
     }
+
 }
