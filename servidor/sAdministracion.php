@@ -21,20 +21,20 @@ switch ($accion) {
     case "save":
         $json = json_decode($_POST["datos"]);
         switch ($op) {
-            case "usuario": 
-                $persona =$mapper->map($json, new Persona());
+            case "usuario":
+                $persona = $mapper->map($json, new Persona());
                 PersonaDaoImp::save($persona);
-                
+
                 $usuario = $mapper->map($json, new Usuario());
                 $usuario->IDPersona = $persona->ID;
-                
+
                 UsuarioDaoImp::save($usuario);
                 break;
             case "rol":
                 $rol = $mapper->map($json, new Rol());
                 RolDaoImp::save($rol);
                 $resultado = $rol->ID;
-                
+
                 break;
             case "submodulo":
                 $submodulo = $mapper->map($json, new SubModulo());
@@ -43,12 +43,18 @@ switch ($accion) {
                 break;
             case "modulo":
                 $modulo = $mapper->map($json, new Modulo());
-                ModuloDaoImp::save($modulo);
-                $resultado = $modulo->ID;
-                
-                
-                
-                
+                $resultado = ModuloDaoImp::save($modulo);
+
+                if ($resultado["status"]) {
+                    $subs = json_decode($_POST["subModulos"]);
+                    foreach ($subs as $sub) {
+                        $subModulo = $mapper->map($sub, new SubModulo());
+                        $subModulo->IDModulo = $modulo->ID;
+                        SubModuloDaoImp::save($subModulo);
+                    }
+                }
+                //$resultado = $modulo->ID;
+                $resultado = json_encode($resultado);
                 break;
         }
         break;
@@ -60,23 +66,23 @@ switch ($accion) {
             "pag" => (isset($_POST["offset"])) ? $_POST["offset"] : 0,
             "buscar" => (isset($_POST["search"])) ? $_POST["search"] : NULL
         );
-        
+
         $count = 0;
         switch ($op) {
-            case "usuario": 
+            case "usuario":
                 $resultado = json_encode(array(
                     "rows" => UsuarioDaoImp::listUsuarios($top, $pag, $count),
                     "total" => $count
                 ));
                 break;
-            case "permisosubmodulo": 
+            case "permisosubmodulo":
                 $resultado = json_encode(PermisoSubModuloDaoImp::listPermisoSubModulo($_POST["rol"]));
                 break;
             case "permisoRol":
-                /*$resultado = json_encode(array(
-                    "rows" => RolDaoImp::ListPermisoRol($top, $pag, $count),
-                    "total" => $count
-                ));*/
+                /* $resultado = json_encode(array(
+                  "rows" => RolDaoImp::ListPermisoRol($top, $pag, $count),
+                  "total" => $count
+                  )); */
                 $resultado = json_encode(RolDaoImp::ListPermisoRol());
                 break;
             case "submodulo":

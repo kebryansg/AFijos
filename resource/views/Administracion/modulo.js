@@ -98,7 +98,8 @@ function getDatos() {
         dt: {
             accion: "save",
             op: $(form).attr("role"),
-            datos: $(form).serializeObject_KBSG()
+            datos: $(form).serializeObject_KBSG(),
+            subModulos: JSON.stringify($("#tbDetalle").bootstrapTable("getData"))
         }
     };
     return datos;

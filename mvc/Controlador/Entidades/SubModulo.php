@@ -15,6 +15,10 @@ class SubModulo extends ModelSQL {
 
     function __construct() {
         $this->ID = 0;
+        
+        $this->Ruta = "";
+        $this->Icon = "";
+        
         $this->Estado = "ACT";
         $this->tabla = "submodulo";
     }

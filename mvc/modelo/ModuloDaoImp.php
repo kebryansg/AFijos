@@ -7,14 +7,26 @@ class ModuloDaoImp {
 
     public static function save($modulo) {
         $conn = (new C_MySQL())->open();
+        $response = array(); 
+        $action = ($modulo->ID == 0);
         $sql = ($modulo->ID == 0) ? $modulo->Insert() : $modulo->Update();
         $bandera = $conn->query($sql);
         if ($bandera) {
             if ($modulo->ID == 0) {
                 $modulo->ID = $conn->insert_id;
             }
+            $response = array(
+                "action" => $action ? "Crear" : "Actualizar",
+                "status" => $bandera
+            );
+        } else {
+            $response = array(
+                "status" => $bandera,
+                "msg" => $conn->error
+            );
         }
         $conn->close();
+        return $response;
     }
 
     public static function listModulo($params) {
