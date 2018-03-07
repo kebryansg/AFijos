@@ -69,6 +69,28 @@ switch ($accion) {
 
         $count = 0;
         switch ($op) {
+            case "Menu":
+
+                $Modulos = ModuloDaoImp::listModulosRol("1");
+                for ($i = 0; $i < count($Modulos); $i++) {
+                    //$catalogo = array();
+                    $subModulos = array(
+                        "catalogo" => array()
+                    );
+                    $subModulosBruto = SubModuloDaoImp::listSubModuloxIN($Modulos[$i]["submodulos"]);
+                    foreach ($subModulosBruto as $sm) {
+                        if ($sm["catalogo"]) {
+                            array_push($subModulos["catalogo"], $sm);
+                        } else {
+                            array_push($subModulos, $sm);
+                        }
+                    }
+                    
+                    //$Modulos[$i]["submodulos"] = json_encode(SubModuloDaoImp::listSubModuloxIN($Modulos[$i]["submodulos"]));
+                    $Modulos[$i]["submodulos"] = json_encode($subModulos);
+                }
+                $resultado = json_encode($Modulos);
+                break;
             case "usuario":
                 $resultado = json_encode(array(
                     "rows" => UsuarioDaoImp::listUsuarios($top, $pag, $count),

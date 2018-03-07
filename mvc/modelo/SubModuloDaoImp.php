@@ -45,6 +45,15 @@ class SubModuloDaoImp {
         $conn->close();
         return $dts;
     }
+    public static function listSubModuloxIN($ids) {
+        $conn = (new C_MySQL())->open();
+        
+        $sql = "select SQL_CALC_FOUND_ROWS * from submodulo where id in($ids) ;";
+        
+        $dts = C_MySQL::returnListAsoc($conn, $sql);
+        $conn->close();
+        return $dts;
+    }
 
     public function delete($submodulo) {
         $conn = (new C_MySQL())->open();

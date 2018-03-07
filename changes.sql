@@ -17,3 +17,5 @@ alter table submodulo add COLUMN ruta text;
 
 update submodulo set icon = 'folder-open';
 
+-- 07/03/2018
+alter table submodulo add COLUMN catalogo tinyint;

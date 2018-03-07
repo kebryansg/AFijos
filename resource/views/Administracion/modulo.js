@@ -134,3 +134,7 @@ function delet(datos) {
     });
     $(table).bootstrapTable("refresh");
 }
+
+function finRegistro() {
+    $("#tbDetalle").bootstrapTable("removeAll");
+}

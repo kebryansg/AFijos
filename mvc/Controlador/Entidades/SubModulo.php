@@ -9,6 +9,7 @@ class SubModulo extends ModelSQL {
     public $Descripcion;
     public $Ruta;
     public $Icon;
+    public $Catalogo;
     public $Observacion;
     public $Estado;
     public $IDModulo;
@@ -18,6 +19,7 @@ class SubModulo extends ModelSQL {
         
         $this->Ruta = "";
         $this->Icon = "";
+        $this->Catalogo = 0;
         
         $this->Estado = "ACT";
         $this->tabla = "submodulo";

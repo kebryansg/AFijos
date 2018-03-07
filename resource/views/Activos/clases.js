@@ -4,14 +4,18 @@ table = $("#Listado table");
 
 $(function () {
     initialComponents();
+    $("#tbDetalle").bootstrapTable();
+    
 
 });
 
 function edit(datos) {
-    $("input[name='descripcion']").val(datos.descripcion);
-    $("textarea[name='observacion']").val(datos.observacion);
-    $("select[name='estado']").selectpicker("val", datos.estado);
-    $("form").data("id", datos.ID);
+    $("form[save]").edit(datos);
+    
+//    $("input[name='descripcion']").val(datos.descripcion);
+//    $("textarea[name='observacion']").val(datos.observacion);
+//    $("select[name='estado']").selectpicker("val", datos.estado);
+//    $("form").data("id", datos.ID);
 }
 
 

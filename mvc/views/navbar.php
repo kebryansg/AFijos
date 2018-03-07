@@ -85,39 +85,9 @@ $RolNombre = "Administrador";
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">Navegación Principal</li>
 
-            <!--            <li >
-                            <a href="MVC/View/Configure/configure.php">
-                                <i class="fa fa-gears"></i> <span>Configuración</span>
-                            </a>
-                        </li>
-                        <li >
-                            <a href="MVC/View/Client/cliente.php">
-                                <i class="fa fa-users"></i> <span>Clientes</span>
-                            </a>
-                        </li>
-                        <li >
-                            <a href="MVC/View/Product/producto.php">
-                                <i class="fa fa-product-hunt"></i> <span>Productos</span>
-                            </a>
-                        </li>
-                        <li >
-                            <a href="MVC/View/Proform/proforma.php">
-                                <i class="fa fa-file-archive-o"></i> <span>Proformas</span>
-                            </a>
-                        </li>
-                        <li class="treeview">
-                            <a href="#"><i class="fa fa-folder-open"></i> <span>Reportes</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#">Link in level 2</a></li>
-                                <li><a href="#">Link in level 2</a></li>
-                            </ul>
-                        </li>-->
             <li class="treeview">
-                <a href="#"><i class="fa fa-folder-open"></i> <span>Pedidos</span>
+                <a href="#">
+                    <i class="fa fa-folder-open"></i> <span>Pedidos</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right loco"></i>
                     </span>
@@ -146,7 +116,6 @@ $RolNombre = "Administrador";
                             </li>
                         </ul>
                     </li>
-                    <!--<li><a href="mvc/views/items/proveedor.php"></a></li>-->
                     <li><a href="mvc/views/items/presupuesto.php">Presupuesto</a></li>
                     <li><a href="mvc/views/Compras/GenerarOrdenCompra.php">Generar Orden Compra</a></li>
                 </ul>
@@ -238,17 +207,10 @@ $RolNombre = "Administrador";
                         </ul>
                     </li>
                     <li>
-                        <a href="mvc/views/items/items.php"><i class="fa fa-group fa-fw"></i> Items</a>
+                        <a href="mvc/views/items/items.php">
+                            <i class="fa fa-group fa-fw"></i> Items
+                        </a>
                     </li>
-                    <!--<li>
-                        <a href="mvc/views/Administracion/modulo.php"><i class="fa fa-group fa-fw"></i> Módulos</a>
-                    </li>
-                    <li>
-                        <a href="mvc/views/Administracion/submodulo.php"><i class="fa fa-group fa-fw"></i> SubMódulos</a>
-                    </li>
-                    <li>
-                        <a href="mvc/views/Administracion/usuarios.php"><i class="fa fa-group fa-fw"></i> Usuarios</a>
-                    </li>-->
                 </ul>
             </li>
         </ul>

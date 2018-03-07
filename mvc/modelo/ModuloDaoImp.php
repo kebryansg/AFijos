@@ -51,5 +51,15 @@ class ModuloDaoImp {
         $conn->query($sql);
         $conn->close();
     }
+    
+    public function listModulosRol($rol) {
+        $conn = (new C_MySQL())->open();
+        $sql = "select SQL_CALC_FOUND_ROWS * from viewModulosRol where rol = $rol ";
+        $result = C_MySQL::returnListAsoc($conn, $sql);
+        $conn->close();
+        return $result;
+    }
+    
+    
 
 }

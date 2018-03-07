@@ -4,7 +4,7 @@
         <!-- HEADER -->
         <?php require_once('mvc/views/header.php'); ?>
         <!-- Google Font -->
-              <!--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
+        <!--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
 
         <?php require_once('mvc/views/scripts.php'); ?>
 
@@ -19,7 +19,7 @@
             <div class="content-wrapper" >
                 <section class="content-header">
                     <h1 title-contenido>
-                        
+
                     </h1>
                     <!--<hr class="style8">-->
                 </section>
@@ -46,12 +46,21 @@
         </div>
         <!-- ./wrapper -->
 
-        <?php 
-        require_once('mvc/views/modal.php'); 
+        <?php
+        require_once('mvc/views/modal.php');
         ?>
-        
+
         <script type="text/javascript">
-            $("#containPages").load("mvc/views/Administracion/modulo.php");
+            //$("#containPages").load("mvc/views/activos/clases.php");
+            dt = {
+                url: getURL("_administracion"),
+                data: {
+                    accion: "list",
+                    op: "Menu"
+                }
+            };
+            console.log(getJson(dt));
+
         </script>
 
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
