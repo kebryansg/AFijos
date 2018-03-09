@@ -4,31 +4,32 @@ table = $("#Listado table");
 
 $(function () {
     initialComponents();
+    $("#tbPermisoRol").bootstrapTable();
 });
 
 
 function getDatos() {
     form = "form[save]";
+    permisos = $("#tbPermisoRol").bootstrapTable("getSelections").map(row => row.id);
     datos = {
         url: $(form).attr("action"),
         dt: {
             accion: "save",
             op: $(form).attr("role"),
-            datos: $(form).serializeObject(),
-            permisos: getPermisos()
+            datos: $(form).serializeObject_KBSG(),
+            permisos: JSON.stringify(permisos)
         }
     };
+    console.log(datos);
     return datos;
 }
 
 function edit(datos) {
     form = "form[save]";
-    $(form).data("id", datos.ID);
-    for (var clave in datos) {
-        $(form + " [name='" + clave + "']").val(datos[clave]);
-    }
+    $(form).edit(datos);
     $("#tbPermisoRol").bootstrapTable("uncheckAll");
-    $("#tbPermisoRol").bootstrapTable("checkBy",{field: "ID", values: datos.submodulos.split(",") });
+    if (datos.submodulos !== null)
+        $("#tbPermisoRol").bootstrapTable("checkBy", {field: "id", values: datos.submodulos.split(",")});
 }
 
 function delet(datos) {
@@ -45,9 +46,6 @@ function delet(datos) {
     $(table).bootstrapTable("refresh");
 }
 
-function getPermisos() {
-    rows = $.map($("#tbPermisoRol").bootstrapTable("getSelections"), function (row) {
-        return row.ID;
-    });
-    return JSON.stringify(rows);
+function finRegistro(){
+    $("#tbPermisoRol").bootstrapTable("uncheckAll");
 }

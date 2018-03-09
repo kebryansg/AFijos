@@ -341,7 +341,7 @@ function loadPermisoRol(params) {
             op: "permisoRol",
             accion: "list"
         }, params.data),
-        url: "servidor/sAdministracion.php"
+        url: getURL("_administracion")
     };
     params.success(getJson(json_data));
 }
@@ -352,7 +352,7 @@ function loadRol(params) {
             op: "rol",
             accion: "list"
         }, params.data),
-        url: "servidor/sAdministracion.php"
+        url: getURL("_administracion")
     };
     params.success(getJson(json_data));
 }

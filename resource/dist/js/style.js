@@ -264,7 +264,6 @@ $.fn.validate = function () {
 
 $.fn.edit = function (datos) {
     claves = JSON_Clave(datos);
-    console.log(claves);
     $(this).data("id", datos.id);
     $.each($(this).find("[name]"), function (i, component) {
         name = $(component).attr("name");

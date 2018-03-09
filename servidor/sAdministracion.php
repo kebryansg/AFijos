@@ -32,9 +32,12 @@ switch ($accion) {
                 break;
             case "rol":
                 $rol = $mapper->map($json, new Rol());
-                RolDaoImp::save($rol);
-                $resultado = $rol->ID;
-
+                $resultado = RolDaoImp::save($rol);
+                
+                if ($resultado["status"]) {
+                    $pSubModulos = json_decode($_POST["permisos"]);
+                    RolDaoImp::asignarPermiso($rol->ID, $pSubModulos);
+                }
                 break;
             case "submodulo":
                 $submodulo = $mapper->map($json, new SubModulo());
@@ -73,21 +76,23 @@ switch ($accion) {
 
                 $Modulos = ModuloDaoImp::listModulosRol("1");
                 for ($i = 0; $i < count($Modulos); $i++) {
-                    //$catalogo = array();
                     $subModulos = array(
-                        "catalogo" => array()
+                        array(
+                            
+                        )
                     );
-                    $subModulosBruto = SubModuloDaoImp::listSubModuloxIN($Modulos[$i]["submodulos"]);
+                    $subModulosBruto = SubModuloDaoImp::listSubModuloxIN($Modulos[$i]["sub"]);
                     foreach ($subModulosBruto as $sm) {
                         if ($sm["catalogo"]) {
                             array_push($subModulos["catalogo"], $sm);
                         } else {
                             array_push($subModulos, $sm);
+                            //array_push($subModulos["submodulos"], $sm);
                         }
                     }
                     
                     //$Modulos[$i]["submodulos"] = json_encode(SubModuloDaoImp::listSubModuloxIN($Modulos[$i]["submodulos"]));
-                    $Modulos[$i]["submodulos"] = json_encode($subModulos);
+                    $Modulos[$i]["sub"] = json_encode($subModulos);
                 }
                 $resultado = json_encode($Modulos);
                 break;
@@ -118,10 +123,7 @@ switch ($accion) {
                 $resultado = json_encode(ModuloDaoImp::listModulo($params));
                 break;
             case "rol":
-                $resultado = json_encode(array(
-                    "rows" => RolDaoImp::listRol($top, $pag, $count),
-                    "total" => $count
-                ));
+                $resultado = json_encode(RolDaoImp::listRol($params));
                 break;
         }
         break;

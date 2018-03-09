@@ -51,20 +51,19 @@
         ?>
 
         <script type="text/javascript">
-            //$("#containPages").load("mvc/views/activos/clases.php");
-            dt = {
-                url: getURL("_administracion"),
-                data: {
-                    accion: "list",
-                    op: "Menu"
-                }
-            };
-            console.log(getJson(dt));
+//            $("#containPages").load("mvc/views/administracion/rol.php");
+//            
+//            dt = {
+//                url: getURL("_administracion"),
+//                data: {
+//                    accion: "list",
+//                    op: "Menu"
+//                }
+//            };
+//            dts = getJson(dt);
+//            console.log(dts);
+//            console.log(JSON.parse(dts[0].submodulos));
 
         </script>
-
-        <!-- Optionally, you can add Slimscroll and FastClick plugins.
-             Both of these plugins are recommended to enhance the
-             user experience. -->
     </body>
 </html>

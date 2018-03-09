@@ -4,6 +4,16 @@
 $Nombres = "Kevin Byran";
 $Apellidos = "Suarez Guzman";
 $RolNombre = "Administrador";
+
+function recorrerModulos($rows) {
+    foreach ($rows as $row) {
+        if (is_array($row["submodulos"])) {
+            recorrerModulos($row["submodulos"]);
+        } else {
+            return '<li><a href="mvc/views/Pedido/ordenPedido.php">' . $row["descripcion"] . '</a></li>';
+        }
+    }
+}
 ?>
 <!-- Main Header -->
 <header class="main-header">
@@ -84,136 +94,182 @@ $RolNombre = "Administrador";
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">Navegación Principal</li>
+            <script type="text/javascript" >
+                function recorrerModulos(rows) {
+                    if ($.isArray(rows)) {
+                        $.each(rows, function (i, row) {
+                            if ($.isArray(row)) {
+                                return '<li class="treeview">' +
+                                            '<a href="#">' +
+                                                '<i class="fa fa-folder-open"></i> <span>Pedidos</span>'+
+                                                '<span class="pull-right-container"> <i class="fa fa-angle-left pull-right loco"></i> </span>'+
+                                            '</a>' +
+                                        '</li>';
+                            }
 
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-folder-open"></i> <span>Pedidos</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right loco"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="mvc/views/Pedido/ordenPedido.php">Orden de Pedidos</a></li>
-                    <li><a href="mvc/views/Pedido/aprobacionPedido.php">Aprobación de Pedidos</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-folder-open"></i> <span>Compras</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-folder-open"></i> <span>Catálogo</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li>
-                                <a href="mvc/views/items/proveedor.php"><i class="fa fa-group fa-fw"></i> Proveedor</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="mvc/views/items/presupuesto.php">Presupuesto</a></li>
-                    <li><a href="mvc/views/Compras/GenerarOrdenCompra.php">Generar Orden Compra</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-folder-open"></i> <span>Administración</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-folder-open"></i> <span>Catálogo</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li>
-                                <a href="mvc/views/activos/departamento.php"><i class="fa fa-lock fa-fw"></i> Departamento</a>
-                            </li>
-                        </ul>
-                    </li>
+                        });
 
-                    <li>
-                        <a href="mvc/views/Administracion/rol.php"><i class="fa fa-lock fa-fw"></i> Roles / Permisos</a>
-                    </li>
-                    <li>
-                        <a href="mvc/views/Administracion/modulo.php"><i class="fa fa-group fa-fw"></i> Módulos</a>
-                    </li>
-                    <li>
-                        <a href="mvc/views/Administracion/submodulo.php"><i class="fa fa-group fa-fw"></i> SubMódulos</a>
-                    </li>
-                    <li>
-                        <a href="mvc/views/Administracion/usuarios.php"><i class="fa fa-group fa-fw"></i> Usuarios</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-folder-open"></i> <span>Items</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-folder-open"></i> <span>Catálogo</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li>
-                                <a href="mvc/views/activos/pais.php"><i class="fa fa-lock fa-fw"></i> País</a>
-                            </li>
-                            <li>
-                                <a href="mvc/views/activos/categoria.php"><i class="fa fa-group fa-fw"></i> Categoría</a>
-                            </li>
-                            <li>
-                                <a href="mvc/views/activos/tipoidentificacion.php"><i class="fa fa-group fa-fw"></i> Tipo Identificación</a>
-                            </li>
-                            <li>
-                                <a href="mvc/views/activos/tipoemisor.php"><i class="fa fa-group fa-fw"></i> Tipo Emisor</a>
-                            </li>
-                            <li>
-                                <a href="mvc/views/activos/contribuyente.php"><i class="fa fa-group fa-fw"></i> Contribuyente</a>
-                            </li>
-                            <li>
-                                <a href="mvc/views/activos/grupos.php"><i class="fa fa-group fa-fw"></i> Grupo</a>
-                            </li>
-                            <li>
-                                <a href="mvc/views/activos/subgrupos.php"><i class="fa fa-group fa-fw"></i>Sub Grupo</a>
-                            </li>
-                            <li>
-                                <a href="mvc/views/activos/clases.php"><i class="fa fa-group fa-fw"></i> Clase</a>
-                            </li>
-                            <li>
-                                <a href="mvc/views/activos/clasificacion.php"><i class="fa fa-group fa-fw"></i> Clasificación</a>
-                            </li>
-                            <li>
-                                <a href="mvc/views/activos/unidad.php"><i class="fa fa-group fa-fw"></i> Unidad</a>
-                            </li>
-                            <li>
-                                <a href="mvc/views/activos/centrocosto.php"><i class="fa fa-group fa-fw"></i> Centro de Costo</a>
-                            </li>
-                            <li>
-                                <a href="mvc/views/activos/tipo.php"><i class="fa fa-group fa-fw"></i> Tipo</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="mvc/views/items/items.php">
-                            <i class="fa fa-group fa-fw"></i> Items
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                    } else {
+                        return '<li><a href="mvc/views/Pedido/ordenPedido.php">' + $rows.descripcion + '</a></li>';
+                    }
+                }
+
+
+                dt = {
+                    url: getURL("_administracion"),
+                    data: {
+                        accion: "list",
+                        op: "Menu"
+                    }
+                };
+                dts = getJson(dt);
+                console.log(dts);
+                console.log(JSON.parse(dts[0].submodulos));
+
+                document.write("texto");
+
+
+
+
+            </script>
+
         </ul>
+
+
+        <!-- Sidebar Menu -->
+        <!--        <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">Navegación Principal</li>
+        
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-folder-open"></i> <span>Pedidos</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right loco"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="mvc/views/Pedido/ordenPedido.php">Orden de Pedidos</a></li>
+                            <li><a href="mvc/views/Pedido/aprobacionPedido.php">Aprobación de Pedidos</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-folder-open"></i> <span>Compras</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-folder-open"></i> <span>Catálogo</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="mvc/views/items/proveedor.php"><i class="fa fa-group fa-fw"></i> Proveedor</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="mvc/views/items/presupuesto.php">Presupuesto</a></li>
+                            <li><a href="mvc/views/Compras/GenerarOrdenCompra.php">Generar Orden Compra</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-folder-open"></i> <span>Administración</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="treeview">
+                                <a href="#"><i class="fa fa-folder-open"></i> <span>Catálogo</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="mvc/views/activos/departamento.php"><i class="fa fa-lock fa-fw"></i> Departamento</a>
+                                    </li>
+                                </ul>
+                            </li>
+        
+                            <li>
+                                <a href="mvc/views/Administracion/rol.php"><i class="fa fa-lock fa-fw"></i> Roles / Permisos</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/Administracion/modulo.php"><i class="fa fa-group fa-fw"></i> Módulos</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/Administracion/submodulo.php"><i class="fa fa-group fa-fw"></i> SubMódulos</a>
+                            </li>
+                            <li>
+                                <a href="mvc/views/Administracion/usuarios.php"><i class="fa fa-group fa-fw"></i> Usuarios</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-folder-open"></i> <span>Items</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="treeview">
+                                <a href="#"><i class="fa fa-folder-open"></i> <span>Catálogo</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="mvc/views/activos/pais.php"><i class="fa fa-lock fa-fw"></i> País</a>
+                                    </li>
+                                    <li>
+                                        <a href="mvc/views/activos/categoria.php"><i class="fa fa-group fa-fw"></i> Categoría</a>
+                                    </li>
+                                    <li>
+                                        <a href="mvc/views/activos/tipoidentificacion.php"><i class="fa fa-group fa-fw"></i> Tipo Identificación</a>
+                                    </li>
+                                    <li>
+                                        <a href="mvc/views/activos/tipoemisor.php"><i class="fa fa-group fa-fw"></i> Tipo Emisor</a>
+                                    </li>
+                                    <li>
+                                        <a href="mvc/views/activos/contribuyente.php"><i class="fa fa-group fa-fw"></i> Contribuyente</a>
+                                    </li>
+                                    <li>
+                                        <a href="mvc/views/activos/grupos.php"><i class="fa fa-group fa-fw"></i> Grupo</a>
+                                    </li>
+                                    <li>
+                                        <a href="mvc/views/activos/subgrupos.php"><i class="fa fa-group fa-fw"></i>Sub Grupo</a>
+                                    </li>
+                                    <li>
+                                        <a href="mvc/views/activos/clases.php"><i class="fa fa-group fa-fw"></i> Clase</a>
+                                    </li>
+                                    <li>
+                                        <a href="mvc/views/activos/clasificacion.php"><i class="fa fa-group fa-fw"></i> Clasificación</a>
+                                    </li>
+                                    <li>
+                                        <a href="mvc/views/activos/unidad.php"><i class="fa fa-group fa-fw"></i> Unidad</a>
+                                    </li>
+                                    <li>
+                                        <a href="mvc/views/activos/centrocosto.php"><i class="fa fa-group fa-fw"></i> Centro de Costo</a>
+                                    </li>
+                                    <li>
+                                        <a href="mvc/views/activos/tipo.php"><i class="fa fa-group fa-fw"></i> Tipo</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="mvc/views/items/items.php">
+                                    <i class="fa fa-group fa-fw"></i> Items
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>-->
         <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

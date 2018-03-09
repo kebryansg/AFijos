@@ -54,7 +54,8 @@ class ModuloDaoImp {
     
     public function listModulosRol($rol) {
         $conn = (new C_MySQL())->open();
-        $sql = "select SQL_CALC_FOUND_ROWS * from viewModulosRol where rol = $rol ";
+        //$sql = "select SQL_CALC_FOUND_ROWS * from viewModulosRol where rol = $rol ";
+        $sql = "SELECT tb.*,GROUP_CONCAT(subs) sub from (Select * from viewmodulosrol) as tb where rol = $rol GROUP BY id;";
         $result = C_MySQL::returnListAsoc($conn, $sql);
         $conn->close();
         return $result;
