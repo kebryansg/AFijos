@@ -97,23 +97,28 @@ function recorrerModulos($rows) {
             <script type="text/javascript" >
                 function recorrerModulos(rows) {
                     if ($.isArray(rows)) {
+                        op = '';
                         $.each(rows, function (i, row) {
-                            if ($.isArray(row)) {
-                                return '<li class="treeview">' +
-                                            '<a href="#">' +
-                                                '<i class="fa fa-folder-open"></i> <span>Pedidos</span>'+
-                                                '<span class="pull-right-container"> <i class="fa fa-angle-left pull-right loco"></i> </span>'+
-                                            '</a>' +
-                                        '</li>';
+                            clave = JSON_Clave(row);
+                            if ($.inArray("SUB", clave) !== -1) {
+                                if ($.isArray(row.sub)) {
+                                    op += '<li class="treeview">' +
+                                                '<a href="#">' +
+                                                    '<i class="fa fa-'+ row.icon +'"></i> <span>' + row.descripcion + '</span>' +
+                                                    '<span class="pull-right-container"> <i class="fa fa-angle-left pull-right loco"></i> </span>' +
+                                                '</a>' +
+                                                '<ul class="treeview-menu">' + recorrerModulos(row.sub) + '</ul>' +
+                                            '</li>';
+                                }
+                            } else {
+                                op += '<li><a href="mvc/views/Pedido/ordenPedido.php"><i class="fa fa-'+ row.icon +' fa-fw"></i> ' + row.descripcion + '</a></li>';
                             }
-
                         });
-
+                        return op;
                     } else {
-                        return '<li><a href="mvc/views/Pedido/ordenPedido.php">' + $rows.descripcion + '</a></li>';
+                        return '<li><a href="mvc/views/Pedido/ordenPedido.php"><i class="fa fa-'+ row.icon +' fa-fw"></i> ' + rows.descripcion + '</a></li>';
                     }
                 }
-
 
                 dt = {
                     url: getURL("_administracion"),
@@ -124,13 +129,9 @@ function recorrerModulos($rows) {
                 };
                 dts = getJson(dt);
                 console.log(dts);
-                console.log(JSON.parse(dts[0].submodulos));
+                
 
-                document.write("texto");
-
-
-
-
+                document.write(recorrerModulos(dts));
             </script>
 
         </ul>
