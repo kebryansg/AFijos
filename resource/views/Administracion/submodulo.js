@@ -3,8 +3,6 @@ url = "servidor/sAdministracion.php";
 table = $("#Listado table");
 //selections = [];
 
-
-
 $(function () {
     initialComponents();
 
@@ -22,7 +20,8 @@ function initRegistro() {
     $("form[save]").clear();
     /*$("#icono").attr("class", "fa fa-folder-open fa-4x");
      $("input[name='icon']").val("folder-open");*/
-    $("#cboIcon").selectpicker("val", "folder-open").change();
+    alert();
+    $("#cboIcon").selectpicker("val", "folder-open");//.change();
 }
 
 /*function getDatos() {
@@ -38,20 +37,15 @@ function initRegistro() {
  return datos;
  }*/
 
-function formatIcon(value) {
+function formatIcon(value)  {
     return '<i class="fa fa-' + value + '"></i>';
 }
 
 function edit(datos) {
     $("form[save]").edit(datos);
-    $("#cboIcon").selectpicker("val", datos.icon).change();
-
-    /*$("form").data("id", datos.ID);
-     $("input[name='IDModulo']").val(datos.idmodulo);
-     $("input[descripcion_find]").val(datos.modulo);
-     $("input[name='descripcion']").val(datos.descripcion);
-     $("textarea[name='observacion']").val(datos.observacion);
-     $("select[name='estado']").selectpicker("val", datos.estado);*/
+    console.log(datos);
+    $("#cboIcon").selectpicker("val", datos.icon);//.change();
+    
 }
 
 function delet(datos) {

@@ -195,16 +195,16 @@ function hideRegistro() {
 
 /* Formatos de Fechas */
 function formatView(data) {
-    fecha = moment(data, fecha_format.save );//"YYYY-MM-DD HH:mm:ss"
+    fecha = moment(data, fecha_format.save);//"YYYY-MM-DD HH:mm:ss"
     return fecha.format(fecha_format.view);
 }
 function formatSave(data) {
-    fecha = moment(data,fecha_format.view); // 'MMMM D, YYYY'
+    fecha = moment(data, fecha_format.view); // 'MMMM D, YYYY'
     return fecha.format(fecha_format.save);
 }
 /*function fechaMoment(data) {
-    return moment(data, 'MMMM D, YYYY');
-}*/
+ return moment(data, 'MMMM D, YYYY');
+ }*/
 function fechaMoment(data, format) {
     return moment(data, format);
 }
@@ -288,4 +288,40 @@ function getEstado_OrdenPedido(value) {
             return "Rechazado";
             break;
     }
+}
+
+function recorrerModulos(rows) {
+    if ($.isArray(rows)) {
+        op = '';
+        $.each(rows, function (i, row) {
+            clave = JSON_Clave(row);
+            if ($.inArray("SUB", clave) !== -1) {
+                if ($.isArray(row.sub)) {
+                    op += '<li class="treeview">' +
+                            '<a href="#">' +
+                            '<i class="fa fa-' + row.icon + '"></i> <span>' + row.descripcion + '</span>' +
+                            '<span class="pull-right-container"> <i class="fa fa-angle-left pull-right loco"></i> </span>' +
+                            '</a>' +
+                            '<ul class="treeview-menu">' + recorrerModulos(row.sub) + '</ul>' +
+                            '</li>';
+                }
+            } else {
+                op += '<li><a href="mvc/views/Pedido/ordenPedido.php"><i class="fa fa-' + row.icon + ' fa-fw"></i> ' + row.descripcion + '</a></li>';
+            }
+        });
+        return op;
+    } else {
+        return '<li><a href="mvc/views/Pedido/ordenPedido.php"><i class="fa fa-' + rows.icon + ' fa-fw"></i> ' + rows.descripcion + '</a></li>';
+    }
+}
+
+function genMenu() {
+    dt = {
+        url: getURL("_administracion"),
+        data: {
+            accion: "list",
+            op: "Menu"
+        }
+    };
+    return recorrerModulos(getJson(dt));
 }

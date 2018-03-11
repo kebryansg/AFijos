@@ -18,7 +18,7 @@ class SubModulo extends ModelSQL {
         $this->ID = 0;
         
         $this->Ruta = "";
-        $this->Icon = "";
+        $this->Icon = "adjust";
         $this->Catalogo = 0;
         
         $this->Estado = "ACT";

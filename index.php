@@ -51,7 +51,7 @@
         ?>
 
         <script type="text/javascript">
-//            $("#containPages").load("mvc/views/administracion/rol.php");
+            $("#containPages").load("mvc/views/administracion/submodulo.php");
 //            
 //            dt = {
 //                url: getURL("_administracion"),

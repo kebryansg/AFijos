@@ -1,5 +1,12 @@
 <!---->
 <meta charset="utf-8">
+<meta http-equiv="Expires" content="0">
+
+<meta http-equiv="Last-Modified" content="0">
+
+<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+
+<meta http-equiv="Pragma" content="no-cache">
 
 <link rel="icon" type="image/jpg" href="resource/img/icono-activos-fijos.jpg" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
