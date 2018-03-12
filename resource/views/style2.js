@@ -219,7 +219,8 @@ function loadCbo(data, select) {
     $(select).html("");
     $.each(data.rows, function (i, row) {
         option = document.createElement("option");
-        $(option).attr("value", row.ID);
+        //$(option).attr("value", row.ID);
+        $(option).attr("value", row.id);
         $(option).html(row.descripcion);
         $(select).append(option);
     });

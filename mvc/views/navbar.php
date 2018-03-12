@@ -183,6 +183,32 @@ function recorrerModulos($rows) {
                 </ul>
             </li>
             <li class="treeview">
+                <a href="#"><i class="fa fa-folder-open"></i> <span>Autorización</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-folder-open"></i> <span>Catálogo</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="mvc/views/autorizacion/tipoMovimiento.php"><i class="fa fa-lock fa-fw"></i> Tipo Movimiento</a>
+                                <a href="mvc/views/autorizacion/tipoDocumento.php"><i class="fa fa-lock fa-fw"></i> Tipo Documento</a>
+                            </li>
+                        </ul>
+                    </li>
+
+<!--                    <li>
+                        <a href="mvc/views/Administracion/rol.php"><i class="fa fa-lock fa-fw"></i> Roles / Permisos</a>
+                    </li>-->
+                </ul>
+            </li>
+            <li class="treeview">
                 <a href="#"><i class="fa fa-folder-open"></i> <span>Items</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>

@@ -51,7 +51,7 @@
         ?>
 
         <script type="text/javascript">
-            $("#containPages").load("mvc/views/administracion/submodulo.php");
+            $("#containPages").load("mvc/views/activos/bodega.php");
 //            
 //            dt = {
 //                url: getURL("_administracion"),

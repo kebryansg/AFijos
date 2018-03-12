@@ -147,12 +147,3 @@ function mask(value, rowData, index) {
     value = $.isEmptyObject(value) ? 0 : value;
     return formatInputMask(value);
 }
-
-
-/*function defaultInput(value, rowData, index) {
- if (rowData.id === 0) {
- return '<input text data-field="'+ this.field +'" class="form-control input-sm" type="text" value="' + value + '">';
- } else {
- return value;
- }
- }*/

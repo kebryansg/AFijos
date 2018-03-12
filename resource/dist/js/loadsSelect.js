@@ -17,3 +17,13 @@ function selectModulo(){
         url: getURL("_administracion")
     });
 }
+
+function selectCiudad(){
+    return getJson({
+        data: {
+            op: "ciudad",
+            accion: "list"
+        },
+        url: getURL("_catalogo")
+    });
+}

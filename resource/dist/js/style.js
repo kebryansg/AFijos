@@ -411,7 +411,8 @@ $(function () {
             };
         }
         save_global(datos);
-        $(table).bootstrapTable("refresh");
+        //$(table).bootstrapTable("refresh");
+        $("#Listado table").bootstrapTable("refresh");
         $(this).trigger("reset");
         hideRegistro();
     });

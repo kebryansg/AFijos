@@ -1,6 +1,6 @@
 op = "bodega";
 url = "servidor/sCatalogo.php";
-table = $("#Listado table");
+//table = $("#Listado table");
 
 $(function(){
     initialComponents();
@@ -9,10 +9,8 @@ $(function(){
 
 
 function edit(datos) {
-    $("form").data("id", datos.ID);
-    $("input[name='descripcion']").val(datos.descripcion);
-    $("textarea[name='observacion']").val(datos.observacion);
-    $("select[name='estado']").selectpicker("val", datos.estado);
+    form = "form[save]";
+    $(form).edit(datos);
 }
 
 function delet(datos){

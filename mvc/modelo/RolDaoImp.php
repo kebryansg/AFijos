@@ -42,7 +42,7 @@ class RolDaoImp extends ModelProcedure {
 
     public static function ListPermisoRol() {
         $conn = (new C_MySQL())->open();
-        $sql = "SELECT SQL_CALC_FOUND_ROWS * from viewPermisoRol;";
+        $sql = "SELECT SQL_CALC_FOUND_ROWS * from viewpermisorol;";
         $dts = C_MySQL::returnListAsoc($conn, $sql);
         $conn->close();
         return $dts;

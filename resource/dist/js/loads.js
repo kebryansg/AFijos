@@ -11,6 +11,9 @@ function getURL(url) {
         case "_administracion":
             return "servidor/sAdministracion.php";
             break;
+        case "_autorizacion":
+            return "servidor/sAutorizacion.php";
+            break;
         case "_compras":
             return "servidor/sCompras.php";
             break;
@@ -20,6 +23,30 @@ function getURL(url) {
 
     }
 }
+/* Autorizacion */
+
+function loadTipoMovimiento(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "tipoMovimiento",
+            accion: "list"
+        }, params.data),
+        url: getURL("_autorizacion")
+    };
+    params.success(getJson(json_data));
+}
+
+function loadTipoDocumento(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "tipoDocumento",
+            accion: "list"
+        }, params.data),
+        url: getURL("_autorizacion")
+    };
+    params.success(getJson(json_data));
+}
+/* Autorizacion */
 
 function loadItems(params) {
     json_data = {

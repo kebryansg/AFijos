@@ -1,9 +1,10 @@
 <?php
 
 class ModelProcedure {
-    public static function save($obj){
+
+    public static function save($obj) {
         $conn = (new C_MySQL())->open();
-        $response = array(); 
+        $response = array();
         $action = ($obj->ID == 0);
         $sql = ($obj->ID == 0) ? $obj->Insert() : $obj->Update();
         $bandera = $conn->query($sql);
@@ -24,4 +25,12 @@ class ModelProcedure {
         $conn->close();
         return $response;
     }
+
+    public function delete($obj) {
+        $conn = (new C_MySQL())->open();
+        $sql = $obj->Update_Delete();
+        $conn->query($sql);
+        $conn->close();
+    }
+
 }
