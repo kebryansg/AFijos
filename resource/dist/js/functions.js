@@ -20,9 +20,14 @@ function getForm(form) {
         }
         value[name] = val;
     });
-    console.log(value);
     return value;
 }
+
+$.fn.initTable = function () {
+    tb = $(this).attr("tb-tipo");
+    
+
+};
 
 $.fn.initDate = function () {
     dt = $(this).attr("dt-tipo");

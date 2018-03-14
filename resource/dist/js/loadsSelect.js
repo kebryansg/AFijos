@@ -27,3 +27,13 @@ function selectCiudad(){
         url: getURL("_catalogo")
     });
 }
+
+function selectBodega(){
+    return getJson({
+        data: {
+            op: "bodega",
+            accion: "list"
+        },
+        url: getURL("_catalogo")
+    });
+}

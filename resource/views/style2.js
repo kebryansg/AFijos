@@ -216,6 +216,7 @@ window.event_accion_default = {
 };
 
 function loadCbo(data, select) {
+    alert();
     $(select).html("");
     $.each(data.rows, function (i, row) {
         option = document.createElement("option");

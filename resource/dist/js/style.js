@@ -19,6 +19,7 @@ var TablePaginationDefault = {
     pagination: true,
     sidePagination: "server"
 };
+
 var TableDefault = {
     height: 400,
     pageSize: 5,
@@ -77,10 +78,12 @@ function initialComponents() {
     $("table[full]").bootstrapTable(TableDefault);
     $(".selectpicker").selectpicker({
 //title: "Seleccione",
-        size: 5,
+        size: 5
         //showTick: true
     });
-    $("div[tipo] button[refresh]").click();
+    initSelect();
+    
+    //$("div[tipo] button[refresh]").click();
 }
 
 function initModalNew(modal, dataUrl) {
@@ -316,9 +319,18 @@ function limpiarContenedor(contenedor) {
     $(contenedor + " .selectpicker").selectpicker("refresh");
 }
 
+function initSelect() {
+    $("select[data-fn]").each(function (i, select) {
+        fnc = $(select).attr("data-fn");
+        datos = self[fnc]();
+        loadCbo(datos, select);
+    });
+
+}
+
 $(function () {
-    
-    $("span[refreshMenu]").click(function(){
+
+    $("span[refreshMenu]").click(function () {
         $("ul.sidebar-menu li:not(.header)").remove();
         $("ul.sidebar-menu").append(genMenu());
     });
@@ -328,13 +340,21 @@ $(function () {
         $(this).select();
     });
 
-    $(document).on("click", "div[tipo] button[refresh]", function (e) {
+    $(document).on("click", ".selectpickerComponent button[refresh]", function (e) {
+        div = $(this).closest(".selectpickerComponent");
+        select = $(div).find("select");
+        fnc = $(select).attr("data-fn");
+        datos = self[fnc]();
+        console.log(datos);
+        loadCbo(datos, select);
+    });
+    /*$(document).on("click", "div[tipo] button[refresh]", function (e) {
         div = $(this).closest("div[tipo]");
         fnc = $(div).attr("data-fn");
         select = $(div).find("select");
         datos = self[fnc]();
         loadCbo(datos, select);
-    });
+    });*/
 
     $(document).on("click", "button[name='btn_add']", function (e) {
         //showRegistro();
@@ -517,8 +537,8 @@ $(function () {
             dropdownMenu = null;
         }
     });
-    
-    $(document).on("click",".sidebar a",function(e){
+
+    $(document).on("click", ".sidebar a", function (e) {
         e.preventDefault();
         url = $(this).attr("href");
 

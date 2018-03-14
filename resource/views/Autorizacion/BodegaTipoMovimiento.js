@@ -1,3 +1,5 @@
 $(function(){
     initialComponents();
+    
+    $("#tbPermisoMovimiento").bootstrapTable();
 });
