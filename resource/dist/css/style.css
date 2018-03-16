@@ -11,7 +11,7 @@
 }
 
 /* Form-inline bootstrap-select */
-.form-group .bootstrap-select.btn-group, .form-horizontal .bootstrap-select.btn-group, .form-inline .bootstrap-select.btn-group{
+.form-horizontal .bootstrap-select.btn-group, .form-inline .bootstrap-select.btn-group{
     margin-bottom: 0;
     display: inline-block;
     width: auto;

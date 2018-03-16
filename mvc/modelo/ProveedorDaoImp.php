@@ -2,22 +2,37 @@
 
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Proveedor.php';
+include_once 'ModelProcedure.php';
 
-class ProveedorDaoImp {
-    public static function save($proveedor) {
+class ProveedorDaoImp extends ModelProcedure {
+//    public static function save($proveedor) {
+//        $conn = (new C_MySQL())->open();
+//        $sql = "";
+//        if ($proveedor->ID == 0) {
+//            $sql = $proveedor->Insert();
+//        } else {
+//            $sql = $proveedor->Update();
+//        }
+//        if ($conn->query($sql)) {
+//            if ($proveedor->ID == 0) {
+//                $proveedor->ID = $conn->insert_id;
+//            }
+//        }
+//        $conn->close();
+//    }
+    
+    
+    
+    
+    public static function _listOrdenCompras() {
         $conn = (new C_MySQL())->open();
-        $sql = "";
-        if ($proveedor->ID == 0) {
-            $sql = $proveedor->Insert();
-        } else {
-            $sql = $proveedor->Update();
-        }
-        if ($conn->query($sql)) {
-            if ($proveedor->ID == 0) {
-                $proveedor->ID = $conn->insert_id;
-            }
-        }
+        $sql = "select * from viewproveedor_ordencompra;";
+
+        $dts = array(
+            "rows" => C_MySQL::returnListAsoc($conn, $sql)
+        );
         $conn->close();
+        return $dts;
     }
     public static function listProveedor($top, $pag, &$count) {
         $conn = (new C_MySQL())->open();

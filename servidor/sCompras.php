@@ -24,6 +24,13 @@ switch ($accion) {
                     "total" => $count
                 ));
                 break;
+            case "proveedorOrdenCompra":
+                $resultado = json_encode(ProveedorDaoImp::_listOrdenCompras());
+                break;
+            case "proveedorDetalleOrdenCompra":
+                $proveedor = $_POST["proveedor"];
+                $resultado = json_encode(DetalleOrdenCompraDaoImp::listDetalleOrdenCompra_Proveedor($proveedor));
+                break;
             case "items":
                 $resultado = json_encode(array(
                     "rows" => ItemDaoImp::listItem($top, $pag, $count),
@@ -45,7 +52,7 @@ switch ($accion) {
                         "status" => TRUE,
                         "get" => PresupuestoDaoImp::get($params)[0]
                     ));
-                }else{
+                } else {
                     $resultado = json_encode(array(
                         "status" => FALSE
                     ));
@@ -57,24 +64,24 @@ switch ($accion) {
     case "save":
         $json = json_decode($_POST["datos"]);
         switch ($op) {
-            case "OrdenCompra": 
+            case "OrdenCompra":
                 $OrdenCompra = $mapper->map($json, new OrdenCompra());
                 OrdenCompraDaoImp::save($OrdenCompra);
                 $resultado = $OrdenCompra->ID;
-                
-                
+
+
                 foreach (json_decode($_POST["items"]) as $item) {
                     $DetalleOrdenCompra = $mapper->map($item, new DetalleOrdenCompra());
                     $DetalleOrdenCompra->IDOrdenCompra = $OrdenCompra->ID;
                     $DetalleOrdenCompra->Cantidad = $item->solicitar;
                     DetalleOrdenCompraDaoImp::save($DetalleOrdenCompra);
                 }
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
                 break;
             case "proveedor":
                 $proveedor = $mapper->map($json, new Proveedor());

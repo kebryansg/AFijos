@@ -51,7 +51,8 @@
         ?>
 
         <script type="text/javascript">
-            $("#containPages").load("mvc/views/Autorizacion/BodegaTipoMovimiento.php");
+            //$("#containPages").load("mvc/views/Autorizacion/BodegaTipoMovimiento.php");
+            $("#containPages").load("mvc/views/Compras/FacturaOrdenCompra.php");
 //            
 //            dt = {
 //                url: getURL("_administracion"),

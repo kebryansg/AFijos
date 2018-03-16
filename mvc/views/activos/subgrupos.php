@@ -36,14 +36,14 @@
 
                             <div class="form-group form-group-sm">
                                 <label for="" class="control-label">Grupo</label>
-                                <div tipo  data-fn="selectGrupo"  >
+                                <div tipo    >
                                     <div class="inputComponent">
-                                        <select name="idgrupo" class="form-control selectpicker" data-width='80%' required></select>
+                                        <select name="idgrupo" data-fn="selectGrupo" class="form-control selectpicker" data-width='80%' required></select>
                                         <div>
-                                            <button type="button" class="btn btn-info btn-sm " data-toggle='modal' 
-                                                    data-target="#modal-new" data-url="mvc/views/activos/departamento.php">
+<!--                                            <button type="button" class="btn btn-info btn-sm " data-toggle='modal' 
+                                                    data-target="#modal-new" data-url="mvc/views/activos/grupos.php">
                                                 <i class="fa fa-plus"></i>
-                                            </button>
+                                            </button>-->
                                             <button refresh type="button" class="btn btn-success btn-sm ">
                                                 <i class="fa fa-sync-alt"></i>
                                             </button>

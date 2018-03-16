@@ -1,9 +1,18 @@
 $(function () {
     initialComponents();
 
-    $("#tbPermisoMovimiento").bootstrapTable();
-    
+    $("#tbPermisoMovimiento").bootstrapTable({
+        clickToSelect: true
+    });
+
+    $("select[name='idbodega']").selectpicker("val", -1);
+
     loadTMovimiento();
+
+    $("select[name='idbodega']").on('changed.bs.select', function (e) {
+        
+        
+    });
 
 
 

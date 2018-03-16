@@ -25,6 +25,15 @@ class DetalleOrdenCompraDaoImp {
         $conn->close();
         return $list;
     }
+    
+    public static function listDetalleOrdenCompra_Proveedor($proveedor) {
+        $conn = (new C_MySQL())->open();
+        $sql = "call ProveedorDetalleOrdenCompra($proveedor);";
+
+        $list = C_MySQL::returnListAsoc($conn, $sql);
+        $conn->close();
+        return $list;
+    }
 
     public function delete($detalle) {
         $conn = (new C_MySQL())->open();

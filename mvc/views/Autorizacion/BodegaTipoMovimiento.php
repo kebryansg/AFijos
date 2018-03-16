@@ -5,7 +5,7 @@
         <div id="toolbar" class="form-inline">
             <div class="form-group form-group-sm">
                 <label for="" class="control-label">Bodega:</label>
-                <select name="idciudad" class="form-control selectpicker" data-fn="selectBodega"  required></select>
+                <select name="idbodega" class="form-control selectpicker" data-fn="selectBodega" data-width="300"  required></select>
             </div>
         </div>
         <table 

@@ -106,11 +106,11 @@ function recorrerModulos($rows) {
         <ul class="sidebar-menu" data-widget="tree">
             <!--<li class="header">Navegación Principal</li>-->
             <li class="header" style="display: flex; flex-flow: row wrap;justify-content: space-between;">
-                        <span>Navegación Principal</span>
-                        <span refreshMenu style="color:#b8c7ce;cursor: pointer;">
-                            <i class="fa fa-sync-alt pull-right "></i>
-                        </span>
-                    </li>
+                <span>Navegación Principal</span>
+                <span refreshMenu style="color:#b8c7ce;cursor: pointer;">
+                    <i class="fa fa-sync-alt pull-right "></i>
+                </span>
+            </li>
 
             <li class="treeview">
                 <a href="#">
@@ -146,6 +146,7 @@ function recorrerModulos($rows) {
                     </li>
                     <li><a href="mvc/views/items/presupuesto.php">Presupuesto</a></li>
                     <li><a href="mvc/views/Compras/GenerarOrdenCompra.php">Generar Orden Compra</a></li>
+                    <li><a href="mvc/views/Compras/FacturaOrdenCompra.php">Factura Orden Compra</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -203,9 +204,9 @@ function recorrerModulos($rows) {
                         </ul>
                     </li>
 
-<!--                    <li>
-                        <a href="mvc/views/Administracion/rol.php"><i class="fa fa-lock fa-fw"></i> Roles / Permisos</a>
-                    </li>-->
+                    <li>
+                        <a href="mvc/views/autorizacion/BodegaTipoMovimiento.php"><i class="fa fa-lock fa-fw"></i> Movimientos Bodega</a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview">

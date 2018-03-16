@@ -37,3 +37,12 @@ function selectBodega(){
         url: getURL("_catalogo")
     });
 }
+function selectProveedorOrdenCompra(){
+    return getJson({
+        data: {
+            op: "proveedorOrdenCompra",
+            accion: "list"
+        },
+        url: getURL("_compras")
+    });
+}
