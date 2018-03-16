@@ -39,9 +39,15 @@ function action_seleccion_v2(datos) {
 }
 
 function initialComponents() {
+    alert();
     selections = [];
-    $("table[init]").bootstrapTable(TablePaginationDefault);
-    $("table[full]").bootstrapTable(TableDefault);
+//    $("table[init]").bootstrapTable(TablePaginationDefault);
+//    $("table[full]").bootstrapTable(TableDefault);
+      $("table").each(function(i,table){
+          $(table).initTable();
+      });
+
+
     $(".selectpicker").selectpicker({
 //title: "Seleccione",
         size: 5,

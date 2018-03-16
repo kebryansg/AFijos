@@ -23,11 +23,21 @@ function getForm(form) {
     return value;
 }
 
-$.fn.initTable = function () {
+$.fn.iniciarTable = function () {
     tb = $(this).attr("tb-tipo");
-    
+
+    switch (tb) {
+        case "pagination":
+            $(this).bootstrapTable(TablePaginationDefault);
+            break;
+        case "full":
+            $(this).bootstrapTable(TableFull);
+            break;
+    }
+
 
 };
+
 
 $.fn.initDate = function () {
     dt = $(this).attr("dt-tipo");

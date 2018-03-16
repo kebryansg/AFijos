@@ -9,25 +9,25 @@ var fecha_format = {
 };
 
 moment.locale("es");
-var TablePaginationDefault = {
-    //height: 400,
-    pageSize: 5,
-    search: true,
-    pageList: [5, 10, 15, 20],
-    cache: false,
-    showRefresh: true,
-    pagination: true,
-    sidePagination: "server"
-};
-
-var TableDefault = {
-    height: 400,
-    pageSize: 5,
-    clickToSelect: true,
-    //search: true,
-    pageList: [5, 10, 15, 20],
-    cache: false
-};
+//var TablePaginationDefault = {
+//    //height: 400,
+//    pageSize: 5,
+//    search: true,
+//    pageList: [5, 10, 15, 20],
+//    cache: false,
+//    showRefresh: true,
+//    pagination: true,
+//    sidePagination: "server"
+//};
+//
+//var TableDefault = {
+//    height: 400,
+//    pageSize: 5,
+//    clickToSelect: true,
+//    //search: true,
+//    pageList: [5, 10, 15, 20],
+//    cache: false
+//};
 Inputmask.extendAliases({
     'myDecimal': {
         alias: "numeric",
@@ -75,14 +75,19 @@ function action_seleccion_v2(datos) {
 function initialComponents() {
     selections = [];
     $("table[init]").bootstrapTable(TablePaginationDefault);
-    $("table[full]").bootstrapTable(TableDefault);
+    $("table[full]").bootstrapTable(TableFull);
+
+//    $("table").each(function (i, table) {
+//        $(table).iniciarTable();
+//    });
+
     $(".selectpicker").selectpicker({
 //title: "Seleccione",
         size: 5
-        //showTick: true
+                //showTick: true
     });
     initSelect();
-    
+
     //$("div[tipo] button[refresh]").click();
 }
 
@@ -349,12 +354,12 @@ $(function () {
         loadCbo(datos, select);
     });
     /*$(document).on("click", "div[tipo] button[refresh]", function (e) {
-        div = $(this).closest("div[tipo]");
-        fnc = $(div).attr("data-fn");
-        select = $(div).find("select");
-        datos = self[fnc]();
-        loadCbo(datos, select);
-    });*/
+     div = $(this).closest("div[tipo]");
+     fnc = $(div).attr("data-fn");
+     select = $(div).find("select");
+     datos = self[fnc]();
+     loadCbo(datos, select);
+     });*/
 
     $(document).on("click", "button[name='btn_add']", function (e) {
         //showRegistro();

@@ -9,16 +9,15 @@
             </div>
         </div>
         <table 
-            init
             id="tbPermisoMovimiento"
             data-toolbar="#toolbar"
-            data-ajax="loadTipoMovimiento"> 
+            > 
             <thead>
                 <tr>
                     <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
+                    <!--<th data-field="id" class="col-md-1" data-align="center">Cód.</th>-->
                     <th data-field="descripcion">Descripción</th>
-                    <th data-field="observacion">Observación</th>
+                    <!--<th data-field="observacion">Observación</th>-->
                 </tr>
             </thead>
         </table>
