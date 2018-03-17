@@ -175,3 +175,6 @@ function mask(value, rowData, index) {
     value = $.isEmptyObject(value) ? 0 : value;
     return formatInputMask(value);
 }
+
+
+

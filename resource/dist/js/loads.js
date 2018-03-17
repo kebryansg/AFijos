@@ -89,25 +89,26 @@ function loadArea(params = null) {
 }
 }
 
-function loadProveedor(params = null) {
-    data = {
-        op: "proveedor",
-        accion: "list"
-    };
-    if (params !== null) {
-        json_data = {
-            data: $.extend({}, data, params.data),
-            url: "servidor/sCompras.php"
-        };
-
-        params.success(getJson(json_data));
-    } else {
-        return getJson({
-            data: data,
-            url: "servidor/sCompras.php"
-        });
-}
-}
+//function loadProveedor(params = null) {
+//    alert();
+//    data = {
+//        op: "proveedor",
+//        accion: "list"
+//    };
+//    if (params !== null) {
+//        json_data = {
+//            data: $.extend({}, data, params.data),
+//            url: "servidor/sCompras.php"
+//        };
+//
+//        params.success(getJson(json_data));
+//    } else {
+//        return getJson({
+//            data: data,
+//            url: "servidor/sCompras.php"
+//        });
+//}
+//}
 
 function loadTipoEmisor(params = null) {
     data = {
@@ -433,7 +434,17 @@ function loadProveedor(params) {
             op: "proveedor",
             accion: "list"
         }, params.data),
-        url: "servidor/sCompras.php"
+        url: getURL("_compras")
+    };
+    params.success(getJson(json_data));
+}
+function loadProveedorOrdenCompra(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "proveedorOrdenCompra",
+            accion: "list"
+        }, params.data),
+        url: getURL("_compras")
     };
     params.success(getJson(json_data));
 }

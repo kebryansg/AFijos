@@ -21,29 +21,34 @@ class ProveedorDaoImp extends ModelProcedure {
 //        $conn->close();
 //    }
     
-    
-    
-    
-    public static function _listOrdenCompras() {
+    public static function _listOrdenCompras($params) {
         $conn = (new C_MySQL())->open();
-        $sql = "select * from viewproveedor_ordencompra;";
+        
+        $banderapag = ($params["top"] > 0 ) ? "limit " . $params['top'] . " offset " . $params['pag'] : "";
+        $where = ($params["buscar"] != NULL) ? " where nombre like '%" . $params["buscar"] . "%' or identificacion like '%" . $params["buscar"] . "%' " : "";
+        
+        $sql = "select * from viewproveedor_ordencompra $where $banderapag ;";
 
         $dts = array(
-            "rows" => C_MySQL::returnListAsoc($conn, $sql)
+            "rows" => C_MySQL::returnListAsoc($conn, $sql),
+             "total" => C_MySQL::row_count($conn)
         );
         $conn->close();
         return $dts;
     }
-    public static function listProveedor($top, $pag, &$count) {
+    public static function listProveedor($params) {
         $conn = (new C_MySQL())->open();
-        $banderapag = ($top > 0 ) ? "limit $top offset $pag" : "";
+        $banderapag = ($params["top"] > 0 ) ? "limit " . $params['top'] . " offset " . $params['pag'] : "";
+        $where = ($params["buscar"] != NULL) ? " where nombre like '%" . $params["buscar"] . "%' or identificacion like '%" . $params["buscar"] . "%' " : "";
         //where estado = 'ACT'
-        $sql = "select SQL_CALC_FOUND_ROWS * from Proveedor $banderapag ;";
+        $sql = "select SQL_CALC_FOUND_ROWS * from Proveedor $where $banderapag ;";
 
-        $list = C_MySQL::returnListAsoc($conn, $sql);
-        $count = C_MySQL::row_count($conn);
+        $dts = array(
+            "rows" => C_MySQL::returnListAsoc($conn, $sql),
+            "total" => C_MySQL::row_count($conn)
+        );
         $conn->close();
-        return $list;
+        return $dts;
     }
 
     public function delete($proveedor) {

@@ -3,14 +3,19 @@
 <div class="row" id="Listado">
     <div class="col-md-12">
         <div id="toolbar" class="form-inline">
-            <div class="form-group form-group-sm">
-                <label for="" class="control-label">Bodega:</label>
-                <select name="idbodega" class="form-control selectpicker" data-fn="selectBodega" data-width="300"  required></select>
-            </div>
+            <form action="_autorizacion" save role="bodegaTipoMovimiento">
+                <div class="form-group form-group-sm">
+                    <label for="" class="control-label">Bodega:</label>
+                    <select name="idbodega" class="form-control selectpicker" data-fn="selectBodega" data-width="300"  required></select>
+                </div>
+                <button type="submit" class="btn btn-success btn-sm " ><i class="fa fa-save"></i> Guardar</button>
+                <button type="button" clean class="btn btn-danger btn-sm " ><i class="fa fa-times"></i></button>
+            </form>
         </div>
         <table 
             id="tbPermisoMovimiento"
             data-toolbar="#toolbar"
+            class="table-hover table-striped"
             > 
             <thead>
                 <tr>

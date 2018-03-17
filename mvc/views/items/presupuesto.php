@@ -9,9 +9,9 @@
                 <div class="box-body">
                     <div class="form-group ">
                         <label class="control-label">Departamento</label>
-                        <div tipo  data-fn="loadDepartamento"  >
+                        <div tipo    >
                             <div class="inputComponent">
-                                <select name="idDepartamento" class="selectpicker form-control" data-width='80%' required>
+                                <select name="idDepartamento" data-fn="loadDepartamento" class="selectpicker form-control" data-width='80%' required>
                                 </select>
                                 <div>
                                     <button type="button" class="btn btn-info btn-sm " data-toggle='modal' 

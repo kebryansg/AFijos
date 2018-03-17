@@ -4,7 +4,12 @@ table = $("#Listado table");
 
 $(function () {
     initialComponents();
+    
+    alert();
+    
     $("#tbPermisoRol").bootstrapTable();
+    
+    $("#tbPermisoRol").bootstrapTable("resetView");
 });
 
 

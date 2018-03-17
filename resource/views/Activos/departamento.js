@@ -9,12 +9,7 @@ $(function () {
 });
 
 function edit(datos) {
-    $("form").data("id", datos.ID);
-    $("input[name='IDArea']").val(datos.idarea);
-    $("input[descripcion_find]").val(datos.area);
-    $("input[name='descripcion']").val(datos.descripcion);
-    $("textarea[name='observacion']").val(datos.observacion);
-    $("select[name='estado']").selectpicker("val", datos.estado);
+    $("form[save]").edit(datos);
 }
 
 function delet(datos){

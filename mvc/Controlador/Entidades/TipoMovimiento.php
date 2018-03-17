@@ -5,6 +5,7 @@ class TipoMovimiento extends ModelSQL {
     public $tabla;
     public $ID;
     public $Descripcion;
+    public $Tipo;
     public $Observacion;
     public $Estado;
 

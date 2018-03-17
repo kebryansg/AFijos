@@ -2,6 +2,7 @@
 
 include_once '../mvc/modelo/TipoDocumentoDaoImp.php';
 include_once '../mvc/modelo/TipoMovimientoDaoImp.php';
+include_once '../mvc/modelo/BodegaDaoImp.php';
 
 include_once '../mvc/Controlador/JsonMapper.php';
 $accion = $_POST["accion"];
@@ -22,6 +23,11 @@ switch ($accion) {
                 $tipoDocumento = $mapper->map($json, new TipoDocumento());
                 $resultado = json_encode(TipoDocumentoDaoImp::save($tipoDocumento));
                 break;
+            case "bodegaTipoMovimiento":
+                $bodega = $_POST["bodega"];
+                $movimientos = json_decode($_POST["movimientos"]);
+                BodegaDaoImp::asignarTipoMovimiento($bodega, $movimientos);
+                break;
         }
         break;
     case "list":
@@ -34,6 +40,10 @@ switch ($accion) {
         switch ($op) {
             case "tipoMovimiento":
                 $resultado = json_encode(TipoMovimientoDaoImp::_list($params));
+                break;
+            case "tipoMovimientoxBodega":
+                $bodega = $_POST["bodega"];
+                $resultado = json_encode(BodegaDaoImp::_listTipoMovimiento($bodega));
                 break;
             case "tipoDocumento":
                 $resultado = json_encode(TipoDocumentoDaoImp::_list($params));

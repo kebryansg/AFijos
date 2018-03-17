@@ -5,21 +5,6 @@ include_once '../mvc/Controlador/Entidades/Bodega.php';
 include_once 'ModelProcedure.php';
 
 class BodegaDaoImp extends ModelProcedure {
-//    public static function save($bodega) {
-//        $conn = (new C_MySQL())->open();
-//        $sql = "";
-//        if ($bodega->ID == 0) {
-//            $sql = $bodega->Insert();
-//        } else {
-//            $sql = $bodega->Update();
-//        }
-//        if ($conn->query($sql)) {
-//            if ($bodega->ID == 0) {
-//                $bodega->ID = $conn->insert_id;
-//            }
-//        }
-//        $conn->close();
-//    }
 
     public static function listBodega($top, $pag, &$count) {
         $conn = (new C_MySQL())->open();
@@ -38,5 +23,32 @@ class BodegaDaoImp extends ModelProcedure {
         $sql = $bodega->Update_Delete();
         $conn->query($sql);
         $conn->close();
+    }
+    
+    public static function asignarTipoMovimiento($bodega, $movimientos) {
+        $conn = (new C_MySQL())->open();
+        $sql = "Delete from BodegaTipoMovimiento where idbodega = " . $bodega;
+        $conn->query($sql);
+        $sql = "insert into BodegaTipoMovimiento(idbodega, idtipomovimiento) values";
+        if (count($movimientos) > 0) {
+            $list = array();
+            foreach ($movimientos as $movimiento) {
+                array_push($list, "(" . $bodega . "," . $movimiento . ")");
+            }
+            $sql .= join(',', $list);
+            $conn->query($sql);
+        }
+        $conn->close();
+    }
+    
+    
+    public static function _listTipoMovimiento($bodega) {
+        $conn = (new C_MySQL())->open();
+        
+        $sql = "select * from BodegaTipoMovimiento where idbodega = $bodega ;";
+
+        $list = C_MySQL::returnListAsoc($conn, $sql);
+        $conn->close();
+        return $list;
     }
 }

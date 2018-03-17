@@ -28,7 +28,7 @@ from (`ciudad` `c` join `pais` `p` on((`c`.`idpais` = `p`.`id`))) where (`c`.`es
 -- ========== 16/03/2018
 CREATE TABLE `facturaOrdenCompra` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    codFactura VARCHAR(255) NOT NULL,
+    `codFactura` VARCHAR(255) NOT NULL,
     `fecha` datetime NOT NULL,
     `idproveedor` int(11) DEFAULT NULL,
     `estado` char(3) NOT NULL,
@@ -59,3 +59,19 @@ BEGIN
 	where pv.id = proveedor and (cantidad - cantFacturada) > 0;
 
 END
+
+
+-- ============= 17/03/2018
+
+CREATE TABLE `BodegaTipoMovimiento` (
+  `idbodega` int(11) NOT NULL,
+  `idtipomovimiento` int(11) NOT NULL,
+  KEY `idbodega` (`idbodega`) USING BTREE,
+  KEY `idtipomovimiento` (`idtipomovimiento`) USING BTREE,
+  FOREIGN KEY (`idbodega`) REFERENCES `bodega` (`id`),
+  FOREIGN KEY (`idtipomovimiento`) REFERENCES `tipomovimiento` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+
+alter table tipomovimiento add COLUMN tipo char(1);
+update tipomovimiento set tipo = 'I';

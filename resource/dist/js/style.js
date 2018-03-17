@@ -87,6 +87,7 @@ function initialComponents() {
                 //showTick: true
     });
     initSelect();
+    initFecha();
 
     //$("div[tipo] button[refresh]").click();
 }
@@ -331,6 +332,14 @@ function initSelect() {
         loadCbo(datos, select);
     });
 
+}
+
+function initFecha(){
+    $.each($('input[data-tipo="fecha"]'), function (i, input) {
+        config = getParamsFecha($(input).attr("dt-tipo"));
+        $(input).datepicker(config);
+        //$(input).datepicker('update', $(input).getFecha());
+    });
 }
 
 $(function () {
