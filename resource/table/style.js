@@ -1,4 +1,3 @@
-
 var TablePaginationDefault = {
     pageSize: 5,
     search: true,
