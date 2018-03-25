@@ -136,7 +136,7 @@ $.fn.setFloat = function (value) {
 
 /* Cargar Datos a un select */
 function loadCbo(data, select) {
-    console.log(data);
+//    console.log(data);
     $(select).html("");
     $.each(data.rows, function (i, row) {
     //$.each(data, function (i, row) {
