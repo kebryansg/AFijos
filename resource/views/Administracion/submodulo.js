@@ -20,7 +20,6 @@ function initRegistro() {
     $("form[save]").clear();
     /*$("#icono").attr("class", "fa fa-folder-open fa-4x");
      $("input[name='icon']").val("folder-open");*/
-    alert();
     $("#cboIcon").selectpicker("val", "folder-open");//.change();
 }
 
@@ -43,7 +42,6 @@ function formatIcon(value)  {
 
 function edit(datos) {
     $("form[save]").edit(datos);
-    console.log(datos);
     $("#cboIcon").selectpicker("val", datos.icon);//.change();
     
 }
