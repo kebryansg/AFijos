@@ -256,7 +256,7 @@ function MsgError(data) {
     $.alert({
         title: data.title,
         backgroundDismiss: true,
-        icon: 'fa fa-warning',
+        icon: 'fa fa-exclamation-triangle',
         type: 'orange',
         content: $.isArray(data.content) ? data.content.join("<br>") : data.content
     });
@@ -266,7 +266,7 @@ function MsgConfirmation(data) {
     $.confirm({
         theme: "modern",
         escapeKey: "cancelAction",
-        icon: 'fa fa-warning',
+        icon: 'fa fa-exclamation-triangle',
         type: 'orange',
         title: data.title,
         content: $.isArray(data.content) ? data.content.join("<br>") : data.content,

@@ -5,7 +5,6 @@ table = $("#Listado table");
 $(function () {
     initialComponents();
     
-    alert();
     
     $("#tbPermisoRol").bootstrapTable();
     
