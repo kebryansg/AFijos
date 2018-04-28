@@ -30,7 +30,7 @@ function selectModulo(){
 function selectCiudad(){
     return getJson({
         data: {
-            op: "ciudad",
+            op: "ciudadPais",
             accion: "list"
         },
         url: getURL("_catalogo")

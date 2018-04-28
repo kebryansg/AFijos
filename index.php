@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("location: login.php");
+}
+
+$user = $_SESSION["login"]["user"];
+
+require_once "init.php";
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,7 +61,7 @@
         ?>
 
         <script type="text/javascript">
-            $("#containPages").load("mvc/views/activos/subclases.php");
+            $("#containPages").load("mvc/views/activos/bodega.php");
             //$("#containPages").load("mvc/views/Compras/FacturaOrdenCompra.php");
 //            
 //            dt = {

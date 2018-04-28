@@ -18,23 +18,8 @@ $(function () {
 
 function initRegistro() {
     $("form[save]").clear();
-    /*$("#icono").attr("class", "fa fa-folder-open fa-4x");
-     $("input[name='icon']").val("folder-open");*/
-    $("#cboIcon").selectpicker("val", "folder-open");//.change();
+    $("#cboIcon").selectpicker("val", "folder-open").change();
 }
-
-/*function getDatos() {
- form = "form[save]";
- datos = {
- url: $(form).attr("action"),
- dt: {
- accion: "save",
- op: $(form).attr("role"),
- datos: $(form).serializeObject()
- }
- };
- return datos;
- }*/
 
 function formatIcon(value)  {
     return '<i class="fa fa-' + value + '"></i>';
@@ -43,6 +28,7 @@ function formatIcon(value)  {
 function edit(datos) {
     $("form[save]").edit(datos);
     $("#cboIcon").selectpicker("val", datos.icon);//.change();
+    $("#cboIcon").change();
     
 }
 

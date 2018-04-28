@@ -20,6 +20,7 @@
                     <th data-field="state" data-checkbox="true"></th>
                     <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
                     <th data-field="descripcion">Descripción</th>
+                    <th data-field="ciudad">Ciudad</th>
                     <th data-field="observacion">Observación</th>
                     <th data-field="accion" class="col-md-1" data-align="center" data-formatter="defaultBtnAccion" data-events="event_accion_default">Acciones</th>
                 </tr>
@@ -53,18 +54,16 @@
                         <div class="col-md-6">
                             <div class="form-group form-group-sm">
                                 <label for="" class="control-label">Ciudad</label>
-                                <div tipo  data-fn="selectCiudad"  >
-                                    <div class="inputComponent">
-                                        <select name="idciudad" class="form-control selectpicker" data-width='80%' required></select>
-                                        <div>
-                                            <button type="button" class="btn btn-info btn-sm " data-toggle='modal' 
-                                                    data-target="#modal-new" data-url="mvc/views/activos/ciudad.php">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                            <button refresh type="button" class="btn btn-success btn-sm ">
-                                                <i class="fa fa-sync-alt"></i>
-                                            </button>
-                                        </div>
+                                <div class="selectpickerComponent">
+                                    <select name="idciudad" data-fn="selectCiudad" class="form-control selectpicker" data-width='80%' required></select>
+                                    <div>
+<!--                                        <button type="button" class="btn btn-info btn-sm " data-toggle='modal' 
+                                                data-target="#modal-new" data-url="mvc/views/activos/ciudad.php">
+                                            <i class="fa fa-plus"></i>
+                                        </button>-->
+                                        <button refresh type="button" class="btn btn-success btn-sm ">
+                                            <i class="fa fa-sync-alt"></i>
+                                        </button>
                                     </div>
                                 </div>
 

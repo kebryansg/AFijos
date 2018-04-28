@@ -30,6 +30,7 @@
 <link rel="stylesheet" href="resource/Plantilla/Ionicons/css/ionicons.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="resource/Plantilla/dist/css/AdminLTE.css">
+<link rel="stylesheet" href="resource/dist/css/styleCheckbox.css">
 <link rel="stylesheet" href="resource/dist/css/style.css">
 <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
       page. However, you can choose any other skin. Make sure you

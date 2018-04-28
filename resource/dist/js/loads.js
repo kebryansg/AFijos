@@ -20,6 +20,9 @@ function getURL(url) {
         case "_usuarios":
             return "servidor/sUsuarios.php";
             break;
+        case "_configuracion":
+            return "servidor/sConfiguracion.php";
+            break;
 
     }
 }
@@ -314,7 +317,7 @@ function loadTipo(params) {
             op: "tipo",
             accion: "list"
         }, params.data),
-        url: url
+        url: getURL("_catalogo")
     };
     params.success(getJson(json_data));
 }

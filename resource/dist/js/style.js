@@ -77,10 +77,6 @@ function initialComponents() {
     $("table[init]").bootstrapTable(TablePaginationDefault);
     $("table[full]").bootstrapTable(TableFull);
 
-//    $("table").each(function (i, table) {
-//        $(table).iniciarTable();
-//    });
-
     $(".selectpicker").selectpicker({
 //title: "Seleccione",
         size: 5
@@ -233,6 +229,10 @@ $.fn.serializeObject_KBSG = function () {
                     case "fecha":
                         val = $(component).getFecha();
                         break;
+                    case "checkbox":
+                        //val = ($(component).val() === "on");
+                        val = $(component).prop("checked");
+                        break;
                     default:
                         val = $(component).val();
                         break;
@@ -280,8 +280,6 @@ $.fn.edit = function (datos) {
             tagName = $(component).prop("tagName");
             switch (tagName) {
                 case "SELECT":
-                    console.log(component);
-                    console.log(datos[name]);
                     $(component).selectpicker("val", datos[name]);
                     $(component).change();
                     break;
@@ -300,6 +298,9 @@ $.fn.edit = function (datos) {
                         case "fecha":
                             $(component).datepicker("update", fechaMoment(datos[name]).toDate());
                             break;
+                        case "checkbox":
+                            $(component).prop('checked', parseInt(datos[name]));
+                            break;
                         default:
                             $(component).val(datos[name]);
                             break;
@@ -316,7 +317,7 @@ $.fn.clear = function () {
     $(this).find("select").selectpicker("val", -1);
     $(this).find("input:not([data-tipo='myDecimal'])").val("");
     $(this).find("input[data-tipo='myDecimal']").setFloat(0);
-    
+
 };
 
 
@@ -338,7 +339,7 @@ function initSelect() {
     });
 }
 
-function initFecha(){
+function initFecha() {
     $.each($('input[data-tipo="fecha"]'), function (i, input) {
         config = getParamsFecha($(input).attr("dt-tipo"));
         $(input).datepicker(config);
@@ -347,12 +348,21 @@ function initFecha(){
 }
 
 $(function () {
+    
+    $("#cerrarSesion").click(function (e) {
+        e.preventDefault();
+        $.post(getURL("_configuracion"), {accion: "close"}, function () {
+            location.href = "login.php";
+        });
+
+    });
+    
 
     $("span[refreshMenu]").click(function () {
         $("ul.sidebar-menu li:not(.header)").remove();
         $("ul.sidebar-menu").append(genMenu());
     });
-//    $("span[refreshMenu]").click();
+    $("span[refreshMenu]").click();
 
     $(document).on("focus", "input[data-tipo='myDecimal']", function () {
         $(this).select();
@@ -393,6 +403,13 @@ $(function () {
     });
 
     $(document).on("click", "form[save] button[type='reset']", function (e) {
+        form = $(this).closest("form");
+        $(form).trigger("reset");
+        $.each($(form).find('select'), function (i, select) {
+            $(select).selectpicker('refresh');
+            $(select).change();
+        });
+        
         if (typeof window.clear === 'function') {
             clear();
         }
@@ -446,7 +463,7 @@ $(function () {
         $(this).trigger("reset");
         hideRegistro();
     });
-    
+
     $('#modal-find').on({
         'show.bs.modal': function (e) {
             dataAjax = $(e.relatedTarget).attr("data-ajax");
@@ -464,7 +481,7 @@ $(function () {
             action_seleccion_v2(row);
         }
     });
-    
+
     $('#modal-adminTipo').on({
         'show.bs.modal': function (e) {
             dataID = $(e.relatedTarget).attr("data-id");
@@ -484,14 +501,14 @@ $(function () {
             $("table[full]").bootstrapTable("removeAll");
         }
     });
-    
+
     $('#modal-new').on({
         'show.bs.modal': function (e) {
             dataUrl = $(e.relatedTarget).attr("data-url");
             initModalNew('#modal-new', dataUrl);
         }
     });
-    
+
     $(document).on({
         'shown.bs.modal': function (e) {
             $("table[search],table[full]").bootstrapTable("resetView");
@@ -513,7 +530,7 @@ $(function () {
             }
         }
     }, '.modal');
-    
+
     $(window).on('check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table', function (e, rows) {
         if ($(e.target).attr("init") !== undefined) {
             var ids = $.map(!$.isArray(rows) ? [rows] : rows, row => row.ID);
@@ -532,7 +549,7 @@ $(function () {
             }
         }
     });
-    
+
     var dropdownMenu;
     $(window).on('show.bs.dropdown', function (e) {
         if (!$.isEmptyObject($(e.target).attr("name"))) {

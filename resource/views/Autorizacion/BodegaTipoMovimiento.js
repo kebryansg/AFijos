@@ -56,8 +56,6 @@ function getDatos() {
         }
     };
     return datos;
-
-
 }
 
 function loadTMovimiento() {

@@ -21,8 +21,6 @@ class SubModuloDaoImp {
 
     public static function listSubModulo($params) {
         $conn = (new C_MySQL())->open();
-        //$banderapag = ($top > 0 ) ? "limit $top offset $pag" : "";
-        //where estado = 'ACT'
         $banderapag = ($params["top"] > 0 ) ? "limit " . $params['top'] . " offset " . $params['pag'] : "";
         $where = ($params["buscar"] != NULL) ? " where descripcion like '%" . $params["buscar"] . "%' or modulo like '%" . $params["buscar"] . "%' " : "";
         

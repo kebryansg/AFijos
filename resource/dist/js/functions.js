@@ -319,12 +319,12 @@ function recorrerModulos(rows) {
                             '</li>';
                 }
             } else {
-                op += '<li><a href="mvc/views/Pedido/ordenPedido.php"><i class="fa fa-' + row.icon + ' fa-fw"></i> ' + row.descripcion + '</a></li>';
+                op += '<li><a href="' + row.ruta + '"><i class="fa fa-' + row.icon + ' fa-fw"></i> ' + row.descripcion + '</a></li>';
             }
         });
         return op;
     } else {
-        return '<li><a href="mvc/views/Pedido/ordenPedido.php"><i class="fa fa-' + rows.icon + ' fa-fw"></i> ' + rows.descripcion + '</a></li>';
+        return '<li><a href="' + rows.ruta + '"><i class="fa fa-' + rows.icon + ' fa-fw"></i> ' + rows.descripcion + '</a></li>';
     }
 }
 

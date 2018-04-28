@@ -64,7 +64,7 @@ function recorrerModulos($rows) {
                                 <a href="#" class="btn btn-default btn-flat">Profile</a>
                             </div>-->
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                                <a href="#" id="cerrarSesion" class="btn btn-default btn-flat">Cerrar Sesión</a>
                             </div>
                         </li>
                     </ul>

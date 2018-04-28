@@ -4,16 +4,19 @@ table = $("#Listado table");
 
 $(function(){
     initialComponents();
+    $("input[data-tipo='myDecimal']").setFloat(0);
     
 });
 
 function edit(datos) {
-    $("form").data("id", datos.ID);
-    $("input[name='descripcion']").val(datos.descripcion);
-    $("textarea[name='observacion']").val(datos.observacion);
-    $("input[name='vidautil']").val(datos.vidautil);
-    $("input[name='depreciable']").prop('checked', parseInt(datos.depreciable));
-    $("select[name='estado']").selectpicker("val", datos.estado);
+    console.log(datos);
+    $("form[save]").edit(datos);
+//    $("form").data("id", datos.ID);
+//    $("input[name='descripcion']").val(datos.descripcion);
+//    $("textarea[name='observacion']").val(datos.observacion);
+//    $("input[name='vidautil']").val(datos.vidautil);
+//    $("input[name='depreciable']").prop('checked', parseInt(datos.depreciable));
+//    $("select[name='estado']").selectpicker("val", datos.estado);
 }
 function delet(datos){
     $.ajax({

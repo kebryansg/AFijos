@@ -10,6 +10,7 @@ $(function(){
 
 function edit(datos) {
     form = "form[save]";
+    console.log(datos);
     $(form).edit(datos);
 }
 

@@ -35,6 +35,26 @@ class UsuarioDaoImp {
         $conn->query($sql);
         $conn->close();
     }
+    
+    public static function _login($params) {
+        $conn = (new C_MySQL())->open();
+        $sql = "select count(*) cant from usuario where  upper('" . $params["user"] . "') = upper(username) and password = encode('" . $params["pass"] . "','afijos');";
+        $login = false;
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            $login = $row["cant"] == 1;
+        }
+        $conn->close();
+        return $login;
+    }
+    public static function _get($params) {
+        $conn = (new C_MySQL())->open();
+        $sql = "select id, username, idrol,(SELECT rol from viewusuario where id = usuario.id) rol from usuario where upper('" . $params["user"] . "') = upper(username) and password = encode('" . $params["pass"] . "','afijos');";
+        $row = C_MySQL::returnListAsoc($conn, $sql);
+        $conn->close();
+        return $row[0];
+    }
 }
 
 

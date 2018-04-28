@@ -29,6 +29,14 @@ class CiudadDaoImp {
         $conn->close();
         return $list;
     }
+    public static function listCiudadPais() {
+        $conn = (new C_MySQL())->open();
+        $sql = "select SQL_CALC_FOUND_ROWS * from viewciudad_pais ;";
+
+        $list = C_MySQL::returnListAsoc($conn, $sql);
+        $conn->close();
+        return $list;
+    }
 
     public function delete($ciudad) {
         $conn = (new C_MySQL())->open();

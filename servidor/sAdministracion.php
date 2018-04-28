@@ -90,9 +90,6 @@ switch ($accion) {
                             array_push($subModulos, $sm);
                         }
                     }
-
-                    //$Modulos[$i]["submodulos"] = json_encode(SubModuloDaoImp::listSubModuloxIN($Modulos[$i]["submodulos"]));
-                    //$Modulos[$i]["sub"] = json_encode($subModulos);
                     $Modulos[$i]["sub"] = ($subModulos);
                 }
                 $resultado = json_encode($Modulos);

@@ -146,6 +146,12 @@ switch ($accion) {
                     "total" => $count
                 ));
                 break;
+            case "ciudadPais":
+                $resultado = json_encode(array(
+                    "rows" => CiudadDaoImp::listCiudadPais(),
+                    "total" => 0
+                ));
+                break;
             case "grupos":
                 $resultado = json_encode(GrupoDaoImp::listGrupo($params));
                 break;

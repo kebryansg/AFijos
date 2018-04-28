@@ -62,14 +62,12 @@
                         <div class="col-md-6">
                             <div class="form-group form-group-sm">
                                 <label for="" class="control-label">Módulo</label>
-                                <div tipo  data-fn="selectModulo"  >
-                                    <div class="selectpickerComponent">
-                                        <select name="idmodulo" class="form-control selectpicker" required></select>
-                                        <div class="hidden">
-                                            <button refresh type="button" class="btn btn-success btn-sm ">
-                                                <i class="fa fa-sync-alt"></i>
-                                            </button>
-                                        </div>
+                                <div class="selectpickerComponent">
+                                    <select name="idmodulo" data-fn="selectModulo" class="form-control selectpicker" required></select>
+                                    <div class="hidden">
+                                        <button refresh type="button" class="btn btn-success btn-sm ">
+                                            <i class="fa fa-sync-alt"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -100,6 +98,16 @@
                     <div class="form-group  form-group-sm">
                         <label for="" class="control-label">Observación</label>
                         <textarea rows="4" name="observacion" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="" class="control-label">
+                            <!--Discapacidad-->
+                            <div class="material-switch pull-left">
+                                <span style="font-weight: bold;">Catálogo</span>   &nbsp;&nbsp;
+                                <input id="catalogo" name="catalogo" type="checkbox" data-tipo="checkbox"/>
+                                <label for="catalogo" class="label-primary"></label>
+                            </div>
+                        </label>
                     </div>
                 </div>
             </div>

@@ -17,7 +17,7 @@
             <thead>
                 <tr>
                     <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="ID" class="col-md-1" >Cód.</th>
+                    <th data-field="id" class="col-md-1" >Cód.</th>
                     <th data-field="descripcion">Descripción</th>
                     <th data-field="vidautil">Vida Util</th>
                     <th data-field="depreciable" data-formatter="formatterDepreciable">Depreciable</th>
@@ -46,7 +46,7 @@
                         <div class="col-xs-6">
                             <div class="form-group">
                                 <label for="" class="control-label">Vida Util</label>
-                                <input type="text" name="vidautil" class="form-control" maxlength="5" required>
+                                <input type="text" name="vidautil" class="form-control" data-tipo="myDecimal" maxlength="5" required>
                             </div>
                         </div>
                         <div class="col-xs-6">
@@ -63,10 +63,20 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="material-switch pull-left">
-                                <span style="font-weight: bold;">Depreciable</span>   &nbsp;&nbsp;
-                                <input id="depreciable" name="depreciable" type="checkbox" />
-                                <label for="depreciable" class="label-primary"></label>
+                            <!--                            <div class="material-switch pull-left">
+                                                            <span style="font-weight: bold;">Depreciable</span>   &nbsp;&nbsp;
+                                                            <input id="depreciable" name="depreciable" type="checkbox" />
+                                                            <label for="depreciable" class="label-primary"></label>
+                                                        </div>-->
+                            <div class="form-group form-group-sm">
+                                <label for="" class="control-label">
+                                    <!--Discapacidad-->
+                                    <div class="material-switch pull-left">
+                                        <span style="font-weight: bold;">Depreciable</span>   &nbsp;&nbsp;
+                                        <input id="depreciable" name="depreciable" type="checkbox" data-tipo="checkbox"/>
+                                        <label for="depreciable" class="label-primary"></label>
+                                    </div>
+                                </label>
                             </div>
                         </div>
                     </div>
