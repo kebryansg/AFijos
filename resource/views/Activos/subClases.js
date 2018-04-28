@@ -9,12 +9,15 @@ $(function () {
 
 
 function edit(datos) {
-    $("input[name='IDClase']").val(datos.idclase);
-    $("input[descripcion_find]").val(datos.clase);
-    $("input[name='descripcion']").val(datos.descripcion);
-    $("textarea[name='observacion']").val(datos.observacion);
-    $("select[name='estado']").selectpicker("val", datos.estado);
-    $("form").data("id", datos.ID);
+    form  ="form[save]";
+    console.log(datos);
+    $(form).edit(datos);
+//    $("input[name='IDClase']").val(datos.idclase);
+//    $("input[descripcion_find]").val(datos.clase);
+//    $("input[name='descripcion']").val(datos.descripcion);
+//    $("textarea[name='observacion']").val(datos.observacion);
+//    $("select[name='estado']").selectpicker("val", datos.estado);
+//    $("form").data("id", datos.ID);
 }
 function delet(datos) {
     $.ajax({

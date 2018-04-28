@@ -20,7 +20,7 @@ class ClaseDaoImp {
     public static function listClase($top, $pag, &$count){
         $conn = (new C_MySQL())->open();
         $banderapag = ($top > 0 ) ? "limit $top offset $pag" : "";
-        $sql = "select SQL_CALC_FOUND_ROWS id as ID , descripcion,observacion,estado from clase $banderapag ;";
+        $sql = "select SQL_CALC_FOUND_ROWS * from clase $banderapag ;";
         
         $list = C_MySQL::returnListAsoc($conn, $sql);
         $count = C_MySQL::row_count($conn);

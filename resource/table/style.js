@@ -1,4 +1,5 @@
 var TablePaginationDefault = {
+    classes: "table table-striped table-bordered table-hover",
     pageSize: 5,
     search: true,
     pageList: [5, 10, 15, 20],

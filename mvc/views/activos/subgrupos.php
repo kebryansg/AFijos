@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div class="hidden" id="div-registro">
+<div class="row hidden" id="div-registro">
     <form save action="_catalogo" role="subgrupos" >
 
         <div class="box box-primary">
@@ -16,42 +16,22 @@
                     <div class="row">
 
                         <div class="col-md-6">
-
-<!--                            <div tipo  data-fn="loadDepartamento"  >
-                                <div class="inputComponent">
-                                    <select name="idDepartamento" class="selectpicker form-control" data-width='80%' required>
-                                    </select>
+                            <div class="form-group form-group-sm">
+                                <label for="" class="control-label">Grupo</label>
+                                <div class="selectpickerComponent ">
+                                    <select name="idgrupo" data-fn="selectGrupo" class="form-control selectpicker" data-width='80%' required></select>
                                     <div>
-                                        <button type="button" class="btn btn-info btn-sm " data-toggle='modal' 
-                                                data-target="#modal-new" data-url="mvc/views/activos/departamento.php">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
+                                        <!--                                            <button type="button" class="btn btn-info btn-sm " data-toggle='modal' 
+                                                                                            data-target="#modal-new" data-url="mvc/views/activos/grupos.php">
+                                                                                        <i class="fa fa-plus"></i>
+                                                                                    </button>-->
                                         <button refresh type="button" class="btn btn-success btn-sm ">
                                             <i class="fa fa-sync-alt"></i>
                                         </button>
                                     </div>
                                 </div>
-                            </div>-->
-
-
-                            <div class="form-group form-group-sm">
-                                <label for="" class="control-label">Grupo</label>
-                                <div tipo    >
-                                    <div class="inputComponent">
-                                        <select name="idgrupo" data-fn="selectGrupo" class="form-control selectpicker" data-width='80%' required></select>
-                                        <div>
-<!--                                            <button type="button" class="btn btn-info btn-sm " data-toggle='modal' 
-                                                    data-target="#modal-new" data-url="mvc/views/activos/grupos.php">
-                                                <i class="fa fa-plus"></i>
-                                            </button>-->
-                                            <button refresh type="button" class="btn btn-success btn-sm ">
-                                                <i class="fa fa-sync-alt"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
+                            
                         </div>
                         <div class="col-md-6">
                             <div class="form-group form-group-sm">
@@ -89,7 +69,7 @@
 
 
 
-<div class="row" id="Listado">
+<div class="row " id="Listado">
     <div class="col-md-12">
         <div id="toolbar" class="btn-group">
             <button type="button" name="btn_add" class="btn btn-success">

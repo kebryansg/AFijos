@@ -51,7 +51,7 @@
         ?>
 
         <script type="text/javascript">
-            $("#containPages").load("mvc/views/Autorizacion/TipoMovimiento.php");
+            $("#containPages").load("mvc/views/activos/subclases.php");
             //$("#containPages").load("mvc/views/Compras/FacturaOrdenCompra.php");
 //            
 //            dt = {

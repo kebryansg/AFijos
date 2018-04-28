@@ -280,7 +280,10 @@ $.fn.edit = function (datos) {
             tagName = $(component).prop("tagName");
             switch (tagName) {
                 case "SELECT":
+                    console.log(component);
+                    console.log(datos[name]);
                     $(component).selectpicker("val", datos[name]);
+                    $(component).change();
                     break;
                 case "TEXTAREA":
                     val = $(component).val(datos[name]);
@@ -311,9 +314,11 @@ $.fn.edit = function (datos) {
 $.fn.clear = function () {
     $(this).removeData("id");
     $(this).find("select").selectpicker("val", -1);
-    $(this).find("input[data-tipo='myDecimal']").setFloat(0);
     $(this).find("input:not([data-tipo='myDecimal'])").val("");
+    $(this).find("input[data-tipo='myDecimal']").setFloat(0);
+    
 };
+
 
 function formatterDepreciable(value) {
     return (parseInt(value)) ? "Si" : "No";
@@ -331,7 +336,6 @@ function initSelect() {
         datos = self[fnc]();
         loadCbo(datos, select);
     });
-
 }
 
 function initFecha(){
@@ -362,16 +366,8 @@ $(function () {
         console.log(datos);
         loadCbo(datos, select);
     });
-    /*$(document).on("click", "div[tipo] button[refresh]", function (e) {
-     div = $(this).closest("div[tipo]");
-     fnc = $(div).attr("data-fn");
-     select = $(div).find("select");
-     datos = self[fnc]();
-     loadCbo(datos, select);
-     });*/
 
     $(document).on("click", "button[name='btn_add']", function (e) {
-        //showRegistro();
         showRegistro();
         if (typeof window.initRegistro === 'function') {
             initRegistro();
@@ -450,6 +446,7 @@ $(function () {
         $(this).trigger("reset");
         hideRegistro();
     });
+    
     $('#modal-find').on({
         'show.bs.modal': function (e) {
             dataAjax = $(e.relatedTarget).attr("data-ajax");
@@ -467,6 +464,7 @@ $(function () {
             action_seleccion_v2(row);
         }
     });
+    
     $('#modal-adminTipo').on({
         'show.bs.modal': function (e) {
             dataID = $(e.relatedTarget).attr("data-id");
@@ -486,12 +484,14 @@ $(function () {
             $("table[full]").bootstrapTable("removeAll");
         }
     });
+    
     $('#modal-new').on({
         'show.bs.modal': function (e) {
             dataUrl = $(e.relatedTarget).attr("data-url");
             initModalNew('#modal-new', dataUrl);
         }
     });
+    
     $(document).on({
         'shown.bs.modal': function (e) {
             $("table[search],table[full]").bootstrapTable("resetView");
@@ -513,6 +513,7 @@ $(function () {
             }
         }
     }, '.modal');
+    
     $(window).on('check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table', function (e, rows) {
         if ($(e.target).attr("init") !== undefined) {
             var ids = $.map(!$.isArray(rows) ? [rows] : rows, row => row.ID);
@@ -531,6 +532,7 @@ $(function () {
             }
         }
     });
+    
     var dropdownMenu;
     $(window).on('show.bs.dropdown', function (e) {
         if (!$.isEmptyObject($(e.target).attr("name"))) {
@@ -564,19 +566,6 @@ $(function () {
             $(this).closest("li").addClass("active");
         }
     });
-
-//    $(".sidebar a").click(function (e) {
-//        e.preventDefault();
-//        url = $(this).attr("href");
-//
-//        if (url !== "#") {
-//            $("h1[title-contenido]").html($(this).html());
-//            $("#containPages").load(url);
-//            // Estilo
-//            $(".sidebar li").removeClass("active");
-//            $(this).closest("li").addClass("active");
-//        }
-//    });
 
 });
 

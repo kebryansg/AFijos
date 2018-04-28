@@ -7,6 +7,15 @@ function selectGrupo() {
         url: getURL("_catalogo")
     });
 }
+function selectClase() {
+    return getJson({
+        data: {
+            op: "clases",
+            accion: "list"
+        },
+        url: getURL("_catalogo")
+    });
+}
 
 function selectModulo(){
     return getJson({
