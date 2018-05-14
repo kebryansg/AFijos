@@ -35,6 +35,7 @@ require_once "init.php";
                 </section>
                 <section class="content container-fluid" id="containPages">
                     <?php
+                    
                     //include_once './mvc/views/Pedido/ordenPedido.php';
                     //include_once './mvc/views/Administracion/modulo.php';
 //                    include_once './mvc/views/Administracion/Submodulo.php';
@@ -63,18 +64,6 @@ require_once "init.php";
         <script type="text/javascript">
             $("#containPages").load("mvc/views/activos/bodega.php");
             //$("#containPages").load("mvc/views/Compras/FacturaOrdenCompra.php");
-//            
-//            dt = {
-//                url: getURL("_administracion"),
-//                data: {
-//                    accion: "list",
-//                    op: "Menu"
-//                }
-//            };
-//            dts = getJson(dt);
-//            console.log(dts);
-//            console.log(JSON.parse(dts[0].submodulos));
-
         </script>
     </body>
 </html>
