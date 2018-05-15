@@ -40,8 +40,6 @@ switch ($accion) {
             "pag" => (isset($_POST["offset"])) ? $_POST["offset"] : 0,
             "buscar" => (isset($_POST["search"])) ? $_POST["search"] : NULL
         );
-        
-        
         $count = 0;
         switch ($op) {
             case "Contribuyente":

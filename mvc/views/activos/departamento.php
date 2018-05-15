@@ -17,7 +17,7 @@
             <thead>
                 <tr>
                     <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="ID" class="col-md-1" data-align="center">Cód.</th>
+                    <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
                     <th data-field="descripcion">Descripción</th>
                     <th data-field="observacion">Observación</th>
                     <th data-field="accion" class="col-md-1" data-align="center" data-formatter="defaultBtnAccion" data-events="event_accion_default">Acciones</th>

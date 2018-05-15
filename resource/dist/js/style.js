@@ -9,25 +9,7 @@ var fecha_format = {
 };
 
 moment.locale("es");
-//var TablePaginationDefault = {
-//    //height: 400,
-//    pageSize: 5,
-//    search: true,
-//    pageList: [5, 10, 15, 20],
-//    cache: false,
-//    showRefresh: true,
-//    pagination: true,
-//    sidePagination: "server"
-//};
-//
-//var TableDefault = {
-//    height: 400,
-//    pageSize: 5,
-//    clickToSelect: true,
-//    //search: true,
-//    pageList: [5, 10, 15, 20],
-//    cache: false
-//};
+
 Inputmask.extendAliases({
     'myDecimal': {
         alias: "numeric",
@@ -48,8 +30,6 @@ myDecimalMinMax = {
     digitsOptional: false,
     placeholder: '0'
 };
-
-
 
 function action_seleccion_v2(datos) {
     $("#modal-find").modal("hide");
@@ -78,9 +58,7 @@ function initialComponents() {
     $("table[full]").bootstrapTable(TableFull);
 
     $(".selectpicker").selectpicker({
-//title: "Seleccione",
         size: 5
-                //showTick: true
     });
     initSelect();
     initFecha();
@@ -89,8 +67,6 @@ function initialComponents() {
 }
 
 function initModalNew(modal, dataUrl) {
-//funct_url = $("#modal-new").attr("data-url") + " #div-registro";
-
     $.ajax({
         url: dataUrl,
         async: false,
@@ -118,10 +94,6 @@ function initModalNew(modal, dataUrl) {
     });
     $(modal + ' .selectpicker').selectpicker();
 }
-
-
-
-
 
 function alertEliminarRegistro(row) {
     $.confirm({
@@ -174,22 +146,6 @@ function alertEliminarRegistros() {
         }
     });
 }
-
-//$.fn.serializeObject = function () {
-//    var o = {};
-//    var a = this.serializeArray();
-//    /* Agregar identificador  "id" */
-//    o["id"] = ($.isEmptyObject($(this).data("id"))) ? 0 : $(this).data("id");
-//    $.each(a, function (index, row) {
-//        console.log(a);
-//        o[row.name] = row.value;
-//    });
-//    /* Agregar input de type(checkbox) */
-//    $.each($(this).find("input[type='checkbox']"), function (index, row) {
-//        o[row.name] = $(row).is(":checked");
-//    });
-//    return JSON.stringify(o);
-//};
 
 $.fn.getFecha = function () {
     tipo = $(this).attr("dt-tipo");
@@ -282,6 +238,7 @@ $.fn.edit = function (datos) {
                 case "SELECT":
                     $(component).selectpicker("val", datos[name]);
                     $(component).change();
+                    //alert();
                     break;
                 case "TEXTAREA":
                     val = $(component).val(datos[name]);
@@ -320,7 +277,6 @@ $.fn.clear = function () {
 
 };
 
-
 function formatterDepreciable(value) {
     return (parseInt(value)) ? "Si" : "No";
 }
@@ -348,7 +304,7 @@ function initFecha() {
 }
 
 $(function () {
-    
+
     $("#cerrarSesion").click(function (e) {
         e.preventDefault();
         $.post(getURL("_configuracion"), {accion: "close"}, function () {
@@ -356,7 +312,6 @@ $(function () {
         });
 
     });
-    
 
     $("span[refreshMenu]").click(function () {
         $("ul.sidebar-menu li:not(.header)").remove();
@@ -409,7 +364,7 @@ $(function () {
             $(select).selectpicker('refresh');
             $(select).change();
         });
-        
+
         if (typeof window.clear === 'function') {
             clear();
         }
@@ -441,24 +396,20 @@ $(function () {
             return;
         }
         datos = {};
-
         //if (typeof "getDatos" !== 'undefined' && jQuery.isFunction("getDatos")) {
         if (typeof window.getDatos === 'function') {
             datos = getDatos();
-//            return;
         } else {
             datos = {
                 url: getURL($(this).attr("action")),
                 dt: {
                     accion: "save",
                     op: $(this).attr("role"),
-                    //datos: $(this).serializeObject()
                     datos: $(this).serializeObject_KBSG()
                 }
             };
         }
         save_global(datos);
-        //$(table).bootstrapTable("refresh");
         $("#Listado table").bootstrapTable("refresh");
         $(this).trigger("reset");
         hideRegistro();
