@@ -62,7 +62,7 @@ require_once "init.php";
         ?>
 
         <script type="text/javascript">
-            $("#containPages").load("mvc/views/activos/bodega.php");
+            $("#containPages").load("mvc/views/items/presupuesto.php");
             //$("#containPages").load("mvc/views/Compras/FacturaOrdenCompra.php");
         </script>
     </body>

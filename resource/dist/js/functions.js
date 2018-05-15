@@ -261,6 +261,15 @@ function MsgError(data) {
         content: $.isArray(data.content) ? data.content.join("<br>") : data.content
     });
 }
+function MsgSuccess(data) {
+    $.alert({
+        title: data.title,
+        backgroundDismiss: true,
+        icon: 'fa fa-check-square',
+        type: 'green',
+        content: $.isArray(data.content) ? data.content.join("<br>") : data.content
+    });
+}
 
 function MsgConfirmation(data) {
     $.confirm({

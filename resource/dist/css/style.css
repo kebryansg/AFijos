@@ -2,6 +2,11 @@
 .bx{
     outline: 2px red solid;
 }
+
+.white{
+    color:white;
+}
+
 /* Ubicar en Esquina Derecha-Abajo */
 .pull-right-bottom{
     bottom: 0;

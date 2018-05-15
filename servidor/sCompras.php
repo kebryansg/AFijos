@@ -55,7 +55,7 @@ switch ($accion) {
                 if (count($list) > 0) {
                     $resultado = json_encode(array(
                         "status" => TRUE,
-                        "get" => PresupuestoDaoImp::get($params)[0]
+                        "get" => $list[0]
                     ));
                 } else {
                     $resultado = json_encode(array(
@@ -95,8 +95,10 @@ switch ($accion) {
                 break;
             case "presupuesto":
                 $presupuesto = $mapper->map($json, new Presupuesto());
-                PresupuestoDaoImp::save($presupuesto);
-                $resultado = $presupuesto->ID;
+                $resultado = json_encode(
+                        PresupuestoDaoImp::save($presupuesto)
+                        );
+                //$resultado = $presupuesto->ID;
                 break;
         }
         break;

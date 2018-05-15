@@ -51,49 +51,9 @@ window.event_input = {
         $(this).select();
     }
 };
-function get() {
-    if ($('input[name="año"]').val() !== "" &&  !$.isEmptyObject($("select[name='idDepartamento']").selectpicker("val"))) {
-        $.ajax({
-            url: "servidor/sCompras.php",
-            cache: false,
-            type: 'POST',
-            async: false,
-            dataType: 'json',
-            data: {
-                accion: "get",
-                op: "presupuesto",
-                fecha: $('input[name="año"]').getFecha(),
-                departamento: $("select[name='idDepartamento']").selectpicker("val")// "1"
-            },
-            success: function (response) {
-                if (response.status) {
-                    $("form[save]").edit(response.get);
-                    $("#tbDetallePresupuesto").bootstrapTable("load", JSON.parse(response.get.meses));
-
-                } else {
-                    MsgError({
-                        title: "No se encontro datos",
-                        content: ""
-                    });
-                    clear();
-                }
-            }
-        });
-    }
-}
 
 $(function () {
-
     initialComponents();
-
-    $("#tbDetallePresupuesto").bootstrapTable();
-
-    //$("select[name='idDepartamento']").selectpicker("val", -1);
-
-//    datos = JSON.parse(JSON.stringify(rows));
-//    $("#tbDetallePresupuesto").bootstrapTable("load", datos);
-
-
 
     $('input[data-tipo="fecha"]').on("changeDate", function (e) {
         get();
@@ -102,6 +62,7 @@ $(function () {
         get();
     });
 
+    $("#tbDetallePresupuesto").bootstrapTable();
 
     $('input[name="presupuestoInicial"]').focusout(function (e) {
         acumulador = 0;
@@ -120,23 +81,23 @@ $(function () {
                     $("#tbDetallePresupuesto").bootstrapTable("load", rows);
                 },
                 cancel: function () {
-                    setearMyDecimal(input);
+                    $(input).setFloat(0);
                     $(input).focus();
                 }
             });
-            //Mensaje
-            //setearMyDecimal(this);
         }
-
     });
 
     $("button[cancelar]").click(function () {
         clear();
     });
 
-    $("#btnGet").click(function (e) {
-        fecha = $('input[name="año"]').datepicker("getDate");
-        console.log(formatSave(fecha));
+    $("button[save]").click(function () {
+        dt = {
+            url: getURL("_compras"),
+            dt: getDatos()
+        };
+        save_global(dt);
     });
 
     $.each($('input[data-tipo="fecha"]'), function (i, input) {
@@ -150,22 +111,51 @@ $(function () {
 });
 
 function clear() {
-    $("form[save]").clear();
+    $("div[datos_generales]").clear();
     datos = JSON.parse(JSON.stringify(rows));
     $("#tbDetallePresupuesto").bootstrapTable("load", datos);
 }
 
 function getDatos() {
-    form = "form[save]";
-    dt = JSON.parse($(form).serializeObject_KBSG());
+    dt = JSON.parse($("div[datos_generales]").serializeObject_KBSG());
     dt["meses"] = JSON.stringify($("#tbDetallePresupuesto").bootstrapTable("getData"));
     datos = {
-        url: getURL($(form).attr("action")),
-        dt: {
-            accion: "save",
-            op: $(form).attr("role"),
-            datos: JSON.stringify(dt)
-        }
+        accion: "save",
+        op: 'presupuesto',
+        datos: JSON.stringify(dt)
     };
-    return datos;
+    return (datos);
+}
+
+function get() {
+    if ($('input[name="año"]').val() !== "" && !$.isEmptyObject($("select[name='idDepartamento']").selectpicker("val"))) {
+
+        dt = getJson({
+            url: getURL("_compras"),
+            data: {
+                accion: "get",
+                op: "presupuesto",
+                fecha: $('input[name="año"]').getFecha(),
+                departamento: $("select[name='idDepartamento']").selectpicker("val")
+            }
+        });
+        if (dt.status) {
+//                    $("form[save]").edit(response.get);
+            $("div[valores]").edit(dt.get);
+            $("div[datos_generales]").data("id", dt.get.id);
+            $("#tbDetallePresupuesto").bootstrapTable("load", JSON.parse(dt.get.meses));
+            MsgSuccess({
+                title: "Datos cargados correctamente.",
+                content: ""
+            });
+
+
+        } else {
+            MsgError({
+                title: "No se encontro datos",
+                content: ""
+            });
+            clear();
+        }
+    }
 }

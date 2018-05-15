@@ -1,5 +1,3 @@
-<!-- REQUIRED JS SCRIPTS -->
-
 <!-- jQuery 3 -->
 <script src="resource/Plantilla/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -8,8 +6,6 @@
 <script src="resource/Plantilla/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="resource/Plantilla/fastclick/lib/fastclick.js"></script>
-
-
 
 <!-- BootStrap Datepicker -->
 <script src="resource/Plantilla/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>

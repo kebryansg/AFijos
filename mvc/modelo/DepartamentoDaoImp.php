@@ -23,7 +23,7 @@ class DepartamentoDaoImp {
         $conn = (new C_MySQL())->open();
         $banderapag = ($top > 0 ) ? "limit $top offset $pag" : "";
         //where estado = 'ACT'
-        $sql = "select SQL_CALC_FOUND_ROWS id as ID , descripcion, observacion, estado from departamento $banderapag ;";
+        $sql = "select SQL_CALC_FOUND_ROWS * from departamento $banderapag ;";
 
         $list = C_MySQL::returnListAsoc($conn, $sql);
         $count = C_MySQL::row_count($conn);
