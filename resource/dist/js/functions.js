@@ -163,6 +163,7 @@ function getJson(params) {
 
 /* Guardar Registro's */
 function save_global(datos) {
+    result = null;
     $.ajax({
         url: datos.url,
         cache: false,
@@ -171,11 +172,13 @@ function save_global(datos) {
         dataType: 'json',
         data: datos.dt,
         success: function (response) {
+            result = response;
             //loadTable();
             //$(table).bootstrapTable("refresh");
             //hideRegistro();
         }
     });
+    return result;
 }
 /* Mostrar Div Registro */
 function showRegistro() {

@@ -97,7 +97,16 @@ $(function () {
             url: getURL("_compras"),
             dt: getDatos()
         };
-        save_global(dt);
+        result = save_global(dt);
+        
+        if(result.status){
+            MsgSuccess({
+                title : "Datos guardados correctamente",
+                content: ""
+            });
+            clear();
+        }
+        
     });
 
     $.each($('input[data-tipo="fecha"]'), function (i, input) {
@@ -140,7 +149,6 @@ function get() {
             }
         });
         if (dt.status) {
-//                    $("form[save]").edit(response.get);
             $("div[valores]").edit(dt.get);
             $("div[datos_generales]").data("id", dt.get.id);
             $("#tbDetallePresupuesto").bootstrapTable("load", JSON.parse(dt.get.meses));
@@ -148,14 +156,15 @@ function get() {
                 title: "Datos cargados correctamente.",
                 content: ""
             });
-
-
         } else {
+            $("div[valores]").clear();
+            datos = JSON.parse(JSON.stringify(rows));
+            $("#tbDetallePresupuesto").bootstrapTable("load", datos);
             MsgError({
                 title: "No se encontro datos",
                 content: ""
             });
-            clear();
+            
         }
     }
 }
