@@ -394,7 +394,7 @@ function loadUsuario(params) {
             op: "usuario",
             accion: "list"
         }, params.data),
-        url: url
+        url: getURL("_administracion")
     };
     params.success(getJson(json_data));
 }

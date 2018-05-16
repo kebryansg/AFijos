@@ -18,7 +18,7 @@
                 <tr>
                     <th data-field="state" data-checkbox="true"></th>
                     <th data-field="rol">Rol</th>
-                    <th data-field="cedula">Cédula de Identidad</th>
+                    <th data-field="identificacion">Cédula de Identidad</th>
                     <th data-field="nombres">Nombres y Apellidos</th>
                     <!--<th data-field="apellidos">Apellidos</th>-->
                     <th data-field="email">Email</th>

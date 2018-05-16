@@ -73,7 +73,6 @@ switch ($accion) {
         $count = 0;
         switch ($op) {
             case "Menu":
-
                 $Modulos = ModuloDaoImp::listModulosRol("1");
                 for ($i = 0; $i < count($Modulos); $i++) {
                     $subModulos = array(
