@@ -29,6 +29,14 @@ final class C_MySQL {
         //$conn->close();
         return $list;
     }
+    public static function returnRowAsoc($conn, $sql) {
+        $result = NULL;
+        foreach ($conn->query($sql) as $row) {
+            $result  = $row;
+        }
+        //$conn->close();
+        return $result;
+    }
 
     public function open() {
         //$this->mysqli = new mysqli("localhost", "root", "12345", "cevroos_antaresv2");

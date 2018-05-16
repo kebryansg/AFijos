@@ -61,6 +61,14 @@ switch ($accion) {
                 break;
         }
         break;
+    case "get":
+        switch ($op) {
+            case "usuario":
+                $datos = UsuarioDaoImp::_getUsuario($_POST["id"]);
+                $resultado = json_encode($datos);
+                break;
+        }
+        break;
     case "list":
         $top = (isset($_POST["limit"])) ? $_POST["limit"] : 0;
         $pag = (isset($_POST["offset"])) ? $_POST["offset"] : 0;

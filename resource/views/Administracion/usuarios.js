@@ -9,15 +9,26 @@ $(function () {
 function getDatos() {
     form = "form[save]";
     datos = {
-        url: $(form).attr("action"),
+        url: getURL($(form).attr("action")),
         dt: {
             accion: "save",
             op: $(form).attr("role"),
-            datos: $(form).serializeObject()
+            datos: $(form).serializeObject_KBSG()
         }
     };
+    //console.log(datos);
     return datos;
 }
 function edit(datos){
-    $("form").edit(datos);
+    dt = getJson({
+        url : getURL("_administracion"),
+        data:{
+            accion: "get",
+            op: "usuario",
+            id: datos.id
+        }
+    });
+    
+    $("form").edit(dt.persona);
+    $("form").edit(dt.usuario);
 }

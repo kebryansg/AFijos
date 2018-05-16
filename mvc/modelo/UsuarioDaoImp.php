@@ -55,6 +55,18 @@ class UsuarioDaoImp {
         $conn->close();
         return $row[0];
     }
+    public static function _getUsuario($id) {
+        $conn = (new C_MySQL())->open();
+        $sql = "select id, username,decode(`password`,'afijos') `password`,idpersona, idrol,estado from usuario where id = ". $id;
+        $row = array();
+        //array_push($row, C_MySQL::returnRowAsoc($conn, $sql));
+        $row["usuario"] = (C_MySQL::returnRowAsoc($conn, $sql));
+        $sql = "select * from persona where id = ". $row["usuario"]["idpersona"];
+        //array_push($row, C_MySQL::returnRowAsoc($conn, $sql));
+        $row["persona"] = (C_MySQL::returnRowAsoc($conn, $sql));
+        $conn->close();
+        return $row;
+    }
 }
 
 

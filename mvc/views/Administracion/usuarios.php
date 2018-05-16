@@ -18,7 +18,7 @@
                 <tr>
                     <th data-field="state" data-checkbox="true"></th>
                     <th data-field="rol">Rol</th>
-                    <th data-field="identificacion">Cédula de Identidad</th>
+                    <th data-field="cedula">Cédula de Identidad</th>
                     <th data-field="nombres">Nombres y Apellidos</th>
                     <!--<th data-field="apellidos">Apellidos</th>-->
                     <th data-field="email">Email</th>
@@ -36,7 +36,7 @@
             <h3 class="box-title"> <i class="fa fa-pencil-alt"></i> Datos Generales</h3>
         </div>
         <div class="box-body">
-            <form save role="usuario" action="servidor/sAdministracion.php">
+            <form save role="usuario" action="_administracion">
                 <div class="col-md-6">
                     <div class="form-group form-group-sm">
                         <label class="control-label">Cèdula Identidad</label>
@@ -46,13 +46,13 @@
                         <div class="col-md-6">
                             <div class="form-group form-group-sm">
                                 <label>Primero Nombre</label>
-                                <input name="primerNombre" class="form-control"  maxlength="150" required>
+                                <input name="primernombre" class="form-control"  maxlength="150" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group form-group-sm">
                                 <label>Segundo Nombre</label>
-                                <input name="segundoNombre" class="form-control"  maxlength="150" required>
+                                <input name="segundonombre" class="form-control"  maxlength="150" required>
                             </div>
                         </div>
                     </div>
@@ -60,13 +60,13 @@
                         <div class="col-md-6">
                             <div class="form-group form-group-sm">
                                 <label>Apellido Paterno</label>
-                                <input name="apellidoPaterno" class="form-control"  maxlength="150" required>
+                                <input name="apellidopaterno" class="form-control"  maxlength="150" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group form-group-sm">
                                 <label>Apellido Materno</label>
-                                <input name="apellidoMaterno" class="form-control"  maxlength="150" required>
+                                <input name="apellidomaterno" class="form-control"  maxlength="150" required>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                     <div class="form-group form-group-sm">
                         <label class="control-label">Rol</label>
                         <div tipo>
-                            <select name="IDRol" class="form-control selectpicker" data-fn="selectRol"></select>
+                            <select name="idrol" class="form-control selectpicker" data-fn="selectRol"></select>
                         </div>
                     </div>
                     <div class="row">
