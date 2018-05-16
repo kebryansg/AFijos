@@ -18,7 +18,6 @@ function getDatos() {
     };
     return datos;
 }
-
-function edit(datos) {
-
+function edit(datos){
+    $("form").edit(datos);
 }

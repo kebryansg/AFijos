@@ -72,7 +72,10 @@ switch ($accion) {
         break;
     case "get":
         switch ($op) {
-            
+            case "USUARIO.LOGIN": 
+                session_start();
+                $resultado = json_encode($_SESSION["login"]["user"]);
+                break;
         }
         break;
     case "lg":
@@ -108,47 +111,8 @@ switch ($accion) {
         // Nota: ¡Esto destruirá la sesión, y no la información de la sesión!
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]
-            );
-        }
-
-// Finalmente, destruir la sesión.
-        session_destroy();
-        break;
-    case "lg":
-        $dt = array(
-            "user" => $_POST["u"],
-            "pass" => $_POST["p"]
-        );
-        //$output = ;
-        if (UsuarioDaoImp::_login($dt)) {
-            session_start();
-
-            $_SESSION["login"] = array(
-                "status" => true,
-                "user" => UsuarioDaoImp::_get($dt)
-            );
-            $resultado = array(
-                "status" => true,
-                "location" => "."
-            );
-        } else {
-            $resultado = array(
-                "status" => FALSE,
-                "mjs" => "Error al autenticar."
-            );
-        }
-        $resultado = json_encode($resultado);
-        break;
-    case "close":
-        session_start();
-        $_SESSION = array();
-
-// Si se desea destruir la sesión completamente, borre también la cookie de sesión.
-// Nota: ¡Esto destruirá la sesión, y no la información de la sesión!
-        if (ini_get("session.use_cookies")) {
-            $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]
+            setcookie(
+                    session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]
             );
         }
 

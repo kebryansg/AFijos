@@ -7,7 +7,7 @@ columns_edit = [
         checkbox: true,
         sortable: false
     },
-    
+
     {
         field: "cantidad",
         class: "col-md-1",
@@ -88,10 +88,10 @@ function initRegistro() {
     $('input[name="fecha"]').initDate();
     //d = Date.now();
     //d.setUTCDate(-5);
-    
+
     $('input[name="fecha"]').datepicker('update', new Date());
     //console.log(moment().fromNow());
-    
+
     $("#tbOrdenPedido").bootstrapTable('refreshOptions', {
         columns: columns_edit_v2
     });
@@ -99,6 +99,16 @@ function initRegistro() {
 
 $(function () {
     initialComponents();
+
+
+    usuario = getJson({
+        url: getURL("_configuracion"),
+        data: {
+            op: "USUARIO.LOGIN",
+            accion: "get"
+        }
+    });
+    console.log(usuario);
 
     //$("button[name=btn_add]").click();
 

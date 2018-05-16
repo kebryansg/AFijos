@@ -44,7 +44,7 @@
                                     
                                     <input data-tipo="fecha" fecha type="text" class="form-control" readonly>
                                 </div>-->
-                                <div class="form-group ">
+                                <div class="form-group form-group-sm ">
                                     <label class="control-label">Fecha:</label>
                                     <div class="input-group date">
                                         <div class="input-group-addon">
@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="col-md-5">
-                                <div class="form-group">
+                                <div class="form-group form-group-sm">
                                     <label for="" class="control-label">Usuario</label>
                                     <input type="text" usuario class="form-control" readonly>
                                 </div>
@@ -64,23 +64,23 @@
                         </div>
                         <div class="row">
                             <div class="col-md-5">
-                                <div class="form-group">
+                                <div class="form-group form-group-sm">
                                     <label for="" class="control-label">Departamento</label>
                                     <input type="text" departamento class="form-control" readonly>
                                 </div>
                             </div>
                             <div class="col-md-5">
-                                <div class="form-group">
+                                <div class="form-group form-group-sm">
                                     <label for="" class="control-label">Estado</label>
                                     <input type="text" class="form-control" estado readonly>
                                 </div>
                             </div>
 
                         </div>
-                        
+
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group form-group-sm">
                             <label for="" class="control-label">Observación:</label>
                             <textarea name="observacion" cols="30" rows="5" class="form-control" readonly></textarea>
                         </div>
@@ -88,50 +88,42 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div id="toolbar2" class="btn-group btn-group-sm" toolbar role="group" aria-label="...">
-                    <button add type="button" class="btn btn-success">
-                        <i class="glyphicon glyphicon-plus"></i> Agregar
-                    </button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-find-items" >
-                        <i class="glyphicon glyphicon-search"></i> Buscar
-                    </button>
-                    <button type="button" delete_local class="btn btn-danger ">
-                        <i class="glyphicon glyphicon-trash"></i> Eliminar
-                    </button>
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="toolbar2" class="btn-group btn-group-sm" toolbar role="group" aria-label="...">
+                            <button add type="button" class="btn btn-success">
+                                <i class="glyphicon glyphicon-plus"></i> Agregar
+                            </button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-find-items" >
+                                <i class="glyphicon glyphicon-search"></i> Buscar
+                            </button>
+                            <button type="button" delete_local class="btn btn-danger ">
+                                <i class="glyphicon glyphicon-trash"></i> Eliminar
+                            </button>
+                        </div>
+                        <table id="tbOrdenPedido" data-toolbar="#toolbar2"></table>
+                    </div>
                 </div>
-                <table
-                    id="tbOrdenPedido"
-                    data-toolbar="#toolbar2"
-                    >
-                    <!--<thead>
-                        <tr>
-                            <th data-field="state" data-checkbox="true"></th>
-                            <th data-field="cantidad" class="col-md-1" data-formatter="imask" data-events="event_input_default" >Cant.</th>
-                            <th data-field="descripcion" data-formatter="inputProducto" data-events="event_input_default" >Descripción</th>
-                            <th data-field="precioref" class="col-md-1" data-formatter="imask" data-events="event_input_default" >Precio Unit.</th>
-                        </tr>
-                    </thead>-->
-                </table>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="pull-right">
-                    <div class="form-inline">
-                        <button class="btn btn-sm btn-danger" type='reset'>
-                            <i class="fa fa-reply"></i> Cancelar
-                        </button>
-                        <button class="btn btn-sm btn-primary " type='submit'>
-                            <i class="fa fa-save"></i> Guardar
-                        </button>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <div class="form-inline">
+                                <button class="btn btn-sm btn-danger" type='reset'>
+                                    <i class="fa fa-reply"></i> Cancelar
+                                </button>
+                                <button class="btn btn-sm btn-primary " type='submit'>
+                                    <i class="fa fa-save"></i> Guardar
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </form>
     <!--<div class="clearfix"></div>-->
 </div>

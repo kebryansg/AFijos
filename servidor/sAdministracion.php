@@ -119,6 +119,11 @@ switch ($accion) {
             case "rol":
                 $resultado = json_encode(RolDaoImp::listRol($params));
                 break;
+            case "rol.select":
+                $resultado = json_encode(array(
+                    "rows" => RolDaoImp::_list()
+                ));
+                break;
         }
         break;
     case "delete":

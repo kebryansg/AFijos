@@ -62,8 +62,8 @@ require_once "init.php";
         ?>
 
         <script type="text/javascript">
-            //$("#containPages").load("mvc/views/items/proveedor.php");
-            //$("#containPages").load("mvc/views/Compras/FacturaOrdenCompra.php");
+            //$("#containPages").load("mvc/views/Pedido/ordenPedido.php");
+            $("#containPages").load("mvc/views/Administracion/usuarios.php");
         </script>
     </body>
 </html>

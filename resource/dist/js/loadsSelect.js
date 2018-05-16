@@ -84,3 +84,12 @@ function selectProveedorOrdenCompra() {
         url: getURL("_compras")
     });
 }
+function selectRol() {
+    return getJson({
+        data: {
+            op: "rol.select",
+            accion: "list"
+        },
+        url: getURL("_administracion")
+    });
+}

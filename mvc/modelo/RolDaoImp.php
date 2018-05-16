@@ -32,6 +32,15 @@ class RolDaoImp extends ModelProcedure {
         $conn->close();
         return $dts;
     }
+    public static function _list() {
+        $conn = (new C_MySQL())->open();
+        //$banderapag = ($params["top"] > 0 ) ? "limit " . $params['top'] . " offset " . $params['pag'] : "";
+        //where estado = 'ACT'
+        $sql = "select SQL_CALC_FOUND_ROWS * from rol;";
+        $dts = C_MySQL::returnListAsoc($conn, $sql);
+        $conn->close();
+        return $dts;
+    }
 
     public function delete($rol) {
         $conn = (new C_MySQL())->open();
