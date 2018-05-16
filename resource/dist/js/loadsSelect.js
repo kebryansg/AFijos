@@ -93,3 +93,12 @@ function selectRol() {
         url: getURL("_administracion")
     });
 }
+function selectDepartamento() {
+    return getJson({
+        data: {
+            op: "departamento",
+            accion: "list"
+        },
+        url: getURL("_catalogo")
+    });
+}

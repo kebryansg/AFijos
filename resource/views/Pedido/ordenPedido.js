@@ -90,8 +90,6 @@ function initRegistro() {
     //d.setUTCDate(-5);
 
     $('input[name="fecha"]').datepicker('update', new Date());
-    //console.log(moment().fromNow());
-
     $("#tbOrdenPedido").bootstrapTable('refreshOptions', {
         columns: columns_edit_v2
     });
@@ -99,7 +97,6 @@ function initRegistro() {
 
 $(function () {
     initialComponents();
-
 
     usuario = getJson({
         url: getURL("_configuracion"),
@@ -109,6 +106,12 @@ $(function () {
         }
     });
     console.log(usuario);
+    dt = {
+        id: usuario.id,
+        usuario:([usuario.apellidopaterno, usuario.apellidomaterno, usuario.primernombre].join(" ")).toUpperCase()
+    };
+    console.log(dt);
+    $("div[datos]").edit(dt);
 
     //$("button[name=btn_add]").click();
 

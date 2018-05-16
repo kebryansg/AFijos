@@ -77,16 +77,21 @@
         </div>
     </div>
     <div class="col-md-7 col-md-offset-1">
-        <table id="tbDetallePresupuesto" data-classes="table table-hover table-striped">
-            <thead>
-                <tr>
-                    <!--<th data-field="state" data-checkbox="true"></th>-->
-                    <th data-formatter="rowCount" data-align="center" class="col-md-1">N°</th>
-                    <th data-field="mes">Meses</th>
-                    <th data-field="precio" class="col-md-3 col-xs-3" data-formatter="imask" data-events="event_input">Precio</th>
-                </tr>
-            </thead>
-        </table>
+        <div class="box box-primary">
+            <div class="box-body">
+                <table id="tbDetallePresupuesto" data-classes="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <!--<th data-field="state" data-checkbox="true"></th>-->
+                            <th data-formatter="rowCount" data-align="center" class="col-md-1">N°</th>
+                            <th data-field="mes">Meses</th>
+                            <th data-field="precio" class="col-md-3 col-xs-3" data-formatter="imask" data-events="event_input">Precio</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
     </div>
     <div class="clearfix"></div>
     <br>

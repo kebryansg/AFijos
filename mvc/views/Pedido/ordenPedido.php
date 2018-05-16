@@ -33,19 +33,12 @@
                 <h3 class="box-title"> <i class="fa fa-pencil-alt"></i> Datos Generales</h3>
             </div>
             <div class="box-body">
-                <div class="row">
-
+                <div class="row" datos>
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-5">
-                                <!--data-tipo="fechaView"-->
-                                <!--<div class="form-group">
-                                    <label for="" class="control-label">Fecha</label>
-                                    
-                                    <input data-tipo="fecha" fecha type="text" class="form-control" readonly>
-                                </div>-->
                                 <div class="form-group form-group-sm ">
-                                    <label class="control-label">Fecha:</label>
+                                    <label class="control-label">Fecha</label>
                                     <div class="input-group date">
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
@@ -57,7 +50,7 @@
                             <div class="col-md-5">
                                 <div class="form-group form-group-sm">
                                     <label for="" class="control-label">Usuario</label>
-                                    <input type="text" usuario class="form-control" readonly>
+                                    <input type="text" name="usuario" class="form-control" readonly>
                                 </div>
                             </div>
 
@@ -81,7 +74,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group form-group-sm">
-                            <label for="" class="control-label">Observación:</label>
+                            <label for="" class="control-label">Observación</label>
                             <textarea name="observacion" cols="30" rows="5" class="form-control" readonly></textarea>
                         </div>
                     </div>

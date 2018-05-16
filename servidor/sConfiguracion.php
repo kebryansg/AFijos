@@ -72,9 +72,11 @@ switch ($accion) {
         break;
     case "get":
         switch ($op) {
-            case "USUARIO.LOGIN": 
+            case "USUARIO.LOGIN":
                 session_start();
-                $resultado = json_encode($_SESSION["login"]["user"]);
+                $resultado = json_encode(
+                        UsuarioDaoImp::_getUsuario($_SESSION["login"]["user"]["id"])["persona"]
+                );
                 break;
         }
         break;
