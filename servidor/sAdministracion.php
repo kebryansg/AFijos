@@ -21,6 +21,19 @@ switch ($accion) {
     case "save":
         $json = json_decode($_POST["datos"]);
         switch ($op) {
+            case "usuario.departamento":
+                session_start();
+                $json = json_decode($_POST["datos"], TRUE);
+                $datos = array(
+                    "departamento" => $json["iddepartamento"],
+                    "usuario" => $json["id"]
+                );
+                $resultado = json_encode(
+                        array(
+                            "status" => UsuarioDaoImp::changeDepartamento($datos)
+                        )
+                );
+                break;
             case "usuario":
                 $persona = $mapper->map($json, new Persona());
                 PersonaDaoImp::save($persona);
@@ -81,7 +94,9 @@ switch ($accion) {
         $count = 0;
         switch ($op) {
             case "Menu":
-                $Modulos = ModuloDaoImp::listModulosRol("1");
+                session_start();
+                //$Modulos = ModuloDaoImp::listModulosRol("1");
+                $Modulos = ModuloDaoImp::listModulosRol($_SESSION["login"]["user"]["idrol"]);
                 for ($i = 0; $i < count($Modulos); $i++) {
                     $subModulos = array(
                         array(

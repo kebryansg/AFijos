@@ -67,6 +67,14 @@ class UsuarioDaoImp {
         $conn->close();
         return $row;
     }
+    
+    public static function changeDepartamento($datos){
+        $conn = (new C_MySQL())->open();
+        $sql = "call sp_CambioDepartamento('". json_encode($datos) ."')";
+        $bandera = $conn->query($sql);
+        $conn->close();
+        return $bandera;
+    }
 }
 
 
