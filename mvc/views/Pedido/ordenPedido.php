@@ -64,6 +64,7 @@
                             <div class="col-md-5">
                                 <div class="form-group form-group-sm">
                                     <label for="" class="control-label">Departamento</label>
+                                    <input type="text" name="iddepartamento" class="form-control hidden">
                                     <input type="text" name="departamento" class="form-control" readonly>
                                 </div>
                             </div>
@@ -121,7 +122,6 @@
                 </div>
             </div>
         </div>
-
     </form>
     <!--<div class="clearfix"></div>-->
 </div>

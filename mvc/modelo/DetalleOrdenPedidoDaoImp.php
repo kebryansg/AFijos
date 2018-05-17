@@ -1,25 +1,26 @@
 <?php
 
 include_once '../mvc/Controlador/C_MySQL.php';
+include_once 'ModelProcedure.php';
 include_once '../mvc/Controlador/Entidades/DetalleOrdenPedido.php';
 
-class DetalleOrdenPedidoDaoImp {
+class DetalleOrdenPedidoDaoImp extends ModelProcedure{
 
-    public static function save($detalleOrdenPedido) {
-        $conn = (new C_MySQL())->open();
-        $sql = "";
-        if ($detalleOrdenPedido->ID == 0) {
-            $sql = $detalleOrdenPedido->Insert();
-        } else {
-            $sql = $detalleOrdenPedido->Update();
-        }
-        if ($conn->query($sql)) {
-            if ($detalleOrdenPedido->ID == 0) {
-                $detalleOrdenPedido->ID = $conn->insert_id;
-            }
-        }
-        $conn->close();
-    }
+//    public static function save($detalleOrdenPedido) {
+//        $conn = (new C_MySQL())->open();
+//        $sql = "";
+//        if ($detalleOrdenPedido->ID == 0) {
+//            $sql = $detalleOrdenPedido->Insert();
+//        } else {
+//            $sql = $detalleOrdenPedido->Update();
+//        }
+//        if ($conn->query($sql)) {
+//            if ($detalleOrdenPedido->ID == 0) {
+//                $detalleOrdenPedido->ID = $conn->insert_id;
+//            }
+//        }
+//        $conn->close();
+//    }
 
     public static function listDetalleOrdenPedido($IDOrdenPedido) {
         $conn = (new C_MySQL())->open();

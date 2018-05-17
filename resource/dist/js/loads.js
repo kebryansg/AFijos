@@ -405,7 +405,7 @@ function loadOrdenPedido(params) {
             op: "ordenPedido",
             accion: "list"
         }, params.data),
-        url: "servidor/sPedido.php"
+        url: getURL("_pedido")
     };
     params.success(getJson(json_data));
 }

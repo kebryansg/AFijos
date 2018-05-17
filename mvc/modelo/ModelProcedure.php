@@ -9,7 +9,7 @@ class ModelProcedure {
         $sql = ($obj->ID == 0) ? $obj->Insert() : $obj->Update();
         $bandera = $conn->query($sql);
         if ($bandera) {
-            $obj->Id = ($obj->ID == 0)? $conn->insert_id: $obj->ID;
+            $obj->ID = ($obj->ID == 0)? $conn->insert_id: $obj->ID;
             $response = array(
                 "action" => $action ? "Crear" : "Actualizar",
                 "status" => $bandera

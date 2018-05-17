@@ -24,12 +24,14 @@ switch ($accion) {
         $top = (isset($_POST["limit"])) ? $_POST["limit"] : 0;
         $pag = (isset($_POST["offset"])) ? $_POST["offset"] : 0;
         $count = 0;
+        $params = array(
+            "limit" => (isset($_POST["limit"])) ? $_POST["limit"] : 0,
+            "offset" => (isset($_POST["offset"])) ? $_POST["offset"] : 0,
+            "buscar" => (isset($_POST["search"])) ? $_POST["search"] : NULL
+        );
         switch ($op) {
             case "ordenPedido":
-                $resultado = json_encode(array(
-                    "rows" => OrdenPedidoDaoImp::listOrdenPedido($top, $pag, $count),
-                    "total" => $count
-                ));
+                $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
                 break;
             case "DetalleordenPedido":
                 $resultado = json_encode(DetalleOrdenPedidoDaoImp::listDetalleOrdenPedido($_POST["OrdenPedido"]));
@@ -46,47 +48,26 @@ switch ($accion) {
 
                 break;
             case "ordenPedido":
+                session_start();
                 $ordenPedido = $mapper->map($json, new OrdenPedido());
-                $ordenPedido->IDDepartamento = 1;
-                $ordenPedido->IDUsuario = 2;
+                $ordenPedido->IDUsuario = $_SESSION["login"]["user"]["id"];
 
-                OrdenPedidoDaoImp::save($ordenPedido);
-                $resultado = $ordenPedido->ID;
+                $resultado = OrdenPedidoDaoImp::save($ordenPedido);
 
+                if ($resultado["status"]) {
+                    $itemsNoEstan = json_decode($_POST["items_delete"]);
 
-                $itemsNoEstan = json_decode($_POST["items_delete"]);
+                    if (sizeof($itemsNoEstan) > 0) {
+                        DetalleOrdenPedidoDaoImp::deleteOrdenPedido(new DetalleOrdenPedido(), $itemsNoEstan);
+                    }
 
-                if (sizeof($itemsNoEstan) > 0) {
-                    DetalleOrdenPedidoDaoImp::deleteOrdenPedido(new DetalleOrdenPedido(), $itemsNoEstan);
+                    foreach (json_decode($_POST["items"]) as $item) {
+                        $detalleOrdenPedido = $mapper->map($item, new DetalleOrdenPedido());
+                        $detalleOrdenPedido->IDOrdenPedido = $ordenPedido->ID;
+                        $detalleOrdenPedido->Saldo = $detalleOrdenPedido->Cantidad;
+                        DetalleOrdenPedidoDaoImp::save($detalleOrdenPedido);
+                    }
                 }
-
-
-
-                foreach (json_decode($_POST["items"]) as $item) {
-                    $detalleOrdenPedido = $mapper->map($item, new DetalleOrdenPedido());
-                    $detalleOrdenPedido->IDOrdenPedido = $ordenPedido->ID;
-                    
-                    $detalleOrdenPedido->Saldo = $detalleOrdenPedido->Cantidad;
-
-                    DetalleOrdenPedidoDaoImp::save($detalleOrdenPedido);
-
-
-                    /* if (in_array($detalleOrdenPedido->ID, $itemsNuevos)) {
-                      DetalleOrdenPedidoDaoImp::save($detalleOrdenPedido);
-                      } */
-
-                    /* else if (in_array($detalleOrdenPedido->ID, $itemsNoEstan)) {
-                      DetalleOrdenPedidoDaoImp::delete($detalleOrdenPedido);
-                      } */
-                }
-
-
-
-                /* foreach ($items as $item) {
-                  $detalleOrdenPedido = $mapper->map($item, new DetalleOrdenPedido());
-                  $detalleOrdenPedido->IDOrdenPedido = $ordenPedido->ID;
-                  DetalleOrdenPedidoDaoImp::save($detalleOrdenPedido);
-                  } */
                 break;
         }
         break;

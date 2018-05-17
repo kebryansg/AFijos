@@ -109,9 +109,11 @@ $(function () {
     usuario = dat.usuario;
     dt = {
         id: usuario.id,
-        usuario:([usuario.apellidopaterno, usuario.apellidomaterno, usuario.primernombre].join(" ")).toUpperCase(),
-        departamento : departamento.descripcion
+        usuario: ([usuario.apellidopaterno, usuario.apellidomaterno, usuario.primernombre].join(" ")).toUpperCase(),
+        departamento: departamento.descripcion,
+        iddepartamento: departamento.id
     };
+    console.log(dt);
     $("div[datos]").edit(dt);
     //$("button[name=btn_add]").click();
 
@@ -129,7 +131,6 @@ $(function () {
             $(this).data("ids", id_delete);
         } else {
             _new = $.merge($(this).data("ids"), id_delete);
-            console.log(_new);
         }
 
         state = $(tableSelect).bootstrapTable("getSelections").map(row => row.state);
@@ -180,7 +181,7 @@ function getDatos() {
         dt: {
             accion: "save",
             op: $(form).attr("role"),
-            datos: JSON.stringify(dt), //$(form).serializeObject(),
+            datos: JSON.stringify(dt),
             items: JSON.stringify($("#tbOrdenPedido").bootstrapTable("getData")),
             items_delete: JSON.stringify(items_delete)
         }
@@ -195,9 +196,6 @@ function clear() {
 
 function edit(datos) {
     $("form[save]").edit(datos);
-    $("#div-registro input[area]").val(datos.area);
-    $("#div-registro input[departamento]").val(datos.departamento);
-    $("#div-registro input[usuario]").val(datos.usuario);
     $("#div-registro input[estado]").val(getEstado_OrdenPedido(datos.estado));
 
 
@@ -223,7 +221,6 @@ function edit(datos) {
             OrdenPedido: datos.id
         }
     };
-    console.log(getJson(dt));
     $("#tbOrdenPedido").bootstrapTable("load", getJson(dt));
 }
 
@@ -251,7 +248,6 @@ window.event_OPedido = {
     "click button[name='seleccion']": function (e, value, row, index) {
         $("#modal-find-items").modal("hide");
         $("#tbOrdenPedido").bootstrapTable("append", {
-            //id: row.id,
             id: 0,
             idItem: row.id,
             cantidad: 1,

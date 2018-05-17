@@ -1,25 +1,26 @@
 <?php
 
 include_once '../mvc/Controlador/C_MySQL.php';
+include_once 'ModelProcedure.php';
 include_once '../mvc/Controlador/Entidades/OrdenPedido.php';
 
-class OrdenPedidoDaoImp {
+class OrdenPedidoDaoImp extends ModelProcedure {
 
-    public static function save($OrdenPedido) {
-        $conn = (new C_MySQL())->open();
-        $sql = "";
-        if ($OrdenPedido->ID == 0) {
-            $sql = $OrdenPedido->Insert();
-        } else {
-            $sql = $OrdenPedido->Update();
-        }
-        if ($conn->query($sql)) {
-            if ($OrdenPedido->ID == 0) {
-                $OrdenPedido->ID = $conn->insert_id;
-            }
-        }
-        $conn->close();
-    }
+//    public static function save($OrdenPedido) {
+//        $conn = (new C_MySQL())->open();
+//        $sql = "";
+//        if ($OrdenPedido->ID == 0) {
+//            $sql = $OrdenPedido->Insert();
+//        } else {
+//            $sql = $OrdenPedido->Update();
+//        }
+//        if ($conn->query($sql)) {
+//            if ($OrdenPedido->ID == 0) {
+//                $OrdenPedido->ID = $conn->insert_id;
+//            }
+//        }
+//        $conn->close();
+//    }
     public static function get($id) {
         $conn = (new C_MySQL())->open();
         $sql = "select * from viewOrdenPedido where id = $id ;";
@@ -29,28 +30,27 @@ class OrdenPedidoDaoImp {
         return $return;
     }
 
-    public static function listOrdenPedido($top, $pag, &$count) {
+    public static function listOrdenPedido($params) {
         $conn = (new C_MySQL())->open();
-        $banderapag = ($top > 0 ) ? "limit $top offset $pag" : "";
-        //where estado = 'ACT'
-        $sql = "select SQL_CALC_FOUND_ROWS * from viewOrdenPedido $banderapag ;";
-
-        $list = C_MySQL::returnListAsoc($conn, $sql);
-        $count = C_MySQL::row_count($conn);
+        $params = array(
+            "procedure" => "sp_GetOPedidos",
+            "params" => json_encode($params)
+        );
+        $list = C_MySQL::returnListAsoc_Total($conn, $params);
         $conn->close();
         return $list;
     }
 
-    public function delete($OrdenPedido) {
-        $conn = (new C_MySQL())->open();
-        $sql = $OrdenPedido->Update_Delete();
-        $conn->query($sql);
-        $conn->close();
-    }
+//    public function delete($OrdenPedido) {
+//        $conn = (new C_MySQL())->open();
+//        $sql = $OrdenPedido->Update_Delete();
+//        $conn->query($sql);
+//        $conn->close();
+//    }
 
     public function aprobacionPedido($OrdenPedido) {
         $conn = (new C_MySQL())->open();
-        $sql = "Update ". $OrdenPedido->tabla ." set observacion = '". $OrdenPedido->Observacion ."', estado = '". $OrdenPedido->Estado ."' where id = " . $OrdenPedido->ID;
+        $sql = "Update " . $OrdenPedido->tabla . " set observacion = '" . $OrdenPedido->Observacion . "', estado = '" . $OrdenPedido->Estado . "' where id = " . $OrdenPedido->ID;
         $conn->query($sql);
         $conn->close();
     }

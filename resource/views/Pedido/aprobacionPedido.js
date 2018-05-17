@@ -15,6 +15,9 @@ window.event_btnAprobar = {
         edit(row);
     }
 };
+function queryParams(params){
+    return params;
+}
 function getDatos(){
     form = "form[save]";
     dt = JSON.parse($(form).serializeObject_KBSG());
