@@ -59,11 +59,11 @@ class UsuarioDaoImp {
         $conn = (new C_MySQL())->open();
         $sql = "select id, username,decode(`password`,'afijos') `password`,idpersona, idrol,estado from usuario where id = ". $id;
         $row = array();
-        //array_push($row, C_MySQL::returnRowAsoc($conn, $sql));
         $row["usuario"] = (C_MySQL::returnRowAsoc($conn, $sql));
         $sql = "select * from persona where id = ". $row["usuario"]["idpersona"];
-        //array_push($row, C_MySQL::returnRowAsoc($conn, $sql));
         $row["persona"] = (C_MySQL::returnRowAsoc($conn, $sql));
+        $sql = "select dep.* from usuariodepartamento ud join departamento dep on dep.id = ud.iddepartamento where idusuario = $id and fechafin is null;";
+        $row["departamento"] = (C_MySQL::returnRowAsoc($conn, $sql));
         $conn->close();
         return $row;
     }

@@ -98,21 +98,21 @@ function initRegistro() {
 $(function () {
     initialComponents();
 
-    usuario = getJson({
+    dat = getJson({
         url: getURL("_configuracion"),
         data: {
             op: "USUARIO.LOGIN",
             accion: "get"
         }
     });
-    console.log(usuario);
+    departamento = dat.departamento;
+    usuario = dat.usuario;
     dt = {
         id: usuario.id,
-        usuario:([usuario.apellidopaterno, usuario.apellidomaterno, usuario.primernombre].join(" ")).toUpperCase()
+        usuario:([usuario.apellidopaterno, usuario.apellidomaterno, usuario.primernombre].join(" ")).toUpperCase(),
+        departamento : departamento.descripcion
     };
-    console.log(dt);
     $("div[datos]").edit(dt);
-
     //$("button[name=btn_add]").click();
 
     $("button[delete_local]").click(function (e) {
@@ -138,7 +138,7 @@ $(function () {
     });
 
     $("#tbOrdenPedido").bootstrapTable();
-    $("#modal-find-items table").bootstrapTable(TablePaginationDefault);
+    //$("#modal-find-items table").bootstrapTable(TablePaginationDefault);
 
 
     $("button[add]").click(function (e) {
@@ -154,7 +154,10 @@ $(function () {
 
     $("#modal-find-items").on({
         'show.bs.modal': function (e) {
-            $(this).find("table").bootstrapTable("refresh");
+            $(this).find("table").bootstrapTable(TablePaginationDefault);
+        },
+        'hidden.bs.modal': function (e) {
+            $(this).find("table").bootstrapTable("destroy");
         }
     });
 

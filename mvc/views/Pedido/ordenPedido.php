@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <div class="row" id="Listado">
     <div class="col-md-12">
-        <div id="toolbar" class="form-inline" >
-            <button type="button" name="btn_add" class="btn btn-success ">
-                <i class="glyphicon glyphicon-plus"></i> Agregar
-            </button>
+        <div class="box box-primary">
+            <div class="box-body">
+                <div id="toolbar" class="form-inline" >
+                    <button type="button" name="btn_add" class="btn btn-success ">
+                        <i class="glyphicon glyphicon-plus"></i> Agregar
+                    </button>
+                </div>
+                <table 
+                    init
+                    data-toolbar="#toolbar"
+                    data-ajax="loadOrdenPedido"
+                    data-response-handler="responseHandler">
+                    <thead>
+                        <tr>
+                            <th data-field="state" data-checkbox="true"></th>
+                            <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
+                            <th data-field="fecha" data-formatter="defaultFecha">Fecha</th>
+                            <th data-field="departamento">Departamento</th>
+                            <th data-field="usuario">Usuario</th>
+                            <th data-field="estado" class="col-md-1" data-formatter="estadoOrdenPedido">Estado</th>
+                            <th data-field="accion" class="col-md-1" data-align="center" data-formatter="BtnAccion" data-events="event_accion_default">Acciones</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
-        <table 
-            init
-            data-toolbar="#toolbar"
-            data-ajax="loadOrdenPedido"
-            data-response-handler="responseHandler">
-            <thead>
-                <tr>
-                    <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
-                    <th data-field="fecha" data-formatter="defaultFecha">Fecha</th>
-                    <th data-field="departamento">Departamento</th>
-                    <th data-field="usuario">Usuario</th>
-                    <th data-field="estado" class="col-md-1" data-formatter="estadoOrdenPedido">Estado</th>
-                    <th data-field="accion" class="col-md-1" data-align="center" data-formatter="BtnAccion" data-events="event_accion_default">Acciones</th>
-                </tr>
-            </thead>
-        </table>
     </div>
+
 </div>
 
 <div id="div-registro" class="hidden" >
@@ -59,7 +64,7 @@
                             <div class="col-md-5">
                                 <div class="form-group form-group-sm">
                                     <label for="" class="control-label">Departamento</label>
-                                    <input type="text" departamento class="form-control" readonly>
+                                    <input type="text" name="departamento" class="form-control" readonly>
                                 </div>
                             </div>
                             <div class="col-md-5">

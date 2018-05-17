@@ -34,15 +34,6 @@ require_once "init.php";
                     <!--<hr class="style8">-->
                 </section>
                 <section class="content container-fluid" id="containPages">
-                    <?php
-                    
-                    //include_once './mvc/views/Pedido/ordenPedido.php';
-                    //include_once './mvc/views/Administracion/modulo.php';
-//                    include_once './mvc/views/Administracion/Submodulo.php';
-                    //include_once './mvc/views/activos/grupos.php';
-                    //include_once './mvc/views/Compras/GenerarOrdenCompra.php';
-                    //include_once './mvc/views/Administracion/faIcons.php';
-                    ?>
                 </section>
             </div>
             <!-- /.content-wrapper -->
@@ -62,8 +53,8 @@ require_once "init.php";
         ?>
 
         <script type="text/javascript">
-            //$("#containPages").load("mvc/views/Pedido/ordenPedido.php");
-            $("#containPages").load("mvc/views/Administracion/UsuarioDepartemento.php");
+            $("#containPages").load("mvc/views/Pedido/ordenPedido.php");
+            //$("#containPages").load("mvc/views/Administracion/UsuarioDepartemento.php");
             //$("#containPages").load("mvc/views/Administracion/usuarios.php");
         </script>
     </body>
