@@ -12,6 +12,7 @@
                     init
                     data-toolbar="#toolbar"
                     data-ajax="loadOrdenPedido"
+                    data-query-params="queryParams"
                     data-response-handler="responseHandler">
                     <thead>
                         <tr>

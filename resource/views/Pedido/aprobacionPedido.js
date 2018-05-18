@@ -1,8 +1,23 @@
 op = "ordenPedido";
+usuarioActual = null;
 table = $("#Listado table");
 
 $(function(){
+    dt = getJson({
+        url: getURL("_configuracion"),
+        data: {
+            op: "USUARIO.LOGIN",
+            accion: "get"
+        }
+    });
+    usuarioActual = dt.usuario;
+    
+    
     initialComponents();
+    console.log(dt.usuario);
+    
+    
+    
 });
 
 
@@ -16,6 +31,7 @@ window.event_btnAprobar = {
     }
 };
 function queryParams(params){
+//    params.user = usuarioActual.id;
     return params;
 }
 function getDatos(){

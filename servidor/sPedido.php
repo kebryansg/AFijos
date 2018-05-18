@@ -31,6 +31,7 @@ switch ($accion) {
         );
         switch ($op) {
             case "ordenPedido":
+                $params["user"]= $_POST["user"];
                 $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
                 break;
             case "DetalleordenPedido":

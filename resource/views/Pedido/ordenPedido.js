@@ -1,4 +1,5 @@
 op = "ordenPedido";
+usuarioActual = null;
 table = $("#Listado table");
 selections = [];
 columns_edit = [
@@ -84,6 +85,12 @@ columns = [
     }
 ];
 
+
+function queryParams(params){
+    params.user = usuarioActual.id;
+    return params;
+}
+
 function initRegistro() {
     $('input[name="fecha"]').initDate();
     //d = Date.now();
@@ -106,7 +113,7 @@ $(function () {
         }
     });
     departamento = dat.departamento;
-    usuario = dat.usuario;
+    usuarioActual = usuario = dat.usuario;
     dt = {
         id: usuario.id,
         usuario: ([usuario.apellidopaterno, usuario.apellidomaterno, usuario.primernombre].join(" ")).toUpperCase(),
