@@ -86,7 +86,8 @@ columns = [
 ];
 
 
-function queryParams(params){
+function queryParams(params) {
+    console.log(usuarioActual);
     params.user = usuarioActual.id;
     return params;
 }
@@ -103,7 +104,7 @@ function initRegistro() {
 }
 
 $(function () {
-    initialComponents();
+    
 
     dat = getJson({
         url: getURL("_configuracion"),
@@ -120,8 +121,12 @@ $(function () {
         departamento: departamento.descripcion,
         iddepartamento: departamento.id
     };
-    console.log(dt);
+    
     $("div[datos]").edit(dt);
+    initialComponents();
+    
+    
+    
     //$("button[name=btn_add]").click();
 
     $("button[delete_local]").click(function (e) {
