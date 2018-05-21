@@ -28,6 +28,19 @@ class UsuarioDaoImp {
         $conn->close();
         return $list;
     }
+    public static function _listUsuariosDepartamento($params){
+        $conn = (new C_MySQL())->open();
+        // sp_GetUsuarioDepartamento
+        $params = array(
+            "procedure" => "sp_GetUsuarioDepartamento",
+            "params" => json_encode($params)
+        );
+        //$sql = "SELECT SQL_CALC_FOUND_ROWS * from viewUsuario limit $top offset $pag ;"; //"limit $top offset $limit"
+        
+        $list = C_MySQL::returnListAsoc_Total($conn, $params);
+        $conn->close();
+        return $list;
+    }
     
     public static function delete($usuario){
         $conn = (new C_MySQL())->open();
@@ -50,10 +63,11 @@ class UsuarioDaoImp {
     }
     public static function _get($params) {
         $conn = (new C_MySQL())->open();
-        $sql = "select id, username, idrol,(SELECT rol from viewusuario where id = usuario.id) rol from usuario where upper('" . $params["user"] . "') = upper(username) and password = encode('" . $params["pass"] . "','afijos');";
-        $row = C_MySQL::returnListAsoc($conn, $sql);
+        //$sql = "select id, username, idrol,(SELECT rol from viewusuario where id = usuario.id) rol from usuario where upper('" . $params["user"] . "') = upper(username) and password = encode('" . $params["pass"] . "','afijos');";
+        $sql = "call sp_getUsuarioCredencial('". json_encode($params) ."');";
+        $row = C_MySQL::returnRowAsoc($conn, $sql);
         $conn->close();
-        return $row[0];
+        return $row;
     }
     public static function _getUsuario($id) {
         $conn = (new C_MySQL())->open();

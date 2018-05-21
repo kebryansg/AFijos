@@ -57,9 +57,12 @@ final class C_MySQL {
 
     public static function returnRowAsoc($conn, $sql) {
         $result = NULL;
-        foreach ($conn->query($sql) as $row) {
-            $result = $row;
+        if($resultado  = $conn->query($sql)) {
+            $result = $resultado->fetch_assoc();
         }
+//        foreach ($conn->query($sql) as $row) {
+//            $result = $row;
+//        }
         //$conn->close();
         return $result;
     }

@@ -21,7 +21,7 @@ class RolDaoImp extends ModelProcedure {
 
     public static function listRol($params) {
         $conn = (new C_MySQL())->open();
-        $banderapag = ($params["top"] > 0 ) ? "limit " . $params['top'] . " offset " . $params['pag'] : "";
+        $banderapag = ($params["limit"] > 0 ) ? "limit " . $params['limit'] . " offset " . $params['offset'] : "";
         //where estado = 'ACT'
         $sql = "select SQL_CALC_FOUND_ROWS * from viewrol $banderapag ;";
         $dts = array(

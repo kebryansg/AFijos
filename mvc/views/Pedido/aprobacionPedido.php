@@ -5,7 +5,7 @@
             <div class="box-body">
                 <table 
                     init
-                    data-ajax="loadOrdenPedido"
+                    data-ajax="loadAprobacionOrdenPedido"
                     data-query-params="queryParams"
                     data-response-handler="responseHandler">
                     <thead>
@@ -22,13 +22,10 @@
                 </table>
             </div>
         </div>
-
-
     </div>
 </div>
 
 <div id="div-registro" class="hidden" >
-
     <form action="_pedido" role="aprobacionOrdenPedido" save>
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -75,7 +72,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">

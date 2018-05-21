@@ -30,7 +30,10 @@ $(function () {
             }
         });
         if(response.status){
-            alert("correcto");
+            MsgSuccess({
+                title : "Operación Correcta",
+                content: ""
+            });
             rowActual = null;
             $("button[clean]").click();
             //initialComponents();

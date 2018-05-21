@@ -2,14 +2,9 @@
 
 include_once '../mvc/modelo/ModuloDaoImp.php';
 include_once '../mvc/modelo/SubModuloDaoImp.php';
-
 include_once '../mvc/modelo/RolDaoImp.php';
 include_once '../mvc/modelo/PersonaDaoImp.php';
 include_once '../mvc/modelo/UsuarioDaoImp.php';
-//include_once '../mvc/modelo/PermisoSubModuloDaoImp.php';
-
-
-
 include_once '../mvc/Controlador/JsonMapper.php';
 $accion = $_POST["accion"];
 $op = $_POST["op"];
@@ -86,8 +81,8 @@ switch ($accion) {
         $top = (isset($_POST["limit"])) ? $_POST["limit"] : 0;
         $pag = (isset($_POST["offset"])) ? $_POST["offset"] : 0;
         $params = array(
-            "top" => (isset($_POST["limit"])) ? $_POST["limit"] : 0,
-            "pag" => (isset($_POST["offset"])) ? $_POST["offset"] : 0,
+            "limit" => (isset($_POST["limit"])) ? $_POST["limit"] : 0,
+            "offset" => (isset($_POST["offset"])) ? $_POST["offset"] : 0,
             "buscar" => (isset($_POST["search"])) ? $_POST["search"] : NULL
         );
 
@@ -95,22 +90,24 @@ switch ($accion) {
         switch ($op) {
             case "Menu":
                 session_start();
-                //$Modulos = ModuloDaoImp::listModulosRol("1");
-                $Modulos = ModuloDaoImp::listModulosRol($_SESSION["login"]["user"]["idrol"]);
+                $rol = json_decode($_SESSION["login"]["user"]["rol"], TRUE);
+                $Modulos = ModuloDaoImp::listModulosRol($rol["id"]);
                 for ($i = 0; $i < count($Modulos); $i++) {
-                    $subModulos = array(
-                        array(
-                            "descripcion" => "Catálogo",
-                            "sub" => array()
-                        )
+                    $catagolo = array(
+                        "descripcion" => "Catálogo",
+                        "sub" => array()
                     );
+                    $subModulos = array();
                     $subModulosBruto = SubModuloDaoImp::listSubModuloxIN($Modulos[$i]["sub"]);
                     foreach ($subModulosBruto as $sm) {
                         if ($sm["catalogo"] === "1") {
-                            array_push($subModulos[0]["sub"], $sm);
+                            array_push($catagolo["sub"], $sm);
                         } else {
                             array_push($subModulos, $sm);
                         }
+                    }
+                    if (count($catagolo["sub"]) > 0) {
+                        array_unshift($subModulos, $catagolo);
                     }
                     $Modulos[$i]["sub"] = ($subModulos);
                 }
@@ -121,6 +118,10 @@ switch ($accion) {
                     "rows" => UsuarioDaoImp::listUsuarios($top, $pag, $count),
                     "total" => $count
                 ));
+                break;
+            case "usuario.departamento":
+                $resultado = json_encode(UsuarioDaoImp::_listUsuariosDepartamento($params));
+
                 break;
             case "permisosubmodulo":
                 $resultado = json_encode(PermisoSubModuloDaoImp::listPermisoSubModulo($_POST["rol"]));

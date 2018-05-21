@@ -31,7 +31,7 @@ class ModuloDaoImp {
 
     public static function listModulo($params) {
         $conn = (new C_MySQL())->open();
-        $banderapag = ($params["top"] > 0 ) ? "limit " . $params['top'] . " offset " . $params['pag'] : "";
+        $banderapag = ($params["limit"] > 0 ) ? "limit " . $params['limit'] . " offset " . $params['offset'] : "";
         $where = ($params["buscar"] != NULL) ? " where descripcion like '%" . $params["buscar"] . "%'" : "";
         //where estado = 'ACT'
         //$sql = "select SQL_CALC_FOUND_ROWS id as ID , descripcion, observacion, estado from modulo $banderapag ;";

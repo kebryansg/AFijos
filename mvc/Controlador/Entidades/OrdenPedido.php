@@ -8,6 +8,7 @@ class OrdenPedido extends ModelSQL {
     public $Fecha;
     public $IDDepartamento;
     public $IDUsuario;
+    public $DetalleAutorizacion;
     public $Estado;
     public $Observacion;
 

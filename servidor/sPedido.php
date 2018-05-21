@@ -9,7 +9,7 @@ $accion = $_POST["accion"];
 $op = $_POST["op"];
 $mapper = new JsonMapper();
 $resultado = "";
-
+session_start();
 switch ($accion) {
     case "get":
         $id = $_POST["id"];
@@ -21,6 +21,9 @@ switch ($accion) {
         }
         break;
     case "list":
+        //session_start();
+        $user = $_SESSION["login"]["user"];
+        $user["departamento"] = json_decode($user["departamento"], true);
         $top = (isset($_POST["limit"])) ? $_POST["limit"] : 0;
         $pag = (isset($_POST["offset"])) ? $_POST["offset"] : 0;
         $count = 0;
@@ -31,7 +34,13 @@ switch ($accion) {
         );
         switch ($op) {
             case "ordenPedido":
-                $params["user"]= (isset($_POST["user"])) ? $_POST["user"] : -1; //$_POST["user"];
+                $params["user"] = (isset($_POST["user"])) ? $_POST["user"] : -1; //$_POST["user"];
+                $params["departamento"] = $user["departamento"]["id"];
+                $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
+                break;
+            case "aprobacion.pedido":
+                //$params["user"] = (isset($_POST["user"])) ? $_POST["user"] : -1;
+                $params["departamento"] = $user["departamento"]["id"];
                 $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
                 break;
             case "DetalleordenPedido":
@@ -44,12 +53,18 @@ switch ($accion) {
         switch ($op) {
             case "aprobacionOrdenPedido":
                 $ordenPedido = $mapper->map($json, new OrdenPedido());
-                OrdenPedidoDaoImp::aprobacionPedido($ordenPedido);
-                $resultado = "";
+                $ordenPedido->DetalleAutorizacion = json_encode(array(
+                    "user" => $_SESSION["login"]["user"]["id"],
+                    "fecha" => date("Y-m-d H:i:s")
+                ));
+                
+                $resultado = json_encode(array(
+                    "status" => OrdenPedidoDaoImp::aprobacionPedido($ordenPedido)
+                ));
 
                 break;
             case "ordenPedido":
-                session_start();
+                
                 $ordenPedido = $mapper->map($json, new OrdenPedido());
                 $ordenPedido->IDUsuario = $_SESSION["login"]["user"]["id"];
 

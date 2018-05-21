@@ -21,7 +21,7 @@ class SubModuloDaoImp {
 
     public static function listSubModulo($params) {
         $conn = (new C_MySQL())->open();
-        $banderapag = ($params["top"] > 0 ) ? "limit " . $params['top'] . " offset " . $params['pag'] : "";
+        $banderapag = ($params["limit"] > 0 ) ? "limit " . $params['limit'] . " offset " . $params['offset'] : "";
         $where = ($params["buscar"] != NULL) ? " where descripcion like '%" . $params["buscar"] . "%' or modulo like '%" . $params["buscar"] . "%' " : "";
         
         $sql = "select SQL_CALC_FOUND_ROWS * from viewsubmodulo $where $banderapag ;";

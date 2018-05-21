@@ -7,16 +7,15 @@
         <table 
             init 
             data-toolbar="#toolbar"
-            data-ajax="loadUsuario"
+            data-ajax="loadUsuarioDepartamento"
             data-response-handler="responseHandler">
             <thead>
                 <tr>
                     <th data-field="rol">Rol</th>
+                    <th data-field="departamento">Departamento</th>
                     <th data-field="cedula">Cédula de Identidad</th>
                     <th data-field="nombres">Nombres y Apellidos</th>
-                    <!--<th data-field="apellidos">Apellidos</th>-->
                     <th data-field="email">Email</th>
-                    <th data-field="telefono">Telefono Movil</th>
                     <th data-field="accion" class="col-md-1" data-align="center" data-formatter="btnSeleccion" data-events="evt">Acciones</th>
                 </tr>
             </thead>

@@ -398,6 +398,16 @@ function loadUsuario(params) {
     };
     params.success(getJson(json_data));
 }
+function loadUsuarioDepartamento(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "usuario.departamento",
+            accion: "list"
+        }, params.data),
+        url: getURL("_administracion")
+    };
+    params.success(getJson(json_data));
+}
 
 function loadOrdenPedido(params) {
     json_data = {
@@ -409,6 +419,18 @@ function loadOrdenPedido(params) {
     };
     params.success(getJson(json_data));
 }
+
+function loadAprobacionOrdenPedido(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "aprobacion.pedido",
+            accion: "list"
+        }, params.data),
+        url: getURL("_pedido")
+    };
+    params.success(getJson(json_data));
+}
+
 function loadTipoGeneral(params) {
     json_data = {
         data: $.extend({}, {

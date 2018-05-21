@@ -40,6 +40,16 @@ class OrdenPedidoDaoImp extends ModelProcedure {
         $conn->close();
         return $list;
     }
+    public static function listAprobacionOrdenPedido($params) {
+        $conn = (new C_MySQL())->open();
+        $params = array(
+            "procedure" => "sp_GetAprobacionOPedidos",
+            "params" => json_encode($params)
+        );
+        $list = C_MySQL::returnListAsoc_Total($conn, $params);
+        $conn->close();
+        return $list;
+    }
 
 //    public function delete($OrdenPedido) {
 //        $conn = (new C_MySQL())->open();
@@ -50,9 +60,10 @@ class OrdenPedidoDaoImp extends ModelProcedure {
 
     public function aprobacionPedido($OrdenPedido) {
         $conn = (new C_MySQL())->open();
-        $sql = "Update " . $OrdenPedido->tabla . " set observacion = '" . $OrdenPedido->Observacion . "', estado = '" . $OrdenPedido->Estado . "' where id = " . $OrdenPedido->ID;
-        $conn->query($sql);
+        $sql = "Update " . $OrdenPedido->tabla . " set detalleAutorizacion =  '". $OrdenPedido->DetalleAutorizacion ."' , observacion = '" . $OrdenPedido->Observacion . "', estado = '" . $OrdenPedido->Estado . "' where id = " . $OrdenPedido->ID;
+        $bandera = $conn->query($sql);
         $conn->close();
+        return $bandera;
     }
 
 }
