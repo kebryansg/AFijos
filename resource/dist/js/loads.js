@@ -430,6 +430,16 @@ function loadAprobacionOrdenPedido(params) {
     };
     params.success(getJson(json_data));
 }
+function loadComprasOrdenPedido(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "compra.pedido",
+            accion: "list"
+        }, params.data),
+        url: getURL("_pedido")
+    };
+    params.success(getJson(json_data));
+}
 
 function loadTipoGeneral(params) {
     json_data = {

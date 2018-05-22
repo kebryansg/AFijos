@@ -44,6 +44,10 @@ switch ($accion) {
                 $params["departamento"] = $user["departamento"]["id"];
                 $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
                 break;
+            case "compra.pedido":
+                $params["estado"] = "APR";
+                $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
+                break;
             case "DetalleordenPedido":
                 $resultado = json_encode(DetalleOrdenPedidoDaoImp::listDetalleOrdenPedido($_POST["OrdenPedido"]));
                 break;

@@ -20,7 +20,7 @@
                                 <input type="text" name="id" class="form-control input-sm" style="width: 70%;" required>
                                 <!--<input type="hidden" name="id">-->
                                 <div>
-                                    <button type="button" data-columns="OrdenPedido" data-ajax="loadOrdenPedido" data-toggle="modal" data-target="#findOrdenCompra" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> </button>
+                                    <button type="button" data-columns="OrdenPedido" data-ajax="loadComprasOrdenPedido" data-toggle="modal" data-target="#findOrdenCompra" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> </button>
                                     <button type="button" id="clearPag" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> </button>
                                 </div>
                             </div>
@@ -36,22 +36,16 @@
                                 <input type="text" class="form-control input-sm " name="fecha" data-tipo="fechaView"  readonly required>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="" class="control-label">Departamento</label>
+                            <input type="text" name="departamento" class="form-control input-sm" readonly>
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="" class="control-label">Estado</label>
                             <input type="text"  class="form-control input-sm" name="estado" readonly>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Departamento</label>
-                            <input type="text" name="departamento" class="form-control input-sm" readonly>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Usuario</label>
                             <input type="text" name="usuario" class="form-control input-sm" readonly>
