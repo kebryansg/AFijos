@@ -83,30 +83,139 @@ function JSON_Clave(obj) {
     }
     return claves;
 }
-;
+
+/* Get Datos */
+$.fn.serializeObject_KBSG = function () {
+    value = {};
+    components = $(this).find("[name]");
+    value["id"] = ($.isEmptyObject($(this).data("id"))) ? 0 : $(this).data("id");
+    $.each(components, function (i, component) {
+        tagName = $(component).prop("tagName");
+        name = $(component).attr("name");
+        val = "";
+        switch (tagName) {
+            case "SELECT":
+                val = $(component).selectpicker("val");
+                break;
+            case "TEXTAREA":
+                val = $(component).val();
+                break;
+            case "INPUT":
+                tipo = $(component).attr("data-tipo");
+                switch (tipo) {
+                    case "myDecimal":
+                        val = $(component).getFloat();
+                        break;
+                    case "fecha":
+                        val = $(component).getFecha();
+                        break;
+                    case "checkbox":
+                        val = $(component).prop("checked");
+                        break;
+                    default:
+                        val = $(component).val();
+                        break;
+                }
+                break;
+        }
+        value[name] = val;
+    });
+    return JSON.stringify(value);
+};
 
 /* Validacion de Form */
-
-function validateForm(form) {
+$.fn.validate = function () {
     bandera = true;
-    $.each($(form).find("[required]"), function (i, input) {
+    $.each($(this).find("[required]"), function (i, input) {
         if (bandera) {
             switch ($(input).prop("tagName")) {
                 case "INPUT":
-                    if ($(input).attr("myDecimal") === "") {
-                        value = (convertFloat($(input).val()));
-                        bandera = value > 0;
-                    } else if ($(input).attr("fecha") === "") {
-                        bandera = $(input).val() !== "";
+                    tipo = $(input).attr("data-tipo");
+                    switch (tipo) {
+                        case "myDecimal":
+                            val = $(input).getFloat();
+                            bandera = val > 0;
+                            break;
+                        case "fecha":
+                            bandera = $(input).val() !== "";
+                            break;
+                        default:
+                            bandera = $(input).val() !== "";
+                            break;
                     }
                     break;
             }
         }
     });
     return bandera;
-}
+};
 
+/* Llenar un contenedor */
+$.fn.edit = function (datos) {
+    claves = JSON_Clave(datos);
+    $(this).data("id", datos.id);
+    $.each($(this).find("[name]"), function (i, component) {
+        name = $(component).attr("name");
+        if ($.inArray(name.toUpperCase(), claves) !== -1) {
+            tagName = $(component).prop("tagName");
+            switch (tagName) {
+                case "SELECT":
+                    $(component).selectpicker("val", datos[name]);
+                    $(component).change();
+                    //alert();
+                    break;
+                case "TEXTAREA":
+                    val = $(component).val(datos[name]);
+                    break;
+                case "INPUT":
+                    tipo = $(component).attr("data-tipo");
+                    switch (tipo) {
+                        case "myDecimal":
+                            $(component).setFloat(datos[name]);
+                            break;
+                        case "fechaView":
+                            $(component).val(formatView(datos[name]).toUpperCase());
+                            break;
+                        case "fecha":
+                            $(component).datepicker("update", fechaMoment(datos[name]).toDate());
+                            break;
+                        case "checkbox":
+                            $(component).prop('checked', parseInt(datos[name]));
+                            break;
+                        default:
+                            $(component).val(datos[name]);
+                            break;
+                    }
+                    break;
+            }
+        }
+    });
+};
 
+/* Limpiar Contenedor */
+$.fn.clear = function () {
+
+    $(this).removeData("id");
+    $(this).find("select").selectpicker("val", -1);
+    $(this).find("input:not([data-tipo='myDecimal'])").val("");
+    $(this).find("input[data-tipo='myDecimal']").setFloat(0);
+    $(this).find("input[data-tipo='myPorcentaje']").setPorcent(0);
+};
+
+/* Tomar Fecha */
+$.fn.getFecha = function () {
+    tipo = $(this).attr("dt-tipo");
+    fecha = fechaMoment($(this).val(), fecha_format.view);
+    switch (tipo) {
+        case "year":
+            fecha = moment({year: fecha.year(), month: 0, day: 0});
+            break;
+        case "month":
+            fecha = moment({year: fecha.year(), month: fecha.month(), day: 0});
+            break;
+    }
+    return formatSave(fecha);
+};
 
 /* Parse Float */
 function convertFloat(valor) {
@@ -126,13 +235,18 @@ function setearMyDecimal(input) {
     $(input).val("0.00");
     $(input).inputmask("myDecimal");
 }
+
 $.fn.setFloat = function (value) {
     $(this).inputmask('remove');
     $(this).val(value);
     $(this).inputmask("myDecimal");
 };
 
-
+$.fn.setPorcent = function (value) {
+    $(this).inputmask('remove');
+    $(this).val(value);
+    $(this).inputmask("myPorcentaje");
+};
 
 /* Cargar Datos a un select */
 function loadCbo(data, select) {
@@ -173,9 +287,6 @@ function save_global(datos) {
         data: datos.dt,
         success: function (response) {
             result = response;
-            //loadTable();
-            //$(table).bootstrapTable("refresh");
-            //hideRegistro();
         }
     });
     return result;

@@ -29,6 +29,13 @@ class OrdenPedidoDaoImp extends ModelProcedure {
         $conn->close();
         return $return;
     }
+    public static function getEncabezado($id) {
+        $conn = (new C_MySQL())->open();
+        $sql = "call sp_getEncabezadoPedido($id);";
+        $return = C_MySQL::returnRowAsoc($conn, $sql);
+        $conn->close();
+        return $return;
+    }
 
     public static function listOrdenPedido($params) {
         $conn = (new C_MySQL())->open();

@@ -13,10 +13,12 @@ session_start();
 switch ($accion) {
     case "get":
         $id = $_POST["id"];
-
         switch ($op) {
             case "OrdenPedido":
                 $resultado = json_encode(OrdenPedidoDaoImp::get($id));
+                break;
+            case "aprobacion.pedido":
+                $resultado = json_encode(OrdenPedidoDaoImp::getEncabezado($id));
                 break;
         }
         break;
@@ -39,7 +41,6 @@ switch ($accion) {
                 $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
                 break;
             case "aprobacion.pedido":
-                //$params["user"] = (isset($_POST["user"])) ? $_POST["user"] : -1;
                 $params["departamento"] = $user["departamento"]["id"];
                 $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
                 break;
