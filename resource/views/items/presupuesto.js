@@ -17,11 +17,11 @@ rows = [
 window.event_input = {
     "change input[myDecimal]": function (e, value, row, index) {
         valor_update = convertFloat($(e.target).val());
-
         acumulador = valor_update;
+        
         $.each($("#tbDetallePresupuesto").bootstrapTable("getData"), function (i, rw) {
             if (index !== i)
-                acumulador += convertFloat(rw.precio);
+                acumulador += rw.precio;
         });
         presupuestoInicial = convertFloat($("input[name='presupuestoInicial']").val());
 
@@ -32,6 +32,7 @@ window.event_input = {
                 index: index,
                 row: row
             });
+            $("span[total]").html(formatInputMask(acumulador));
         } else {
             //Mensaje
             MsgError({
@@ -121,6 +122,7 @@ $(function () {
 
 function clear() {
     $("div[datos_generales]").clear();
+    $("span[total]").html(formatInputMask(0));
     datos = JSON.parse(JSON.stringify(rows));
     $("#tbDetallePresupuesto").bootstrapTable("load", datos);
 }
@@ -151,6 +153,8 @@ function get() {
         if (dt.status) {
             $("div[valores]").edit(dt.get);
             $("div[datos_generales]").data("id", dt.get.id);
+            sum = JSON.parse(dt.get.meses).reduce((a, b) => a + b.precio, 0);
+            $("span[total]").html(formatInputMask(sum));
             $("#tbDetallePresupuesto").bootstrapTable("load", JSON.parse(dt.get.meses));
             MsgSuccess({
                 title: "Datos cargados correctamente.",

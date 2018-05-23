@@ -33,26 +33,6 @@
                         <input type="text" class="form-control " name="año" data-tipo="fecha" dt-tipo="year" readonly required>
                     </div>
                 </div>
-                <!--                <div class="row">
-                                    <div class="col-md-10">
-                                        <div class="form-group ">
-                                            <label class="control-label">Año:</label>
-                                            <div class="input-group date">
-                                                <div class="input-group-addon">
-                                                    <i class="fa fa-calendar"></i>
-                                                </div>
-                                                <input type="text" class="form-control " name="año" data-tipo="fecha" dt-tipo="year" readonly required>
-                                            </div>
-                                        </div>
-                
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label class="control-label white">.</label>
-                                            <button class="btn btn-success" load>Cargar</button>
-                                        </div>
-                                    </div>
-                                </div>-->
 
                 <div class="row" valores>
                     <div class="form-group col-md-6 col-xs-6">
@@ -78,6 +58,13 @@
     </div>
     <div class="col-md-7 col-md-offset-1">
         <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"> <i class="fa fa-list-alt"></i> Detalle</h3>
+                <!--                <div class="pull-right">
+                                    <label class="box-title">$</label>
+                                </div>-->
+                <h3 class="box-title pull-right" style="color: red;"><i class="fa fa-dollar-sign"></i> <span total>0.00</span></h3>
+            </div>
             <div class="box-body">
                 <table id="tbDetallePresupuesto" data-classes="table table-hover table-striped">
                     <thead>
