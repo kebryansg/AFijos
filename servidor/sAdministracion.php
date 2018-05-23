@@ -95,6 +95,7 @@ switch ($accion) {
                 for ($i = 0; $i < count($Modulos); $i++) {
                     $catagolo = array(
                         "descripcion" => "Catálogo",
+                        "icon" => "folder-open",
                         "sub" => array()
                     );
                     $subModulos = array();
