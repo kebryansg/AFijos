@@ -1,5 +1,6 @@
 op = "ordenPedido";
-usuarioActual = null;
+var data = null;
+var dataFormatter = null;
 table = $("#Listado table");
 selections = [];
 columns_edit = [
@@ -87,15 +88,13 @@ columns = [
 
 
 function queryParams(params) {
-    console.log(usuarioActual);
-    params.user = usuarioActual.id;
+    params.user = data.usuario.id;
     return params;
 }
 
 function initRegistro() {
+    $("div[datos]").edit(dataFormatter);
     $('input[name="fecha"]').initDate();
-    //d = Date.now();
-    //d.setUTCDate(-5);
 
     $('input[name="fecha"]').datepicker('update', new Date());
     $("#tbOrdenPedido").bootstrapTable('refreshOptions', {
@@ -104,8 +103,6 @@ function initRegistro() {
 }
 
 $(function () {
-    
-
     dat = getJson({
         url: getURL("_configuracion"),
         data: {
@@ -113,21 +110,17 @@ $(function () {
             accion: "get"
         }
     });
+    data = dat;
     departamento = dat.departamento;
-    usuarioActual = usuario = dat.usuario;
-    dt = {
+    usuario = dat.usuario;
+    dataFormatter = dt = {
         id: usuario.id,
         usuario: ([usuario.apellidopaterno, usuario.apellidomaterno, usuario.primernombre].join(" ")).toUpperCase(),
         departamento: departamento.descripcion,
         iddepartamento: departamento.id
     };
-    
-    $("div[datos]").edit(dt);
+
     initialComponents();
-    
-    
-    
-    //$("button[name=btn_add]").click();
 
     $("button[delete_local]").click(function (e) {
         div_id = $(this).closest("div[toolbar]").attr("id");
@@ -151,7 +144,6 @@ $(function () {
     });
 
     $("#tbOrdenPedido").bootstrapTable();
-    //$("#modal-find-items table").bootstrapTable(TablePaginationDefault);
 
 
     $("button[add]").click(function (e) {

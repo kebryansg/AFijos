@@ -10,7 +10,7 @@
                     data-response-handler="responseHandler">
                     <thead>
                         <tr>
-                            <th data-field="state" data-checkbox="true"></th>
+                            <!--<th data-field="state" data-checkbox="true"></th>-->
                             <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
                             <th data-field="fecha" data-formatter="defaultFecha">Fecha</th>
                             <th data-field="departamento">Departamento</th>

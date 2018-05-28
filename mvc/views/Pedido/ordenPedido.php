@@ -75,9 +75,7 @@
                                     <input type="text" class="form-control" estado readonly>
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
                     <div class="col-md-6">
                         <div class="form-group form-group-sm">
@@ -124,7 +122,6 @@
             </div>
         </div>
     </form>
-    <!--<div class="clearfix"></div>-->
 </div>
 
 <div id="modal-find-items" class="modal fade" >

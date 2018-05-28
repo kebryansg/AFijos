@@ -5,30 +5,39 @@ $(function(){
     initialComponents();
 });
 
-
 function BtnAprobar(){
     return  '<button view class="btn btn-default"> <i class="fa fa-eye" ></i> </button>';
 }
 window.event_btnAprobar = {
     "click button[view]": function(e, value, row, index){
         showRegistro();
-//        $("form[save]").clear();
-        edit(row);
+        initReg(row);
     }
 };
+
+
+function initReg(row){
+    edit(row);
+    
+    if(row.estado === "APR"){
+        $("button[type='submit']").hide();
+    }else{
+        $("button[type='submit']").show();
+    }
+    console.log(row);
+}
+
 function queryParams(params){
-    //params.user = usuarioActual.id;
     return params;
 }
 function getDatos(){
     form = "form[save]";
-//    dt = JSON.parse($(form).serializeObject_KBSG());
     datos = {
         url: getURL($(form).attr("action")),
         dt: {
             accion: "save",
             op: $(form).attr("role"),
-            datos: $(form).serializeObject_KBSG() //JSON.stringify(dt)
+            datos: $(form).serializeObject_KBSG()
         }
     };
     return datos;
