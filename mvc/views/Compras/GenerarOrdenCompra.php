@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="resource/dist/css/circularTabs.css">
-<!--<link rel="stylesheet" href="resource/dist/css/circularTabsK.css">-->
-<div class="box box-primary">
+<!--<div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title"> <i class="fa fa-pencil-alt"></i> Datos - Orden Pedido</h3>
         <div class="box-tools pull-right">
@@ -18,7 +17,7 @@
                             <label for="" class="control-label">Cod. Orden Pedido</label>
                             <div class="inputComponent" >
                                 <input type="text" name="id" class="form-control input-sm" style="width: 70%;" required>
-                                <!--<input type="hidden" name="id">-->
+                                <input type="hidden" name="id">
                                 <div>
                                     <button type="button" data-columns="OrdenPedido" data-ajax="loadComprasOrdenPedido" data-toggle="modal" data-target="#findOrdenCompra" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> </button>
                                     <button type="button" id="clearPag" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> </button>
@@ -61,7 +60,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 <div class="row">
     <div class="col-md-12">
@@ -185,7 +184,7 @@
                                         <!--<th data-formatter="rowCount" class="col-md-1" data-align="center">N°</th>-->
                                         <th data-field="solicitar" class="col-md-2" data-align="center">Cant.</th>
                                         <th data-field="descripcion">Descripción</th>
-                                        <th data-field="precioCompra" class="col-md-2" data-align="center">Precio Compra</th>
+                                        <th data-field="precioCompra" class="col-md-2" data-align="center" data-formatter="mask">Precio Compra</th>
                                     </tr>
                                 </thead>
                             </table>

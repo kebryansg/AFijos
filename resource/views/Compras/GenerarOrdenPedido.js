@@ -1,5 +1,6 @@
 function validarProveedor_CantItems() {
     return $("#tbDetalleOrdenSelect").bootstrapTable("getData").length > 0 || ($("#txtProveedor").val() !== "" && $("#tbDetalleOrden").bootstrapTable("getSelections").length > 0);
+    //return $("#txtProveedor").val() !== "" && $("#tbDetalleOrden").bootstrapTable("getSelections").length > 0;
 }
 
 function validarCantidadSolicitada() {
@@ -8,7 +9,6 @@ function validarCantidadSolicitada() {
     if (data.length > 0) {
         bandera = true;
         $.each(data, function (i, row) {
-//            console.log(row);
             if (row.solicitar <= 0) {
                 bandera = false;
                 return;
@@ -19,6 +19,10 @@ function validarCantidadSolicitada() {
 }
 
 $(function () {
+
+    $("#tbDetalleOrden,#tbDetalleOrdenSelect,#tbConfirmacion").bootstrapTable();
+
+    getOrdenPedido();
 
     $("button[deleteItems]").click(function () {
         btnGroup = $(this).closest(".btn-group").attr("id");
@@ -43,32 +47,33 @@ $(function () {
         }
     });
 
-    /*$('.nav-tabs li:eq(1) a').on('hide.bs.tab', function (event) {
-     $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
-     });*/
-
     $('.nav-tabs li:eq(1) a').on('shown.bs.tab', function (event) {
         ids = [];
         ids_detalle = $("#tbDetalleOrdenSelect").bootstrapTable("getData").map(row => row.idItem);
-        $.each($("#tbDetalleOrden").bootstrapTable("getSelections"), function (i, row) {
-            ids.push(row.id);
-            if ($.inArray(row.id, ids_detalle) === -1 && row.saldo > 0) {
-                //row.solicitar v= 1;
-                row["idItem"] = row.id;
-                row.id = 0;
-                row.solicitar = row.saldo;
-                row.state = false;
-                $("#tbDetalleOrdenSelect").bootstrapTable("append", row);
-            }
+        $.each($("#tbDetalleOrden").bootstrapTable("getSelections").filter(row => $.inArray(row.id, ids_detalle) === -1), function (i, row) {
+            $("#tbDetalleOrden").bootstrapTable('uncheckBy', {field: 'id', values: row.id});
+//            row.id = 0;
+//            row.idItem = row.id;
+//            row.solicitar = row.saldo;
+//            row.state = false;
+            $("#tbDetalleOrdenSelect").bootstrapTable("append", {
+                id: 0,
+                descripcion: row.descripcion,
+                idItem: row.id,
+                saldo: row.saldo,
+                precioref: row.precioref,
+                precioCompra: 0,
+                solicitar: row.saldo,
+                state: false
+            });
         });
-        $("#tbDetalleOrden").bootstrapTable('uncheckBy', {field: 'id', values: ids});
     });
+
     $('.nav-tabs li:eq(2) a').on('shown.bs.tab', function (event) {
         rows = $("#tbDetalleOrdenSelect").bootstrapTable("getData");
+        console.log(rows);
         $("#tbConfirmacion").bootstrapTable('load', rows);
         $("#lblProveedor").html($("#txtProveedor").val());
-
-
     });
 
     $(".tab-pane button[last]").click(function (e) {
@@ -78,15 +83,13 @@ $(function () {
         $(li_next).find("a").click();
     });
 
-    $("#tbDetalleOrden,#tbDetalleOrdenSelect,#tbConfirmacion").bootstrapTable();
+    //$("div[OrdenPedido]").clear();
 
-    $("div[OrdenPedido]").clear();
-
-    $("input[name='id']").keypress(function (e) {
-        if (e.which === 13) {
-            getOrdenPedido($(this).val());
-        }
-    });
+//    $("input[name='id']").keypress(function (e) {
+//        if (e.which === 13) {
+//            getOrdenPedido($(this).val());
+//        }
+//    });
 
     $("#clearPag").click(function (e) {
         $("div[OrdenPedido]").clear();
@@ -95,9 +98,6 @@ $(function () {
         $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
         $('.nav-tabs li:eq(0) a').click();
     });
-
-
-    //$("#tbFind_Pag").bootstrapTable();
 
     $('#findOrdenCompra').on({
         'show.bs.modal': function (e) {
@@ -115,9 +115,6 @@ $(function () {
         , 'hidden.bs.modal': function (e) {
             $('#findOrdenCompra table[search]').bootstrapTable("destroy");
         }
-        /*, 'dbl-click-row.bs.table': function (e, row, $element) {
-         action_seleccion_v2(row);
-         }*/
     });
 });
 
@@ -191,6 +188,7 @@ function getDatos() {
             items: JSON.stringify($("#tbDetalleOrdenSelect").bootstrapTable("getData"))
         }
     };
+    console.log(datos);
     return datos;
 }
 
@@ -226,32 +224,30 @@ window.evtInputComponent = {
 
 };
 
-function getOrdenPedido(id) {
-    datos = getJson({
-        url: getURL("_pedido"),
-        data: {
-            accion: "get",
-            op: "OrdenPedido",
-            id: id
-        }
-    });
-
-    $("div[OrdenPedido]").clear();
-    $("#tbDetalleOrden").bootstrapTable("removeAll");
-    $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
-
-    $("div[OrdenPedido]").edit(datos);
-    $("div[OrdenPedido] input[name='estado']").val(estadoOrdenPedido(datos.estado));
+function getOrdenPedido() {
+//    datos = getJson({
+//        url: getURL("_pedido"),
+//        data: {
+//            accion: "get",
+//            op: "OrdenPedido",
+//            id: id
+//        }
+//    });
+//
+//    $("div[OrdenPedido]").clear();
+//    $("#tbDetalleOrden").bootstrapTable("removeAll");
+//    $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
+//
+//    $("div[OrdenPedido]").edit(datos);
+//    $("div[OrdenPedido] input[name='estado']").val(estadoOrdenPedido(datos.estado));
 
     //DetalleOrdenPedido
     dt = {
         url: getURL("_pedido"),
         data: {
             accion: "list",
-            op: "DetalleordenPedido",
-            OrdenPedido: datos.id
+            op: "DetalleordenPedido"
         }
     };
-
     $("#tbDetalleOrden").bootstrapTable("load", getJson(dt));
 }

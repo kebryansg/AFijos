@@ -2,9 +2,8 @@
 
 include_once '../mvc/modelo/OrdenPedidoDaoImp.php';
 include_once '../mvc/modelo/DetalleOrdenPedidoDaoImp.php';
-
-
 include_once '../mvc/Controlador/JsonMapper.php';
+
 $accion = $_POST["accion"];
 $op = $_POST["op"];
 $mapper = new JsonMapper();
@@ -42,14 +41,14 @@ switch ($accion) {
                 break;
             case "aprobacion.pedido":
                 $params["departamento"] = $user["departamento"]["id"];
-                $resultado = json_encode(OrdenPedidoDaoImp::listAprobacionOrdenPedido($params));
+                $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
                 break;
             case "compra.pedido":
                 $params["estado"] = "APR";
                 $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
                 break;
             case "DetalleordenPedido":
-                $resultado = json_encode(DetalleOrdenPedidoDaoImp::listDetalleOrdenPedido($_POST["OrdenPedido"]));
+                $resultado = json_encode(DetalleOrdenPedidoDaoImp::listDetalleOrdenPedido());
                 break;
         }
         break;

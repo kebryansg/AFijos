@@ -22,14 +22,11 @@ class DetalleOrdenPedidoDaoImp extends ModelProcedure{
 //        $conn->close();
 //    }
 
-    public static function listDetalleOrdenPedido($IDOrdenPedido) {
+    public static function listDetalleOrdenPedido() {
         $conn = (new C_MySQL())->open();
-        //$banderapag = ($top > 0 ) ? "limit $top offset $pag" : "";
-        //where estado = 'ACT'
-        $sql = "select SQL_CALC_FOUND_ROWS * from DetalleOrdenPedido where idordenpedido =  $IDOrdenPedido ;";
-
+        //$sql = "select SQL_CALC_FOUND_ROWS * from DetalleOrdenPedido where idordenpedido =  $IDOrdenPedido ;";
+        $sql = "select * from view_detalleop_aprobadas;";
         $list = C_MySQL::returnListAsoc($conn, $sql);
-        //$count = C_MySQL::row_count($conn);
         $conn->close();
         return $list;
     }
