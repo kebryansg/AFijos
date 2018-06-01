@@ -184,7 +184,7 @@
                                         <!--<th data-formatter="rowCount" class="col-md-1" data-align="center">N°</th>-->
                                         <th data-field="solicitar" class="col-md-2" data-align="center">Cant.</th>
                                         <th data-field="descripcion">Descripción</th>
-                                        <th data-field="precioCompra" class="col-md-2" data-align="center" data-formatter="mask">Precio Compra</th>
+                                        <th data-field="precioCompra" class="col-md-2" data-align="center" data-formatter="formatInputMask">Precio Compra</th>
                                     </tr>
                                 </thead>
                             </table>
