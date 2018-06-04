@@ -5,6 +5,7 @@ class OrdenCompra extends ModelSQL {
     public $tabla;
     public $ID;
     public $Fecha;
+    public $IDUsuario;
 //    public $IDOrdenPedido;
     public $IDProveedor;
     public $Estado;

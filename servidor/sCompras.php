@@ -11,23 +11,24 @@ $accion = $_POST["accion"];
 $op = $_POST["op"];
 $mapper = new JsonMapper();
 $resultado = "";
-
+session_start();
 switch ($accion) {
     case "list":
         $top = (isset($_POST["limit"])) ? $_POST["limit"] : 0;
         $pag = (isset($_POST["offset"])) ? $_POST["offset"] : 0;
         $count = 0;
-        
+
         $params = array(
-            "top" => (isset($_POST["limit"])) ? $_POST["limit"] : 0,
-            "pag" => (isset($_POST["offset"])) ? $_POST["offset"] : 0,
+            "limit" => (isset($_POST["limit"])) ? $_POST["limit"] : 0,
+            "offset" => (isset($_POST["offset"])) ? $_POST["offset"] : 0,
             "buscar" => (isset($_POST["search"])) ? $_POST["search"] : NULL
         );
-        
-        
         switch ($op) {
             case "proveedor":
                 $resultado = json_encode(ProveedorDaoImp::listProveedor($params));
+                break;
+            case "orden.compra":
+                $resultado = json_encode(OrdenCompraDaoImp::_list($params));
                 break;
             case "proveedorOrdenCompra":
                 $resultado = json_encode(ProveedorDaoImp::_listOrdenCompras($params));
@@ -73,6 +74,7 @@ switch ($accion) {
                 $OrdenCompra = $mapper->map($json, new OrdenCompra());
                 OrdenCompraDaoImp::save($OrdenCompra);
                 $resultado = $OrdenCompra->ID;
+                $ordenPedido->IDUsuario = $_SESSION["login"]["user"]["id"];
 
                 foreach (json_decode($_POST["items"]) as $item) {
                     $DetalleOrdenCompra = $mapper->map($item, new DetalleOrdenCompra());
@@ -90,7 +92,7 @@ switch ($accion) {
                 $presupuesto = $mapper->map($json, new Presupuesto());
                 $resultado = json_encode(
                         PresupuestoDaoImp::save($presupuesto)
-                        );
+                );
                 //$resultado = $presupuesto->ID;
                 break;
         }

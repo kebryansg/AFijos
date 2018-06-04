@@ -433,10 +433,10 @@ function loadAprobacionOrdenPedido(params) {
 function loadComprasOrdenPedido(params) {
     json_data = {
         data: $.extend({}, {
-            op: "compra.pedido",
+            op: "orden.compra",
             accion: "list"
         }, params.data),
-        url: getURL("_pedido")
+        url: getURL("_compras")
     };
     params.success(getJson(json_data));
 }

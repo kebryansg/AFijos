@@ -1,3 +1,4 @@
+
 $(function () {
     initialComponents();
 
@@ -44,6 +45,10 @@ function btnSelecionProveedor() {
     return '<button Proveedor class="btn btn-success btn-sm"><i class="fa fa-check-circle" aria-hidden="true"></i> Seleccionar</button>';
 }
 
+function bAccion(value,row, index){
+    return '<button factura class="btn btn-info btn-sm"><i class="fa fa-edit"></i> </button>';
+}
+
 function imaskMinMax(value, rowData, index) {
 //    value = ($.isEmptyObject(value)) ? 1 : value;
     return '<input myDecimalMinMax d-max="' + rowData.saldo + '" field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
@@ -80,6 +85,13 @@ function tableColumns(op) {
 }
 
 window.evtInputComponent = {
+    "click button[factura]": function (e, value, row, index) {
+        showRegistro();
+        
+        //$("#tbDetalleOrdenCompraFaltante").bootstrapTable("load", datos);
+        
+        
+    },
     "click button[Proveedor]": function (e, value, row, index) {
         modal = $(this).closest(".modal");
         btnRef = $(modal).data("ref");

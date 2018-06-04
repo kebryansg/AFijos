@@ -38,7 +38,7 @@ class ProveedorDaoImp extends ModelProcedure {
     }
     public static function listProveedor($params) {
         $conn = (new C_MySQL())->open();
-        $banderapag = ($params["top"] > 0 ) ? "limit " . $params['top'] . " offset " . $params['pag'] : "";
+        $banderapag = ($params["limit"] > 0 ) ? "limit " . $params['limit'] . " offset " . $params['offset'] : "";
         $where = ($params["buscar"] != NULL) ? " where nombre like '%" . $params["buscar"] . "%' or identificacion like '%" . $params["buscar"] . "%' " : "";
         //where estado = 'ACT'
         $sql = "select SQL_CALC_FOUND_ROWS * from Proveedor $where $banderapag ;";
