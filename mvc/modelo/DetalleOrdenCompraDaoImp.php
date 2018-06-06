@@ -35,6 +35,13 @@ class DetalleOrdenCompraDaoImp extends ModelProcedure {
         $conn->close();
         return $list;
     }
+    public static function listDetalleOrdenCompra_OCompra($compra) {
+        $conn = (new C_MySQL())->open();
+        $sql = "call sp_getDetallePedido($compra);";
+        $list = C_MySQL::returnListAsoc($conn, $sql);
+        $conn->close();
+        return $list;
+    }
 
 //    public function delete($detalle) {
 //        $conn = (new C_MySQL())->open();

@@ -30,6 +30,9 @@ switch ($accion) {
             case "orden.compra":
                 $resultado = json_encode(OrdenCompraDaoImp::_list($params));
                 break;
+            case "detalle.orden.compra":
+                $resultado = json_encode(DetalleOrdenCompraDaoImp::listDetalleOrdenCompra_OCompra($_POST["id"]));
+                break;
             case "proveedorOrdenCompra":
                 $resultado = json_encode(ProveedorDaoImp::_listOrdenCompras($params));
                 break;

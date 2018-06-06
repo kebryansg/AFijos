@@ -1,9 +1,8 @@
 
 $(function () {
     initialComponents();
-
     $("#tbDetalleOrdenCompraFaltante").bootstrapTable();
-    $("select[name='idproveedor']").selectpicker("val", -1);
+//    $("select[name='idproveedor']").selectpicker("val", -1);
 
     $("#file-6").fileinput({
         overwriteInitial: false,
@@ -15,7 +14,6 @@ $(function () {
         maxFileCount: 3
 
     });
-
 
     $('#findOrdenCompra').on({
         'show.bs.modal': function (e) {
@@ -38,6 +36,14 @@ $(function () {
     $("button[removeProveedor]").click(function () {
         $("#tbDetalleOrdenCompraFaltante").bootstrapTable("removeAll");
         $("form[save]").clear();
+    });
+    
+    $("button[save]").click(function () {
+        
+    });
+    $("button[cancelar]").click(function () {
+        $("form[save]").clear();
+        hideRegistro();
     });
 });
 
@@ -87,8 +93,16 @@ function tableColumns(op) {
 window.evtInputComponent = {
     "click button[factura]": function (e, value, row, index) {
         showRegistro();
-        
-        //$("#tbDetalleOrdenCompraFaltante").bootstrapTable("load", datos);
+        $("div[OCompra]").edit(row);
+        datos = getJson({
+            data: {
+                op: "detalle.orden.compra",
+                accion: "list",
+                id: row.id
+            },
+            url: getURL("_compras")
+        });
+        $("#tbDetalleOrdenCompraFaltante").bootstrapTable("load", datos);
         
         
     },
