@@ -67,7 +67,7 @@
                         <div class="col-md-4">
                             <div class="form-group form-group-sm">
                                 <label for="" class="control-label">Cod. Factura</label>
-                                <input type="text" class="form-control" required>
+                                <input type="text" class="form-control" name="codigo" required>
                             </div>  
                             <div class="form-group form-group-sm">
                                 <label class="control-label">Fecha Factura</label>

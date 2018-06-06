@@ -39,6 +39,13 @@ $(function () {
     });
     
     $("button[save]").click(function () {
+        datos = $("div[RFactura]").serializeObject_KBSG();
+        
+        dt = $("#tbDetalleOrdenCompraFaltante").bootstrapTable("getData");
+        console.log(dt);
+        
+        
+        
         
     });
     $("button[cancelar]").click(function () {
