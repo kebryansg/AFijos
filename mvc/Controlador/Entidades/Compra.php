@@ -1,16 +1,19 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+include_once 'ModelSQL.php';
 
-/**
- * Description of Compra
- *
- * @author KebryanSG
- */
-class Compra {
-    //put your code here
+class Compra extends ModelSQL {
+    public $tabla;
+    public $ID;
+    public $Fecha;
+    public $IDUsuario;
+    public $IDProveedor;
+    public $Estado;
+
+    function __construct() {
+        $this->ID = 0;
+        $this->Fecha = date("Y-m-d H:i:s");
+        $this->Estado = "ACT";
+        $this->tabla = "compra";
+    }
 }
