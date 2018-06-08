@@ -39,28 +39,25 @@ $(function () {
     });
     
     $("button[save]").click(function () {
-        //datos = $("div[RFactura]").serializeObject_KBSG();
-        
+        datos = JSON.parse($("div[OCompra]").serializeObject_KBSG());
+        //RFactura = JSON.parse($("div[RFactura]").serializeObject_KBSG());
+        RFactura = $("div[RFactura]").serializeObject_KBSG(true);
+        console.log(RFactura);
+        delete RFactura["id"];
+        datos.detallefactura = JSON.stringify(RFactura);
+        //return;
         dt = {
-            url: getURL("_compas"),
+            url: getURL("_compras"),
             dt:{
                 accion : "save",
                 op: "facturar.compra.orden",
-                datos: $("div[RFactura]").serializeObject_KBSG(),
+                datos: JSON.stringify(datos),
                 rows: JSON.stringify($("#tbDetalleOrdenCompraFaltante").bootstrapTable("getData"))
             }
         };
-        
-        save_global(dt);
-        //$("#tbDetalleOrdenCompraFaltante").bootstrapTable("getData");
-        
-        
-        
-        console.log(dt);
-        
-        
-        
-        
+        //console.log(dt);
+        result = save_global(dt);
+        console.log(result);
     });
     $("button[cancelar]").click(function () {
         $("form[save]").clear();
@@ -115,6 +112,8 @@ window.evtInputComponent = {
     "click button[factura]": function (e, value, row, index) {
         showRegistro();
         $("div[OCompra]").edit(row);
+        $("div[OCompra]").removeData("id");
+        $("div[RFactura] input[name='idproveedor']").val(row);
         datos = getJson({
             data: {
                 op: "detalle.orden.compra",

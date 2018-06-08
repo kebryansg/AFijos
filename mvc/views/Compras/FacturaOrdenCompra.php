@@ -28,6 +28,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="box box-info" OCompra>
+                <input type="text" name="idproveedor" class="hidden">
                 <div class="box-header with-border">
                     <h3 class="box-title"> <i class="fa fa-file-archive"></i> Orden Compra</h3>
                 </div>
@@ -35,7 +36,7 @@
                     <div class="col-md-4">
                         <div class="form-group form-group-sm">
                             <label for="" class="control-label">Cod. O. Compra</label>
-                            <input type="text" class="form-control" name="id" readonly>
+                            <input type="text" class="form-control" name="id" readonly exclud>
                         </div>  
                         <div class="form-group form-group-sm">
                             <label class="control-label">Fecha</label>
@@ -43,7 +44,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control " name="fecha" readonly>
+                                <input type="text" class="form-control " name="fecha" readonly exclud>
                             </div>
                         </div>
 
@@ -51,7 +52,7 @@
                     <div class="col-md-6">
                         <div class="form-group form-group-sm">
                             <label for="" class="control-label">Proveedor</label>
-                            <input type="text" name="proveedor" class="form-control input-sm" readonly>
+                            <input type="text" name="proveedor" class="form-control input-sm" readonly exclud>
                         </div>  
                     </div>
                 </div>
@@ -83,7 +84,7 @@
                         <div class="col-md-6">
                             <label for="" class="control-label">Adjuntar</label>
                             <div class="file-loading">
-                                <input id="file-6" name="file-6[]" type="file" multiple>
+                                <input id="file-6" name="file-6[]" type="file" multiple exclud>
                             </div>
                         </div>
                     </form>

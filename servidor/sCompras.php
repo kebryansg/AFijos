@@ -5,6 +5,8 @@ include_once '../mvc/modelo/PresupuestoDaoImp.php';
 include_once '../mvc/modelo/ItemDaoImp.php';
 include_once '../mvc/modelo/OrdenCompraDaoImp.php';
 include_once '../mvc/modelo/DetalleOrdenCompraDaoImp.php';
+include_once '../mvc/modelo/CompraDaoImp.php';
+include_once '../mvc/modelo/DetalleCompraDaoImp.php';
 
 include_once '../mvc/Controlador/JsonMapper.php';
 $accion = $_POST["accion"];
@@ -77,7 +79,7 @@ switch ($accion) {
                 $OrdenCompra = $mapper->map($json, new OrdenCompra());
                 OrdenCompraDaoImp::save($OrdenCompra);
                 $resultado = $OrdenCompra->ID;
-                $ordenPedido->IDUsuario = $_SESSION["login"]["user"]["id"];
+                //$ordenPedido->IDUsuario = $_SESSION["login"]["user"]["id"];
 
                 foreach (json_decode($_POST["items"]) as $item) {
                     $DetalleOrdenCompra = $mapper->map($item, new DetalleOrdenCompra());
@@ -86,17 +88,14 @@ switch ($accion) {
                     DetalleOrdenCompraDaoImp::save($DetalleOrdenCompra);
                 }
                 break;
-            case "compra":
-                $OrdenCompra = $mapper->map($json, new OrdenCompra());
-                OrdenCompraDaoImp::save($OrdenCompra);
-                $resultado = $OrdenCompra->ID;
-                $ordenPedido->IDUsuario = $_SESSION["login"]["user"]["id"];
+            case "facturar.compra.orden":
+                $Compra = $mapper->map($json, new Compra());
+                $Compra->IDUsuario = $_SESSION["login"]["user"]["id"];
+                $resultado = json_encode(CompraDaoImp::save($Compra));
 
-                foreach (json_decode($_POST["items"]) as $item) {
-                    $DetalleOrdenCompra = $mapper->map($item, new DetalleOrdenCompra());
-                    $DetalleOrdenCompra->IDOrdenCompra = $OrdenCompra->ID;
-                    $DetalleOrdenCompra->Cantidad = $item->solicitar;
-                    DetalleOrdenCompraDaoImp::save($DetalleOrdenCompra);
+                foreach (json_decode($_POST["rows"]) as $item) {
+                    $DetalleCompra = $mapper->map($item, new DetalleCompra());
+                    //DetalleOrdenCompraDaoImp::save($DetalleOrdenCompra);
                 }
                 break;
             case "proveedor":

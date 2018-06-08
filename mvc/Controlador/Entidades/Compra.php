@@ -8,6 +8,7 @@ class Compra extends ModelSQL {
     public $Fecha;
     public $IDUsuario;
     public $IDProveedor;
+    public $DetalleFactura;
     public $Estado;
 
     function __construct() {

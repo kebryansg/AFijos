@@ -85,9 +85,9 @@ function JSON_Clave(obj) {
 }
 
 /* Get Datos */
-$.fn.serializeObject_KBSG = function () {
+$.fn.serializeObject_KBSG = function (json = false) {
     value = {};
-    components = $(this).find("[name]");
+    components = $(this).find("[name]:not([exclud])");
     value["id"] = ($.isEmptyObject($(this).data("id"))) ? 0 : $(this).data("id");
     $.each(components, function (i, component) {
         tagName = $(component).prop("tagName");
@@ -120,7 +120,7 @@ $.fn.serializeObject_KBSG = function () {
         }
         value[name] = val;
     });
-    return JSON.stringify(value);
+    return (json)? value : JSON.stringify(value);
 };
 
 /* Validacion de Form */
