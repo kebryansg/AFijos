@@ -109,7 +109,6 @@ window.event_input_default = {
         field = $(input).attr("field");
         row[field] = $(input).getFloat();//.val();
         table = $(input).closest("table");
-        console.log(row);
         $(table).bootstrapTable('updateRow', {
             index: index,
             row: row

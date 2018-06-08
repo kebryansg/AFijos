@@ -39,9 +39,23 @@ $(function () {
     });
     
     $("button[save]").click(function () {
-        datos = $("div[RFactura]").serializeObject_KBSG();
+        //datos = $("div[RFactura]").serializeObject_KBSG();
         
-        dt = $("#tbDetalleOrdenCompraFaltante").bootstrapTable("getData");
+        dt = {
+            url: getURL("_compas"),
+            dt:{
+                accion : "save",
+                op: "facturar.compra.orden",
+                datos: $("div[RFactura]").serializeObject_KBSG(),
+                rows: JSON.stringify($("#tbDetalleOrdenCompraFaltante").bootstrapTable("getData"))
+            }
+        };
+        
+        save_global(dt);
+        //$("#tbDetalleOrdenCompraFaltante").bootstrapTable("getData");
+        
+        
+        
         console.log(dt);
         
         

@@ -219,8 +219,7 @@ $.fn.getFecha = function () {
 
 /* Parse Float */
 function convertFloat(valor) {
-    value = parseFloat(valor.toString().replace(/[^\d\.\-]/g, ""));
-    return value;
+    return parseFloat(valor.toString().replace(/[^\d\.\-]/g, ""));;
 }
 
 /* Inputmask format*/
