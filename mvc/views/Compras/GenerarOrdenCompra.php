@@ -106,6 +106,8 @@
 
                             <table id="tbDetalleOrden"
                                    data-toolbar="#toolbar"
+                                   data-ajax="loadAprobDetPedido"
+                                   data-show-refresh="true"
                                    data-click-to-select="true">
                                 <thead>
                                     <tr>
@@ -153,7 +155,7 @@
                                         <!--<th data-field="cantidad" class="col-md-2" data-align="center">Cant.</th>-->
                                         <th data-field="saldo" class="col-md-2" data-align="center" data-formatter="mask">Saldo Pendiente</th>
                                         <th data-field="precioref" class="col-md-2" data-align="center">Precio Referencial</th>
-                                        <th data-field="precioCompra" class="col-md-1" data-formatter="imask" data-events="event_input_default" data-align="center">Precio Compra</th>
+                                        <th data-field="precio" class="col-md-1" data-formatter="imask" data-events="event_input_default" data-align="center">Precio Compra</th>
                                         <th data-field="solicitar" class="col-md-2" data-align="center" data-formatter="imaskMinMax" data-events="event_input_default">Solicitar</th>
                                     </tr>
                                 </thead>
@@ -184,7 +186,7 @@
                                         <!--<th data-formatter="rowCount" class="col-md-1" data-align="center">N°</th>-->
                                         <th data-field="solicitar" class="col-md-2" data-align="center">Cant.</th>
                                         <th data-field="descripcion">Descripción</th>
-                                        <th data-field="precioCompra" class="col-md-2" data-align="center" data-formatter="formatInputMask">Precio Compra</th>
+                                        <th data-field="precio" class="col-md-2" data-align="center" data-formatter="formatInputMask">Precio Compra</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -238,5 +240,5 @@
     </div>
 </div>
 
-<script type="text/javascript" src="resource/views/Compras/GenerarOrdenPedido.js"></script>
+<script type="text/javascript" src="resource/views/Compras/GenerarOrdenCompra.js"></script>
 <!--<script type="text/javascript" src="resource/views/Compras/circularTabs.js"></script>-->

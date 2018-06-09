@@ -22,7 +22,7 @@ $(function () {
 
     $("#tbDetalleOrden,#tbDetalleOrdenSelect,#tbConfirmacion").bootstrapTable();
 
-    getOrdenPedido();
+//    getOrdenPedido();
 
     $("button[deleteItems]").click(function () {
         btnGroup = $(this).closest(".btn-group").attr("id");
@@ -59,10 +59,10 @@ $(function () {
             $("#tbDetalleOrdenSelect").bootstrapTable("append", {
                 id: 0,
                 descripcion: row.descripcion,
-                idItem: row.id,
+                iddetalleordenpedido: row.id,
                 saldo: row.saldo,
                 precioref: row.precioref,
-                precioCompra: 0,
+                precio: 0,
                 solicitar: row.saldo,
                 state: false
             });
@@ -71,7 +71,6 @@ $(function () {
 
     $('.nav-tabs li:eq(2) a').on('shown.bs.tab', function (event) {
         rows = $("#tbDetalleOrdenSelect").bootstrapTable("getData");
-        console.log(rows);
         $("#tbConfirmacion").bootstrapTable('load', rows);
         $("#lblProveedor").html($("#txtProveedor").val());
     });
@@ -224,30 +223,24 @@ window.evtInputComponent = {
 
 };
 
-function getOrdenPedido() {
-//    datos = getJson({
+function loadAprobDetPedido(params) {
+    
+    json_data = {
+        data: $.extend({}, {
+            accion: "list",
+            op: "aprobacion.detalle.pedido"
+        }, params.data),
+        url: getURL("_pedido")
+    };
+    params.success(getJson(json_data));
+    
+    //DetalleOrdenPedido
+//    dt = {
 //        url: getURL("_pedido"),
 //        data: {
-//            accion: "get",
-//            op: "OrdenPedido",
-//            id: id
+//            accion: "list",
+//            op: "aprobacion.detalle.pedido"
 //        }
-//    });
-//
-//    $("div[OrdenPedido]").clear();
-//    $("#tbDetalleOrden").bootstrapTable("removeAll");
-//    $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
-//
-//    $("div[OrdenPedido]").edit(datos);
-//    $("div[OrdenPedido] input[name='estado']").val(estadoOrdenPedido(datos.estado));
-
-    //DetalleOrdenPedido
-    dt = {
-        url: getURL("_pedido"),
-        data: {
-            accion: "list",
-            op: "DetalleordenPedido"
-        }
-    };
-    $("#tbDetalleOrden").bootstrapTable("load", getJson(dt));
+//    };
+//    $("#tbDetalleOrden").bootstrapTable("load", getJson(dt));
 }

@@ -77,15 +77,16 @@ switch ($accion) {
         switch ($op) {
             case "OrdenCompra":
                 $OrdenCompra = $mapper->map($json, new OrdenCompra());
-                OrdenCompraDaoImp::save($OrdenCompra);
-                $resultado = $OrdenCompra->ID;
-                //$ordenPedido->IDUsuario = $_SESSION["login"]["user"]["id"];
-
-                foreach (json_decode($_POST["items"]) as $item) {
-                    $DetalleOrdenCompra = $mapper->map($item, new DetalleOrdenCompra());
-                    $DetalleOrdenCompra->IDOrdenCompra = $OrdenCompra->ID;
-                    $DetalleOrdenCompra->Cantidad = $item->solicitar;
-                    DetalleOrdenCompraDaoImp::save($DetalleOrdenCompra);
+                $OrdenCompra->IDUsuario = $_SESSION["login"]["user"]["id"];
+                $resultado = OrdenCompraDaoImp::save($OrdenCompra);
+                
+                if ($resultado["status"]) {
+                    foreach (json_decode($_POST["items"]) as $item) {
+                        $DetalleOrdenCompra = $mapper->map($item, new DetalleOrdenCompra());
+                        $DetalleOrdenCompra->IDOrdenCompra = $OrdenCompra->ID;
+                        $DetalleOrdenCompra->Cantidad = $item->solicitar;
+                        DetalleOrdenCompraDaoImp::save($DetalleOrdenCompra);
+                    }
                 }
                 break;
             case "facturar.compra.orden":
@@ -106,7 +107,7 @@ switch ($accion) {
             case "presupuesto":
                 $presupuesto = $mapper->map($json, new Presupuesto());
                 $resultado = json_encode(
-                    PresupuestoDaoImp::save($presupuesto)
+                        PresupuestoDaoImp::save($presupuesto)
                 );
                 //$resultado = $presupuesto->ID;
                 break;

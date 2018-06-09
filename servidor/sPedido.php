@@ -43,12 +43,15 @@ switch ($accion) {
                 $params["departamento"] = $user["departamento"]["id"];
                 $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
                 break;
+            case "aprobacion.detalle.pedido":
+                $resultado = json_encode(DetalleOrdenPedidoDaoImp::listDetalleOrdenPedido());
+                break;
             case "compra.pedido":
                 $params["estado"] = "APR";
                 $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
                 break;
             case "DetalleordenPedido":
-                $resultado = json_encode(DetalleOrdenPedidoDaoImp::listDetalleOrdenPedido());
+                $resultado = json_encode(DetalleOrdenPedidoDaoImp::_list($_POST["OrdenPedido"]));
                 break;
         }
         break;
@@ -68,7 +71,6 @@ switch ($accion) {
 
                 break;
             case "ordenPedido":
-                
                 $ordenPedido = $mapper->map($json, new OrdenPedido());
                 $ordenPedido->IDUsuario = $_SESSION["login"]["user"]["id"];
 

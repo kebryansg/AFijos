@@ -6,16 +6,17 @@ class DetalleOrdenCompra extends ModelSQL {
     public $ID;
     public $Descripcion;
     public $Cantidad;
-    public $CantFacturada;
-    public $PrecioCompra;
+    //public $CantFacturada;
+    //public $PrecioCompra;
+    public $Precio;
     public $IDOrdenCompra;
-    public $IDItem;
+    public $IDDetalleOrdenPedido;
     
 
     function __construct() {
         $this->ID = 0;
-        $this->CantFacturada = 0;
-        //$this->Estado = "ACT";
+        $this->Cantidad = 0;
+        $this->Precio = 0;
         $this->tabla = "DetalleOrdenCompra";
     }
 }

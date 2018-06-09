@@ -102,10 +102,8 @@
                         class="table-hover table-striped">
                         <thead>
                             <tr>
-                                <!--<th data-checkbox="true"></th>-->
-                                <!--<th data-field="">O. Compra</th>-->
                                 <th data-field="descripcion">Descripción</th>
-                                <th data-field="precioCompra" class="col-md-1" data-align="center">Precio Unit.</th>
+                                <th data-field="precio" class="col-md-1" data-align="center">Precio Unit.</th>
                                 <th data-field="saldo" class="col-md-1" data-formatter="formatInputMask" data-align="center">Saldo Pendiente</th>
                                 <th data-field="cantidad" data-align="center" class="col-md-1" data-formatter="imaskMinMax" data-events="event_input_default">Cantidad</th>
                             </tr>
