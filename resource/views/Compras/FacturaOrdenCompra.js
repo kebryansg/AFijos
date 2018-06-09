@@ -40,12 +40,10 @@ $(function () {
     
     $("button[save]").click(function () {
         datos = JSON.parse($("div[OCompra]").serializeObject_KBSG());
-        //RFactura = JSON.parse($("div[RFactura]").serializeObject_KBSG());
         RFactura = $("div[RFactura]").serializeObject_KBSG(true);
-        console.log(RFactura);
         delete RFactura["id"];
         datos.detallefactura = JSON.stringify(RFactura);
-        //return;
+
         dt = {
             url: getURL("_compras"),
             dt:{
@@ -55,12 +53,14 @@ $(function () {
                 rows: JSON.stringify($("#tbDetalleOrdenCompraFaltante").bootstrapTable("getData"))
             }
         };
-        //console.log(dt);
         result = save_global(dt);
-        console.log(result);
+        if(result.status){
+            $("button[cancelar]").click();
+        }
     });
     $("button[cancelar]").click(function () {
         $("form[save]").clear();
+        $("#tbDetalleOrdenCompraFaltante").bootstrapTable("removeALL");
         hideRegistro();
     });
 });
@@ -122,9 +122,12 @@ window.evtInputComponent = {
             },
             url: getURL("_compras")
         });
-        $("#tbDetalleOrdenCompraFaltante").bootstrapTable("load", datos);
-        
-        
+        $("#tbDetalleOrdenCompraFaltante").bootstrapTable("load", datos.map(function(row){
+            row.iddetalleordencompra = row.id;
+            delete row["id"];
+            delete row["iddetalleordenpedido"];
+            return row;
+        }));
     },
     "click button[Proveedor]": function (e, value, row, index) {
         modal = $(this).closest(".modal");

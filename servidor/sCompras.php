@@ -79,7 +79,7 @@ switch ($accion) {
                 $OrdenCompra = $mapper->map($json, new OrdenCompra());
                 $OrdenCompra->IDUsuario = $_SESSION["login"]["user"]["id"];
                 $resultado = OrdenCompraDaoImp::save($OrdenCompra);
-                
+
                 if ($resultado["status"]) {
                     foreach (json_decode($_POST["items"]) as $item) {
                         $DetalleOrdenCompra = $mapper->map($item, new DetalleOrdenCompra());
@@ -92,24 +92,24 @@ switch ($accion) {
             case "facturar.compra.orden":
                 $Compra = $mapper->map($json, new Compra());
                 $Compra->IDUsuario = $_SESSION["login"]["user"]["id"];
-                $resultado = json_encode(CompraDaoImp::save($Compra));
+                $resultado = CompraDaoImp::save($Compra);
 
-                foreach (json_decode($_POST["rows"]) as $item) {
-                    $DetalleCompra = $mapper->map($item, new DetalleCompra());
-                    //DetalleOrdenCompraDaoImp::save($DetalleOrdenCompra);
+                if ($resultado["status"]) {
+                    foreach (json_decode($_POST["rows"]) as $item) {
+                        $DetalleCompra = $mapper->map($item, new DetalleCompra());
+                        $DetalleCompra->IDCompra = $Compra->ID;
+                        DetalleCompraDaoImp::save($DetalleCompra);
+                    }
                 }
+                //$resultado = json_encode
                 break;
             case "proveedor":
                 $proveedor = $mapper->map($json, new Proveedor());
-                ProveedorDaoImp::save($proveedor);
-                $resultado = $proveedor->ID;
+                $resultado = json_encode(ProveedorDaoImp::save($proveedor));
                 break;
             case "presupuesto":
                 $presupuesto = $mapper->map($json, new Presupuesto());
-                $resultado = json_encode(
-                        PresupuestoDaoImp::save($presupuesto)
-                );
-                //$resultado = $presupuesto->ID;
+                $resultado = json_encode(PresupuestoDaoImp::save($presupuesto));
                 break;
         }
         break;
@@ -128,4 +128,4 @@ switch ($accion) {
         }
         break;
 }
-echo $resultado;
+echo is_array($resultado) ? json_encode($resultado) : $resultado;
