@@ -1,0 +1,4 @@
+$(function(){
+    initialComponents();
+    $("#tbDetalleOrdenCompraFaltante").bootstrapTable();
+});

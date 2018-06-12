@@ -6,6 +6,7 @@ class DetalleOrdenCompra extends ModelSQL {
     public $ID;
     public $Descripcion;
     public $Cantidad;
+    public $CantidadFacturada;
     //public $CantFacturada;
     //public $PrecioCompra;
     public $Precio;
@@ -16,6 +17,7 @@ class DetalleOrdenCompra extends ModelSQL {
     function __construct() {
         $this->ID = 0;
         $this->Cantidad = 0;
+        $this->CantidadFacturada = 0;
         $this->Precio = 0;
         $this->tabla = "DetalleOrdenCompra";
     }

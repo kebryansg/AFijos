@@ -60,7 +60,8 @@ $(function () {
     });
     $("button[cancelar]").click(function () {
         $("form[save]").clear();
-        $("#tbDetalleOrdenCompraFaltante").bootstrapTable("removeALL");
+        $("#Listado table").bootstrapTable("refresh");
+        $("#tbDetalleOrdenCompraFaltante").bootstrapTable("removeAll");
         hideRegistro();
     });
 });
