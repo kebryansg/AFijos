@@ -29,11 +29,23 @@ switch ($accion) {
             case "proveedor":
                 $resultado = json_encode(ProveedorDaoImp::listProveedor($params));
                 break;
+            case "proveedor.factura.pendiente":
+                $resultado = json_encode(ProveedorDaoImp::_listFacturaPendiente());
+                break;
             case "orden.compra":
                 $resultado = json_encode(OrdenCompraDaoImp::_list($params));
                 break;
             case "detalle.orden.compra":
-                $resultado = json_encode(DetalleOrdenCompraDaoImp::listDetalleOrdenCompra_OCompra($_POST["id"]));
+                $data = array(
+                    "compra" => $_POST["id"]
+                );
+                $resultado = json_encode(DetalleOrdenCompraDaoImp::listDetalleOrdenCompra_OCompra($data));
+                break;
+            case "detalle.orden.compra.proveedor":
+                $data = array(
+                    "proveedor" => $_POST["proveedor"]
+                );
+                $resultado = json_encode(DetalleOrdenCompraDaoImp::listDetalleOrdenCompra_OCompra($data));
                 break;
             case "proveedorOrdenCompra":
                 $resultado = json_encode(ProveedorDaoImp::_listOrdenCompras($params));
@@ -101,7 +113,6 @@ switch ($accion) {
                         DetalleCompraDaoImp::save($DetalleCompra);
                     }
                 }
-                //$resultado = json_encode
                 break;
             case "proveedor":
                 $proveedor = $mapper->map($json, new Proveedor());

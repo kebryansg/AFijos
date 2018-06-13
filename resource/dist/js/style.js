@@ -159,7 +159,6 @@ function initSelect() {
     $("select[data-fn]").each(function (i, select) {
         fnc = $(select).attr("data-fn");
         datos = self[fnc]();
-        console.log(datos);
         loadCbo(datos, select);
     });
 }

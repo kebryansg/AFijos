@@ -507,3 +507,13 @@ function loadSubModulo(params) {
     };
     params.success(getJson(json_data));
 }
+function loadDetalleOCProveedor(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "detalle.orden.compra.proveedor",
+            accion: "list"
+        }, params.data),
+        url: getURL("_compras")
+    };
+    params.success(getJson(json_data));
+}

@@ -3,7 +3,9 @@
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/DetalleOrdenCompra.php';
 include_once 'ModelProcedure.php';
+
 class DetalleOrdenCompraDaoImp extends ModelProcedure {
+
 //    public static function save($detalle) {
 //        $conn = (new C_MySQL())->open();
 //        $sql = ($detalle->ID == 0) ? $detalle->Insert() : $detalle->Update();
@@ -26,7 +28,7 @@ class DetalleOrdenCompraDaoImp extends ModelProcedure {
         $conn->close();
         return $list;
     }
-    
+
     public static function listDetalleOrdenCompra_Proveedor($proveedor) {
         $conn = (new C_MySQL())->open();
         $sql = "call ProveedorDetalleOrdenCompra($proveedor);";
@@ -35,18 +37,12 @@ class DetalleOrdenCompraDaoImp extends ModelProcedure {
         $conn->close();
         return $list;
     }
-    public static function listDetalleOrdenCompra_OCompra($compra) {
+
+    public static function listDetalleOrdenCompra_OCompra($params) {
         $conn = (new C_MySQL())->open();
-        $sql = "call sp_getDetallePedido($compra);";
+        $sql = "call sp_getDetallePedido('". json_encode($params) ."');";
         $list = C_MySQL::returnListAsoc($conn, $sql);
         $conn->close();
         return $list;
     }
-
-//    public function delete($detalle) {
-//        $conn = (new C_MySQL())->open();
-//        $sql = $detalle->Update_Delete();
-//        $conn->query($sql);
-//        $conn->close();
-//    }
 }

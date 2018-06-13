@@ -120,7 +120,7 @@ $.fn.serializeObject_KBSG = function (json = false) {
         }
         value[name] = val;
     });
-    return (json)? value : JSON.stringify(value);
+    return (json) ? value : JSON.stringify(value);
 };
 
 /* Validacion de Form */
@@ -194,7 +194,6 @@ $.fn.edit = function (datos) {
 
 /* Limpiar Contenedor */
 $.fn.clear = function () {
-
     $(this).removeData("id");
     $(this).find("select").selectpicker("val", -1);
     $(this).find("input:not([data-tipo='myDecimal'])").val("");
@@ -219,7 +218,8 @@ $.fn.getFecha = function () {
 
 /* Parse Float */
 function convertFloat(valor) {
-    return parseFloat(valor.toString().replace(/[^\d\.\-]/g, ""));;
+    return parseFloat(valor.toString().replace(/[^\d\.\-]/g, ""));
+    ;
 }
 
 /* Inputmask format*/
@@ -227,6 +227,11 @@ function formatInputMask(value) {
     return Inputmask.format(value, "myDecimal");
 }
 
+$.fn.refreshSelect = function () {
+    fnc = $(this).attr("data-fn");
+    datos = self[fnc]();
+    loadCbo(datos, this);
+};
 
 /* Setear INPUT[myDecimal] */
 function setearMyDecimal(input) {
@@ -258,6 +263,7 @@ function loadCbo(data, select) {
     });
     $(select).selectpicker("refresh");
 }
+
 /* Obtener un array JSON */
 function getJson(params) {
     result = {};

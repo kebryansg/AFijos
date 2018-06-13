@@ -1,60 +1,21 @@
 <!DOCTYPE html>
 <link href="resource/bootstrap/FileInput/fileinput.min.css" rel="stylesheet" />
 
-<div class="row" id="Listado">
-    <div class="col-md-12">
-        <div class="box box-primary">
-            <div class="box-body">
-                <table
-                    init
-                    data-ajax="loadComprasOrdenPedido">
-                    <thead>
-                        <tr>
-                            <th data-field="fecha" class="col-md-2">Fecha</th>
-                            <th data-field="proveedor">Proveedor</th>
-                            <th data-field="usuario">Usuario</th>
-                            <th data-field="items" data-align="center" class="col-md-1">Cant. Items</th>
-                            <th class="col-md-1" data-align="center" data-formatter="bAccion" data-events="evtInputComponent">Acción</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-
-        </div>
-
-    </div>
-</div>
-<div id="div-registro" class="hidden">
+<div id="div-registro">
     <div class="row">
         <div class="col-md-6">
             <div class="box box-info" OCompra>
-                <input type="text" name="idproveedor" class="hidden">
                 <div class="box-header with-border">
                     <h3 class="box-title"> <i class="fa fa-file-archive"></i> Orden Compra</h3>
                 </div>
                 <div class="box-body row">
                     <div class="col-md-4">
                         <div class="form-group form-group-sm">
-                            <label for="" class="control-label">Cod. O. Compra</label>
-                            <input type="text" class="form-control" name="id" readonly exclud>
-                        </div>  
-                        <div class="form-group form-group-sm">
-                            <label class="control-label">Fecha</label>
-                            <div class="input-group date">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" class="form-control " name="fecha" readonly exclud>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group form-group-sm">
                             <label for="" class="control-label">Proveedor</label>
-                            <input type="text" name="proveedor" class="form-control input-sm" readonly exclud>
-                        </div>  
+                            <select name="idproveedor" proveedor data-fn="selectProveedorFacturaPendiente" class="selectpicker form-control"></select>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -99,9 +60,12 @@
                 <div class="box-body">
                     <table
                         id="tbDetalleOrdenCompraFaltante"
+                        data-query-params="fnParams"
+                        data-ajax="loadDetalleOCProveedor"
                         class="table-hover table-striped">
                         <thead>
                             <tr>
+                                <th data-checkbox="true"></th>
                                 <th data-field="descripcion">Descripción</th>
                                 <th data-field="precio" class="col-md-1" data-align="center">Precio Unit.</th>
                                 <th data-field="saldo" class="col-md-1" data-formatter="formatInputMask" data-align="center">Saldo Pendiente</th>
@@ -124,9 +88,6 @@
 
 </div>
 
-
-
-
 <div id="findOrdenCompra" class="modal fade" >
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -145,4 +106,7 @@
         </div>
     </div>
 </div>
+<script src="resource/bootstrap/FileInput/fileinput.min.js" type="text/javascript"></script>
+<script src="resource/bootstrap/FileInput/locale/es.js" type="text/javascript"></script>
+<script src="resource/bootstrap/FileInput/themes/gly/theme.js" type="text/javascript"></script>
 <script type="text/javascript" src="resource/views/Compras/FacturarOrdenCompraProveedor.js"></script>

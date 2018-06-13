@@ -124,9 +124,9 @@ window.evtInputComponent = {
             url: getURL("_compras")
         });
         $("#tbDetalleOrdenCompraFaltante").bootstrapTable("load", datos.map(function(row){
-            row.iddetalleordencompra = row.id;
-            delete row["id"];
-            delete row["iddetalleordenpedido"];
+//            row.iddetalleordencompra = row.id;
+//            delete row["id"];
+//            delete row["iddetalleordenpedido"];
             return row;
         }));
     },

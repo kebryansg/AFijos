@@ -7,6 +7,15 @@ function selectGrupo() {
         url: getURL("_catalogo")
     });
 }
+function selectProveedorFacturaPendiente() {
+    return getJson({
+        data: {
+            op: "proveedor.factura.pendiente",
+            accion: "list"
+        },
+        url: getURL("_compras")
+    });
+}
 function selectTipoIdentificacion() {
     return getJson({
         data: {

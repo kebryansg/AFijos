@@ -47,7 +47,6 @@
                                 <input type="text" class="form-control " name="fecha" readonly exclud>
                             </div>
                         </div>
-
                     </div>
                     <div class="col-md-6">
                         <div class="form-group form-group-sm">

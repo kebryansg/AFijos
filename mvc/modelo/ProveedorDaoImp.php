@@ -36,6 +36,17 @@ class ProveedorDaoImp extends ModelProcedure {
         $conn->close();
         return $dts;
     }
+    public static function _listFacturaPendiente() {
+        $conn = (new C_MySQL())->open();
+        $sql = "select * from viewproveedor_facturarpendientes;";
+        $dts = array(
+            "rows" => C_MySQL::returnListAsoc($conn, $sql),
+             "total" => 0
+        );
+        $conn->close();
+        return $dts;
+    }
+    
     public static function listProveedor($params) {
         $conn = (new C_MySQL())->open();
         $banderapag = ($params["limit"] > 0 ) ? "limit " . $params['limit'] . " offset " . $params['offset'] : "";
@@ -51,10 +62,10 @@ class ProveedorDaoImp extends ModelProcedure {
         return $dts;
     }
 
-    public function delete($proveedor) {
-        $conn = (new C_MySQL())->open();
-        $sql = $proveedor->Update_Delete();
-        $conn->query($sql);
-        $conn->close();
-    }
+//    public function delete($proveedor) {
+//        $conn = (new C_MySQL())->open();
+//        $sql = $proveedor->Update_Delete();
+//        $conn->query($sql);
+//        $conn->close();
+//    }
 }
