@@ -36,7 +36,9 @@ class PresupuestoDaoImp extends ModelProcedure {
 
     public static function get($params) {
         $conn = (new C_MySQL())->open();
-        $sql = "SELECT * from presupuesto where año = '" . $params["fecha"] . "' and iddepartamento = '" . $params["departamento"] . "'";
+        $datos =  json_encode($params, JSON_UNESCAPED_UNICODE);
+        $sql = "SELECT *, sumOPedido('$datos') ordenpedido, sumOCompra('$datos') ordencompra, sumCompraFacturada('$datos') comprafacturada
+                from presupuesto where año = '" . $params["año"] . "' and iddepartamento = '" . $params["departamento"] . "'";
         $list = C_MySQL::returnListAsoc($conn, $sql);
         $conn->close();
         return $list;

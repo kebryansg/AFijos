@@ -76,7 +76,8 @@ function bAccion(value,row, index){
 
 function imaskMinMax(value, rowData, index) {
 //    value = ($.isEmptyObject(value)) ? 1 : value;
-    return '<input myDecimalMinMax d-max="' + rowData.saldo + '" field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
+    //return '<input myDecimalMinMax d-max="' + rowData.saldo + '" field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
+    return '<input myDecimalMinMax d-max="' + rowData.saldo + '" field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(rowData.saldo) + '">';
 }
 
 function tableColumns(op) {

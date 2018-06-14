@@ -40,16 +40,16 @@
                         <input type="text" name="presupuestoInicial" class="form-control" value="0.00" required data-tipo="myDecimal" >
                     </div>
                     <div class="form-group col-md-6 col-xs-6">
-                        <label class="control-label">Compras</label>
-                        <input name="compras" class="form-control" value="0.00" data-tipo="myDecimal" readonly>
+                        <label class="control-label">Compra Facturada</label>
+                        <input name="comprafacturada" class="form-control" value="0.00" data-tipo="myDecimal" readonly>
                     </div>
                     <div class="form-group col-md-6 col-xs-6">
                         <label class="control-label">Orden Pedido</label>
-                        <input name="ordenPedido" class="form-control" data-tipo="myDecimal" value="0.00" readonly >
+                        <input name="ordenpedido" class="form-control" data-tipo="myDecimal" value="0.00" readonly >
                     </div>
                     <div class="form-group col-md-6 col-xs-6">
                         <label class="control-label">Orden Compra</label>
-                        <input name="ordenCompra" class="form-control" data-tipo="myDecimal" value="0.00"  readonly>
+                        <input name="ordencompra" class="form-control" data-tipo="myDecimal" value="0.00"  readonly>
                     </div>
                 </div>
             </div>

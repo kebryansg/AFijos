@@ -66,7 +66,7 @@ switch ($accion) {
         switch ($op) {
             case "presupuesto":
                 $params = array(
-                    "fecha" => $_POST["fecha"],
+                    "año" => $_POST["fecha"],
                     "departamento" => $_POST["departamento"]
                 );
                 $list = PresupuestoDaoImp::get($params);

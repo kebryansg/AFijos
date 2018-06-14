@@ -9,7 +9,6 @@ $(function(){
         theme: "gly",
         language: 'es',
         maxFileCount: 3
-
     });
     
     $("select[proveedor]").change(function(e){
@@ -21,7 +20,6 @@ $(function(){
         RFactura = $("div[RFactura]").serializeObject_KBSG(true);
         delete RFactura["id"];
         datos.detallefactura = JSON.stringify(RFactura);
-        
 
         dt = {
             url: getURL("_compras"),
@@ -51,5 +49,6 @@ function fnParams(params){
 }
 
 function imaskMinMax(value, rowData, index) {
+    //return '<input myDecimalMinMax d-max="' + rowData.saldo + '" field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
     return '<input myDecimalMinMax d-max="' + rowData.saldo + '" field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
 }
