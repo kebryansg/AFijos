@@ -23,6 +23,9 @@ function getURL(url) {
         case "_configuracion":
             return "servidor/sConfiguracion.php";
             break;
+        case "_localizacion":
+            return "servidor/sLocalizacion.php";
+            break;
 
     }
 }
@@ -176,7 +179,7 @@ function loadPais(params) {
             op: "pais",
             accion: "list"
         }, params.data),
-        url: url
+        url: getURL("_localizacion")
     };
     params.success(getJson(json_data));
 }
@@ -229,7 +232,7 @@ function loadCiudad(params) {
             op: "ciudad",
             accion: "list"
         }, params.data),
-        url: url
+        url: getURL("_localizacion")
     };
     params.success(getJson(json_data));
 }

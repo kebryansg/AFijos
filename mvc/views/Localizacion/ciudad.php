@@ -1,12 +1,6 @@
 <!DOCTYPE html>
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header"><i class="fa fa-group fa-fw"></i> Ciudad</h1>
-    </div>
-</div>
-
 <div class="row hidden" id="div-registro">
-    <form save action="servidor/sCatalogo.php" role="ciudad" >
+    <form save action="_localizacion" role="ciudad" >
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-6">
@@ -18,17 +12,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="" class="control-label">País</label>
-                                <div class="input-group">
-                                    <input id_find name="IDPais" type="hidden" required>
-                                    <input descripcion_find type="text" class="form-control" aria-describedby="basic-addon1" readonly>
-                                    <span class = "input-group-btn">
-                                        <button search class="btn btn-default" type="button" data-toggle="modal" data-target="#modal-find" data-ajax="loadPais">
-                                            <i class="fa fa-search"></i> 
-                                        </button>
-                                        <button new class="btn btn-default" type="button" data-toggle="modal" data-target="#modal-new" data-url="mvc/views/activos/pais.php">
-                                            <i class="fa fa-plus"></i> 
-                                        </button>
-                                    </span>
+                                <div class="selectpickerComponent">
+                                    <select name="idpais" data-fn="selectPais" class="selectpicker form-control"></select>
                                 </div>
                             </div>
                         </div>
@@ -54,13 +39,13 @@
             </div>
             <div class="clearfix"></div>
             <div class="pull-right">
-                <button type="reset" class="btn btn-default" title="Haga clic aquí para cancelar el registro actual">
+                <button type="reset" class="btn btn-danger" title="Haga clic aquí para cancelar el registro actual">
                     <i class="fa fa-reply" aria-hidden="true"></i> Cancelar
                 </button>
                 &nbsp;
                 <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
                 <button type="submit" class="btn btn-primary" title="Haga clic aquí para guardar la información">
-                    <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar										
+                    <i class="fa fa-save" aria-hidden="true"></i> Guardar										
                 </button>
             </div>
         </div>
@@ -73,10 +58,10 @@
 <div class="row" id="Listado">
     <div class="col-md-12">
         <div id="toolbar" class="btn-group">
-            <button type="button" name="btn_add" class="btn btn-default btn-success btn-outline">
+            <button type="button" name="btn_add" class="btn btn-success btn-sm">
                 <i class="glyphicon glyphicon-plus"></i> Agregar
             </button>
-            <button type="button" name="btn_del" class="btn btn-default btn-danger btn-outline">
+            <button type="button" name="btn_del" class="btn btn-danger btn-sm">
                 <i class="glyphicon glyphicon-trash"></i> Eliminar
             </button>
         </div>
@@ -88,7 +73,7 @@
             <thead>
                 <tr>
                     <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="ID" data-align="center" class="col-md-1">Cód.</th>
+                    <th data-field="id" data-align="center" class="col-md-1">Cód.</th>
                     <th data-field="descripcion">Descripción</th>
                     <th data-field="observacion">Observación</th>
                     <th data-field="pais">País</th>
@@ -100,6 +85,6 @@
 </div>
 
 
-<script type="text/javascript" src="recursos/views/Activos/ciudad.js"></script>
+<script type="text/javascript" src="resource/views/Localizacion/ciudad.js"></script>
 
 

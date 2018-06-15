@@ -2,40 +2,20 @@
 
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Pais.php';
+include_once 'ModelProcedure.php';
 
-class PaisDaoImp {
-    public static function save($pais) {
+class PaisDaoImp extends ModelProcedure {
+
+    public static function _list($params) {
         $conn = (new C_MySQL())->open();
-        $sql = "";
-        if ($pais->ID == 0) {
-            $sql = $pais->Insert();
-        } else {
-            $sql = $pais->Update();
-        }
-        if ($conn->query($sql)) {
-            if ($pais->ID == 0) {
-                $pais->ID = $conn->insert_id;
-            }
-        }
-        $conn->close();
-    }
-
-    public static function listPais($top, $pag, &$count) {
-        $conn = (new C_MySQL())->open();
-        $banderapag = ($top > 0 ) ? "limit $top offset $pag" : "";
-        //where estado = 'ACT'
-        $sql = "select SQL_CALC_FOUND_ROWS id as ID , descripcion,observacion,estado from pais $banderapag ;";
-
-        $list = C_MySQL::returnListAsoc($conn, $sql);
-        $count = C_MySQL::row_count($conn);
+        $pagination = ($params["limit"] !== 0) ? "LIMIT " . $params["limit"] . " OFFSET " . $params["offset"] : "";
+        $params = array(
+            "sql" => "select SQL_CALC_FOUND_ROWS * from pais where descripcion like CONCAT('%','" . $params["buscar"] . "','%') $pagination;",
+            "params" => json_encode($params)
+        );
+        $list = C_MySQL::queryListAsoc_Total($conn, $params);
         $conn->close();
         return $list;
     }
 
-    public function delete($pais) {
-        $conn = (new C_MySQL())->open();
-        $sql = $pais->Update_Delete() ;
-        $conn->query($sql);
-        $conn->close();
-    }
 }

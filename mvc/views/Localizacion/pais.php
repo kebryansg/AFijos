@@ -2,10 +2,10 @@
 <div class="row" id="Listado">
     <div class="col-md-12">
         <div id="toolbar" class="btn-group">
-            <button type="button" name="btn_add" class="btn btn-success ">
+            <button type="button" name="btn_add" class="btn btn-success btn-sm">
                 <i class="glyphicon glyphicon-plus"></i> Agregar
             </button>
-            <button type="button" name="btn_del" class="btn btn-danger ">
+            <button type="button" name="btn_del" class="btn btn-danger btn-sm">
                 <i class="glyphicon glyphicon-trash"></i> Eliminar
             </button>
         </div>
@@ -17,7 +17,7 @@
             <thead>
                 <tr>
                     <th data-field="state" data-checkbox="true"></th>
-                    <th data-field="ID" class="col-md-1" data-align="center">Cód.</th>
+                    <th data-field="id" class="col-md-1" data-align="center">Cód.</th>
                     <th data-field="descripcion">Descripción</th>
                     <th data-field="observacion">Observación</th>
                     <th data-field="accion" data-formatter="defaultBtnAccion" data-events="event_accion_default" class="col-md-1" data-align="center">Acciones</th>
@@ -28,7 +28,7 @@
 </div>
 
 <div id="div-registro" class="hidden" >
-    <form role="pais" action="_catalogo" save>
+    <form role="pais" action="_localizacion" save>
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title"> <i class="fa fa-pencil-alt"></i> Datos Generales</h3>
@@ -72,5 +72,5 @@
 </div>
 
 
-<script type="text/javascript" src="resource/views/Activos/pais.js"></script>
+<script type="text/javascript" src="resource/views/Localizacion/pais.js"></script>
 
