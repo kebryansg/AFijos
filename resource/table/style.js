@@ -10,13 +10,13 @@ var TablePaginationDefault = {
 };
 
 /*var TableDefault = {
-    height: 400,
-    pageSize: 5,
-    clickToSelect: true,
-    //search: true,
-    pageList: [5, 10, 15, 20],
-    cache: false
-};*/
+ height: 400,
+ pageSize: 5,
+ clickToSelect: true,
+ //search: true,
+ pageList: [5, 10, 15, 20],
+ cache: false
+ };*/
 
 var TableFull = {
     clickToSelect: true,
@@ -133,7 +133,8 @@ window.event_input_default = {
     },
     'focus input[myDecimalMinMax]': function (e, value, row, index) {
         max = $(this).attr("d-max");
-        $(this).inputmask($.extend({}, myDecimalMinMax, {max: max}));
+        min = $.isEmptyObject($(this).attr("d-min"))? 1 : $(this).attr("d-min") ;
+        $(this).inputmask($.extend({}, myDecimalMinMax, {max: max, min: min}));
         $(this).select();
     }
 };

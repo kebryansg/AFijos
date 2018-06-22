@@ -19,9 +19,7 @@
                     </thead>
                 </table>
             </div>
-
         </div>
-
     </div>
 </div>
 <div id="div-registro" class="hidden">
@@ -122,9 +120,6 @@
     </div>
 
 </div>
-
-
-
 
 <div id="findOrdenCompra" class="modal fade" >
     <div class="modal-dialog modal-lg">
