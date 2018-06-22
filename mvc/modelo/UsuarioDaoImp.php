@@ -18,10 +18,15 @@ class UsuarioDaoImp {
         $conn->close();
     }
     
-    public static function listUsuarios($top, $pag, &$count){
+    public static function _list($params){
         $conn = (new C_MySQL())->open();
+        $params = array(
+            "procedure" => "sp_GetUsuarioDepartamento",
+            "params" => json_encode($params)
+        );
+        
         // Agregar Vista
-        $sql = "SELECT SQL_CALC_FOUND_ROWS * from viewUsuario limit $top offset $pag ;"; //"limit $top offset $limit"
+        //$sql = "SELECT SQL_CALC_FOUND_ROWS * from viewUsuario limit $top offset $pag ;"; //"limit $top offset $limit"
         
         $list = C_MySQL::returnListAsoc($conn, $sql);
         $count = C_MySQL::row_count($conn);
@@ -38,6 +43,13 @@ class UsuarioDaoImp {
         //$sql = "SELECT SQL_CALC_FOUND_ROWS * from viewUsuario limit $top offset $pag ;"; //"limit $top offset $limit"
         
         $list = C_MySQL::returnListAsoc_Total($conn, $params);
+        $conn->close();
+        return $list;
+    }
+    public static function _listUsuariosBodega($id){
+        $conn = (new C_MySQL())->open();
+        $sql = "select idbodega from bodegausuario where idusuario = $id;";
+        $list = C_MySQL::returnListAsoc($conn, $sql);
         $conn->close();
         return $list;
     }

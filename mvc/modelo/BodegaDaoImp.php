@@ -40,6 +40,21 @@ class BodegaDaoImp extends ModelProcedure {
         }
         $conn->close();
     }
+    public static function asignarUsuario($usuario, $bodegas) {
+        $conn = (new C_MySQL())->open();
+        $sql = "Delete from bodegausuario where idusuario = $usuario;";
+        $conn->query($sql);
+        $sql = "insert into bodegausuario(idbodega, idusuario) values";
+        if (count($bodegas) > 0) {
+            $list = array();
+            foreach ($bodegas as $bodega) {
+                array_push($list, "(" . $bodega . "," . $usuario . ")");
+            }
+            $sql .= join(',', $list);
+            $conn->query($sql);
+        }
+        $conn->close();
+    }
     
     
     public static function _listTipoMovimiento($bodega) {

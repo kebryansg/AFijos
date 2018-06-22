@@ -42,6 +42,26 @@ final class C_MySQL {
         );
         return $result;
     }
+    public static function queryListAsoc_Total($conn, $params) {
+        $list = array();
+        $sqls = array(
+            $params["sql"],
+            "SELECT FOUND_ROWS() as total;"
+        );
+        $conn->multi_query(join($sqls, ""));
+        do {
+            if ($resultado = $conn->store_result()) {
+                array_push($list, $resultado->fetch_all(MYSQLI_ASSOC));
+                $resultado->free();
+            }
+        } while ($conn->more_results() && $conn->next_result());
+
+        $result = array(
+            "rows" => $list[0],
+            "total" => $list[1][0]["total"]
+        );
+        return $result;
+    }
 
     public static function returnListAsoc($conn, $sql) {
         $list = array();
