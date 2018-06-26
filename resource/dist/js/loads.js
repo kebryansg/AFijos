@@ -352,7 +352,7 @@ function loadBodega(params) {
             op: "bodega",
             accion: "list"
         }, params.data),
-        url: url
+        url: getURL("_catalogo")
     };
     params.success(getJson(json_data));
 }

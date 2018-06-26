@@ -26,6 +26,10 @@ switch ($accion) {
             "buscar" => (isset($_POST["search"])) ? $_POST["search"] : NULL
         );
         switch ($op) {
+            case "detalle.compras":
+                $codigo = $_POST["codigo"];
+                $resultado = json_encode(DetalleCompraDaoImp::_list($codigo));
+                break;
             case "proveedor":
                 $resultado = json_encode(ProveedorDaoImp::listProveedor($params));
                 break;

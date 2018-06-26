@@ -28,6 +28,11 @@ switch ($accion) {
                 $movimientos = json_decode($_POST["movimientos"]);
                 BodegaDaoImp::asignarTipoMovimiento($bodega, $movimientos);
                 break;
+            case "bodega.usuario":
+                $usuario = $_POST["usuario"];
+                $bodegas = json_decode($_POST["bodegas"],true);
+                BodegaDaoImp::asignarUsuario($usuario, $bodegas);
+                break;
         }
         break;
     case "list":

@@ -90,18 +90,29 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="toolbar2" class="btn-group btn-group-sm" toolbar role="group" aria-label="...">
-                            <button add type="button" class="btn btn-success">
-                                <i class="glyphicon glyphicon-plus"></i> Agregar
-                            </button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-find-items" >
-                                <i class="glyphicon glyphicon-search"></i> Buscar
-                            </button>
-                            <button type="button" delete_local class="btn btn-danger ">
-                                <i class="glyphicon glyphicon-trash"></i> Eliminar
-                            </button>
+                        <div class="pull-right">
+                            <h4 class="box-title bold" style="color: red;"> <i class="fa fa-dollar-sign"></i> Total: <b total>0.00</b></h4>
                         </div>
-                        <table id="tbOrdenPedido" data-toolbar="#toolbar2"></table>
+                        <div class="pull-left">
+                            <div id="toolbar2" class="btn-group btn-group-sm" toolbar role="group" aria-label="...">
+                                <button add type="button" class="btn btn-success">
+                                    <i class="glyphicon glyphicon-plus"></i> Agregar
+                                </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-find-items" >
+                                    <i class="glyphicon glyphicon-search"></i> Buscar
+                                </button>
+                                <button type="button" delete_local class="btn btn-danger ">
+                                    <i class="glyphicon glyphicon-trash"></i> Eliminar
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="tbOrdenPedido" ></table>
                     </div>
                 </div>
                 <br>
