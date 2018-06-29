@@ -68,10 +68,6 @@ final class C_MySQL {
         if($resultado = $conn->query($sql)){
             $list = $resultado->fetch_all(MYSQLI_ASSOC);
         }
-//        foreach ($conn->query($sql) as $row) {
-//            array_push($list, $row);
-//        }
-        //$conn->close();
         return $list;
     }
 
@@ -80,10 +76,6 @@ final class C_MySQL {
         if($resultado  = $conn->query($sql)) {
             $result = $resultado->fetch_assoc();
         }
-//        foreach ($conn->query($sql) as $row) {
-//            $result = $row;
-//        }
-        //$conn->close();
         return $result;
     }
 

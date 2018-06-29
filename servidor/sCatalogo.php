@@ -257,18 +257,18 @@ switch ($accion) {
                 CentrocostoDaoImp::save($centrocosto);
                 $resultado = $centrocosto->ID;
                 break;
-            case "pais":
-                $pais = $mapper->map($json, new Pais());
-
-                PaisDaoImp::save($pais);
-                $resultado = $pais->ID;
-                break;
-            case "ciudad":
-                $ciudad = $mapper->map($json, new Ciudad());
-
-                CiudadDaoImp::save($ciudad);
-                $resultado = $ciudad->ID;
-                break;
+//            case "pais":
+//                $pais = $mapper->map($json, new Pais());
+//
+//                PaisDaoImp::save($pais);
+//                $resultado = $pais->ID;
+//                break;
+//            case "ciudad":
+//                $ciudad = $mapper->map($json, new Ciudad());
+//
+//                CiudadDaoImp::save($ciudad);
+//                $resultado = $ciudad->ID;
+//                break;
             case "grupos":
                 $grupo = $mapper->map($json, new Grupo());
                 GrupoDaoImp::save($grupo);

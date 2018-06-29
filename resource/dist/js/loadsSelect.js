@@ -74,6 +74,15 @@ function selectCiudad() {
         url: getURL("_catalogo")
     });
 }
+function selectPais() {
+    return getJson({
+        data: {
+            op: "pais",
+            accion: "list"
+        },
+        url: getURL("_localizacion")
+    });
+}
 
 function selectBodega() {
     return getJson({

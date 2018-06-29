@@ -11,7 +11,7 @@
                     <select data-fn="selectBodega" class="selectpicker form-control"></select>
                 </div>
                 <div class="form-group form-group-sm">
-                    <label class="control-label">Cód.Factura</label>
+                    <label class="control-label">Cód. Factura</label>
                     <div class="inputComponent">
 
                         <input codigoFactura type="text" class="form-control input-sm" style="width: 90%;">
