@@ -20,6 +20,22 @@ class TipoMovimientoDaoImp extends ModelProcedure {
         $conn->close();
         return $dts;
     }
+    
+    public static function asignarUsuario($usuario, $TipoMovimientos) {
+        $conn = (new C_MySQL())->open();
+        $sql = "Delete from tipomovimientousuario where idusuario = $usuario;";
+        $conn->query($sql);
+        $sql = "insert into tipomovimientousuario(idtipomovimiento, idusuario) values";
+        if (count($TipoMovimientos) > 0) {
+            $list = array();
+            foreach ($TipoMovimientos as $TipoMovimiento) {
+                array_push($list, "(" . $TipoMovimiento . "," . $usuario . ")");
+            }
+            $sql .= join(',', $list);
+            $conn->query($sql);
+        }
+        $conn->close();
+    }
 
 }
 

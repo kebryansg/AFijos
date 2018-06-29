@@ -18,6 +18,10 @@ switch ($accion) {
                 $id = $_POST["usuario"];
                 $resultado = UsuarioDaoImp::_listUsuariosBodega($id);
                 break;
+            case "usuario.TipoMovimiento":
+                $id = $_POST["usuario"];
+                $resultado = UsuarioDaoImp::_listUsuariosTipoMovimiento($id);
+                break;
         }
         break;
     case "get":

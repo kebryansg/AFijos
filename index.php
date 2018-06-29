@@ -54,7 +54,8 @@ require_once "init.php";
 
         <script type="text/javascript">
             //$("#containPages").load("mvc/views/Inventario/RegistroFactura.php");
-//            $("#containPages").load("mvc/views/Autorizacion/BodegaUsuario.php");
+            //$("#containPages").load("mvc/views/Autorizacion/BodegaUsuario.php");
+            $("#containPages").load("mvc/views/Autorizacion/UsuarioTipoMovimiento.php");
             //$("#containPages").load("mvc/views/Administracion/UsuarioDepartemento.php");
             //$("#containPages").load("mvc/views/Administracion/usuarios.php");
         </script>

@@ -33,6 +33,11 @@ switch ($accion) {
                 $bodegas = json_decode($_POST["bodegas"],true);
                 BodegaDaoImp::asignarUsuario($usuario, $bodegas);
                 break;
+            case "TipoMovimiento.usuario":
+                $usuario = $_POST["usuario"];
+                $TipoMovimientos = json_decode($_POST["TipoMovimientos"],true);
+                TipoMovimientoDaoImp::asignarUsuario($usuario, $TipoMovimientos);
+                break;
         }
         break;
     case "list":

@@ -53,6 +53,13 @@ class UsuarioDaoImp {
         $conn->close();
         return $list;
     }
+    public static function _listUsuariosTipoMovimiento($id){
+        $conn = (new C_MySQL())->open();
+        $sql = "select idtipomovimiento from tipomovimientousuario where idusuario = $id;";
+        $list = C_MySQL::returnListAsoc($conn, $sql);
+        $conn->close();
+        return $list;
+    }
     
     public static function delete($usuario){
         $conn = (new C_MySQL())->open();
