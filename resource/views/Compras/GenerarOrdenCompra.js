@@ -22,8 +22,6 @@ $(function () {
 
     $("#tbDetalleOrden,#tbDetalleOrdenSelect,#tbConfirmacion").bootstrapTable();
 
-//    getOrdenPedido();
-
     $("button[deleteItems]").click(function () {
         btnGroup = $(this).closest(".btn-group").attr("id");
         table = $("table[data-toolbar='#" + btnGroup + "']");
@@ -52,10 +50,7 @@ $(function () {
         ids_detalle = $("#tbDetalleOrdenSelect").bootstrapTable("getData").map(row => row.idItem);
         $.each($("#tbDetalleOrden").bootstrapTable("getSelections").filter(row => $.inArray(row.id, ids_detalle) === -1), function (i, row) {
             $("#tbDetalleOrden").bootstrapTable('uncheckBy', {field: 'id', values: row.id});
-//            row.id = 0;
-//            row.idItem = row.id;
-//            row.solicitar = row.saldo;
-//            row.state = false;
+
             $("#tbDetalleOrdenSelect").bootstrapTable("append", {
                 id: 0,
                 descripcion: row.descripcion,
@@ -98,27 +93,32 @@ $(function () {
         $('.nav-tabs li:eq(0) a').click();
     });
 
-    $('#findOrdenCompra').on({
-        'show.bs.modal': function (e) {
-            dataAjax = $(e.relatedTarget).attr("data-ajax");
-            dataColumns = $(e.relatedTarget).attr("data-columns");
-            $(this).data("ref", $(e.relatedTarget));
-
-
-            $('#findOrdenCompra table[search]').bootstrapTable($.extend({}, TablePaginationDefault, {
-                columns: tableColumns(dataColumns),
-                ajax: dataAjax
-            }));
-
-        }
-        , 'hidden.bs.modal': function (e) {
-            $('#findOrdenCompra table[search]').bootstrapTable("destroy");
-        }
-    });
+//    $('#findOrdenCompra').on({
+//        'show.bs.modal': function (e) {
+//            dataAjax = $(e.relatedTarget).attr("data-ajax");
+//            dataColumns = $(e.relatedTarget).attr("data-columns");
+//            $(this).data("ref", $(e.relatedTarget));
+//
+//
+//            $('#findOrdenCompra table[search]').bootstrapTable($.extend({}, TablePaginationDefault, {
+//                columns: tableColumns(dataColumns),
+//                ajax: dataAjax
+//            }));
+//
+//        }
+//        , 'hidden.bs.modal': function (e) {
+//            $('#findOrdenCompra table[search]').bootstrapTable("destroy");
+//        }
+//    });
 });
 
 function finRegistro() {
-    $("#clearPag").click();
+    //$("#clearPag").click();
+    $("div[OrdenPedido]").clear();
+    $("form[save]").clear();
+    $("#tbDetalleOrden").bootstrapTable("removeAll");
+    $("#tbDetalleOrdenSelect").bootstrapTable("removeAll");
+    $('.nav-tabs li:eq(0) a').click();
 }
 
 function tableColumns(op) {
@@ -187,7 +187,6 @@ function getDatos() {
             items: JSON.stringify($("#tbDetalleOrdenSelect").bootstrapTable("getData"))
         }
     };
-    console.log(datos);
     return datos;
 }
 
@@ -224,7 +223,7 @@ window.evtInputComponent = {
 };
 
 function loadAprobDetPedido(params) {
-    
+
     json_data = {
         data: $.extend({}, {
             accion: "list",
@@ -233,7 +232,7 @@ function loadAprobDetPedido(params) {
         url: getURL("_pedido")
     };
     params.success(getJson(json_data));
-    
+
     //DetalleOrdenPedido
 //    dt = {
 //        url: getURL("_pedido"),

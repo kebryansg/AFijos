@@ -9,13 +9,12 @@ columns_edit = [
         checkbox: true,
         sortable: false
     },
-
     {
         field: "cantidad",
         class: "col-md-1",
         title: "Cant.",
         sortable: false,
-        formatter: "imask",
+        formatter: "_imask",
         events: "event_input_default"
     },
     {
@@ -30,7 +29,7 @@ columns_edit = [
         class: "col-md-1",
         title: "Precio Unit.",
         sortable: false,
-        formatter: "imask",
+        formatter: "_imask",
         events: "event_input_default"
     }
 ];
@@ -45,7 +44,7 @@ columns_edit_v2 = [
         class: "col-md-1",
         title: "Cant.",
         sortable: false,
-        formatter: "imask",
+        formatter: "_imask",
         events: "event_input_default"
     },
     {
@@ -60,7 +59,7 @@ columns_edit_v2 = [
         class: "col-md-1",
         title: "Precio Unit.",
         sortable: false,
-        formatter: "imask",
+        formatter: "_imask",
         events: "event_input_default"
     }
 ];
@@ -195,6 +194,7 @@ function getDatos() {
 function clear() {
     $("#tbOrdenPedido").bootstrapTable("removeAll");
     $("button[delete_local]").removeData("ids");
+    $("b[total]").html(formatInputMask(0));
 }
 
 function edit(datos) {
@@ -204,7 +204,7 @@ function edit(datos) {
 
     /* Verificar el estado 
      * Lectura o Editar
-     * */
+    */
     if (datos.estado === "PEN" || datos.estado === "DEV") {
         $("#tbOrdenPedido").bootstrapTable('refreshOptions', {
             columns: columns_edit
@@ -224,7 +224,9 @@ function edit(datos) {
             OrdenPedido: datos.id
         }
     };
+    rows = getJson(dt);
     $("#tbOrdenPedido").bootstrapTable("load", getJson(dt));
+    sumTotal();
 }
 
 function BtnAccion(value, rowData, index) {
@@ -260,3 +262,14 @@ window.event_OPedido = {
         });
     }
 };
+
+function sumTotal(){
+    rows = $("#tbOrdenPedido").bootstrapTable("getData");
+    total = rows.reduce((a, b) => a + (b.cantidad * b.precioref), 0);
+    $("b[total]").html(formatInputMask(total));
+}
+
+function _imask(value, rowData, index) {
+    value = value !== undefined ? value : 0;
+    return '<input myDecimal data-fn="sumTotal" field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
+}

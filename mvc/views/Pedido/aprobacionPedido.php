@@ -85,11 +85,11 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title"> <i class="fa fa-list-alt"></i> Detalle Orden Pedido</h3>
+                        <h4 class="box-title bold pull-right" style="color: red;">Total:  <i class="fa fa-dollar-sign"></i> <b total>0.00</b></h4>
                     </div>
                     <div class="box-body">
                         <table
-                            id="tbOrdenPedido"
-                            full>
+                            id="tbOrdenPedido">
                             <thead>
                                 <tr>
                                     <th data-field="cantidad" class="col-md-1" data-align="center">Cant.</th>

@@ -199,7 +199,6 @@
                             Regresar
                         </button>
                         <button type="submit" class="btn btn-info">
-
                             <i class="fa fa-save"></i>
                             Finalizar
                         </button>

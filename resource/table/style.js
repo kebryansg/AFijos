@@ -113,6 +113,9 @@ window.event_input_default = {
             index: index,
             row: row
         });
+        if($(input).attr("data-fn")){
+            self[$(input).attr("data-fn")]();
+        }
     },
     "change input[myDecimalMinMax]": function (e, value, row, index) {
         input = $(e.target);
@@ -152,6 +155,7 @@ function defaultBtnAccion(value, rowData, index) {
             '</ul>' +
             '</div>';
 }
+
 function btnSeleccion(value) {
     return '<button name="seleccion" class="btn btn-success btn-sm"><i class="fa fa-check-circle" aria-hidden="true"></i> Seleccionar</button>';
 }
@@ -165,12 +169,14 @@ function defaultInput(value, rowData, index) {
 function rowCount(value, row, index) {
     return index + 1;
 }
+
 /* Formato para Cajas de Numeros Decimales */
 function imask(value, rowData, index) {
     //value = $.isEmptyObject(value) ? 0 : value;
     value = value !== undefined ? value : 0;
     return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
 }
+
 function mask(value, rowData, index) {
     value = $.isEmptyObject(value) ? 0 : value;
     return formatInputMask(value);

@@ -91,7 +91,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="pull-right">
-                            <h4 class="box-title bold" style="color: red;"> <i class="fa fa-dollar-sign"></i> Total: <b total>0.00</b></h4>
+                            <h4 class="box-title bold" style="color: red;">Total: <i class="fa fa-dollar-sign"></i> <b total>0.00</b></h4>
                         </div>
                         <div class="pull-left">
                             <div id="toolbar2" class="btn-group btn-group-sm" toolbar role="group" aria-label="...">
@@ -116,18 +116,21 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
+<!--                <div class="row">
                     <div class="col-md-12">
-                        <div class="pull-right">
-                            <div class="form-inline">
-                                <button class="btn btn-sm btn-danger" type='reset'>
-                                    <i class="fa fa-reply"></i> Cancelar
-                                </button>
-                                <button class="btn btn-sm btn-primary " type='submit'>
-                                    <i class="fa fa-save"></i> Guardar
-                                </button>
-                            </div>
-                        </div>
+
+                    </div>
+                </div>-->
+            </div>
+            <div class="box-footer">
+                <div class="pull-right">
+                    <div class="form-inline">
+                        <button class="btn btn-sm btn-danger" type='reset'>
+                            <i class="fa fa-reply"></i> Cancelar
+                        </button>
+                        <button class="btn btn-sm btn-primary " type='submit'>
+                            <i class="fa fa-save"></i> Guardar
+                        </button>
                     </div>
                 </div>
             </div>

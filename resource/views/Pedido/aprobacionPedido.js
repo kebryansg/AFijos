@@ -3,6 +3,7 @@ table = $("#Listado table");
 
 $(function(){
     initialComponents();
+    $("#tbOrdenPedido").bootstrapTable();
 });
 
 function BtnAprobar(){
@@ -24,7 +25,6 @@ function initReg(row){
     }else{
         $("button[type='submit']").show();
     }
-    console.log(row);
 }
 
 function queryParams(params){
@@ -62,5 +62,8 @@ function edit(datos){
             OrdenPedido: datos.id
         }
     };
-    $("#tbOrdenPedido").bootstrapTable("load", getJson(dt));
+    rows = getJson(dt);
+    $("#tbOrdenPedido").bootstrapTable("load", rows);
+    total = rows.reduce((a, b) => a + (b.cantidad * b.precioref), 0);
+    $("b[total]").html(formatInputMask(total));
 }
