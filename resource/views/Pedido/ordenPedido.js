@@ -1,3 +1,7 @@
+function sumP(res) {
+    console.log(res);
+    return res;
+}
 op = "ordenPedido";
 var data = null;
 var dataFormatter = null;
@@ -14,7 +18,7 @@ columns_edit = [
         class: "col-md-1",
         title: "Cant.",
         sortable: false,
-        formatter: "_imask",
+        formatter: "imask",
         events: "event_input_default"
     },
     {
@@ -29,7 +33,7 @@ columns_edit = [
         class: "col-md-1",
         title: "Precio Unit.",
         sortable: false,
-        formatter: "_imask",
+        formatter: "imask",
         events: "event_input_default"
     }
 ];
@@ -44,7 +48,7 @@ columns_edit_v2 = [
         class: "col-md-1",
         title: "Cant.",
         sortable: false,
-        formatter: "_imask",
+        formatter: "imask",
         events: "event_input_default"
     },
     {
@@ -59,7 +63,7 @@ columns_edit_v2 = [
         class: "col-md-1",
         title: "Precio Unit.",
         sortable: false,
-        formatter: "_imask",
+        formatter: "imask",
         events: "event_input_default"
     }
 ];
@@ -96,7 +100,7 @@ function initRegistro() {
     $('input[name="fecha"]').initDate();
 
     $('input[name="fecha"]').datepicker('update', new Date());
-    $("#tbOrdenPedido").bootstrapTable('refreshOptions', {
+    $("#tbOrdenPedido").bootstrapTable("refreshOptions",{
         columns: columns_edit_v2
     });
 }
@@ -143,6 +147,11 @@ $(function () {
     });
 
     $("#tbOrdenPedido").bootstrapTable();
+    
+    $("#tbOrdenPedido").on('pre-body.bs.table', function (e, data) {
+        total = data.reduce((a, b) => a + (b.cantidad * b.precioref), 0);
+        $("b[total]").html(formatInputMask(total));
+    });
 
 
     $("button[add]").click(function (e) {
@@ -200,20 +209,18 @@ function clear() {
 function edit(datos) {
     $("form[save]").edit(datos);
     $("#div-registro input[estado]").val(getEstado_OrdenPedido(datos.estado));
-
+    $("#tbOrdenPedido").bootstrapTable("destroy");
 
     /* Verificar el estado 
      * Lectura o Editar
-    */
+     */
+    options = {};
     if (datos.estado === "PEN" || datos.estado === "DEV") {
-        $("#tbOrdenPedido").bootstrapTable('refreshOptions', {
-            columns: columns_edit
-        });
+        options.columns = columns_edit;
     } else {
-        $("#tbOrdenPedido").bootstrapTable('refreshOptions', {
-            columns: columns
-        });
+        options.columns = columns;
     }
+    $("#tbOrdenPedido").bootstrapTable(options);
 
     //DetalleOrdenPedido
     dt = {
@@ -226,7 +233,7 @@ function edit(datos) {
     };
     rows = getJson(dt);
     $("#tbOrdenPedido").bootstrapTable("load", getJson(dt));
-    sumTotal();
+//    sumTotal();
 }
 
 function BtnAccion(value, rowData, index) {
@@ -263,13 +270,8 @@ window.event_OPedido = {
     }
 };
 
-function sumTotal(){
-    rows = $("#tbOrdenPedido").bootstrapTable("getData");
-    total = rows.reduce((a, b) => a + (b.cantidad * b.precioref), 0);
-    $("b[total]").html(formatInputMask(total));
-}
-
 function _imask(value, rowData, index) {
     value = value !== undefined ? value : 0;
-    return '<input myDecimal data-fn="sumTotal" field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
+//    return '<input myDecimal data-fn="sumTotal" field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
+    return '<input myDecimal field="' + this.field + '" type="text" class="form-control input-sm" value="' + formatInputMask(value) + '">';
 }

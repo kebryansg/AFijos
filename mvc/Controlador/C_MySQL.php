@@ -81,7 +81,8 @@ final class C_MySQL {
 
     public function open() {
         //$this->mysqli = new mysqli("localhost", "root", "12345", "cevroos_antaresv2");
-        $this->mysqli = new mysqli("localhost", "kbsg", "kbsg", "activos");
+        //$this->mysqli = new mysqli("localhost", "kbsg", "kbsg", "activos");
+        $this->mysqli = new mysqli("localhost", "kbsg", "kbsg", "activos_2");
         //$this->mysqli = new mysqli("localhost", "kbsg", "kbsg", "activos", 3309);
         if ($this->mysqli->connect_errno) {
             echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;

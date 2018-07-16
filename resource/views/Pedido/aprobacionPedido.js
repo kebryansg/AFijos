@@ -1,36 +1,42 @@
 op = "ordenPedido";
 table = $("#Listado table");
 
-$(function(){
+$(function () {
     initialComponents();
     $("#tbOrdenPedido").bootstrapTable();
+
+    $("#tbOrdenPedido").on('pre-body.bs.table', function (e, data) {
+        total = data.reduce((a, b) => a + (b.cantidad * b.precioref), 0);
+        $("b[total]").html(formatInputMask(total));
+    });
+
 });
 
-function BtnAprobar(){
+function BtnAprobar() {
     return  '<button view class="btn btn-default"> <i class="fa fa-eye" ></i> </button>';
 }
 window.event_btnAprobar = {
-    "click button[view]": function(e, value, row, index){
+    "click button[view]": function (e, value, row, index) {
         showRegistro();
         initReg(row);
     }
 };
 
 
-function initReg(row){
+function initReg(row) {
     edit(row);
-    
-    if(row.estado === "APR"){
+
+    if (row.estado === "APR") {
         $("button[type='submit']").hide();
-    }else{
+    } else {
         $("button[type='submit']").show();
     }
 }
 
-function queryParams(params){
+function queryParams(params) {
     return params;
 }
-function getDatos(){
+function getDatos() {
     form = "form[save]";
     datos = {
         url: getURL($(form).attr("action")),
@@ -43,7 +49,7 @@ function getDatos(){
     return datos;
 }
 
-function edit(datos){
+function edit(datos) {
     encabezado = getJson({
         url: getURL("_pedido"),
         data: {
@@ -64,6 +70,4 @@ function edit(datos){
     };
     rows = getJson(dt);
     $("#tbOrdenPedido").bootstrapTable("load", rows);
-    total = rows.reduce((a, b) => a + (b.cantidad * b.precioref), 0);
-    $("b[total]").html(formatInputMask(total));
 }

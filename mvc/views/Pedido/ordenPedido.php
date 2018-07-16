@@ -112,15 +112,10 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="tbOrdenPedido" ></table>
+                        <table id="tbOrdenPedido" data-response-handler="sumTotal" ></table>
                     </div>
                 </div>
                 <br>
-<!--                <div class="row">
-                    <div class="col-md-12">
-
-                    </div>
-                </div>-->
             </div>
             <div class="box-footer">
                 <div class="pull-right">
