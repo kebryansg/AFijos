@@ -44,7 +44,7 @@ switch ($accion) {
                 $resultado = json_encode(OrdenPedidoDaoImp::listOrdenPedido($params));
                 break;
             case "aprobacion.detalle.pedido":
-                $resultado = json_encode(DetalleOrdenPedidoDaoImp::listDetalleOrdenPedido());
+                $resultado = json_encode(DetalleOrdenPedidoDaoImp::listDetalleOrdenPedido($params));
                 break;
             case "compra.pedido":
                 $params["estado"] = "APR";

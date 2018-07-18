@@ -7,6 +7,7 @@ if (!isset($_SESSION["login"])) {
 $user = $_SESSION["login"]["user"];
 
 require_once "init.php";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,9 +56,10 @@ require_once "init.php";
         <script type="text/javascript">
             //$("#containPages").load("mvc/views/Inventario/RegistroFactura.php");
             //$("#containPages").load("mvc/views/Autorizacion/BodegaUsuario.php");
-            $("#containPages").load("mvc/views/Autorizacion/UsuarioTipoMovimiento.php");
+            //$("#containPages").load("mvc/views/Autorizacion/UsuarioTipoMovimiento.php");
             //$("#containPages").load("mvc/views/Administracion/UsuarioDepartemento.php");
             //$("#containPages").load("mvc/views/Administracion/usuarios.php");
+            $("#containPages").load("mvc/views/Compras/Cotizacion/CotizacionOPedido.php");
         </script>
     </body>
 </html>

@@ -93,23 +93,23 @@ $(function () {
         $('.nav-tabs li:eq(0) a').click();
     });
 
-//    $('#findOrdenCompra').on({
-//        'show.bs.modal': function (e) {
-//            dataAjax = $(e.relatedTarget).attr("data-ajax");
-//            dataColumns = $(e.relatedTarget).attr("data-columns");
-//            $(this).data("ref", $(e.relatedTarget));
-//
-//
-//            $('#findOrdenCompra table[search]').bootstrapTable($.extend({}, TablePaginationDefault, {
-//                columns: tableColumns(dataColumns),
-//                ajax: dataAjax
-//            }));
-//
-//        }
-//        , 'hidden.bs.modal': function (e) {
-//            $('#findOrdenCompra table[search]').bootstrapTable("destroy");
-//        }
-//    });
+    $('#findOrdenCompra').on({
+        'show.bs.modal': function (e) {
+            dataAjax = $(e.relatedTarget).attr("data-ajax");
+            dataColumns = $(e.relatedTarget).attr("data-columns");
+            $(this).data("ref", $(e.relatedTarget));
+
+
+            $('#findOrdenCompra table[search]').bootstrapTable($.extend({}, TablePaginationDefault, {
+                columns: tableColumns(dataColumns),
+                ajax: dataAjax
+            }));
+
+        }
+        , 'hidden.bs.modal': function (e) {
+            $('#findOrdenCompra table[search]').bootstrapTable("destroy");
+        }
+    });
 });
 
 function finRegistro() {

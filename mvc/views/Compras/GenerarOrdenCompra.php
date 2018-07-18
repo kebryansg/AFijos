@@ -94,10 +94,8 @@
             <form class="tab-content" save role="OrdenCompra" action="_compras">
                 <div class="tab-pane fade in active" id="home" >
                     <div class="center-content">
-
                         <div class="col-md-10">
                             <h4 class="bold"><u>Seleccionar Items</u></h4>
-
                             <div id="toolbar" class="inputComponent">
                                 <input type="text" id="txtProveedor" class="form-control input-sm" style="width: 300px; margin-right: 5px;" placeholder="Proveedor" readonly>
                                 <input type="hidden" name="idproveedor" required>
