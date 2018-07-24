@@ -31,6 +31,16 @@ function getURL(url) {
 }
 /* Autorizacion */
 
+function loadCotizacion(params) {
+    json_data = {
+        data: $.extend({}, {
+            op: "cotizacion",
+            accion: "list"
+        }, params.data),
+        url: getURL("_compras")
+    };
+    params.success(getJson(json_data));
+}
 function loadTipoMovimiento(params) {
     json_data = {
         data: $.extend({}, {

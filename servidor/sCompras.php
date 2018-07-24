@@ -7,6 +7,7 @@ include_once '../mvc/modelo/OrdenCompraDaoImp.php';
 include_once '../mvc/modelo/DetalleOrdenCompraDaoImp.php';
 include_once '../mvc/modelo/CompraDaoImp.php';
 include_once '../mvc/modelo/DetalleCompraDaoImp.php';
+include_once '../mvc/modelo/CotizacionDaoImp.php';
 
 include_once '../mvc/Controlador/JsonMapper.php';
 $accion = $_POST["accion"];
@@ -26,6 +27,9 @@ switch ($accion) {
             "buscar" => (isset($_POST["search"])) ? $_POST["search"] : NULL
         );
         switch ($op) {
+            case "cotizacion":
+                $resultado = json_encode(CotizacionDaoImp::_list($params));
+                break;
             case "detalle.compras":
                 $codigo = $_POST["codigo"];
                 $resultado = json_encode(DetalleCompraDaoImp::_list($codigo));
