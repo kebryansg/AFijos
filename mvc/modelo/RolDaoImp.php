@@ -42,13 +42,6 @@ class RolDaoImp extends ModelProcedure {
         return $dts;
     }
 
-    public function delete($rol) {
-        $conn = (new C_MySQL())->open();
-        $sql = $rol->Update_Delete();
-        $conn->query($sql);
-        $conn->close();
-    }
-
     public static function ListPermisoRol() {
         $conn = (new C_MySQL())->open();
         $sql = "SELECT SQL_CALC_FOUND_ROWS * from viewpermisorol;";

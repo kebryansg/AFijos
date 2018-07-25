@@ -94,6 +94,7 @@ switch ($accion) {
         break;
     case "save":
         $json = json_decode($_POST["datos"]);
+        $user = $_SESSION["login"]["user"];
         switch ($op) {
             case "OrdenCompra":
                 $OrdenCompra = $mapper->map($json, new OrdenCompra());
@@ -111,7 +112,7 @@ switch ($accion) {
                 break;
             case "facturar.compra.orden":
                 $Compra = $mapper->map($json, new Compra());
-                $Compra->IDUsuario = $_SESSION["login"]["user"]["id"];
+                $Compra->IDUsuario = $user["id"];
                 $resultado = CompraDaoImp::save($Compra);
 
                 if ($resultado["status"]) {
@@ -129,6 +130,27 @@ switch ($accion) {
             case "presupuesto":
                 $presupuesto = $mapper->map($json, new Presupuesto());
                 $resultado = json_encode(PresupuestoDaoImp::save($presupuesto));
+                break;
+            case "cotizacion": 
+                $Cotizacion = $mapper->map($json, new Cotizacion());
+                $Cotizacion->DetalleRegistro = array(
+                    "user" => $user["id"]
+                );
+                $resultado = json_encode(CotizacionDaoImp::save($Cotizacion));
+                if($resultado["status"]){
+                    $select = json_decode($_POST["selects"], true);
+                    foreach ($select["items"] as $item) {
+                        $DetalleCotizacion = new DetalleCotizacion();
+                        $DetalleCotizacion->IDCotizacion = $Cotizacion->ID;
+                        $DetalleCotizacion->IDDetalleOrdenPedido = $item;
+                        DetalleCotizacionDaoImp::save($DetalleCotizacion);
+                    }
+                    
+                    //DetalleCotizacionDaoImp::save($obj)
+                    
+                }
+                
+                
                 break;
         }
         break;

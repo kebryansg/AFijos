@@ -5,7 +5,8 @@ include_once '../mvc/Controlador/Entidades/Cotizacion.php';
 include_once 'ModelProcedure.php';
 
 class CotizacionDaoImp extends ModelProcedure {
-    public static function _list($params){
+
+    public static function _list($params) {
         $conn = (new C_MySQL())->open();
         $param = array(
             "procedure" => "sp_GetCotizacion",
@@ -15,4 +16,5 @@ class CotizacionDaoImp extends ModelProcedure {
         $conn->close();
         return $list;
     }
+
 }

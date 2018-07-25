@@ -11,12 +11,7 @@ $(function () {
         clickToSelect: true
     });
 
-    $("input[name='fechaFin']").initDate();
-    $("input[name='fecha']").val(formatView(moment()));
-
-    $("button[addCotizacion]").click(function () {
-        showRegistro();
-    });
+//    $("input[name='fechaFin']").initDate();
 
     $("#tbDetalleOrden, table[Proveedor]").on('check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table', function (e, rows) {
         _table = $(e.target).attr("data-count");
@@ -24,7 +19,7 @@ $(function () {
         if ($.inArray(e.type, ['check', 'check-all']) > -1) {
             //Add
             $.each(ids, function (i, id) {
-                if ($.inArray(id, select[_table]) === -1){
+                if ($.inArray(id, select[_table]) === -1) {
                     select[_table].push(id);
                 }
             });
@@ -39,6 +34,7 @@ $(function () {
         $("span[" + _table + "]").html(select[_table].length);
     });
 
+
 });
 
 function loadAprobDetPedido(params) {
@@ -52,13 +48,25 @@ function loadAprobDetPedido(params) {
     params.success(getJson(json_data));
 }
 
-function getDatos() {
-    dt = {
-        accion: "save",
-        op: "cotizacion",
-        datos: $("div[datos]").serializeObject_KBSG(),
-        selects: JSON.stringify(select)
+function getDatos(form) {
+    datos = {
+        url: getURL($(form).attr("action")),
+        dt: {
+            accion: "save",
+            op: "cotizacion",
+            datos: $(form).serializeObject_KBSG(),
+            selects: JSON.stringify(select)
+        }
     };
-    return dt;
+    return datos;
+}
 
+function initRegistro() {
+    $("input[name='fecha']").setDate(moment());
+}
+function clear() {
+    select = {
+        items: [],
+        proveedor: []
+    };
 }

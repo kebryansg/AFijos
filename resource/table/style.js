@@ -9,26 +9,19 @@ var TablePaginationDefault = {
     sidePagination: "server"
 };
 
-/*var TableDefault = {
- height: 400,
- pageSize: 5,
- clickToSelect: true,
- //search: true,
- pageList: [5, 10, 15, 20],
- cache: false
- };*/
-
 var TableFull = {
     clickToSelect: true,
     cache: false,
     showRefresh: true
 };
 
-
-
 /* Formato Presentacion Fecha */
 function defaultFecha(value, rowData, index) {
     return formatView(value).toUpperCase();
+}
+
+function formatterDepreciable(value) {
+    return (parseInt(value)) ? "Si" : "No";
 }
 
 /* Aplicar el TRUE check rows  */

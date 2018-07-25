@@ -1,5 +1,6 @@
 var nav4 = window.Event ? true : false;
 var selections = [];
+moment.locale("es");
 var fecha_format = {
     year: "YYYY",
     month: "MM, YYYY",
@@ -7,8 +8,6 @@ var fecha_format = {
     view: "MMMM D, YYYY",
     save: "YYYY-MM-DD HH:mm:ss"
 };
-
-moment.locale("es");
 
 Inputmask.extendAliases({
     'myDecimal': {
@@ -145,10 +144,6 @@ function alertEliminarRegistros() {
     });
 }
 
-function formatterDepreciable(value) {
-    return (parseInt(value)) ? "Si" : "No";
-}
-
 function limpiarContenedor(contenedor) {
     $(contenedor + " input").val("");
     $(contenedor + " textarea").val("");
@@ -178,7 +173,6 @@ $(function () {
         $.post(getURL("_configuracion"), {accion: "close"}, function () {
             location.href = "login.php";
         });
-
     });
 
     $("span[refreshMenu]").click(function () {
@@ -196,7 +190,6 @@ $(function () {
         select = $(div).find("select");
         fnc = $(select).attr("data-fn");
         datos = self[fnc]();
-        console.log(datos);
         loadCbo(datos, select);
     });
 
@@ -208,7 +201,6 @@ $(function () {
     });
 
     $(document).on("click", "button[name='btn_del']", function (e) {
-        console.log(selections);
         if (selections.length > 0) {
             alertEliminarRegistros();
         }
@@ -216,7 +208,6 @@ $(function () {
 
     $(document).on("click", "button[name='btn_del_individual']", function (e) {
         div_id = $(this).closest("div[toolbar]").attr("id");
-        alert(div_id);
         tableSelect = $("table[data-toolbar='#" + div_id + "']");
         deleteIndividual(tableSelect);
     });
@@ -225,7 +216,7 @@ $(function () {
         $(this).closest(".modal").modal("hide");
     });
 
-    $(document).on("click", "form[save] button[type='reset']", function (e) {
+    $(document).on("click", "form[save] button[type='reset'], form[save_fn] button[type='reset']", function (e) {
         form = $(this).closest("form");
         $(form).trigger("reset");
         $.each($(form).find('select'), function (i, select) {
@@ -259,26 +250,30 @@ $(function () {
 
     $(document).on("submit", "form[save]", function (e) {
         e.preventDefault();
-
         if (!$(this).validate()) {
             return;
         }
-        datos = {};
-        //if (typeof "getDatos" !== 'undefined' && jQuery.isFunction("getDatos")) {
-        if (typeof window.getDatos === 'function') {
-            datos = getDatos();
-        } else {
-            datos = {
-                url: getURL($(this).attr("action")),
-                dt: {
-                    accion: "save",
-                    op: $(this).attr("role"),
-                    datos: $(this).serializeObject_KBSG()
-                }
-            };
-        }
+        datos = {
+            url: getURL($(this).attr("action")),
+            dt: {
+                accion: "save",
+                op: $(this).attr("role"),
+                datos: $(this).serializeObject_KBSG()
+            }
+        };
         save_global(datos);
         $("#Listado table").bootstrapTable("refresh");
+        $(this).trigger("reset");
+        hideRegistro();
+    });
+    
+    $(document).on("submit", "form[save_fn]", function (e) {
+        e.preventDefault();
+        if (!$(this).validate()) {
+            return;
+        }
+        datos = getDatos(this);
+        save_global(datos);
         $(this).trigger("reset");
         hideRegistro();
     });
@@ -356,7 +351,9 @@ $(function () {
             if ($.inArray(e.type, ['check', 'check-all']) > -1) {
 //Add
                 $.each(ids, function (i, id) {
-                    selections.push(id);
+                    if ($.inArray(id, selections) === -1) {
+                        selections.push(id);
+                    }
                 });
             } else {
 //Delete
@@ -420,12 +417,7 @@ function deletes() {
     $(table).bootstrapTable("refresh");
 }
 
-
 function deleteIndividual(tableSelect) {
     ids = $(tableSelect).bootstrapTable("getSelections").map(row => row.ID);
     $(tableSelect).bootstrapTable("remove", {field: 'ID', values: ids});
 }
-
-
-
-

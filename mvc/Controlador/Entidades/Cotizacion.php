@@ -1,12 +1,15 @@
 <?php
 
 include_once 'ModelSQL.php';
+
 class Cotizacion extends ModelSQL {
+
     public $tabla;
     public $ID;
     public $FechaIni;
     public $FechaFin;
     public $Observacion;
+    public $DetalleRegistro;
     public $Estado;
 
     function __construct() {
@@ -14,4 +17,5 @@ class Cotizacion extends ModelSQL {
         $this->Estado = "ACT";
         $this->tabla = "cotizacion";
     }
+
 }

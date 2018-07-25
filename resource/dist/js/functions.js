@@ -38,6 +38,10 @@ $.fn.iniciarTable = function () {
 
 };
 
+$.fn.setDate = function(date){
+    $(this).val(formatView(date));
+    $(this).data("date",date.format(fecha_format.save));
+};
 
 $.fn.initDate = function () {
     dt = $(this).attr("dt-tipo");
@@ -105,6 +109,9 @@ $.fn.serializeObject_KBSG = function (json = false) {
                 switch (tipo) {
                     case "myDecimal":
                         val = $(component).getFloat();
+                        break;
+                    case "fechaView":
+                        val = $(component).data("date");
                         break;
                     case "fecha":
                         val = $(component).getFecha();

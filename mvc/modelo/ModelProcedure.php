@@ -24,7 +24,7 @@ class ModelProcedure {
         return $response;
     }
 
-    public function delete($obj) {
+    public static function delete($obj) {
         $conn = (new C_MySQL())->open();
         $sql = $obj->Update_Delete();
         $conn->query($sql);
