@@ -8,6 +8,8 @@ include_once '../mvc/modelo/DetalleOrdenCompraDaoImp.php';
 include_once '../mvc/modelo/CompraDaoImp.php';
 include_once '../mvc/modelo/DetalleCompraDaoImp.php';
 include_once '../mvc/modelo/CotizacionDaoImp.php';
+include_once '../mvc/modelo/DetalleCotizacionDaoImp.php';
+include_once '../mvc/modelo/DetalleCotizacionProveedorDaoImp.php';
 
 include_once '../mvc/Controlador/JsonMapper.php';
 $accion = $_POST["accion"];
@@ -131,26 +133,33 @@ switch ($accion) {
                 $presupuesto = $mapper->map($json, new Presupuesto());
                 $resultado = json_encode(PresupuestoDaoImp::save($presupuesto));
                 break;
-            case "cotizacion": 
+            case "cotizacion":
                 $Cotizacion = $mapper->map($json, new Cotizacion());
                 $Cotizacion->DetalleRegistro = array(
                     "user" => $user["id"]
                 );
-                $resultado = json_encode(CotizacionDaoImp::save($Cotizacion));
-                if($resultado["status"]){
+                $resultado = CotizacionDaoImp::save($Cotizacion);
+                if ($resultado["status"]) {
+                    $detCotizacion = array();
                     $select = json_decode($_POST["selects"], true);
                     foreach ($select["items"] as $item) {
                         $DetalleCotizacion = new DetalleCotizacion();
                         $DetalleCotizacion->IDCotizacion = $Cotizacion->ID;
                         $DetalleCotizacion->IDDetalleOrdenPedido = $item;
                         DetalleCotizacionDaoImp::save($DetalleCotizacion);
+                        array_push($detCotizacion, $DetalleCotizacion->ID);
                     }
-                    
-                    //DetalleCotizacionDaoImp::save($obj)
-                    
+                    foreach ($select["proveedor"] as $proveedor) {
+                        foreach ($detCotizacion as $det) {
+                            $DetCotProv = new DetalleCotizacionProveedor();
+                            $DetCotProv->IDDetalleCotizacion = $det;
+                            $DetCotProv->IDProveedor=$proveedor;
+                            $DetCotProv->Estado = 'BOR';
+                            $DetCotProv->Precio = $DetCotProv->Cantidad = 0;
+                            DetalleCotizacionProveedorDaoImp::save($DetCotProv);
+                        }
+                    }
                 }
-                
-                
                 break;
         }
         break;

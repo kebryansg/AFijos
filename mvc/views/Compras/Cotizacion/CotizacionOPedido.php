@@ -17,7 +17,7 @@
                             <th data-field="fechaIni">Fecha</th>
                             <th data-field="fechaFin">Fecha Plazo</th>
                             <th data-field="observacion">Observación</th>
-                            <th class="col-md-1" data-align="center" data-formatter="bAccion" data-events="evtInputComponent">Acción</th>
+                            <th class="col-md-1" data-align="center" data-formatter="btnAccion" data-events="evtInputComponent">Acción</th>
                         </tr>
                     </thead>
                 </table>
