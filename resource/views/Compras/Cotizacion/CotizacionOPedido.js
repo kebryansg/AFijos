@@ -63,10 +63,9 @@ function getDatos(form) {
 
 function initRegistro() {
     $("input[name='fecha']").setDate(moment());
-}
-function clear() {
-    select = {
+     select = {
         items: [],
         proveedor: []
     };
+    $("#tbDetalleOrden, table[Proveedor]").bootstrapTable("refresh");
 }
