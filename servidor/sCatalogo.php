@@ -1,5 +1,8 @@
 <?php
 
+include_once '../mvc/Controlador/C_MySQL.php';
+include_once '../mvc/modelo/ModelProcedure.php';
+
 include_once '../mvc/modelo/GrupoDaoImp.php';
 include_once '../mvc/modelo/ClaseDaoImp.php';
 include_once '../mvc/modelo/SubGrupoDaoImp.php';
@@ -21,8 +24,6 @@ include_once '../mvc/modelo/UbicacionDaoImp.php';
 include_once '../mvc/modelo/TipoIdentificacionDaoImp.php';
 include_once '../mvc/modelo/TipoEmisorDaoImp.php';
 include_once '../mvc/modelo/ContribuyenteDaoImp.php';
-//include_once '../mvc/modelo/TipoSubTipoGeneralDaoImp.php';
-
 
 
 include_once '../mvc/Controlador/JsonMapper.php';
@@ -103,10 +104,7 @@ switch ($accion) {
                 ));
                 break;
             case "departamento":
-                $resultado = json_encode(array(
-                    "rows" => DepartamentoDaoImp::listDepartamento($top, $pag, $count),
-                    "total" => $count
-                ));
+                $resultado = DepartamentoDaoImp::_list($params);
                 break;
             case "area":
                 $resultado = json_encode(array(
@@ -405,4 +403,4 @@ switch ($accion) {
         }
         break;
 }
-echo $resultado;
+echo is_array($resultado)? json_encode($resultado): $resultado;

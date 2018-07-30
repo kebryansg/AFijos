@@ -2,23 +2,23 @@
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Grupo.php';
 
-class GrupoDaoImp {
-    public static function save($grupo){
-        //$grupo =  new Grupo();
-        $conn = (new C_MySQL())->open();
-        $sql = "";
-        if($grupo->ID == 0){
-            $sql = $grupo->Insert();
-        }else{
-            $sql = $grupo->Update();
-        }
-        if($conn->query($sql)){
-            if($grupo->ID == 0){
-                $grupo->ID = $conn->insert_id;
-            }
-        }
-        $conn->close();
-    }
+class GrupoDaoImp extends ModelProcedure{
+//    public static function save($grupo){
+//        //$grupo =  new Grupo();
+//        $conn = (new C_MySQL())->open();
+//        $sql = "";
+//        if($grupo->ID == 0){
+//            $sql = $grupo->Insert();
+//        }else{
+//            $sql = $grupo->Update();
+//        }
+//        if($conn->query($sql)){
+//            if($grupo->ID == 0){
+//                $grupo->ID = $conn->insert_id;
+//            }
+//        }
+//        $conn->close();
+//    }
     public static function listGrupo($params){
         $conn = (new C_MySQL())->open();
         $banderapag = ($params["top"] > 0 ) ? "limit " . $params['top'] . " offset " . $params['pag'] : "";
@@ -35,10 +35,10 @@ class GrupoDaoImp {
         return $dts;
     }
     
-    public function delete($grupo) {
-        $conn = (new C_MySQL())->open();
-        $sql = $grupo->Update_Delete() ;
-        $conn->query($sql);
-        $conn->close();
-    }
+//    public function delete($grupo) {
+//        $conn = (new C_MySQL())->open();
+//        $sql = $grupo->Update_Delete() ;
+//        $conn->query($sql);
+//        $conn->close();
+//    }
 }

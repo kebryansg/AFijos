@@ -2,22 +2,8 @@
 
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Ubicacion.php';
-class UbicacionDaoImp {
-    public static function save($ubicacion) {
-        $conn = (new C_MySQL())->open();
-        $sql = "";
-        if ($ubicacion->ID == 0) {
-            $sql = $ubicacion->Insert();
-        } else {
-            $sql = $ubicacion->Update();
-        }
-        if ($conn->query($sql)) {
-            if ($ubicacion->ID == 0) {
-                $ubicacion->ID = $conn->insert_id;
-            }
-        }
-        $conn->close();
-    }
+
+class UbicacionDaoImp extends ModelProcedure {
 
     public static function listUbicacion($top, $pag, &$count) {
         $conn = (new C_MySQL())->open();
@@ -31,10 +17,4 @@ class UbicacionDaoImp {
         return $list;
     }
 
-    public function delete($ubicacion) {
-        $conn = (new C_MySQL())->open();
-        $sql = $ubicacion->Update_Delete();
-        $conn->query($sql);
-        $conn->close();
-    }
 }

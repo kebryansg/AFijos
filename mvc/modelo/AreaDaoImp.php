@@ -3,22 +3,7 @@
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Area.php';
 
-class AreaDaoImp {
-    public static function save($area) {
-        $conn = (new C_MySQL())->open();
-        $sql = "";
-        if ($area->ID == 0) {
-            $sql = $area->Insert();
-        } else {
-            $sql = $area->Update();
-        }
-        if ($conn->query($sql)) {
-            if ($area->ID == 0) {
-                $area->ID = $conn->insert_id;
-            }
-        }
-        $conn->close();
-    }
+class AreaDaoImp extends ModelProcedure {
 
     public static function listArea($top, $pag, &$count) {
         $conn = (new C_MySQL())->open();
@@ -32,10 +17,4 @@ class AreaDaoImp {
         return $list;
     }
 
-    public function delete($area) {
-        $conn = (new C_MySQL())->open();
-        $sql = $area->Update_Delete();
-        $conn->query($sql);
-        $conn->close();
-    }
 }

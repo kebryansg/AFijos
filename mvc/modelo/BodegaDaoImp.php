@@ -1,8 +1,6 @@
 <?php
 
-include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Bodega.php';
-include_once 'ModelProcedure.php';
 
 class BodegaDaoImp extends ModelProcedure {
 
@@ -18,13 +16,6 @@ class BodegaDaoImp extends ModelProcedure {
         return $list;
     }
 
-    public function delete($bodega) {
-        $conn = (new C_MySQL())->open();
-        $sql = $bodega->Update_Delete();
-        $conn->query($sql);
-        $conn->close();
-    }
-    
     public static function asignarTipoMovimiento($bodega, $movimientos) {
         $conn = (new C_MySQL())->open();
         $sql = "Delete from BodegaTipoMovimiento where idbodega = " . $bodega;
@@ -40,6 +31,7 @@ class BodegaDaoImp extends ModelProcedure {
         }
         $conn->close();
     }
+
     public static function asignarUsuario($usuario, $bodegas) {
         $conn = (new C_MySQL())->open();
         $sql = "Delete from bodegausuario where idusuario = $usuario;";
@@ -55,15 +47,15 @@ class BodegaDaoImp extends ModelProcedure {
         }
         $conn->close();
     }
-    
-    
+
     public static function _listTipoMovimiento($bodega) {
         $conn = (new C_MySQL())->open();
-        
+
         $sql = "select * from BodegaTipoMovimiento where idbodega = $bodega ;";
 
         $list = C_MySQL::returnListAsoc($conn, $sql);
         $conn->close();
         return $list;
     }
+
 }

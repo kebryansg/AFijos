@@ -3,7 +3,7 @@
 //namespace modelo;
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Rol.php';
-include_once 'ModelProcedure.php';
+
 
 class RolDaoImp extends ModelProcedure {
 

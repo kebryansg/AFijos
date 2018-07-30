@@ -1,5 +1,8 @@
 <?php
 
+include_once '../mvc/Controlador/C_MySQL.php';
+include_once '../mvc/modelo/ModelProcedure.php';
+
 include_once '../mvc/modelo/TipoDocumentoDaoImp.php';
 include_once '../mvc/modelo/TipoMovimientoDaoImp.php';
 include_once '../mvc/modelo/BodegaDaoImp.php';

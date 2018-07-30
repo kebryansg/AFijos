@@ -1,7 +1,6 @@
 <?php
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Ciudad.php';
-include_once 'ModelProcedure.php';
 
 class CiudadDaoImp extends ModelProcedure {
 

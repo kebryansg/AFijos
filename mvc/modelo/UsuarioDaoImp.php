@@ -1,39 +1,25 @@
 <?php
-include_once '../mvc/Controlador/C_MySQL.php';
+
 include_once '../mvc/Controlador/Entidades/Usuario.php';
 
-class UsuarioDaoImp {
-    public static function save($usuario){
-        $conn = (new C_MySQL())->open();
-        if($usuario->ID == 0){
-            $sql = $usuario->Insert();
-        }else{
-            $sql = $usuario->Update();
-        }
-        if($conn->query($sql)){
-            if ($usuario->ID == 0) {
-                $usuario->ID = $conn->insert_id;
-            }
-        }
-        $conn->close();
-    }
-    
-    public static function _list($params){
+class UsuarioDaoImp extends ModelProcedure {
+
+    public static function _list($params) {
         $conn = (new C_MySQL())->open();
         $params = array(
             "procedure" => "sp_GetUsuarioDepartamento",
             "params" => json_encode($params)
         );
-        
+
         // Agregar Vista
         //$sql = "SELECT SQL_CALC_FOUND_ROWS * from viewUsuario limit $top offset $pag ;"; //"limit $top offset $limit"
-        
-        $list = C_MySQL::returnListAsoc($conn, $sql);
-        $count = C_MySQL::row_count($conn);
+
+        $list = C_MySQL::returnListAsoc_Total($conn, $params);
         $conn->close();
         return $list;
     }
-    public static function _listUsuariosDepartamento($params){
+
+    public static function _listUsuariosDepartamento($params) {
         $conn = (new C_MySQL())->open();
         // sp_GetUsuarioDepartamento
         $params = array(
@@ -41,33 +27,28 @@ class UsuarioDaoImp {
             "params" => json_encode($params)
         );
         //$sql = "SELECT SQL_CALC_FOUND_ROWS * from viewUsuario limit $top offset $pag ;"; //"limit $top offset $limit"
-        
+
         $list = C_MySQL::returnListAsoc_Total($conn, $params);
         $conn->close();
         return $list;
     }
-    public static function _listUsuariosBodega($id){
+
+    public static function _listUsuariosBodega($id) {
         $conn = (new C_MySQL())->open();
         $sql = "select idbodega from bodegausuario where idusuario = $id;";
         $list = C_MySQL::returnListAsoc($conn, $sql);
         $conn->close();
         return $list;
     }
-    public static function _listUsuariosTipoMovimiento($id){
+
+    public static function _listUsuariosTipoMovimiento($id) {
         $conn = (new C_MySQL())->open();
         $sql = "select idtipomovimiento from tipomovimientousuario where idusuario = $id;";
         $list = C_MySQL::returnListAsoc($conn, $sql);
         $conn->close();
         return $list;
     }
-    
-    public static function delete($usuario){
-        $conn = (new C_MySQL())->open();
-        $sql = $usuario->Update_Delete();
-        $conn->query($sql);
-        $conn->close();
-    }
-    
+
     public static function _login($params) {
         $conn = (new C_MySQL())->open();
         $sql = "select count(*) cant from usuario where  upper('" . $params["user"] . "') = upper(username) and password = encode('" . $params["pass"] . "','afijos');";
@@ -80,37 +61,35 @@ class UsuarioDaoImp {
         $conn->close();
         return $login;
     }
+
     public static function _get($params) {
         $conn = (new C_MySQL())->open();
         //$sql = "select id, username, idrol,(SELECT rol from viewusuario where id = usuario.id) rol from usuario where upper('" . $params["user"] . "') = upper(username) and password = encode('" . $params["pass"] . "','afijos');";
-        $sql = "call sp_getUsuarioCredencial('". json_encode($params) ."');";
+        $sql = "call sp_getUsuarioCredencial('" . json_encode($params) . "');";
         $row = C_MySQL::returnRowAsoc($conn, $sql);
         $conn->close();
         return $row;
     }
+
     public static function _getUsuario($id) {
         $conn = (new C_MySQL())->open();
-        $sql = "select id, username,decode(`password`,'afijos') `password`,idpersona, idrol,estado from usuario where id = ". $id;
+        $sql = "select id, username,decode(`password`,'afijos') `password`,idpersona, idrol,estado from usuario where id = " . $id;
         $row = array();
         $row["usuario"] = (C_MySQL::returnRowAsoc($conn, $sql));
-        $sql = "select * from persona where id = ". $row["usuario"]["idpersona"];
+        $sql = "select * from persona where id = " . $row["usuario"]["idpersona"];
         $row["persona"] = (C_MySQL::returnRowAsoc($conn, $sql));
         $sql = "select dep.* from usuariodepartamento ud join departamento dep on dep.id = ud.iddepartamento where idusuario = $id and fechafin is null;";
         $row["departamento"] = (C_MySQL::returnRowAsoc($conn, $sql));
         $conn->close();
         return $row;
     }
-    
-    public static function changeDepartamento($datos){
+
+    public static function changeDepartamento($datos) {
         $conn = (new C_MySQL())->open();
-        $sql = "call sp_CambioDepartamento('". json_encode($datos) ."')";
+        $sql = "call sp_CambioDepartamento('" . json_encode($datos) . "')";
         $bandera = $conn->query($sql);
         $conn->close();
         return $bandera;
     }
+
 }
-
-
-
-
-

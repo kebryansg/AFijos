@@ -2,22 +2,8 @@
 
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/TipoEmisor.php';
-class TipoEmisorDaoImp {
-    public static function save($tipo) {
-        $conn = (new C_MySQL())->open();
-        $sql = "";
-        if ($tipo->ID == 0) {
-            $sql = $tipo->Insert();
-        } else {
-            $sql = $tipo->Update();
-        }
-        if ($conn->query($sql)) {
-            if ($tipo->ID == 0) {
-                $tipo->ID = $conn->insert_id;
-            }
-        }
-        $conn->close();
-    }
+
+class TipoEmisorDaoImp extends ModelProcedure {
 
     public static function listTipoEmisor($top, $pag, &$count) {
         $conn = (new C_MySQL())->open();
@@ -31,10 +17,4 @@ class TipoEmisorDaoImp {
         return $list;
     }
 
-    public function delete($tipo) {
-        $conn = (new C_MySQL())->open();
-        $sql = $tipo->Update_Delete();
-        $conn->query($sql);
-        $conn->close();
-    }
 }

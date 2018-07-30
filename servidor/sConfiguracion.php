@@ -1,10 +1,10 @@
 <?php
 
 require_once __DIR__ . "/../init.php";
+include_once SITE_ROOT . '/mvc/Controlador/C_MySQL.php';
+include_once SITE_ROOT . '/mvc/modelo/ModelProcedure.php';
 
-//include_once SITE_ROOT . '/mvc/modelo/RolDaoImp.php';
 include_once SITE_ROOT . '/mvc/modelo/UsuarioDaoImp.php';
-//include_once SITE_ROOT . '/mvc/modelo/ParametroDaoImp.php';
 include_once SITE_ROOT . '/mvc/Controlador/JsonMapper.php';
 
 $accion = $_POST["accion"];

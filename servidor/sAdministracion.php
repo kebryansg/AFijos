@@ -1,11 +1,15 @@
 <?php
 
+include_once '../mvc/Controlador/C_MySQL.php';
+include_once '../mvc/modelo/ModelProcedure.php';
+
 include_once '../mvc/modelo/ModuloDaoImp.php';
 include_once '../mvc/modelo/SubModuloDaoImp.php';
 include_once '../mvc/modelo/RolDaoImp.php';
 include_once '../mvc/modelo/PersonaDaoImp.php';
 include_once '../mvc/modelo/UsuarioDaoImp.php';
 include_once '../mvc/Controlador/JsonMapper.php';
+
 $accion = $_POST["accion"];
 $op = $_POST["op"];
 $mapper = new JsonMapper();
@@ -115,10 +119,11 @@ switch ($accion) {
                 $resultado = json_encode($Modulos);
                 break;
             case "usuario":
-                $resultado = json_encode(array(
-                    "rows" => UsuarioDaoImp::listUsuarios($top, $pag, $count),
-                    "total" => $count
-                ));
+//                $resultado = json_encode(array(
+//                    "rows" => UsuarioDaoImp::listUsuarios($top, $pag, $count),
+//                    "total" => $count
+//                ));
+                $resultado = json_encode(UsuarioDaoImp::_list($params));
                 break;
             case "usuario.departamento":
                 $resultado = json_encode(UsuarioDaoImp::_listUsuariosDepartamento($params));

@@ -11,8 +11,6 @@ $(function () {
         clickToSelect: true
     });
 
-//    $("input[name='fechaFin']").initDate();
-
     $("#tbDetalleOrden, table[Proveedor]").on('check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table', function (e, rows) {
         _table = $(e.target).attr("data-count");
         var ids = $.map(!$.isArray(rows) ? [rows] : rows, row => row.id);

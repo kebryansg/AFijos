@@ -3,22 +3,7 @@
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Edificio.php';
 
-class EdificioDaoImp {
-    public static function save($edificio) {
-        $conn = (new C_MySQL())->open();
-        $sql = "";
-        if ($edificio->ID == 0) {
-            $sql = $edificio->Insert();
-        } else {
-            $sql = $edificio->Update();
-        }
-        if ($conn->query($sql)) {
-            if ($edificio->ID == 0) {
-                $edificio->ID = $conn->insert_id;
-            }
-        }
-        $conn->close();
-    }
+class EdificioDaoImp extends ModelProcedure {
 
     public static function listEdificio($top, $pag, &$count) {
         $conn = (new C_MySQL())->open();
@@ -31,10 +16,4 @@ class EdificioDaoImp {
         return $list;
     }
 
-    public function delete($edificio) {
-        $conn = (new C_MySQL())->open();
-        $sql = $edificio->Update_Delete();
-        $conn->query($sql);
-        $conn->close();
-    }
 }

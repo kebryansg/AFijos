@@ -1,8 +1,6 @@
 <?php
 
-include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/TipoMovimiento.php';
-include_once 'ModelProcedure.php';
 
 class TipoMovimientoDaoImp extends ModelProcedure {
 

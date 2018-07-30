@@ -3,22 +3,7 @@
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Categoria.php';
 
-class CategoriaDaoImp {
-    public static function save($categoria) {
-        $conn = (new C_MySQL())->open();
-        $sql = "";
-        if ($categoria->ID == 0) {
-            $sql = $categoria->Insert();
-        } else {
-            $sql = $categoria->Update();
-        }
-        if ($conn->query($sql)) {
-            if ($categoria->ID == 0) {
-                $categoria->ID = $conn->insert_id;
-            }
-        }
-        $conn->close();
-    }
+class CategoriaDaoImp extends ModelProcedure {
 
     public static function listCategoria($top, $pag, &$count) {
         $conn = (new C_MySQL())->open();
@@ -32,10 +17,4 @@ class CategoriaDaoImp {
         return $list;
     }
 
-    public function delete($categoria) {
-        $conn = (new C_MySQL())->open();
-        $sql = $categoria->Update_Delete();
-        $conn->query($sql);
-        $conn->close();
-    }
 }

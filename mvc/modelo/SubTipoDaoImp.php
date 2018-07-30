@@ -3,23 +3,7 @@
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/SubTipo.php';
 
-
-class SubTipoDaoImp {
-    public static function save($subtipo) {
-        $conn = (new C_MySQL())->open();
-        $sql = "";
-        if ($subtipo->ID == 0) {
-            $sql = $subtipo->Insert();
-        } else {
-            $sql = $subtipo->Update();
-        }
-        if ($conn->query($sql)) {
-            if ($subtipo->ID == 0) {
-                $subtipo->ID = $conn->insert_id;
-            }
-        }
-        $conn->close();
-    }
+class SubTipoDaoImp extends ModelProcedure {
 
     public static function listSubtipo($top, $pag, &$count) {
         $conn = (new C_MySQL())->open();
@@ -33,10 +17,4 @@ class SubTipoDaoImp {
         return $list;
     }
 
-    public function delete($subtipo) {
-        $conn = (new C_MySQL())->open();
-        $sql = $subtipo->Update_Delete();
-        $conn->query($sql);
-        $conn->close();
-    }
 }

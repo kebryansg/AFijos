@@ -3,23 +3,7 @@
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Fabricante.php';
 
-class FabricanteDaoImp {
-
-    public static function save($fabricante) {
-        $conn = (new C_MySQL())->open();
-        $sql = "";
-        if ($fabricante->ID == 0) {
-            $sql = $fabricante->Insert();
-        } else {
-            $sql = $fabricante->Update();
-        }
-        if ($conn->query($sql)) {
-            if ($fabricante->ID == 0) {
-                $fabricante->ID = $conn->insert_id;
-            }
-        }
-        $conn->close();
-    }
+class FabricanteDaoImp extends ModelProcedure {
 
     public static function listFabricante($top, $pag, &$count) {
         $conn = (new C_MySQL())->open();
@@ -31,13 +15,6 @@ class FabricanteDaoImp {
         $count = C_MySQL::row_count($conn);
         $conn->close();
         return $list;
-    }
-
-    public function delete($fabricante) {
-        $conn = (new C_MySQL())->open();
-        $sql = $fabricante->Update_Delete();
-        $conn->query($sql);
-        $conn->close();
     }
 
 }

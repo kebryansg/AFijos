@@ -2,7 +2,6 @@
 
 include_once '../mvc/Controlador/C_MySQL.php';
 include_once '../mvc/Controlador/Entidades/Pais.php';
-include_once 'ModelProcedure.php';
 
 class PaisDaoImp extends ModelProcedure {
 
